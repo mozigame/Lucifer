@@ -1,4 +1,4 @@
-package com.bc.lottery.util;
+package com.bc.lottery.entity;
 
 import java.io.Serializable;
 

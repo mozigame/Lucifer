@@ -1,8 +1,11 @@
-package com.bc.lottery.service;
+package com.bc.lottery.service.impl;
 
-import com.bc.lottery.util.LotteryType;
+import com.bc.lottery.entity.BoundsInfo;
+import com.bc.lottery.entity.LotteryOrder;
+import com.bc.lottery.service.LotteryHandle;
+import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.util.LotteryUtils;
-import com.bc.lottery.util.Shishicai;
+import com.bc.lottery.entity.ShishicaiType;
 
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
  * Created by luis on 2017/4/14.
  */
 
-class ShishicaiHandle implements LotteryHandle, Shishicai {
+class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
 
     private static final int[] ZHI_XUAN_KUA_DU = {10, 54, 96, 126, 144, 150, 144, 126, 96, 54};
 
@@ -345,6 +348,16 @@ class ShishicaiHandle implements LotteryHandle, Shishicai {
         }
 
         return 0;
+    }
+
+    @Override
+    public BoundsInfo getBoundsInfoOfLottery(LotteryType lotteryType, String kj, String bet) {
+        return null;
+    }
+
+    @Override
+    public List<BoundsInfo> getBatchBoundsInfoOfLottery(String lotteryType, String kj, List<LotteryOrder> orderList) {
+        return null;
     }
 
     public static void main(String[] args) {

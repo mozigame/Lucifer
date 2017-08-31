@@ -1,15 +1,15 @@
-package com.bc.lottery.util;
+package com.bc.lottery.entity;
 
 /**
  * Created by luis on 2017/4/13.
  */
 
-public interface Shishicai extends LotteryType {
+public interface ShishicaiType extends LotteryType {
 
     /**
      * 五星
      */
-    enum Wuxing implements Shishicai{
+    enum Wuxing implements ShishicaiType {
 
         WU_XING_ZHI_XUAN_FU_SHI("五星直选复式"),
         WU_XING_ZHI_XUAN_DAN_SHI("五星直选单式"),
@@ -37,7 +37,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 四星
      */
-    enum Sixing implements Shishicai{
+    enum Sixing implements ShishicaiType {
 
         SI_XING_ZHI_XUAN_FU_SHI("四星直选复式"),
         SI_XING_ZHI_XUAN_DAN_SHI("四星直选单式"),
@@ -63,7 +63,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 三星
      */
-    enum Sanxing implements Shishicai{
+    enum Sanxing implements ShishicaiType {
 
         QIAN_SAN_FU_SHI("前三复式"),
         ZHONG_SAN_FU_SHI("中三复式"),
@@ -108,7 +108,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 二星
      */
-    enum Erxing implements Shishicai{
+    enum Erxing implements ShishicaiType {
 
         QIAN_ER_ZHI_XUAN_FU_SHI("前二直选复式"),
         HOU_ER_ZHI_XUAN_FU_SHI("后二直选复式"),
@@ -143,7 +143,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 一星
      */
-    enum Yixing implements Shishicai{
+    enum Yixing implements ShishicaiType {
 
         YI_XING_DING_WEI_DAN("一星定位胆");
 
@@ -162,7 +162,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 不定胆
      */
-    enum Budingdan implements Shishicai{
+    enum Budingdan implements ShishicaiType {
 
         QIAN_SAN_YI_MA("前三一码"),
         ZHONG_SAN_YI_MA("中三一码"),
@@ -192,7 +192,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 大小单双
      */
-    enum Daxiaodanshuang implements Shishicai{
+    enum Daxiaodanshuang implements ShishicaiType {
 
         QIAN_ER_DA_XIAO_DAN_SHUANG("前二大小单双"),
         HOU_ER_DA_XIAO_DAN_SHUANG("后二大小单双"),
@@ -217,7 +217,7 @@ public interface Shishicai extends LotteryType {
     /**
      * 趣味
      */
-    enum Quwei implements Shishicai{
+    enum Quwei implements ShishicaiType {
 
         YI_FAN_FENG_SHUN("一帆风顺"),
         HAO_SHI_CHENG_SHUANG("好事成双"),
