@@ -211,8 +211,204 @@ public class LotteryUtils {
         return Math.round(result);
     }
 
-    public static void main(String[] args) {
-        System.out.println(combinationBig(21, 4));
+    /**
+     * 判断字符串中是否存在重复字符
+     *
+     * @param iniString
+     * @return true-不重复；false-重复
+     */
+    public static boolean checkDifferent(String iniString) {
+
+        if (iniString.matches("^.*?(.+?)\\1.*?$")) {
+            return true;
+        }
+
+        return false;
     }
 
+    /**
+     * 获取字符串中的重复字符
+     *
+     * @param iniString
+     * @return
+     */
+    public static List<String> getDupStr(String iniString) {
+        List<String> dupStrList = new ArrayList<>();
+
+        String[] inStrArr = iniString.split("");
+        for (String str1 : inStrArr) {
+            int i = 0;//重复次数
+            for (String str2 : inStrArr) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i >= 2) {
+                dupStrList.add(str1);
+            }
+        }
+        return dupStrList;
+    }
+
+    /**
+     * 获取字符串中的非重复字符
+     *
+     * @param iniString
+     * @return
+     */
+    public static List<String> getUnDupStr(String iniString) {
+        List<String> unDupStrList = new ArrayList<>();
+
+        String[] inStrArr = iniString.split("");
+        for (String str1 : inStrArr) {
+            int i = 0;//重复次数
+            for (String str2 : inStrArr) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i == 1) {
+                unDupStrList.add(str1);
+            }
+        }
+        return unDupStrList;
+    }
+
+    /**
+     * 获取指定重复次数的字符串
+     *
+     * @param iniString 需要计算的字符串
+     * @param dupNum    重复次数
+     * @return
+     */
+    public static List<String> getDupStrByDupNum(String iniString, int dupNum) {
+        List<String> dupStrList = new ArrayList<>();
+
+        String[] inStrArr = iniString.split("");
+        for (String str1 : inStrArr) {
+            int i = 0;//重复次数
+            for (String str2 : inStrArr) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i == dupNum) {
+                dupStrList.add(str1);
+            }
+        }
+        return dupStrList;
+    }
+
+    /**
+     * 获取指定最小重复次数的字符串
+     *
+     * @param iniString 需要计算的字符串
+     * @param dupNum    重复次数
+     * @return
+     */
+    public static List<String> getDupStrByMixDupNum(String iniString, int dupNum) {
+        List<String> dupStrList = new ArrayList<>();
+
+        String[] inStrArr = iniString.split("");
+        for (String str1 : inStrArr) {
+            int i = 0;//重复次数
+            for (String str2 : inStrArr) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i >= dupNum) {
+                dupStrList.add(str1);
+            }
+        }
+        return dupStrList;
+    }
+
+    /**
+     * 获取指定字符串各位数值的和
+     *
+     * @param iniString 需要计算的字符串
+     * @return
+     */
+    public static int getStrSum(String iniString) {
+
+        int strSum = 0;//字符串和值
+        String[] inStrArr = iniString.split("");
+        for (String str : inStrArr) {
+            strSum += Integer.parseInt(str);
+        }
+        return strSum;
+    }
+
+    /**
+     * 按指定长度截取传入的strList数据
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<String> getSubStrList(List<String> strList, int length) {
+
+        List<String> resultList = new ArrayList<>();
+        for (int i = 1; i <= strList.size() / length; i++) {
+
+            StringBuilder oneStr = new StringBuilder("");
+            for (int j = 0; j < length; j++) {
+
+                oneStr.append(strList.get(i * j));
+            }
+            resultList.add(oneStr.toString());
+        }
+        return resultList;
+    }
+
+    /**
+     * 获取指定数字的大小单双
+     *
+     * @param aimNo 需要计算的数
+     * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
+     * @return
+     */
+    public static List<String> getDaxiaodanshuangList(int aimNo, int maxNo) {
+
+        List<String> resultList = new ArrayList<>();
+        if (aimNo < 1 || maxNo < 1) {
+            return resultList;
+        }
+        // 判断奇偶
+        if (aimNo % 2 == 1) {
+            resultList.add("单");
+        } else {
+            resultList.add("双");
+        }
+        // 判断大小
+        if (aimNo <= maxNo / 2) {
+            resultList.add("小");
+        } else {
+            resultList.add("大");
+        }
+
+        return resultList;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(combinationBig(21, 4));
+
+        System.out.println(6 / 2);
+
+        String str1 = "1";
+        String str2 = "2";
+        String str3 = "3";
+        List<String> strList = new ArrayList<>();
+
+        strList.add(str1);
+        strList.add(str2);
+        strList.add(str3);
+
+    }
 }

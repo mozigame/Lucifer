@@ -27,10 +27,10 @@ public interface LotteryHandle {
      *
      * @param lotteryType 彩票类型
      * @param kj          中奖号
-     * @param bet         下注号
+     * @param betNumbers  下注号
      * @return 中奖信息
      */
-    BoundsInfo getBoundsInfoOfLottery(LotteryType lotteryType, String kj, String bet);
+    BoundsInfo getBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<List<String>> betNumbers);
 
     /**
      * 根据批量获取奖金信息
@@ -40,5 +40,5 @@ public interface LotteryHandle {
      * @param orderList
      * @return
      */
-    List<BoundsInfo> getBatchBoundsInfoOfLottery(String lotteryType, String kj, List<LotteryOrder> orderList);
+    List<BoundsInfo> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<LotteryOrder> orderList);
 }

@@ -10,24 +10,16 @@ import java.util.List;
 public class LotteryOrder {
 
     private String orderNo; // 注单编号
-    private LotteryType lotteryType; // 彩票类型
     List<List<String>> betNumbers; // 所选号码组合列表
+    private int multipleNum;   // 投注倍数
 
     @Override
     public String toString() {
         return "LotteryOrder{" +
                 "orderNo='" + orderNo + '\'' +
-                ", lotteryType=" + lotteryType +
                 ", betNumbers=" + betNumbers +
+                ", multipleNum=" + multipleNum +
                 '}';
-    }
-
-    public List<List<String>> getBetNumbers() {
-        return betNumbers;
-    }
-
-    public void setBetNumbers(List<List<String>> betNumbers) {
-        this.betNumbers = betNumbers;
     }
 
     public String getOrderNo() {
@@ -38,11 +30,19 @@ public class LotteryOrder {
         this.orderNo = orderNo;
     }
 
-    public LotteryType getLotteryType() {
-        return lotteryType;
+    public List<List<String>> getBetNumbers() {
+        return betNumbers;
     }
 
-    public void setLotteryType(LotteryType lotteryType) {
-        this.lotteryType = lotteryType;
+    public void setBetNumbers(List<List<String>> betNumbers) {
+        this.betNumbers = betNumbers;
+    }
+
+    public int getMultipleNum() {
+        return multipleNum;
+    }
+
+    public void setMultipleNum(int multipleNum) {
+        this.multipleNum = multipleNum;
     }
 }

@@ -6,6 +6,7 @@ package com.bc.lottery.entity;
 
 public interface ShishicaiType extends LotteryType {
 
+
     /**
      * 五星
      */
