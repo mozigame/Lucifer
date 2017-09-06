@@ -1,299 +1,44 @@
 package com.bc.lottery.service.impl;
 
+import com.bc.lottery.entity.BoundsInfo;
+import com.bc.lottery.entity.LotteryOrder;
 import com.bc.lottery.entity.LotteryType;
+import com.bc.lottery.entity.ShishicaiType;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.bc.lottery.entity.ShishicaiType.*;
+import static com.bc.lottery.entity.ShishicaiType.Wuxing;
 
 /**
  * ShishicaiServiceImpl Tester.
  *
  * @author clion
  * @version 1.0
- * @since <pre>���� 4, 2017</pre>
+ * @since <pre>???? 4, 2017</pre>
  */
 public class ShishicaiServiceImplTest {
 
-    ShishicaiServiceImpl shishicaiService = new ShishicaiServiceImpl();
+
+    private static String kj = "01234";
+    private static String kj1 = "12134";
+    private static String kj2 = "13343";
+    private static String kj3 = "14111";
+    private static String kj4 = "11111";
+
+    private static String kj5 = "55237";
+    private static String kj6 = "13995";
+    private static String kj7 = "97360";
+    private static String kj8 = "68696";
+    private static String kj9 = "86850";
+
+
+    private static List<String> kjList = new ArrayList<>();
 
     @Before
     public void before() throws Exception {
-
-        String kj;
-        String orderNo; // ע�����
-        LotteryType lotteryType = Wuxing.WU_XING_ZHI_XUAN_DAN_SHI;
-
-        shishicaiService.getBatchBoundsInfoOfLottery(Wuxing.WU_XING_ZHI_XUAN_DAN_SHI, "123", null);
-        List<List<String>> betNumbers; // ��ѡ��������б�
-        String[] twoNumber = {"0", "1"};
-        String[] threeNumber = {"2", "3", "4"};
-        String[] fourNumber = {"4", "6", "7", "9"};
-        String[] fiveNumber = {"1", "3", "5", "7", "9"};
-        String[] sixNumber = {"2", "3", "4", "7", "8", "9"};
-        List<List<String>> priBetNumbers = new ArrayList<>();
-        List<String> priBetNumber0 = new ArrayList<>();
-        List<String> priBetNumber1 = new ArrayList<>();
-        List<String> priBetNumber2 = new ArrayList<>();
-        List<String> priBetNumber3 = new ArrayList<>();
-        List<String> priBetNumber4 = new ArrayList<>();
-        //����
-        if (lotteryType instanceof Wuxing) {
-            Wuxing wuxingType = (Wuxing) lotteryType;
-            for (List<String> list : priBetNumbers) {
-                list.clear();
-            }
-            switch (wuxingType) {
-                case WU_XING_ZHI_XUAN_ZU_HE:
-                case WU_XING_ZHI_XUAN_FU_SHI:
-                    priBetNumbers.add(priBetNumber0);
-                    priBetNumbers.add(priBetNumber1);
-                    priBetNumbers.add(priBetNumber2);
-                    priBetNumbers.add(priBetNumber3);
-                    priBetNumbers.add(priBetNumber4);
-                    priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                    priBetNumbers.get(1).addAll(Arrays.asList(threeNumber));
-                    priBetNumbers.get(2).addAll(Arrays.asList(twoNumber));
-                    priBetNumbers.get(3).addAll(Arrays.asList(fiveNumber));
-                    priBetNumbers.get(4).addAll(Arrays.asList(twoNumber));
-                    break;
-                case WU_XING_ZHI_XUAN_DAN_SHI:
-                    priBetNumbers.add(priBetNumber0);
-                    for (int i = 0; i < 10; i++) {
-                        priBetNumbers.get(0).add(String.valueOf(i));
-                    }
-                    break;
-                case ZU_XUAN_120:
-                    priBetNumbers.add(priBetNumber0);
-                    for (int i = 0; i < 7; i++) {
-                        priBetNumbers.get(0).add(String.valueOf(i));
-                    }
-                    break;
-                case ZU_XUAN_60:
-                    priBetNumbers.add(priBetNumber0);
-                    priBetNumbers.add(priBetNumber1);
-                    priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                    priBetNumbers.get(1).addAll(Arrays.asList(fourNumber));
-                    break;
-                case ZU_XUAN_30:
-                    priBetNumbers.add(priBetNumber0);
-                    priBetNumbers.add(priBetNumber1);
-
-                    priBetNumbers.get(0).addAll(Arrays.asList(threeNumber));
-                    priBetNumbers.get(1).addAll(Arrays.asList(twoNumber));
-                    break;
-                case ZU_XUAN_10:
-                    priBetNumbers.add(priBetNumber0);
-                    priBetNumbers.add(priBetNumber1);
-
-                    priBetNumbers.get(0).addAll(Arrays.asList(threeNumber));
-                    priBetNumbers.get(1).addAll(Arrays.asList(twoNumber));
-                    break;
-                case ZU_XUAN_5:
-                    priBetNumbers.add(priBetNumber0);
-                    priBetNumbers.add(priBetNumber1);
-                    priBetNumbers.get(0).addAll(Arrays.asList(fourNumber));
-                    priBetNumbers.get(1).addAll(Arrays.asList(twoNumber));
-                    break;
-            }
-            //����
-            if (lotteryType instanceof Sixing) {
-                Sixing sixingType = (Sixing) lotteryType;
-                for (List<String> list : priBetNumbers) {
-                    list.clear();
-                }
-                switch (sixingType) {
-                    case SI_XING_ZHI_XUAN_ZU_HE:
-                    case SI_XING_ZHI_XUAN_FU_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.add(priBetNumber2);
-                        priBetNumbers.add(priBetNumber3);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        priBetNumbers.get(1).addAll(Arrays.asList(threeNumber));
-                        priBetNumbers.get(2).addAll(Arrays.asList(twoNumber));
-                        priBetNumbers.get(3).addAll(Arrays.asList(fiveNumber));
-                        break;
-                    case SI_XING_ZHI_XUAN_DAN_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        for (int i = 0; i < 8; i++) {
-                            priBetNumbers.get(0).add(String.valueOf(i));
-                        }
-                        break;
-                    case ZU_XUAN_24:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(fiveNumber));
-                        break;
-                    case ZU_XUAN_12:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        priBetNumbers.get(1).addAll(Arrays.asList(threeNumber));
-                        break;
-                    case ZU_XUAN_6:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        break;
-                    case ZU_XUAN_4:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.get(0).addAll(Arrays.asList(threeNumber));
-                        priBetNumbers.get(1).addAll(Arrays.asList(fiveNumber));
-                        break;
-                }
-            }
-            //����
-            if (lotteryType instanceof Sanxing) {
-                Sanxing sanxingType = (Sanxing) lotteryType;
-                for (List<String> list : priBetNumbers) {
-                    list.clear();
-                }
-                switch (sanxingType) {
-                    case HOU_SAN_FU_SHI:
-                    case ZHONG_SAN_FU_SHI:
-                    case QIAN_SAN_FU_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.add(priBetNumber2);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        priBetNumbers.get(1).addAll(Arrays.asList(threeNumber));
-                        priBetNumbers.get(2).addAll(Arrays.asList(twoNumber));
-                        break;
-                    case HOU_SAN_DAN_SHI:
-                    case ZHONG_SAN_DAN_SHI:
-                    case QIAN_SAN_DAN_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        for (int i = 0; i < 6; i++) {
-                            priBetNumbers.get(0).add(String.valueOf(i));
-                        }
-                        break;
-                    case HOU_SAN_ZHI_XUAN_HE_ZHI:
-                    case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
-                    case QIAN_SAN_ZHI_XUAN_HE_ZHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).add("9");
-                        priBetNumbers.get(0).add("2");
-                        break;
-                    case HOU_SAN_ZU_SAN:
-                    case ZHONG_SAN_ZU_SAN:
-                    case QIAN_SAN_ZU_SAN:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).add("9");
-                        priBetNumbers.get(0).add("6");
-                        priBetNumbers.get(0).add("5");
-                        break;
-                    case HOU_SAN_HUN_HE_ZU_XUAN:
-                    case ZHONG_SAN_HUN_HE_ZU_XUAN:
-                    case QIAN_SAN_HUN_HE_ZU_XUAN:
-                    case HOU_SAN_ZU_LIU:
-                    case ZHONG_SAN_ZU_LIU:
-                    case QIAN_SAN_ZU_LIU:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(fiveNumber));
-                        break;
-                    case HOU_SAN_ZU_XUAN_HE_ZHI:
-                    case ZHONG_SAN_ZU_XUAN_HE_ZHI:
-                    case QIAN_SAN_ZU_XUAN_HE_ZHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        break;
-                }
-            }
-            if (lotteryType instanceof Erxing) {
-                Erxing erxingType = (Erxing) lotteryType;
-                for (List<String> list : priBetNumbers) {
-                    list.clear();
-                }
-                switch (erxingType) {
-                    case HOU_ER_ZHI_XUAN_FU_SHI:
-                    case QIAN_ER_ZHI_XUAN_FU_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        priBetNumbers.get(1).addAll(Arrays.asList(threeNumber));
-                        break;
-                    case HOU_ER_ZU_XUAN_DAN_SHI:
-                    case QIAN_ER_ZU_XUAN_DAN_SHI:
-                    case HOU_ER_ZHI_XUAN_DAN_SHI:
-                    case QIAN_ER_ZHI_XUAN_DAN_SHI:
-                        priBetNumbers.add(priBetNumber0);
-                        for (int i = 0; i < 4; i++) {
-                            priBetNumbers.get(0).add(String.valueOf(i));
-                        }
-                        break;
-                    case HOU_ER_ZU_XUAN_HE_ZHI:
-                    case QIAN_ER_ZU_XUAN_HE_ZHI:
-                    case HOU_ER_ZU_XUAN_FU_SHI:
-                    case QIAN_ER_ZU_XUAN_FU_SHI:
-                    case HOU_ER_ZHI_XUAN_HE_ZHI:
-                    case QIAN_ER_ZHI_XUAN_HE_ZHI:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(fourNumber));
-                        break;
-                }
-            }
-            if (lotteryType instanceof Yixing) {
-                Yixing yixingType = (Yixing) lotteryType;
-                priBetNumber0.clear();
-                switch (yixingType) {
-                    case YI_XING_DING_WEI_DAN:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(twoNumber));
-                        break;
-                }
-            }
-            if (lotteryType instanceof Budingdan) {
-                Budingdan budingdanType = (Budingdan) lotteryType;
-                priBetNumber0.clear();
-                switch (budingdanType) {
-                    case HOU_SAN_ER_MA:
-                    case QIAN_SAN_ER_MA:
-                    case HOU_SAN_YI_MA:
-                    case QIAN_SAN_YI_MA:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).addAll(Arrays.asList(fourNumber));
-                        break;
-                }
-            }
-            if (lotteryType instanceof Daxiaodanshuang) {
-                Daxiaodanshuang daxiaodanshuangType = (Daxiaodanshuang) lotteryType;
-                priBetNumber0.clear();
-                priBetNumber1.clear();
-                switch (daxiaodanshuangType) {
-                    case HOU_ER_DA_XIAO_DAN_SHUANG:
-                    case QIAN_ER_DA_XIAO_DAN_SHUANG:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.add(priBetNumber1);
-                        priBetNumbers.get(0).add("��");
-                        priBetNumbers.get(0).add("˫");
-                        priBetNumbers.get(1).add("С");
-                        priBetNumbers.get(1).add("��");
-                        break;
-                    case ZONG_HE_DA_XIAO_DAN_SHUANG:
-                        priBetNumbers.add(priBetNumber0);
-                        priBetNumbers.get(0).add("��");
-                        priBetNumbers.get(0).add("С");
-                        break;
-                }
-            }
-            if (lotteryType instanceof Quwei) {
-                Quwei quweiType = (Quwei) lotteryType;
-                priBetNumber0.clear();
-                switch (quweiType) {
-                    case SI_JI_FA_CAI:
-                    case SAN_XING_BAO_XI:
-                    case HAO_SHI_CHENG_SHUANG:
-                    case YI_FAN_FENG_SHUN:
-                        priBetNumber0.addAll(Arrays.asList(sixNumber));
-                        priBetNumbers.add(priBetNumber0);
-                        break;
-                }
-            }
-        }
 
     }
 
@@ -310,7 +55,195 @@ public class ShishicaiServiceImplTest {
      */
     @Test
     public void testGetBoundsInfoOfLottery() throws Exception {
-//TODO: Test goes here... 
+
+        System.out.println("*******************************单独开奖测试开始*******************************");
+
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiServiceImpl shishicaiService = new ShishicaiServiceImpl();
+
+        /*// 五星
+        for (LotteryType lotteryType : Wuxing.values()) {
+
+            System.out.println("---------------------------五星类型----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 四星
+
+        for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
+
+            System.out.println("---------------------------四星类型----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 三星
+*/
+        for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
+
+            System.out.println("---------------------------三星类型----------------------------------");
+
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+
+        // 二星
+/*
+        for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
+
+            System.out.println("---------------------------二星类型----------------------------------");
+
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                for (String kjno : kjList) {
+
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+
+        // 一星
+
+        for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
+
+            System.out.println("---------------------------一星类型----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+
+        // 不定胆
+
+        for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
+
+            System.out.println("---------------------------不定胆类型----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 大小单双
+        for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
+
+            System.out.println("---------------------------大小单双----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }*/
+        // 趣味
+
+       /* for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
+
+            System.out.println("---------------------------趣味类型----------------------------------");
+            for (int i = 1; i < 21; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                for (String kjno : kjList) {
+                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }*/
+        System.out.println("*******************************单独开奖测试结束*******************************");
+
     }
 
     /**
@@ -318,7 +251,191 @@ public class ShishicaiServiceImplTest {
      */
     @Test
     public void testGetBatchBoundsInfoOfLottery() throws Exception {
-//TODO: Test goes here... 
+
+        System.out.println("*******************************批量开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiServiceImpl shishicaiService = new ShishicaiServiceImpl();
+
+        // 五星
+        for (LotteryType lotteryType : Wuxing.values()) {
+
+            System.out.println("---------------------------五星类型----------------------------------");
+            System.out.println(lotteryType);
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 四星
+        for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
+
+            System.out.println("---------------------------四星类型----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 三星
+        for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
+
+            System.out.println("---------------------------三星类型----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 二星
+        for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
+
+            System.out.println("---------------------------二星类型----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 一星
+        for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
+
+            System.out.println("---------------------------一星类型----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 不定胆
+        for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
+
+            System.out.println("---------------------------不定胆类型----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 大小单双
+        for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
+
+            System.out.println("---------------------------大小单双----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+        }
+        // 趣味
+        for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
+
+            System.out.println("---------------------------趣味----------------------------------");
+            System.out.println(lotteryType);
+
+            List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+
+            System.out.println(lotteryOrderList);
+            int prizeNumSum = 0;
+            for (String kjno : kjList) {
+                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (BoundsInfo boundsInfo : boundsInfoList) {
+                    System.out.println("开奖信息->" + boundsInfo);
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        prizeNumSum++;
+                    }
+                }
+                System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
+            }
+
+        }
+        System.out.println("*******************************批量开奖测试结束*******************************");
+
     }
 
     /**

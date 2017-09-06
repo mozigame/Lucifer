@@ -354,12 +354,12 @@ public class LotteryUtils {
     public static List<String> getSubStrList(List<String> strList, int length) {
 
         List<String> resultList = new ArrayList<>();
-        for (int i = 1; i <= strList.size() / length; i++) {
+        for (int i = 0; i < strList.size() / length; i++) {
 
             StringBuilder oneStr = new StringBuilder("");
             for (int j = 0; j < length; j++) {
 
-                oneStr.append(strList.get(i * j));
+                oneStr.append(strList.get(i * length + j));
             }
             resultList.add(oneStr.toString());
         }
@@ -376,9 +376,7 @@ public class LotteryUtils {
     public static List<String> getDaxiaodanshuangList(int aimNo, int maxNo) {
 
         List<String> resultList = new ArrayList<>();
-        if (aimNo < 1 || maxNo < 1) {
-            return resultList;
-        }
+
         // 判断奇偶
         if (aimNo % 2 == 1) {
             resultList.add("单");
