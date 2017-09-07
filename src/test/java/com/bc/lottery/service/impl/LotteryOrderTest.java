@@ -42,6 +42,7 @@ public class LotteryOrderTest {
         String[] sixNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5)};
         Collections.shuffle(list);
         String[] sevenNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6)};
+        Collections.shuffle(list);
         String[] eightNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)};
         List<List<String>> priBetNumbers = new ArrayList<>();
         List<String> priBetNumber0 = new ArrayList<>();
@@ -76,23 +77,23 @@ public class LotteryOrderTest {
                     break;
                 case ZU_XUAN_60:
                     priBetNumbers.add(Arrays.asList(eightNumber));
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case ZU_XUAN_30:
                     priBetNumbers.add(Arrays.asList(eightNumber));
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case ZU_XUAN_10:
                     priBetNumbers.add(Arrays.asList(eightNumber));
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case ZU_XUAN_20:
                     priBetNumbers.add(Arrays.asList(eightNumber));
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case ZU_XUAN_5:
                     priBetNumbers.add(Arrays.asList(eightNumber));
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
             }
         }
@@ -188,9 +189,48 @@ public class LotteryOrderTest {
                 case ZHONG_SAN_HUN_HE_ZU_XUAN:
                 case QIAN_SAN_HUN_HE_ZU_XUAN:
                     List<String> arrList = new ArrayList<>();
-                    arrList.addAll(Arrays.asList(sevenNumber));
-                    arrList.addAll(Arrays.asList(sixNumber));
-                    arrList.addAll(Arrays.asList(fiveNumber));
+                    List<String> arrList2 = new ArrayList<>();
+                    arrList2.add("0");
+                    arrList2.add("1");
+                    arrList2.add("2");
+
+                    arrList2.add("1");
+                    arrList2.add("2");
+                    arrList2.add("3");
+
+                    arrList2.add("2");
+                    arrList2.add("3");
+                    arrList2.add("4");
+
+                    arrList2.add("3");
+                    arrList2.add("4");
+                    arrList2.add("5");
+
+                    arrList2.add("4");
+                    arrList2.add("5");
+                    arrList2.add("6");
+
+                    arrList2.add("5");
+                    arrList2.add("6");
+                    arrList2.add("7");
+
+                    arrList2.add("2");
+                    arrList2.add("5");
+                    arrList2.add("5");
+
+                    arrList2.add("7");
+                    arrList2.add("9");
+                    arrList2.add("7");
+
+                    arrList2.add("6");
+                    arrList2.add("6");
+                    arrList2.add("7");
+
+                    arrList2.add("2");
+                    arrList2.add("3");
+                    arrList2.add("5");
+
+                    arrList.addAll(arrList2);
                     priBetNumbers.add(arrList);
                     break;
                 case HOU_SAN_ZU_LIU:

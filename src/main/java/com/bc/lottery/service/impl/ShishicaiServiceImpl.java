@@ -1115,13 +1115,12 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                             List<String> betNumberList = getBetNumbers(lotteryType, betNumbers);
                             for (String betNumber : betNumberList) {
                                 // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
-                                if (checkIsZu3(betNumber) && LotteryUtils.getDupStr(kj).containsAll(LotteryUtils.getDupStr(betNumber))
-                                        && LotteryUtils.getUnDupStr(kj).equals(LotteryUtils.getUnDupStr(betNumber))) {
+                                if (checkIsZu3(kj) && LotteryUtils.getDupStr(betNumber).containsAll(LotteryUtils.getDupStr(kj))
+                                        && LotteryUtils.getUnDupStr(betNumber).containsAll(LotteryUtils.getUnDupStr(kj))) {
                                     firstPrizeNum++;
                                 }
-
                                 // 判断是否中组六一等奖(判断开奖号的非重复位是否全部包含中奖号的非重复位)
-                                if (checkIsZu6(betNumber) && LotteryUtils.getUnDupStr(betNumber).containsAll(LotteryUtils.getUnDupStr(kj))) {
+                                if (checkIsZu6(kj) && LotteryUtils.getUnDupStr(betNumber).containsAll(LotteryUtils.getUnDupStr(kj))) {
                                     secondPrizeNum++;
                                 }
                             }
@@ -1782,7 +1781,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
      */
     private boolean checkIsZu6(String kjStr) {
 
-        return LotteryUtils.getDupStr(kjStr).size() == 3 && LotteryUtils.getUnDupStr(kjStr).size() == 0;
+        return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 3;
     }
 
     /**

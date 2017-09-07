@@ -21,7 +21,7 @@ import static com.bc.lottery.entity.ShishicaiType.Wuxing;
  */
 public class ShishicaiServiceImplTest {
 
-    private static String kj = "01234";
+    private static String kj  = "01234";
     private static String kj1 = "55237";
     private static String kj2 = "64461";
     private static String kj3 = "13343";
@@ -239,7 +239,7 @@ public class ShishicaiServiceImplTest {
 
             System.out.println("---------------------------三星类型----------------------------------");
 
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 1; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);

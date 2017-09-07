@@ -50,7 +50,7 @@ public class LotteryUtils {
         if (args == null) {
             return 0;
         }
-        long result = 1;
+        long result = 0;
         for (int i : args) {
             result += i;
         }
@@ -61,7 +61,7 @@ public class LotteryUtils {
         if (args == null || args.isEmpty()) {
             return 0;
         }
-        long result = 1;
+        long result = 0;
         for (List<String> i : args) {
             result += i.size();
         }
