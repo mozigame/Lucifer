@@ -8,7 +8,9 @@ import com.bc.lottery.service.LotteryHandle;
 import com.bc.lottery.util.LotteryUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by luis on 2017/4/14.
@@ -680,7 +682,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                                     if (betNumbers.get(1).contains(kjArr[1])) {
                                         secondPrizeNum++;
                                         // 判断是否中一等奖
-                                        if (betNumbers.get(1).contains(kjArr[1])) {
+                                        if (betNumbers.get(0).contains(kjArr[0])) {
                                             firstPrizeNum++;
                                         }
                                     }
@@ -717,8 +719,8 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     if (size == 2 && checkIsZu60(kj)) {
 
                         //获取中奖号中的重复字符
-                        List<String> dupStrList = LotteryUtils.getDupStr(kj);
-                        if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                        Set<String> dupStrList = LotteryUtils.getDupStr(kj);
+                        if (betNumbers.get(0).contains(dupStrList)) {
 
                             //判断中奖号中的非重复字符是否全部选中
                             if (betNumbers.get(1).containsAll(LotteryUtils.getUnDupStr(kj))) {
@@ -734,7 +736,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     if (size == 2 && checkIsZu30(kj)) {
 
                         //获取中奖号中的重复字符
-                        List<String> dupStrList = LotteryUtils.getDupStr(kj);
+                        Set<String> dupStrList = LotteryUtils.getDupStr(kj);
                         if (betNumbers.get(0).containsAll(dupStrList)) {
 
                             //判断中奖号中的非重复字符是否全部选中
@@ -751,8 +753,8 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     if (size == 2 && checkIsZu20(kj)) {
 
                         //获取中奖号中的重复字符
-                        List<String> dupStrList = LotteryUtils.getDupStr(kj);
-                        if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                        Set<String> dupStrList = LotteryUtils.getDupStr(kj);
+                        if (betNumbers.get(0).contains(dupStrList)) {
 
                             //判断中奖号中的非重复字符是否全部选中
                             if (betNumbers.get(1).containsAll(LotteryUtils.getUnDupStr(kj))) {
@@ -768,11 +770,11 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     if (size == 2 && checkIsZu10(kj)) {
 
                         //获取中奖号中的重复3次的字符
-                        List<String> dupStrList = LotteryUtils.getDupStrByDupNum(kj, 3);
-                        if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                        Set<String> dupStrList = LotteryUtils.getDupStrByDupNum(kj, 3);
+                        if (betNumbers.get(0).containsAll(dupStrList)) {
 
                             //判断中奖号中的非重复字符是否全部选中
-                            if (betNumbers.get(1).contains(LotteryUtils.getDupStrByDupNum(kj, 2).get(0))) {
+                            if (betNumbers.get(1).containsAll(LotteryUtils.getDupStrByDupNum(kj, 2))) {
                                 firstPrizeNum = 1;
                             }
                         }
@@ -784,8 +786,8 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     if (size == 2 && checkIsZu5(kj)) {
 
                         //获取中奖号中的重复字符
-                        List<String> dupStrList = LotteryUtils.getDupStr(kj);
-                        if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                        Set<String> dupStrList = LotteryUtils.getDupStr(kj);
+                        if (betNumbers.get(0).contains(dupStrList)) {
 
                             //判断中奖号中的非重复字符是否全部选中
                             if (betNumbers.get(1).contains(LotteryUtils.getUnDupStr(kj).get(0))) {
@@ -881,7 +883,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                                     if (betNumbers.get(1).contains(kjArr[1])) {
                                         secondPrizeNum++;
                                         // 判断是否中一等奖
-                                        if (betNumbers.get(1).contains(kjArr[1])) {
+                                        if (betNumbers.get(0).contains(kjArr[0])) {
                                             firstPrizeNum++;
                                         }
                                     }
@@ -915,8 +917,8 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                         if (size == 2 && checkIsZu12(kj)) {
 
                             //获取中奖号中的重复字符
-                            List<String> dupStrList = LotteryUtils.getDupStr(kj);
-                            if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                            Set<String> dupStrList = LotteryUtils.getDupStr(kj);
+                            if (betNumbers.get(0).contains(dupStrList)) {
 
                                 //判断中奖号中的非重复字符是否全部选中
                                 if (betNumbers.get(1).containsAll(LotteryUtils.getUnDupStr(kj))) {
@@ -932,7 +934,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                         if (size == 2 && checkIsZu6(kj)) {
 
                             //获取中奖号中的重复字符
-                            List<String> dupStrList = LotteryUtils.getDupStr(kj);
+                            Set<String> dupStrList = LotteryUtils.getDupStr(kj);
                             if (betNumbers.get(0).containsAll(dupStrList)) {
                                 firstPrizeNum = 1;
                             }
@@ -945,8 +947,8 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                         if (size == 2 && checkIsZu4(kj)) {
 
                             //获取中奖号中的重复字符
-                            List<String> dupStrList = LotteryUtils.getDupStr(kj);
-                            if (betNumbers.get(0).contains(dupStrList.get(0))) {
+                            Set<String> dupStrList = LotteryUtils.getDupStr(kj);
+                            if (betNumbers.get(0).contains(dupStrList)) {
 
                                 //判断中奖号中的非重复字符是否全部选中
                                 if (betNumbers.get(1).containsAll(LotteryUtils.getUnDupStr(kj))) {
@@ -1054,7 +1056,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                         if (size == 1 && checkIsZu3(kj)) {
 
                             //获取中奖号中的重复字符
-                            List<String> dupStrList = LotteryUtils.getDupStr(kj);
+                            Set<String> dupStrList = LotteryUtils.getDupStr(kj);
                             //获取中奖号中的非重复字符
                             List<String> unDupStrList = LotteryUtils.getUnDupStr(kj);
                             if (betNumbers.get(0).containsAll(dupStrList) && betNumbers.get(0).containsAll(unDupStrList)) {
@@ -1113,7 +1115,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                             List<String> betNumberList = getBetNumbers(lotteryType, betNumbers);
                             for (String betNumber : betNumberList) {
                                 // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
-                                if (checkIsZu3(betNumber) && LotteryUtils.getDupStr(kj).get(0).equals(LotteryUtils.getDupStr(betNumber).get(0))
+                                if (checkIsZu3(betNumber) && LotteryUtils.getDupStr(kj).containsAll(LotteryUtils.getDupStr(betNumber))
                                         && LotteryUtils.getUnDupStr(kj).get(0).equals(LotteryUtils.getUnDupStr(betNumber).get(0))) {
                                     firstPrizeNum++;
                                 }
@@ -1362,7 +1364,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                         if (size == 1) {
                             //TODO 是否需要优化
                             //获取中奖号中的重复字符
-                            List<String> dupStrList = LotteryUtils.getDupStr(kj);
+                            Set<String> dupStrList = LotteryUtils.getDupStr(kj);
                             //获取中奖号中的非重复字符
                             List<String> unDupStrList = LotteryUtils.getUnDupStr(kj);
                             for (String betNumber : betNumbers.get(0)) {
@@ -1539,7 +1541,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
 
             int firstPrizeNum = 0; // 一等奖次数
 
-            List<String> kjStrList = new ArrayList<>();
+            Set<String> kjStrList = new HashSet<>();
             // 如果类型属于趣味
             if (lotteryType instanceof Quwei) {
                 Quwei quweiType = (Quwei) lotteryType;
@@ -1578,7 +1580,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                             continue;
                         }
                         for (String betNumber : betNumbers.get(0)) {
-                            if (kjStrList.get(0).equals(betNumber)) {
+                            if (kjStrList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -1594,7 +1596,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                             continue;
                         }
                         for (String betNumber : betNumbers.get(0)) {
-                            if (kjStrList.get(0).equals(betNumber)) {
+                            if (kjStrList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }

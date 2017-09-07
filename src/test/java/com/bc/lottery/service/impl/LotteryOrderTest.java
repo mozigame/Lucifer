@@ -40,6 +40,9 @@ public class LotteryOrderTest {
         String[] fiveNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4)};
         Collections.shuffle(list);
         String[] sixNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5)};
+        Collections.shuffle(list);
+        String[] sevenNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6)};
+        String[] eightNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)};
         List<List<String>> priBetNumbers = new ArrayList<>();
         List<String> priBetNumber0 = new ArrayList<>();
         List<String> priBetNumber1 = new ArrayList<>();
@@ -69,30 +72,27 @@ public class LotteryOrderTest {
                     priBetNumbers.add(priBetNumber0);
                     break;
                 case ZU_XUAN_120:
-                    for (int i = 0; i < 7; i++) {
-                        priBetNumber0.add(String.valueOf(i));
-                    }
-                    priBetNumbers.add(priBetNumber0);
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_60:
-                    priBetNumbers.add(Arrays.asList(twoNumber));
-                    priBetNumbers.add(Arrays.asList(fourNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_30:
-                    priBetNumbers.add(Arrays.asList(threeNumber));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_10:
-                    priBetNumbers.add(Arrays.asList(threeNumber));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_20:
-                    priBetNumbers.add(Arrays.asList(threeNumber));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_5:
-                    priBetNumbers.add(Arrays.asList(fourNumber));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
             }
         }
@@ -114,18 +114,18 @@ public class LotteryOrderTest {
                     for (int i = 0; i < 8; i++) {
                         priBetNumber0.add(String.valueOf(i));
                     }
-                    priBetNumber0.addAll(Arrays.asList(fourNumber));
+                    priBetNumber0.addAll(Arrays.asList(eightNumber));
                     priBetNumbers.add(priBetNumber0);
                     break;
                 case ZU_XUAN_24:
-                    priBetNumbers.add(Arrays.asList(fiveNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_12:
-                    priBetNumbers.add(Arrays.asList(twoNumber));
-                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_6:
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case ZU_XUAN_4:
                     priBetNumbers.add(Arrays.asList(threeNumber));

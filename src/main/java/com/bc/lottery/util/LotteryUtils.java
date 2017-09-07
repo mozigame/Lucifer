@@ -1,7 +1,9 @@
 package com.bc.lottery.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Lottery相关工具计算类
@@ -232,8 +234,9 @@ public class LotteryUtils {
      * @param iniString
      * @return
      */
-    public static List<String> getDupStr(String iniString) {
-        List<String> dupStrList = new ArrayList<>();
+    public static Set<String> getDupStr(String iniString) {
+
+        Set<String> dupStrSet = new HashSet<>();
 
         String[] inStrArr = iniString.split("");
         for (String str1 : inStrArr) {
@@ -245,10 +248,10 @@ public class LotteryUtils {
                 }
             }
             if (i >= 2) {
-                dupStrList.add(str1);
+                dupStrSet.add(str1);
             }
         }
-        return dupStrList;
+        return dupStrSet;
     }
 
     /**
@@ -283,8 +286,8 @@ public class LotteryUtils {
      * @param dupNum    重复次数
      * @return
      */
-    public static List<String> getDupStrByDupNum(String iniString, int dupNum) {
-        List<String> dupStrList = new ArrayList<>();
+    public static Set<String> getDupStrByDupNum(String iniString, int dupNum) {
+        Set<String> dupStrList = new HashSet<>();
 
         String[] inStrArr = iniString.split("");
         for (String str1 : inStrArr) {
@@ -309,8 +312,8 @@ public class LotteryUtils {
      * @param dupNum    重复次数
      * @return
      */
-    public static List<String> getDupStrByMixDupNum(String iniString, int dupNum) {
-        List<String> dupStrList = new ArrayList<>();
+    public static Set<String> getDupStrByMixDupNum(String iniString, int dupNum) {
+        Set<String> dupStrList = new HashSet<>();
 
         String[] inStrArr = iniString.split("");
         for (String str1 : inStrArr) {
