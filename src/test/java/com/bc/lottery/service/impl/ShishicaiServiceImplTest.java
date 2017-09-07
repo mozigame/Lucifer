@@ -30,7 +30,7 @@ public class ShishicaiServiceImplTest {
     private static String kj6 = "77777";
     private static String kj7 = "46933";
     private static String kj8 = "97790";
-    private static String kj9 = "86805";
+    private static String kj9 = "12345";
 
 
     private static List<String> kjList = new ArrayList<>();
@@ -256,7 +256,7 @@ public class ShishicaiServiceImplTest {
         }
 
         // 二星
-/*
+
         for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
 
             System.out.println("---------------------------二星类型----------------------------------");
@@ -361,7 +361,7 @@ public class ShishicaiServiceImplTest {
                     }
                 }
             }
-        }*/
+        }
         System.out.println("*******************************单独开奖测试结束*******************************");
 
     }

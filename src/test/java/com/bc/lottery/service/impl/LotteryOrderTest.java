@@ -143,9 +143,9 @@ public class LotteryOrderTest {
                 case HOU_SAN_FU_SHI:
                 case ZHONG_SAN_FU_SHI:
                 case QIAN_SAN_FU_SHI:
-                    priBetNumbers.add(Arrays.asList(twoNumber));
-                    priBetNumbers.add(Arrays.asList(threeNumber));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(fiveNumber));
+                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case HOU_SAN_DAN_SHI:
                 case ZHONG_SAN_DAN_SHI:
@@ -169,35 +169,46 @@ public class LotteryOrderTest {
                 case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
                 case QIAN_SAN_ZHI_XUAN_HE_ZHI:
 
-                    String[] hezhi = new String[4];
+                    String[] hezhi = new String[7];
                     hezhi[0] = String.valueOf(new Random().nextInt(27));
                     hezhi[1] = String.valueOf(new Random().nextInt(27));
                     hezhi[2] = String.valueOf(new Random().nextInt(27));
                     hezhi[3] = String.valueOf(new Random().nextInt(27));
-
+                    hezhi[4] = String.valueOf(new Random().nextInt(27));
+                    hezhi[5] = String.valueOf(new Random().nextInt(27));
+                    hezhi[6] = String.valueOf(new Random().nextInt(27));
                     priBetNumbers.add(Arrays.asList(hezhi));
                     break;
                 case HOU_SAN_ZU_SAN:
                 case ZHONG_SAN_ZU_SAN:
                 case QIAN_SAN_ZU_SAN:
-                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case HOU_SAN_HUN_HE_ZU_XUAN:
                 case ZHONG_SAN_HUN_HE_ZU_XUAN:
                 case QIAN_SAN_HUN_HE_ZU_XUAN:
+                    List<String> arrList = new ArrayList<>();
+                    arrList.addAll(Arrays.asList(sevenNumber));
+                    arrList.addAll(Arrays.asList(sixNumber));
+                    arrList.addAll(Arrays.asList(fiveNumber));
+                    priBetNumbers.add(arrList);
+                    break;
                 case HOU_SAN_ZU_LIU:
                 case ZHONG_SAN_ZU_LIU:
                 case QIAN_SAN_ZU_LIU:
-                    priBetNumbers.add(Arrays.asList(fiveNumber));
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
                 case HOU_SAN_ZU_XUAN_HE_ZHI:
                 case ZHONG_SAN_ZU_XUAN_HE_ZHI:
                 case QIAN_SAN_ZU_XUAN_HE_ZHI:
-                    String[] zuxuanhezhi = new String[4];
+                    String[] zuxuanhezhi = new String[7];
                     zuxuanhezhi[0] = String.valueOf(new Random().nextInt(25) + 1);
                     zuxuanhezhi[1] = String.valueOf(new Random().nextInt(25) + 1);
                     zuxuanhezhi[2] = String.valueOf(new Random().nextInt(25) + 1);
                     zuxuanhezhi[3] = String.valueOf(new Random().nextInt(25) + 1);
+                    zuxuanhezhi[4] = String.valueOf(new Random().nextInt(25) + 1);
+                    zuxuanhezhi[5] = String.valueOf(new Random().nextInt(25) + 1);
+                    zuxuanhezhi[6] = String.valueOf(new Random().nextInt(25) + 1);
                     priBetNumbers.add(Arrays.asList(zuxuanhezhi));
                     break;
             }
