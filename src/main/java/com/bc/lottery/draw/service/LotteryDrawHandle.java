@@ -1,4 +1,4 @@
-package com.bc.lottery.service;
+package com.bc.lottery.draw.service;
 
 import com.bc.lottery.entity.BoundsInfo;
 import com.bc.lottery.entity.LotteryOrder;
@@ -11,16 +11,7 @@ import java.util.List;
  * Date: 2017/8/30
  * Time: 13:51
  **/
-public interface LotteryHandle {
-
-    /**
-     * 获取彩票注单数量
-     *
-     * @param betNumbers
-     * @param lotteryType
-     * @return
-     */
-    long getBetCount(List<List<String>> betNumbers, LotteryType lotteryType);
+public interface LotteryDrawHandle {
 
     /**
      * 根据指定彩票类型和号码获取奖金信息
