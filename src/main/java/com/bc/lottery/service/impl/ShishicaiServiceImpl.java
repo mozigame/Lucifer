@@ -488,7 +488,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
     public List<BoundsInfo> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
 
         List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        if (kj.length() != 5 || lotteryOrderList == null || lotteryOrderList.size() == 0) {
+        if (kj.length() != 5 || lotteryOrderList.size() == 0) {
             return boundsInfoList;
         }
         // 如果类型属于五星
@@ -981,9 +981,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
 
         String[] kjArr = kj.split("");
         List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        if (kj.length() != 3) {
-            return boundsInfoList;
-        }
+
         for (LotteryOrder lotteryOrder : lotteryOrderList) {
 
             BoundsInfo boundsInfo = new BoundsInfo();
@@ -1096,7 +1094,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                                     firstPrizeNum = 1;
                                 }
                                 //判断是否中三星组六一等奖
-                                if (checkIsSanxingZu6(kj)) {
+                                else if (checkIsSanxingZu6(kj)) {
                                     secondPrizeNum = 1;
                                 }
                             }
@@ -1112,18 +1110,26 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                     case HOU_SAN_HUN_HE_ZU_XUAN:
                         // 获取注单号码
                         if (size == 1) {
-                            List<String> betNumberList = getBetNumbers(lotteryType, betNumbers);
-                            for (String betNumber : betNumberList) {
-                                // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
-                                if (checkIsZu3(kj) && LotteryUtils.getDupStr(betNumber).containsAll(LotteryUtils.getDupStr(kj))
-                                        && LotteryUtils.getUnDupStr(betNumber).containsAll(LotteryUtils.getUnDupStr(kj))) {
-                                    firstPrizeNum++;
+                            List<List<String>> betNumberList = getSanxingBetNumbers(betNumbers);
+
+                            if (checkIsZu3(kj)) {
+                                for (List<String> betNumber : betNumberList) {
+                                    // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
+                                    if (betNumber.containsAll(LotteryUtils.getDupStr(kj))
+                                            && betNumber.containsAll(LotteryUtils.getUnDupStr(kj))) {
+                                        firstPrizeNum++;
+                                    }
                                 }
-                                // 判断是否中组六一等奖(判断开奖号的非重复位是否全部包含中奖号的非重复位)
-                                if (checkIsZu6(kj) && LotteryUtils.getUnDupStr(betNumber).containsAll(LotteryUtils.getUnDupStr(kj))) {
-                                    secondPrizeNum++;
+                            } else if (checkIsSanxingZu6(kj)) {
+                                for (List<String> betNumber : betNumberList) {
+
+                                    // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
+                                    if (betNumber.containsAll(LotteryUtils.getUnDupStr(kj))) {
+                                        secondPrizeNum++;
+                                    }
                                 }
                             }
+
                             boundsInfo.setFirstPrizeNum(firstPrizeNum);
                             boundsInfo.setSecondPrizeNum(secondPrizeNum);
                         }
@@ -1612,7 +1618,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
     }
 
     /**
-     * 获取注单号码列表  --支持类型 (五星直选单式,四星直选单式,三星直选单式，三星混合组选)
+     * 获取注单号码列表  --支持类型 (五星直选单式,四星直选单式,三星直选单式)
      *
      * @param lotteryType
      * @param betNumbers
@@ -1652,16 +1658,18 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                 case QIAN_SAN_DAN_SHI:
                 case ZHONG_SAN_DAN_SHI:
                 case HOU_SAN_DAN_SHI:
+
                     // 三星混合组选
                 case QIAN_SAN_HUN_HE_ZU_XUAN:
                 case ZHONG_SAN_HUN_HE_ZU_XUAN:
                 case HOU_SAN_HUN_HE_ZU_XUAN:
 
                     return LotteryUtils.getSubStrList(betNumbers.get(0), 3);
+
             }
         }
 
-        // 如果类型属于三星
+        // 如果类型属于二星
         if (lotteryType instanceof Erxing) {
             Erxing erxingType = (Erxing) lotteryType;
             switch (erxingType) {
@@ -1669,7 +1677,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
                 // 二星直选单式
                 case QIAN_ER_ZHI_XUAN_DAN_SHI:
                 case HOU_ER_ZHI_XUAN_DAN_SHI:
-                    // 三星混合组选
+                    // 二星混合组选
                 case QIAN_ER_ZU_XUAN_DAN_SHI:
                 case HOU_ER_ZU_XUAN_DAN_SHI:
 
@@ -1678,6 +1686,17 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
         }
 
         return betNumberList;
+    }
+
+    /**
+     * 获取注单号码列表  --支持类型 (三星混合组选)
+     *
+     * @param betNumbers
+     * @return
+     */
+    private List<List<String>> getSanxingBetNumbers(List<List<String>> betNumbers) {
+
+        return LotteryUtils.getStrListForSanxing(betNumbers.get(0), 3);
     }
 
     /**
@@ -1781,7 +1800,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
      */
     private boolean checkIsZu6(String kjStr) {
 
-        return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 3;
+        return LotteryUtils.getDupStr(kjStr).size() == 2;
     }
 
     /**
@@ -1803,7 +1822,7 @@ class ShishicaiServiceImpl implements LotteryHandle, ShishicaiType {
      */
     private boolean checkIsSanxingZu6(String kjStr) {
 
-        return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 3;
+        return LotteryUtils.getUnDupStr(kjStr).size() == 3;
     }
 
     /**

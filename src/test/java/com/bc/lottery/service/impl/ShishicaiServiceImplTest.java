@@ -378,10 +378,151 @@ public class ShishicaiServiceImplTest {
         kjList.add(kj2);
         kjList.add(kj3);
         kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiServiceImpl shishicaiService = new ShishicaiServiceImpl();
 
-        // 五星
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+            // 五星
+
+            System.out.println("---------------------------五星类型----------------------------------");
+            for (LotteryType lotteryType : Wuxing.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+
+            // 四星
+            System.out.println("---------------------------四星类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+            // 三星
+
+            System.out.println("---------------------------三星类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+            // 二星
+            System.out.println("---------------------------二星类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+            // 一星
+
+            System.out.println("---------------------------一星类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+
+            // 不定胆
+
+            System.out.println("---------------------------不定胆类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }            }
+
+            // 大小单双
+
+            System.out.println("---------------------------大小单双类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }
+            }
+            // 趣味
+
+            System.out.println("---------------------------趣味类型----------------------------------");
+            for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
+                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                //System.out.println(lotteryOrderList);
+                long currTime1 = System.currentTimeMillis();
+                for (int i = 0; i < 1000; i++) {
+                    shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kj, lotteryOrderList);
+                }
+                long currTime2 = System.currentTimeMillis();
+                long time = currTime2 - currTime1;
+                System.out.println(lotteryType + "===============玩法时间=========>" + time + "毫秒");
+                if(time > 1500){
+                    System.out.println(lotteryType + "======================================================================时间超长啦================================================================================>" + time + "毫秒");
+                }
+            }
+
+        }
+        /*// 五星
         for (LotteryType lotteryType : Wuxing.values()) {
 
             System.out.println("---------------------------五星类型----------------------------------");
@@ -553,7 +694,7 @@ public class ShishicaiServiceImplTest {
                 System.out.println("开奖号码->" + kjno + "    总计中奖次数====" + prizeNumSum);
             }
 
-        }
+        }*/
         System.out.println("*******************************批量开奖测试结束*******************************");
 
     }

@@ -370,6 +370,29 @@ public class LotteryUtils {
     }
 
     /**
+     * 按指定长度截取传入的strList数据
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<List<String>> getStrListForSanxing(List<String> strList, int length) {
+
+        List<List<String>> resultList = new ArrayList<>();
+        List<String> strForEach = new ArrayList<>();
+        for (int i = 0; i < strList.size() / length; i++) {
+
+            for (int j = 0; j < length; j++) {
+
+                strForEach.add(strList.get(i * length + j));
+            }
+            resultList.add(strForEach);
+        }
+        return resultList;
+    }
+
+
+    /**
      * 获取指定数字的大小单双
      *
      * @param aimNo 需要计算的数
