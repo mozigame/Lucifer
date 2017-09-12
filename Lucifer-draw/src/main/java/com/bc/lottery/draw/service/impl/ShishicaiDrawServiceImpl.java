@@ -1240,8 +1240,14 @@ class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiType {
                         //好事成双
                     case HAO_SHI_CHENG_SHUANG:
 
+                        kjStrList = LotteryUtils.getDupStrByMixDupNum(kj, 2);
+                        if (kjStrList.size() == 0) {
+                            boundsInfoList.add(boundsInfo);
+                            continue;
+                        }
+
                         for (String betNumber : betNumbers.get(0)) {
-                            if (LotteryUtils.getDupStrByMixDupNum(kj, 2).contains(betNumber)) {
+                            if (kjStrList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
