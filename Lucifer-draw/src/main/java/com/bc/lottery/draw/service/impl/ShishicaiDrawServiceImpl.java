@@ -604,7 +604,7 @@ class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiType {
                         continue;
 
                     case ZU_XUAN_6:
-                        if (size == 2 && checkIsZu6(kj)) {
+                        if (size == 1 && checkIsZu6(kj)) {
 
                             //获取中奖号中的重复字符
                             Set<String> dupStrList = LotteryUtils.getDupStr(kj);

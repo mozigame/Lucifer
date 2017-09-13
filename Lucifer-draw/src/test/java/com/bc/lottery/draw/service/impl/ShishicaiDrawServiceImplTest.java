@@ -52,11 +52,11 @@ public class ShishicaiDrawServiceImplTest {
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
 
-        // 五星
+        /*// 五星
         for (LotteryType lotteryType : ShishicaiType.Wuxing.values()) {
 
             System.out.println("---------------------------五星类型----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
 
@@ -72,13 +72,13 @@ public class ShishicaiDrawServiceImplTest {
                     }
                 }
             }
-        }
+        }*/
         // 四星
 
         for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
 
             System.out.println("---------------------------四星类型----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -93,13 +93,13 @@ public class ShishicaiDrawServiceImplTest {
                 }
             }
         }
-        // 三星
+        /* // 三星
 
         for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
 
             System.out.println("---------------------------三星类型----------------------------------");
 
-            for (int i = 1; i < 1; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -115,13 +115,13 @@ public class ShishicaiDrawServiceImplTest {
             }
         }
 
-        // 二星
+       // 二星
 
         for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
 
             System.out.println("---------------------------二星类型----------------------------------");
 
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -143,7 +143,7 @@ public class ShishicaiDrawServiceImplTest {
         for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
 
             System.out.println("---------------------------一星类型----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -165,7 +165,7 @@ public class ShishicaiDrawServiceImplTest {
         for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
 
             System.out.println("---------------------------不定胆类型----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -185,7 +185,7 @@ public class ShishicaiDrawServiceImplTest {
         for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
 
             System.out.println("---------------------------大小单双----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -206,7 +206,7 @@ public class ShishicaiDrawServiceImplTest {
         for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
 
             System.out.println("---------------------------趣味类型----------------------------------");
-            for (int i = 1; i < 21; i++) {
+            for (int i = 1; i < 11; i++) {
                 System.out.println(lotteryType);
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
@@ -221,7 +221,7 @@ public class ShishicaiDrawServiceImplTest {
                     }
                 }
             }
-        }
+        }*/
         System.out.println("*******************************单独开奖测试结束*******************************");
 
     }
