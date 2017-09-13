@@ -52,7 +52,7 @@ public class ShishicaiDrawServiceImplTest {
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
 
-        /*// 五星
+        // 五星
         for (LotteryType lotteryType : ShishicaiType.Wuxing.values()) {
 
             System.out.println("---------------------------五星类型----------------------------------");
@@ -72,7 +72,7 @@ public class ShishicaiDrawServiceImplTest {
                     }
                 }
             }
-        }*/
+        }
         // 四星
 
         for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
@@ -93,7 +93,7 @@ public class ShishicaiDrawServiceImplTest {
                 }
             }
         }
-        /* // 三星
+        // 三星
 
         for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
 
@@ -221,7 +221,7 @@ public class ShishicaiDrawServiceImplTest {
                     }
                 }
             }
-        }*/
+        }
         System.out.println("*******************************单独开奖测试结束*******************************");
 
     }
