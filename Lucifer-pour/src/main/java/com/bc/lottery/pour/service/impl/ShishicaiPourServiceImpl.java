@@ -11,7 +11,7 @@ import java.util.List;
  * Created by luis on 2017/4/14.
  */
 
-class ShishicaiPourServiceImpl implements LotteryPourHandle, ShishicaiType {
+public class ShishicaiPourServiceImpl implements LotteryPourHandle, ShishicaiType {
 
     private static final int[] ZHI_XUAN_KUA_DU = {10, 54, 96, 126, 144, 150, 144, 126, 96, 54};
 
