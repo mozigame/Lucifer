@@ -379,9 +379,9 @@ public class LotteryUtils {
     public static List<List<String>> getStrListForSanxing(List<String> strList, int length) {
 
         List<List<String>> resultList = new ArrayList<>();
-        List<String> strForEach = new ArrayList<>();
-        for (int i = 0; i < strList.size() / length; i++) {
 
+        for (int i = 0; i < strList.size() / length; i++) {
+            List<String> strForEach = new ArrayList<>();
             for (int j = 0; j < length; j++) {
 
                 strForEach.add(strList.get(i * length + j));
