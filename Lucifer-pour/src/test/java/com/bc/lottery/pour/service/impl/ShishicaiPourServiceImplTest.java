@@ -2,7 +2,6 @@ package com.bc.lottery.pour.service.impl;
 
 import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.entity.ShishicaiType;
-import com.bc.lottery.util.LotteryOrderTest;
 import org.junit.Test;
 
 import java.util.List;

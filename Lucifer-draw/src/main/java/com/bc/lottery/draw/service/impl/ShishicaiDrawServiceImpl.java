@@ -1,8 +1,7 @@
 package com.bc.lottery.draw.service.impl;
 
+import com.babel.venus.po.UserOrder;
 import com.bc.lottery.draw.service.LotteryDrawHandle;
-import com.bc.lottery.entity.BoundsInfo;
-import com.bc.lottery.entity.LotteryOrder;
 import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.entity.ShishicaiType;
 import com.bc.lottery.util.LotteryUtils;
@@ -27,35 +26,34 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
     private static final int[] ER_XING_ZU_XUAN_HE_ZHI = {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 4, 4, 3, 3, 2, 2, 1, 1};
 
     @Override
-    public BoundsInfo getBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<List<String>> betNumbers) {
+    public UserOrder getBoundsInfoOfLottery(String kj, UserOrder order) {
 
-        BoundsInfo boundsInfo = new BoundsInfo();
         if (kj.length() != 5) {
-            return boundsInfo;
+            return null;
         }
-        List<LotteryOrder> lotteryOrderList = new ArrayList<>();
-        LotteryOrder lotteryOrder = new LotteryOrder();
-        lotteryOrder.setBetNumbers(betNumbers);
-        lotteryOrderList.add(lotteryOrder);
+        List<UserOrder> lotteryOrderList = new ArrayList<>();
+//        UserOrder lotteryOrder = new UserOrder();
+//        lotteryOrder.setBetContentProc(order.getBetContentProc());
+        lotteryOrderList.add(order);
 
         // 如果类型属于五星
-        if (lotteryType instanceof Wuxing) {
+        if (order.getLotteryType() instanceof Wuxing) {
 
-            return getBoundsInfoOfWuxing(lotteryType, kj, lotteryOrderList).get(0);
+            return getBoundsInfoOfWuxing(order.getLotteryType(), kj, lotteryOrderList).get(0);
         }
         // 如果类型属于四星
-        else if (lotteryType instanceof Sixing) {
+        else if (order.getLotteryType() instanceof Sixing) {
 
             // 截取四星中奖号
             String realSixingKj = kj.substring(1, 5);
-            return getBoundsInfoOfSixing(lotteryType, realSixingKj, lotteryOrderList).get(0);
+            return getBoundsInfoOfSixing(order.getLotteryType(), realSixingKj, lotteryOrderList).get(0);
         }
         // 如果类型属于三星
-        else if (lotteryType instanceof Sanxing) {
+        else if (order.getLotteryType() instanceof Sanxing) {
 
             // 截取三星中奖号
             String realSanxingKj = "";
-            Sanxing sanxingType = (Sanxing) lotteryType;
+            Sanxing sanxingType = (Sanxing) order.getLotteryType();
             switch (sanxingType) {
 
                 case QIAN_SAN_DAN_SHI:
@@ -86,16 +84,16 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                     realSanxingKj = kj.substring(2, 5);
                     break;
             }
-
-            return getBoundsInfoOfSanxing(lotteryType, realSanxingKj, lotteryOrderList).get(0);
+            getBoundsInfoOfSanxing(order.getLotteryType(), realSanxingKj, lotteryOrderList);
+            return lotteryOrderList.get(0);
         }
 
         // 如果类型属于二星
-        else if (lotteryType instanceof Erxing) {
+        else if (order.getLotteryType() instanceof Erxing) {
 
             // 截取二星中奖号
             String realErxingKj = "";
-            Erxing erxingType = (Erxing) lotteryType;
+            Erxing erxingType = (Erxing) order.getLotteryType();
             switch (erxingType) {
 
                 case QIAN_ER_ZHI_XUAN_DAN_SHI:
@@ -116,20 +114,20 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                     break;
 
             }
-            return getBoundsInfoOfErxing(lotteryType, realErxingKj, lotteryOrderList).get(0);
+            return getBoundsInfoOfErxing(order.getLotteryType(), realErxingKj, lotteryOrderList).get(0);
         }
 
         // 如果类型属于一星
-        else if (lotteryType instanceof Yixing) {
+        else if (order.getLotteryType() instanceof Yixing) {
 
-            return getBoundsInfoOfYixing(lotteryType, kj, lotteryOrderList).get(0);
+            return getBoundsInfoOfYixing(order.getLotteryType(), kj, lotteryOrderList).get(0);
         }
         // 如果类型属于不定胆
-        else if (lotteryType instanceof Budingdan) {
+        else if (order.getLotteryType() instanceof Budingdan) {
 
             // 截取三星中奖号
             String realBudingdanKj = "";
-            Budingdan budingdanType = (Budingdan) lotteryType;
+            Budingdan budingdanType = (Budingdan) order.getLotteryType();
             switch (budingdanType) {
 
                 case QIAN_SAN_YI_MA:
@@ -143,26 +141,25 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                     break;
 
             }
-            return getBoundsInfoOfBudingdan(lotteryType, realBudingdanKj, lotteryOrderList).get(0);
+            return getBoundsInfoOfBudingdan(order.getLotteryType(), realBudingdanKj, lotteryOrderList).get(0);
         }
         // 如果类型属于大小单双
-        else if (lotteryType instanceof Daxiaodanshuang) {
-            return getBoundsInfoOfDaxiaodanshuang(lotteryType, kj, lotteryOrderList).get(0);
+        else if (order.getLotteryType() instanceof Daxiaodanshuang) {
+            return getBoundsInfoOfDaxiaodanshuang(order.getLotteryType(), kj, lotteryOrderList).get(0);
 
         }
         // 如果类型属于趣味玩法
-        else if (lotteryType instanceof Quwei) {
-            return getBoundsInfoOfQuwei(lotteryType, kj, lotteryOrderList).get(0);
+        else if (order.getLotteryType() instanceof Quwei) {
+            return getBoundsInfoOfQuwei(order.getLotteryType(), kj, lotteryOrderList).get(0);
         }
-        return boundsInfo;
+        return order;
     }
 
     @Override
-    public List<BoundsInfo> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    public List<UserOrder> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
         if (kj.length() != 5 || lotteryOrderList.size() == 0) {
-            return boundsInfoList;
+            return null;
         }
         // 如果类型属于五星
         if (lotteryType instanceof Wuxing) {
@@ -272,7 +269,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
         } else if (lotteryType instanceof Quwei) {
             return getBoundsInfoOfQuwei(lotteryType, kj, lotteryOrderList);
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     //TODO 把循环放在switch的里面效率会不会有明显提高？
@@ -285,18 +282,18 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfWuxing(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfWuxing(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
@@ -320,9 +317,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 && betNumbers.get(4).contains(kjArr[4])) {
                             firstPrizeNum = 1;
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                     // 五星直选单式
@@ -334,10 +331,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum++;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
 
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case WU_XING_ZHI_XUAN_ZU_HE:
@@ -363,14 +360,14 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             }
                         }
 
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfo.setSecondPrizeNum(secondPrizeNum);
-                        boundsInfo.setThirdPrizeNum(thirdPrizeNum);
-                        boundsInfo.setForthPrizeNum(forthPrizeNum);
-                        boundsInfo.setFifthPrizeNum(fifthPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setSecondPrizeNum(secondPrizeNum);
+                        lotteryOrder.setThirdPrizeNum(thirdPrizeNum);
+                        lotteryOrder.setForthPrizeNum(forthPrizeNum);
+                        lotteryOrder.setFifthPrizeNum(fifthPrizeNum);
                     }
 
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case ZU_XUAN_120:
@@ -382,10 +379,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
 
                             firstPrizeNum = 1;
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
 
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case ZU_XUAN_60:
@@ -400,9 +397,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case ZU_XUAN_30:
@@ -417,9 +414,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case ZU_XUAN_20:
@@ -434,9 +431,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
 
                 case ZU_XUAN_10:
@@ -451,9 +448,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
                 case ZU_XUAN_5:
                     if (size == 2 && checkIsZu5(kj)) {
@@ -467,17 +464,17 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
-                    boundsInfoList.add(boundsInfo);
+//                    boundsInfoList.add(boundsInfo);
                     continue;
-                default:
-
-                    boundsInfoList.add(boundsInfo);
-                    continue;
+//                default:
+//
+//                    boundsInfoList.add(boundsInfo);
+//                    continue;
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -488,18 +485,18 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfSixing(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfSixing(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
@@ -523,9 +520,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     && betNumbers.get(3).contains(kjArr[3])) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 四星直选单式
@@ -537,10 +534,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
 
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                     case SI_XING_ZHI_XUAN_ZU_HE:
@@ -563,13 +560,13 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 }
                             }
 
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                            boundsInfo.setSecondPrizeNum(secondPrizeNum);
-                            boundsInfo.setThirdPrizeNum(thirdPrizeNum);
-                            boundsInfo.setForthPrizeNum(forthPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setSecondPrizeNum(secondPrizeNum);
+                            lotteryOrder.setThirdPrizeNum(thirdPrizeNum);
+                            lotteryOrder.setForthPrizeNum(forthPrizeNum);
                         }
 
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                     case ZU_XUAN_24:
@@ -581,9 +578,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
 
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                     case ZU_XUAN_12:
@@ -598,9 +595,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum = 1;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                     case ZU_XUAN_6:
@@ -611,9 +608,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).containsAll(dupStrList)) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                     case ZU_XUAN_4:
@@ -628,18 +625,18 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum = 1;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -650,19 +647,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfSanxing(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfSanxing(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
 
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
@@ -685,9 +682,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     && betNumbers.get(2).contains(kjArr[2])) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 三星单式
@@ -701,9 +698,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 三星直选和值
@@ -715,9 +712,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kj)))) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //三星组三
@@ -733,9 +730,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).containsAll(dupStrList) && betNumbers.get(0).containsAll(unDupStrList)) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //三星组六
@@ -749,9 +746,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = 1;
                             }
 
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 三星组选和值
@@ -771,10 +768,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     secondPrizeNum = 1;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                            boundsInfo.setSecondPrizeNum(secondPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 三星混合组选
@@ -803,19 +800,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 }
                             }
 
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                            boundsInfo.setSecondPrizeNum(secondPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
-                    default:
-
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -826,21 +823,21 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfErxing(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfErxing(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
         if (kj.length() != 2) {
-            return boundsInfoList;
+            return null;
         }
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
@@ -861,9 +858,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     ) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 二星直选单式
@@ -877,10 +873,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
 
-                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //二星组选复式
@@ -893,10 +888,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).containsAll(unDupStrList)) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
 
-                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //二星组合单式
@@ -910,9 +904,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
                         continue;
                         // 二星直选和值
                     case QIAN_ER_ZHI_XUAN_HE_ZHI:
@@ -922,9 +915,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kj)))) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
                         continue;
                         // 二星组选和值
                     case QIAN_ER_ZU_XUAN_HE_ZHI:
@@ -934,18 +926,14 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kj)))) {
                                 firstPrizeNum = 1;
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
                         continue;
 
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -956,23 +944,22 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfYixing(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfYixing(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             // 开奖号码必须为size=5的列表，如果不选，则传空list
             int size = betNumbers.size();
             if (size != 5) {
-                boundsInfoList.add(boundsInfo);
                 continue;
             }
 
@@ -992,17 +979,17 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                             }
                         }
 
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -1014,17 +1001,17 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @return
      */
 
-    private List<BoundsInfo> getBoundsInfoOfBudingdan(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfBudingdan(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder > boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder ();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
@@ -1050,9 +1037,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     firstPrizeNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         // 二码不定胆
@@ -1072,16 +1059,16 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum = (int) LotteryUtils.combination(betNum, 2);
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -1093,18 +1080,18 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @return
      */
 
-    private List<BoundsInfo> getBoundsInfoOfDaxiaodanshuang(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfDaxiaodanshuang(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int firstPrizeNum = 0; // 一等奖次数
 
@@ -1134,9 +1121,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     secondBetNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstBetNum * secondBetNum);
+                            lotteryOrder.setFirstPrizeNum(firstBetNum * secondBetNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //后二码大小单双
@@ -1161,9 +1148,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                     secondBetNum++;
                                 }
                             }
-                            boundsInfo.setFirstPrizeNum(firstBetNum * secondBetNum);
+                            lotteryOrder.setFirstPrizeNum(firstBetNum * secondBetNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //总和大小单双
@@ -1180,17 +1167,17 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 }
                             }
 
-                            boundsInfo.setFirstPrizeNum(firstPrizeNum);
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-                        boundsInfoList.add(boundsInfo);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -1201,19 +1188,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      * @param lotteryOrderList
      * @return
      */
-    private List<BoundsInfo> getBoundsInfoOfQuwei(LotteryType lotteryType, String kj, List<LotteryOrder> lotteryOrderList) {
+    private List<UserOrder> getBoundsInfoOfQuwei(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
 
-        List<BoundsInfo> boundsInfoList = new ArrayList<>();
-        for (LotteryOrder lotteryOrder : lotteryOrderList) {
+//        List<UserOrder> boundsInfoList = new ArrayList<>();
+        for (UserOrder lotteryOrder : lotteryOrderList) {
 
-            BoundsInfo boundsInfo = new BoundsInfo();
-            boundsInfo.setLotteryType(lotteryType);
-            boundsInfo.setMultipleNum(lotteryOrder.getMultipleNum());
-            boundsInfo.setOrderNo(lotteryOrder.getOrderNo());
+//            UserOrder boundsInfo = new UserOrder();
+//            boundsInfo.setLotteryType(lotteryType);
+//            boundsInfo.setMultiple(lotteryOrder.getMultiple());
+//            boundsInfo.setOrderId(lotteryOrder.getOrderId());
 
-            List<List<String>> betNumbers = lotteryOrder.getBetNumbers();
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
             if (kj.length() != 5 || betNumbers.size() != 1) {
-                boundsInfoList.add(boundsInfo);
+//                boundsInfoList.add(boundsInfo);
                 continue;
             }
 
@@ -1233,8 +1220,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum++;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //好事成双
@@ -1242,7 +1229,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
 
                         kjStrList = LotteryUtils.getDupStrByMixDupNum(kj, 2);
                         if (kjStrList.size() == 0) {
-                            boundsInfoList.add(boundsInfo);
+//                            boundsInfoList.add(boundsInfo);
                             continue;
                         }
 
@@ -1251,8 +1238,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum++;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
 
                         //三星报喜
@@ -1260,7 +1247,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
 
                         kjStrList = LotteryUtils.getDupStrByMixDupNum(kj, 3);
                         if (kjStrList.size() == 0) {
-                            boundsInfoList.add(boundsInfo);
+//                            boundsInfoList.add(boundsInfo);
                             continue;
                         }
                         for (String betNumber : betNumbers.get(0)) {
@@ -1268,15 +1255,15 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum++;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
                         //四季发财
                     case SI_JI_FA_CAI:
 
                         kjStrList = LotteryUtils.getDupStrByMixDupNum(kj, 4);
                         if (kjStrList.size() == 0) {
-                            boundsInfoList.add(boundsInfo);
+//                            boundsInfoList.add(boundsInfo);
                             continue;
                         }
                         for (String betNumber : betNumbers.get(0)) {
@@ -1284,16 +1271,16 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
                                 firstPrizeNum++;
                             }
                         }
-                        boundsInfo.setFirstPrizeNum(firstPrizeNum);
-                        boundsInfoList.add(boundsInfo);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+//                        boundsInfoList.add(boundsInfo);
                         continue;
-                    default:
-                        boundsInfoList.add(boundsInfo);
-                        continue;
+//                    default:
+//                        boundsInfoList.add(boundsInfo);
+//                        continue;
                 }
             }
         }
-        return boundsInfoList;
+        return lotteryOrderList;
     }
 
     /**
@@ -1305,7 +1292,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
      */
     private List<String> getBetNumbers(LotteryType lotteryType, List<List<String>> betNumbers) {
 
-        List<String> betNumberList = new ArrayList<>();
+//        List<String> betNumberList = new ArrayList<>();
         // 如果类型属于五星
         if (lotteryType instanceof Wuxing) {
             Wuxing wuxingType = (Wuxing) lotteryType;
@@ -1364,7 +1351,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle, ShishicaiTyp
             }
         }
 
-        return betNumberList;
+        return null;
     }
 
     /**
