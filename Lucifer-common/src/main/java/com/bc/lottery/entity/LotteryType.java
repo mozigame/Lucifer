@@ -8,11 +8,12 @@ import java.util.Map;
  * Created by luis on 2017/4/13.
  */
 
-public interface LotteryType <E extends Enum<E>>{
+public interface LotteryType<E extends Enum<E>> {
 
-    static LotteryType parseType(int lotteryId, long playId) {
-        switch (lotteryId) {
-            case 1:
+    static LotteryType parseType(long lotteryId, long playId) {
+
+        switch (String.valueOf(lotteryId)) {
+            case 1 + "":
                 return ShishicaiType.parse(playId);
             default:
                 return ShishicaiType.parse(playId);
