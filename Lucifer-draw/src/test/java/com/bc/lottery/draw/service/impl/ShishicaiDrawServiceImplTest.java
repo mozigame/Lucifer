@@ -47,7 +47,12 @@ public class ShishicaiDrawServiceImplTest {
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
 
+<<<<<<< HEAD
         for (ShishicaiType shishicaiType : ShishicaiType.values()) {
+=======
+        /*// 五星
+        for (LotteryType lotteryType : ShishicaiType.Wuxing.values()) {
+>>>>>>> 7befe3bf5b7bd760c95893e711c26a43b0b4db46
 
             for (int i = 1; i < 11; i++) {
                 System.out.println(shishicaiType);
@@ -55,7 +60,77 @@ public class ShishicaiDrawServiceImplTest {
 
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(shishicaiType.value());
                 System.out.println(betNumberList);
+<<<<<<< HEAD
                 UserOrder userOrder = new UserOrder(shishicaiType, betNumberList);
+=======
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 四星
+
+        for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
+
+            System.out.println("---------------------------四星类型----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }*/
+        // 三星
+
+        for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
+
+            System.out.println("---------------------------三星类型----------------------------------");
+
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+
+       /*// 二星
+
+        for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
+
+            System.out.println("---------------------------二星类型----------------------------------");
+
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+>>>>>>> 7befe3bf5b7bd760c95893e711c26a43b0b4db46
                 for (String kjno : kjList) {
                     UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println(boundsInfo);
@@ -67,6 +142,97 @@ public class ShishicaiDrawServiceImplTest {
             }
         }
 
+<<<<<<< HEAD
+=======
+        // 一星
+
+        for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
+
+            System.out.println("---------------------------一星类型----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+
+        // 不定胆
+
+        for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
+
+            System.out.println("---------------------------不定胆类型----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 大小单双
+        for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
+
+            System.out.println("---------------------------大小单双----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                UserOrder boundsInfo = new UserOrder(lotteryType, betNumberList);
+                for (String kjno : kjList) {
+                    shishicaiService.getBoundsInfoOfLottery(kjno, boundsInfo);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }
+        // 趣味
+
+        for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
+
+            System.out.println("---------------------------趣味类型----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lotteryType);
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
+                System.out.println(betNumberList);
+
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+
+                for (String kjno : kjList) {
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
+                    System.out.println(boundsInfo);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    }
+                }
+            }
+        }*/
+>>>>>>> 7befe3bf5b7bd760c95893e711c26a43b0b4db46
         System.out.println("*******************************单独开奖测试结束*******************************");
 
     }
