@@ -1,16 +1,12 @@
 package com.bc.lottery.draw.service.impl;
 
-import com.bc.lottery.entity.BoundsInfo;
-import com.bc.lottery.entity.LotteryOrder;
+import com.babel.venus.po.UserOrder;
 import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.entity.ShishicaiType;
-import com.bc.lottery.util.LotteryOrderTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * User: clion
@@ -62,9 +58,9 @@ public class ShishicaiDrawServiceImplTest {
 
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
-
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -83,8 +79,9 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -104,8 +101,9 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -126,9 +124,9 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -148,9 +146,9 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
-
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -171,8 +169,9 @@ public class ShishicaiDrawServiceImplTest {
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
 
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -191,8 +190,9 @@ public class ShishicaiDrawServiceImplTest {
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
 
+                UserOrder boundsInfo = new UserOrder(lotteryType, betNumberList);
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    shishicaiService.getBoundsInfoOfLottery(kjno, boundsInfo);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -212,8 +212,10 @@ public class ShishicaiDrawServiceImplTest {
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(lotteryType);
                 System.out.println(betNumberList);
 
+                UserOrder userOrder = new UserOrder(lotteryType, betNumberList);
+
                 for (String kjno : kjList) {
-                    BoundsInfo boundsInfo = shishicaiService.getBoundsInfoOfLottery(lotteryType, kjno, betNumberList);
+                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery( kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -253,7 +255,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------五星类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Wuxing.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -270,7 +272,7 @@ public class ShishicaiDrawServiceImplTest {
             // 四星
             System.out.println("---------------------------四星类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Sixing.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -287,7 +289,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------三星类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Sanxing.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -303,7 +305,7 @@ public class ShishicaiDrawServiceImplTest {
             // 二星
             System.out.println("---------------------------二星类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Erxing.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -320,7 +322,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------一星类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Yixing.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -338,7 +340,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------不定胆类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Budingdan.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -356,7 +358,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------大小单双类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Daxiaodanshuang.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -373,7 +375,7 @@ public class ShishicaiDrawServiceImplTest {
 
             System.out.println("---------------------------趣味类型----------------------------------");
             for (LotteryType lotteryType : ShishicaiType.Quwei.values()) {
-                List<LotteryOrder> lotteryOrderList = lotteryOrderTest.getLotteryOrderList(lotteryType);
+                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(lotteryType);
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
@@ -397,8 +399,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -419,8 +421,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -441,8 +443,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -462,8 +464,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -483,8 +485,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -505,8 +507,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -527,8 +529,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -549,8 +551,8 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println(lotteryOrderList);
             int prizeNumSum = 0;
             for (String kjno : kjList) {
-                List<BoundsInfo> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
-                for (BoundsInfo boundsInfo : boundsInfoList) {
+                List<UserOrder> boundsInfoList = shishicaiService.getBatchBoundsInfoOfLottery(lotteryType, kjno, lotteryOrderList);
+                for (UserOrder boundsInfo : boundsInfoList) {
                     System.out.println("开奖信息->" + boundsInfo);
                     if (boundsInfo.getFirstPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
