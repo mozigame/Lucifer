@@ -1,7 +1,6 @@
 package com.bc.lottery.draw.service.impl;
 
 import com.babel.venus.po.UserOrder;
-import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.entity.ShishicaiType;
 
 import java.util.*;
@@ -13,19 +12,19 @@ import java.util.*;
  **/
 public class LotteryOrderTest {
 
-    public List<UserOrder> getUserOrderList(LotteryType lotteryType) {
+    public List<UserOrder> getUserOrderList(Long playId) {
         List<UserOrder> orderList = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             UserOrder lotteryOrder = new UserOrder();
             lotteryOrder.setOrderId("testOrderNo111");
-            List<List<String>> betNumbersByType = getBetNumbersByType(lotteryType);
+            List<List<String>> betNumbersByType = getBetNumbersByType(playId);
             lotteryOrder.setBetContentProc(betNumbersByType);
             orderList.add(lotteryOrder);
         }
         return orderList;
     }
 
-    public List<List<String>> getBetNumbersByType(LotteryType lotteryType) {
+    public List<List<String>> getBetNumbersByType(Long playId) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i <= 9; i++) {
             list.add(String.valueOf(i));
@@ -48,13 +47,14 @@ public class LotteryOrderTest {
         List<String> priBetNumber0 = new ArrayList<>();
         List<String> priBetNumber1 = new ArrayList<>();
         //五星
-        if (lotteryType instanceof ShishicaiType.Wuxing) {
-            ShishicaiType.Wuxing wuxingType = (ShishicaiType.Wuxing) lotteryType;
+        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
+        if (shishicaiType != null) {
             for (List<String> lists : priBetNumbers) {
                 lists.clear();
             }
             priBetNumber0.clear();
-            switch (wuxingType) {
+            switch (shishicaiType) {
+                //五星
                 case WU_XING_ZHI_XUAN_ZU_HE:
                 case WU_XING_ZHI_XUAN_FU_SHI:
                     priBetNumbers.add(Arrays.asList(twoNumber));
@@ -95,15 +95,8 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(eightNumber));
                     priBetNumbers.add(Arrays.asList(sevenNumber));
                     break;
-            }
-        }
-        //四星
-        if (lotteryType instanceof ShishicaiType.Sixing) {
-            ShishicaiType.Sixing sixingType = (ShishicaiType.Sixing) lotteryType;
-            for (List<String> lists : priBetNumbers) {
-                lists.clear();
-            }
-            switch (sixingType) {
+
+                // 四星
                 case SI_XING_ZHI_XUAN_ZU_HE:
                 case SI_XING_ZHI_XUAN_FU_SHI:
                     priBetNumbers.add(Arrays.asList(twoNumber));
@@ -132,15 +125,7 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(threeNumber));
                     priBetNumbers.add(Arrays.asList(fiveNumber));
                     break;
-            }
-        }
-        //三星
-        if (lotteryType instanceof ShishicaiType.Sanxing) {
-            ShishicaiType.Sanxing sanxingType = (ShishicaiType.Sanxing) lotteryType;
-            for (List<String> lists : priBetNumbers) {
-                lists.clear();
-            }
-            switch (sanxingType) {
+                //三星
                 case HOU_SAN_FU_SHI:
                 case ZHONG_SAN_FU_SHI:
                 case QIAN_SAN_FU_SHI:
@@ -251,15 +236,8 @@ public class LotteryOrderTest {
                     zuxuanhezhi[6] = String.valueOf(new Random().nextInt(25) + 1);
                     priBetNumbers.add(Arrays.asList(zuxuanhezhi));
                     break;
-            }
-        }
-        if (lotteryType instanceof ShishicaiType.Erxing) {
-            ShishicaiType.Erxing erxingType = (ShishicaiType.Erxing) lotteryType;
-            for (List<String> lists : priBetNumbers) {
-                lists.clear();
-            }
-            priBetNumber0.clear();
-            switch (erxingType) {
+
+                // 二星
                 case HOU_ER_ZHI_XUAN_FU_SHI:
                 case QIAN_ER_ZHI_XUAN_FU_SHI:
                     priBetNumbers.add(Arrays.asList(twoNumber));
@@ -270,10 +248,10 @@ public class LotteryOrderTest {
                 case HOU_ER_ZHI_XUAN_DAN_SHI:
                 case QIAN_ER_ZHI_XUAN_DAN_SHI:
 
-                    List<String> arrList = new ArrayList<>();
-                    arrList.addAll(Arrays.asList(sixNumber));
-                    arrList.addAll(Arrays.asList(fourNumber));
-                    priBetNumbers.add(arrList);
+                    List<String> erxingArrList = new ArrayList<>();
+                    erxingArrList.addAll(Arrays.asList(sixNumber));
+                    erxingArrList.addAll(Arrays.asList(fourNumber));
+                    priBetNumbers.add(erxingArrList);
 
                     break;
                 case HOU_ER_ZU_XUAN_HE_ZHI:
@@ -281,24 +259,19 @@ public class LotteryOrderTest {
                 case HOU_ER_ZHI_XUAN_HE_ZHI:
                 case QIAN_ER_ZHI_XUAN_HE_ZHI:
 
-                    String[] zuxuanhezhi = new String[4];
-                    zuxuanhezhi[0] = String.valueOf(new Random().nextInt(17) + 1);
-                    zuxuanhezhi[1] = String.valueOf(new Random().nextInt(17) + 1);
-                    zuxuanhezhi[2] = String.valueOf(new Random().nextInt(17) + 1);
-                    zuxuanhezhi[3] = String.valueOf(new Random().nextInt(17) + 1);
-                    priBetNumbers.add(Arrays.asList(zuxuanhezhi));
+                    String[] erXingZuxuanhezhi = new String[4];
+                    erXingZuxuanhezhi[0] = String.valueOf(new Random().nextInt(17) + 1);
+                    erXingZuxuanhezhi[1] = String.valueOf(new Random().nextInt(17) + 1);
+                    erXingZuxuanhezhi[2] = String.valueOf(new Random().nextInt(17) + 1);
+                    erXingZuxuanhezhi[3] = String.valueOf(new Random().nextInt(17) + 1);
+                    priBetNumbers.add(Arrays.asList(erXingZuxuanhezhi));
                     break;
 
                 case HOU_ER_ZU_XUAN_FU_SHI:
                 case QIAN_ER_ZU_XUAN_FU_SHI:
                     priBetNumbers.add(Arrays.asList(fiveNumber));
                     break;
-            }
-        }
-        if (lotteryType instanceof ShishicaiType.Yixing) {
-            ShishicaiType.Yixing yixingType = (ShishicaiType.Yixing) lotteryType;
-            priBetNumber0.clear();
-            switch (yixingType) {
+                //一星
                 case YI_XING_DING_WEI_DAN:
                     priBetNumbers.add(Arrays.asList(fiveNumber));
                     priBetNumbers.add(Arrays.asList(twoNumber));
@@ -307,25 +280,16 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(sixNumber));
 
                     break;
-            }
-        }
-        if (lotteryType instanceof ShishicaiType.Budingdan) {
-            ShishicaiType.Budingdan budingdanType = (ShishicaiType.Budingdan) lotteryType;
-            priBetNumber0.clear();
-            switch (budingdanType) {
+
+                // 不定胆
                 case HOU_SAN_ER_MA:
                 case QIAN_SAN_ER_MA:
                 case HOU_SAN_YI_MA:
                 case QIAN_SAN_YI_MA:
                     priBetNumbers.add(Arrays.asList(fourNumber));
                     break;
-            }
-        }
-        if (lotteryType instanceof ShishicaiType.Daxiaodanshuang) {
-            ShishicaiType.Daxiaodanshuang daxiaodanshuangType = (ShishicaiType.Daxiaodanshuang) lotteryType;
-            priBetNumber0.clear();
-            priBetNumber1.clear();
-            switch (daxiaodanshuangType) {
+
+                // 大小单双
                 case HOU_ER_DA_XIAO_DAN_SHUANG:
                 case QIAN_ER_DA_XIAO_DAN_SHUANG:
                     priBetNumber0.add("大");
@@ -340,12 +304,8 @@ public class LotteryOrderTest {
                     priBetNumber0.add("小");
                     priBetNumbers.add(priBetNumber0);
                     break;
-            }
-        }
-        if (lotteryType instanceof ShishicaiType.Quwei) {
-            ShishicaiType.Quwei quweiType = (ShishicaiType.Quwei) lotteryType;
-            priBetNumber0.clear();
-            switch (quweiType) {
+
+                //趣味
                 case SI_JI_FA_CAI:
                 case SAN_XING_BAO_XI:
                 case HAO_SHI_CHENG_SHUANG:
@@ -354,6 +314,7 @@ public class LotteryOrderTest {
                     break;
             }
         }
+
         return priBetNumbers;
     }
 }

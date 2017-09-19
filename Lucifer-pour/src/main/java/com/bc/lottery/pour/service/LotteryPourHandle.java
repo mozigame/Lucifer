@@ -1,9 +1,5 @@
 package com.bc.lottery.pour.service;
 
-import com.bc.lottery.entity.BoundsInfo;
-import com.bc.lottery.entity.LotteryOrder;
-import com.bc.lottery.entity.LotteryType;
-
 import java.util.List;
 
 /**
@@ -17,9 +13,16 @@ public interface LotteryPourHandle {
      * 获取彩票注单数量
      *
      * @param betNumbers
-     * @param lotteryType
+     * @param playId
      * @return
      */
-    long getBetCount(List<List<String>> betNumbers, LotteryType lotteryType);
+    long getBetCount(List<List<String>> betNumbers, Long playId);
 
+    /**
+     * 生成随机注单
+     *
+     * @param playId
+     * @return
+     */
+    List<List<String>> getBetNumbersByType(Long playId);
 }
