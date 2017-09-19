@@ -1,6 +1,6 @@
 package com.bc.lottery.draw.service.impl;
 
-import com.babel.venus.po.UserOrder;
+import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.draw.service.LotteryDrawHandle;
 import com.bc.lottery.entity.LotteryType;
 import com.bc.lottery.entity.ShishicaiType;
@@ -26,19 +26,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
     private static final int[] ER_XING_ZU_XUAN_HE_ZHI = {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 4, 4, 3, 3, 2, 2, 1, 1};
 
     @Override
-    public UserOrder getBoundsInfoOfLottery(String kj, UserOrder order) {
+    public UserOrderPO getBoundsInfoOfLottery(String kj, UserOrderPO order) {
 
         if (kj.length() != 5) {
             return null;
         }
-        List<UserOrder> lotteryOrderList = new ArrayList<>();
+        List<UserOrderPO> lotteryOrderList = new ArrayList<>();
         lotteryOrderList.add(order);
-
-        String realLotteryKj = getRealLotteryKj(kj, order.getLotteryType());
+        LotteryType lotteryType = LotteryType.parseType(order.getLotteryId(), order.getPlayId());
+        String realLotteryKj = getRealLotteryKj(kj, lotteryType);
         // 如果类型属于五星
-        if (order.getLotteryType() instanceof ShishicaiType) {
+        if (lotteryType instanceof ShishicaiType) {
 
-            return getBoundsInfoOfShishicai(order.getLotteryType(), realLotteryKj, lotteryOrderList).get(0);
+            return getBoundsInfoOfShishicai(lotteryType, realLotteryKj, lotteryOrderList).get(0);
         }
 
         return order;
@@ -124,7 +124,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
     }
 
     @Override
-    public List<UserOrder> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
+    public List<UserOrderPO> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
 
         if (kj.length() != 5 || lotteryOrderList.size() == 0) {
             return null;
@@ -146,10 +146,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      * @param lotteryOrderList
      * @return
      */
-    private List<UserOrder> getBoundsInfoOfShishicai(LotteryType lotteryType, String kj, List<UserOrder> lotteryOrderList) {
+    private List<UserOrderPO> getBoundsInfoOfShishicai(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
 
         String[] kjArr = kj.split("");
-        for (UserOrder lotteryOrder : lotteryOrderList) {
+        for (UserOrderPO lotteryOrder : lotteryOrderList) {
 
             List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
@@ -653,7 +653,6 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     }
 
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
-//                        boundsInfoList.add(boundsInfo);
                     continue;
 
                     //一码不定胆
@@ -833,7 +832,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      */
     private List<String> getBetNumbers(LotteryType lotteryType, List<List<String>> betNumbers) {
 
-//        List<String> betNumberList = new ArrayList<>();
+
         // 如果类型属于五星
         ShishicaiType shishicaiType = (ShishicaiType) lotteryType;
         switch (shishicaiType) {

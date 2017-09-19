@@ -1,6 +1,6 @@
 package com.bc.lottery.draw.service;
 
-import com.babel.venus.po.UserOrder;
+import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.entity.LotteryType;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public interface LotteryDrawHandle {
      * @param kj          中奖号
      * @return 中奖信息
      */
-    UserOrder getBoundsInfoOfLottery(String kj, UserOrder order);
+    UserOrderPO getBoundsInfoOfLottery(String kj, UserOrderPO order);
 
     /**
      * 根据批量获取奖金信息
@@ -28,5 +28,5 @@ public interface LotteryDrawHandle {
      * @param orderList
      * @return
      */
-    List<UserOrder> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrder> orderList);
+    List<UserOrderPO> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrderPO> orderList);
 }
