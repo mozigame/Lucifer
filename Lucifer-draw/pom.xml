@@ -18,8 +18,8 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <artifactId>forseti-api</artifactId>
-            <groupId>com.babel.forseti</groupId>
+            <artifactId>venus-api</artifactId>
+            <groupId>com.babel.venus</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
