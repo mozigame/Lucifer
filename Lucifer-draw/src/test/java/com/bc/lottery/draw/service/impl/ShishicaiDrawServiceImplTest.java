@@ -1,6 +1,6 @@
 package com.bc.lottery.draw.service.impl;
 
-import com.babel.venus.po.UserOrder;
+import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.entity.ShishicaiType;
 import org.junit.Test;
 
@@ -54,9 +54,9 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(shishicaiType.value());
                 System.out.println(betNumberList);
-                UserOrder userOrder = new UserOrder(shishicaiType, betNumberList);
+                UserOrderPO userOrder = new UserOrderPO(betNumberList);
                 for (String kjno : kjList) {
-                    UserOrder boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println(boundsInfo);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0) {
@@ -96,7 +96,7 @@ public class ShishicaiDrawServiceImplTest {
 
             for (ShishicaiType shishicaiType : ShishicaiType.values()) {
                 System.out.println("玩法类型===========>>>>>" + shishicaiType + "---------------------------类型----------------------------------");
-                List<UserOrder> lotteryOrderList = lotteryOrderTest.getUserOrderList(shishicaiType.value());
+                List<UserOrderPO> lotteryOrderList = lotteryOrderTest.getUserOrderList(shishicaiType.value());
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {

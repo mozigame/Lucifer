@@ -1,6 +1,7 @@
 package com.bc.lottery.draw.service.impl;
 
-import com.babel.venus.po.UserOrder;
+
+import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.entity.ShishicaiType;
 
 import java.util.*;
@@ -12,10 +13,10 @@ import java.util.*;
  **/
 public class LotteryOrderTest {
 
-    public List<UserOrder> getUserOrderList(Long playId) {
-        List<UserOrder> orderList = new ArrayList<>();
+    public List<UserOrderPO> getUserOrderList(Long playId) {
+        List<UserOrderPO> orderList = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
-            UserOrder lotteryOrder = new UserOrder();
+            UserOrderPO lotteryOrder = new UserOrderPO();
             lotteryOrder.setOrderId("testOrderNo111");
             List<List<String>> betNumbersByType = getBetNumbersByType(playId);
             lotteryOrder.setBetContentProc(betNumbersByType);
