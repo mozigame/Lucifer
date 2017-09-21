@@ -583,6 +583,108 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         }
     }
 
+    @Override
+    public String getStringByLotteryList(Long playId, List<List<String>> lotteryList) {
+
+        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
+        if (shishicaiType == null || lotteryList.size() == 0) {
+            return "";
+        }
+        switch (shishicaiType) {
+
+            case WU_XING_ZHI_XUAN_FU_SHI:
+            case WU_XING_ZHI_XUAN_ZU_HE:
+            case ZU_XUAN_60:
+            case ZU_XUAN_30:
+            case ZU_XUAN_20:
+            case ZU_XUAN_10:
+            case ZU_XUAN_5:
+
+            case SI_XING_ZHI_XUAN_FU_SHI:
+            case SI_XING_ZHI_XUAN_ZU_HE:
+            case ZU_XUAN_12:
+            case ZU_XUAN_4:
+
+            case QIAN_SAN_FU_SHI:
+            case ZHONG_SAN_FU_SHI:
+            case HOU_SAN_FU_SHI:
+
+            case QIAN_ER_ZHI_XUAN_FU_SHI:
+            case HOU_ER_ZHI_XUAN_FU_SHI:
+
+            case YI_XING_DING_WEI_DAN:
+
+            case QIAN_ER_DA_XIAO_DAN_SHUANG:
+            case HOU_ER_DA_XIAO_DAN_SHUANG:
+            case ZONG_HE_DA_XIAO_DAN_SHUANG:
+
+                return JsonUtils.lotteryList2Json(lotteryList);
+
+            case WU_XING_ZHI_XUAN_DAN_SHI:
+                return JsonUtils.lotteryListToDanShi(lotteryList, 5);
+
+            case SI_XING_ZHI_XUAN_DAN_SHI:
+                return JsonUtils.lotteryListToDanShi(lotteryList, 4);
+
+            case QIAN_SAN_DAN_SHI:
+            case ZHONG_SAN_DAN_SHI:
+            case HOU_SAN_DAN_SHI:
+            case QIAN_SAN_HUN_HE_ZU_XUAN:
+            case ZHONG_SAN_HUN_HE_ZU_XUAN:
+            case HOU_SAN_HUN_HE_ZU_XUAN:
+
+                return JsonUtils.lotteryListToDanShi(lotteryList, 3);
+
+            case QIAN_ER_ZHI_XUAN_DAN_SHI:
+            case HOU_ER_ZHI_XUAN_DAN_SHI:
+            case QIAN_ER_ZU_XUAN_DAN_SHI:
+            case HOU_ER_ZU_XUAN_DAN_SHI:
+
+                return JsonUtils.lotteryListToDanShi(lotteryList, 2);
+
+            case ZU_XUAN_120:
+            case ZU_XUAN_24:
+            case ZU_XUAN_6:
+
+            case QIAN_SAN_ZHI_XUAN_HE_ZHI:
+            case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
+            case HOU_SAN_ZHI_XUAN_HE_ZHI:
+            case QIAN_SAN_ZU_SAN:
+            case ZHONG_SAN_ZU_SAN:
+            case HOU_SAN_ZU_SAN:
+            case QIAN_SAN_ZU_LIU:
+            case HOU_SAN_ZU_LIU:
+            case ZHONG_SAN_ZU_LIU:
+            case QIAN_SAN_ZU_XUAN_HE_ZHI:
+            case ZHONG_SAN_ZU_XUAN_HE_ZHI:
+            case HOU_SAN_ZU_XUAN_HE_ZHI:
+
+            case QIAN_ER_ZHI_XUAN_HE_ZHI:
+            case HOU_ER_ZHI_XUAN_HE_ZHI:
+            case QIAN_ER_ZU_XUAN_FU_SHI:
+            case HOU_ER_ZU_XUAN_FU_SHI:
+            case QIAN_ER_ZU_XUAN_HE_ZHI:
+            case HOU_ER_ZU_XUAN_HE_ZHI:
+
+            case QIAN_SAN_YI_MA:
+            case HOU_SAN_YI_MA:
+            case QIAN_SAN_ER_MA:
+            case HOU_SAN_ER_MA:
+
+            case YI_FAN_FENG_SHUN:
+            case HAO_SHI_CHENG_SHUANG:
+            case SAN_XING_BAO_XI:
+            case SI_JI_FA_CAI:
+
+                return JsonUtils.lotteryList2OneOnlyJson(lotteryList);
+
+            default:
+                return "";
+
+        }
+
+    }
+
     // 获取随机数（可重复）
     private List<List<String>> getRandomList(int maxNum, int outerLength, int innerLength) {
 
