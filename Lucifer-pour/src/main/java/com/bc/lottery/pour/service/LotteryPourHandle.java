@@ -25,4 +25,12 @@ public interface LotteryPourHandle {
      * @return
      */
     List<List<String>> getBetNumbersByType(Long playId);
+
+    /**
+     * 根据类型获取彩票可接收的List
+     *
+     * @param playId
+     * @return
+     */
+    List<List<String>> getLotteryListByType(Long playId, String str);
 }

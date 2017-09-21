@@ -1,8 +1,10 @@
 package com.bc.lottery.pour.service.impl;
 
 import com.bc.lottery.entity.ShishicaiType;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +17,10 @@ public class ShishicaiPourServiceImplTest {
     @Test
     public void testGetBetCount() throws Exception {
         System.out.println("*******************************下注算法测试开始*******************************");
+
+        String jsonStr = "[[1],[6],[5],[4],[7]]";
+        List<List<String>> jsonList = new ArrayList<>();
+
 
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiPourServiceImpl shishicaiService = new ShishicaiPourServiceImpl();
