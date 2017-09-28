@@ -51,15 +51,18 @@ public class ShishicaiDrawServiceImplTest {
 
             for (int i = 1; i < 11; i++) {
                 System.out.println(shishicaiType);
+                System.out.println(shishicaiType.desc());
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(shishicaiType.value());
                 System.out.println(betNumberList);
                 UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                userOrder.setLotteryId(1L);
+                userOrder.setPlayId(shishicaiType.value());
                 for (String kjno : kjList) {
                     UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
-                    System.out.println(boundsInfo);
+                    System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum()+ ";  三等奖次数：" + boundsInfo.getThirdPrizeNum()+ ";  四等奖次数：" + boundsInfo.getForthPrizeNum()+ ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
-                    if (boundsInfo.getFirstPrizeNum() != 0) {
+                    if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
                     }
                 }
