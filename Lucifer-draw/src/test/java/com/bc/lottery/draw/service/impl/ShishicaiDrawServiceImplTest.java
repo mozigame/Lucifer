@@ -55,10 +55,10 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("==============第 " + i + " 次下注===============");
                 List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(shishicaiType.value());
                 System.out.println(betNumberList);
-                UserOrderPO userOrder = new UserOrderPO(betNumberList);
-                userOrder.setLotteryId(1L);
-                userOrder.setPlayId(shishicaiType.value());
                 for (String kjno : kjList) {
+                    UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                    userOrder.setLotteryId(1L);
+                    userOrder.setPlayId(shishicaiType.value());
                     UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum()+ ";  三等奖次数：" + boundsInfo.getThirdPrizeNum()+ ";  四等奖次数：" + boundsInfo.getForthPrizeNum()+ ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());

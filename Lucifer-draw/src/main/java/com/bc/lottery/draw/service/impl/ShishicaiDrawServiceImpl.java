@@ -35,7 +35,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         lotteryOrderList.add(order);
         LotteryType lotteryType = LotteryType.parseType(order.getLotteryId(), order.getPlayId());
         String realLotteryKj = getRealLotteryKj(kj, lotteryType);
-        // 如果类型属于五星
+        // 如果类型属于时时彩
         if (lotteryType instanceof ShishicaiType) {
 
             return getBoundsInfoOfShishicai(lotteryType, realLotteryKj, lotteryOrderList).get(0);
