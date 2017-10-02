@@ -536,8 +536,15 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                         if (checkIsZu3(kj)) {
                             for (List<String> betNumber : betNumberList) {
+                                StringBuilder orderNumber = new StringBuilder();
+                                for (String bet : betNumber) {
+                                    orderNumber.append(bet);
+                                }
+                                if (betNumber.size() != 3 || !checkIsZu3(orderNumber.toString())) {
+                                    continue;
+                                }
                                 // 判断是否中组三一等奖(判断重复位和非重复位分别是否相等)
-                                if (betNumber.containsAll(LotteryUtils.getDupStr(kj))
+                                if (LotteryUtils.getDupStrByDupNum(betNumber.toString(), 2).containsAll(LotteryUtils.getDupStr(kj))
                                         && betNumber.containsAll(LotteryUtils.getUnDupStr(kj))) {
                                     firstPrizeNum++;
                                 }

@@ -60,8 +60,8 @@ public class ShishicaiDrawServiceImplTest {
                     userOrder.setLotteryId(1L);
                     userOrder.setPlayId(shishicaiType.value());
                     UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
-                    System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum()+ ";  三等奖次数：" + boundsInfo.getThirdPrizeNum()+ ";  四等奖次数：" + boundsInfo.getForthPrizeNum()+ ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum()+ ";  三等奖次数：" + boundsInfo.getThirdPrizeNum()+ ";  四等奖次数：" + boundsInfo.getForthPrizeNum()+ ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
                         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
                     }
