@@ -1,9 +1,6 @@
 package com.bc.lottery.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Lottery相关工具计算类
@@ -306,6 +303,116 @@ public class LotteryUtils {
     }
 
     /**
+     * 三位数判断是否是顺子(顺序不计)
+     *
+     * @param iniString
+     * @return
+     */
+    public static boolean checkShunzi(String iniString) {
+
+        String[] strArr = iniString.split("");
+        if (strArr.length != 3) {
+            return false;
+        }
+        Set<String> set1 = new HashSet<>();
+        set1.add("0");
+        set1.add("1");
+        set1.add("2");
+        if (set1.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set2 = new HashSet<>();
+        set2.add("1");
+        set2.add("2");
+        set2.add("3");
+        if (set2.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set3 = new HashSet<>();
+        set3.add("2");
+        set3.add("3");
+        set3.add("4");
+        if (set3.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set4 = new HashSet<>();
+        set4.add("3");
+        set4.add("4");
+        set4.add("5");
+        if (set4.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set5 = new HashSet<>();
+        set5.add("4");
+        set5.add("5");
+        set5.add("6");
+        if (set5.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set6 = new HashSet<>();
+        set6.add("5");
+        set6.add("6");
+        set6.add("7");
+        if (set6.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set7 = new HashSet<>();
+        set7.add("6");
+        set7.add("7");
+        set7.add("8");
+        if (set7.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set8 = new HashSet<>();
+        set8.add("7");
+        set8.add("8");
+        set8.add("9");
+        if (set8.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set9 = new HashSet<>();
+        set9.add("8");
+        set9.add("9");
+        set9.add("0");
+        if (set9.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+        Set<String> set10 = new HashSet<>();
+        set10.add("9");
+        set10.add("0");
+        set10.add("1");
+        if (set10.containsAll(Arrays.asList(strArr))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 三位数判断是否是半个顺子(顺序不计)
+     *
+     * @param iniString
+     * @return
+     */
+    public static boolean checkHalfShunzi(String iniString) {
+
+        if (checkShunzi(iniString)) {
+            return false;
+        }
+        String[] strArr = iniString.split("");
+        if (strArr.length != 3) {
+            return false;
+        }
+        if (Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 1 || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 9
+                || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 9
+                || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[2]) - Integer.parseInt(strArr[1])) == 9) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
      * 获取指定最小重复次数的字符串
      *
      * @param iniString 需要计算的字符串
@@ -416,6 +523,56 @@ public class LotteryUtils {
             resultList.add("大");
         }
 
+        return resultList;
+    }
+
+    /**
+     * 获取龙虎和信息
+     *
+     * @param firstNo
+     * @param lastNo
+     * @return
+     */
+    public static List<String> getLongHuHeList(int firstNo, int lastNo) {
+
+        List<String> resultList = new ArrayList<>();
+
+        // 判断奇偶
+        if (firstNo == lastNo) {
+            resultList.add("和");
+        } else if (firstNo > lastNo) {
+            resultList.add("龙");
+        } else {
+            resultList.add("虎");
+        }
+
+        return resultList;
+    }
+
+    /**
+     * 双面彩判断特殊玩法
+     *
+     * @param aimStr
+     * @return
+     */
+    public static List<String> getDoubleTeShuWanFaList(String aimStr) {
+
+        List<String> resultList = new ArrayList<>();
+        String[] inStrArr = aimStr.split("");
+        if (inStrArr.length != 3) {
+            return resultList;
+        }
+        if (!getDupStrByDupNum(aimStr, 3).isEmpty()) {
+            resultList.add("豹子");
+        } else if (!getDupStrByDupNum(aimStr, 2).isEmpty()) {
+            resultList.add("对子");
+        } else if (checkShunzi(aimStr)) {
+            resultList.add("顺子");
+        } else if (checkHalfShunzi(aimStr)) {
+            resultList.add("半顺");
+        } else {
+            resultList.add("杂六");
+        }
         return resultList;
     }
 

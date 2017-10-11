@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by clion on 2017/9/13.
  */
-
+//时时彩传统盘
 public enum ShishicaiType implements LotteryType {
 
     // 五星

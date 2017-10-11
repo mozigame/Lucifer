@@ -1,9 +1,5 @@
 package com.bc.lottery.entity;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by luis on 2017/4/13.
  */
@@ -15,6 +11,8 @@ public interface LotteryType<E extends Enum<E>> {
         switch (String.valueOf(lotteryId)) {
             case 1 + "":
                 return ShishicaiType.parse(playId);
+            case 2 + "":
+                return ShishicaiDoubleType.parse(playId);
             default:
                 return ShishicaiType.parse(playId);
         }
