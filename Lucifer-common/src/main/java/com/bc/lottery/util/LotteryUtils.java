@@ -545,7 +545,6 @@ public class LotteryUtils {
         } else {
             resultList.add("虎");
         }
-
         return resultList;
     }
 
@@ -590,6 +589,17 @@ public class LotteryUtils {
         strList.add(str1);
         strList.add(str2);
         strList.add(str3);
+
+        System.out.println(getDoubleTeShuWanFaList("123"));
+        System.out.println(getDoubleTeShuWanFaList("124"));
+        System.out.println(getDoubleTeShuWanFaList("324"));
+        System.out.println(getDoubleTeShuWanFaList("666"));
+        System.out.println(getDoubleTeShuWanFaList("665"));
+        System.out.println(getDoubleTeShuWanFaList("368"));
+
+        System.out.println(getLongHuHeList(1,2));
+        System.out.println(getLongHuHeList(4,3));
+        System.out.println(getLongHuHeList(5,5));
 
     }
 }

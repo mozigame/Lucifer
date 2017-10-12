@@ -133,9 +133,13 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             switch (shishicaiDoubleType) {
 
                 // 截取总和
-                case ZONG_HE_DA_XIAO_DAN_SHUANG:
-                case ZONG_HE_LONG_HU:
-                case ZONG_HE_LONG_HU_HE:
+                case ZONG_HE_DA:
+                case ZONG_HE_XIAO:
+                case ZONG_HE_DAN:
+                case ZONG_HE_SHUANG:
+                case ZONG_HE_LONG:
+                case ZONG_HE_HU:
+                case ZONG_HE_HE:
                     realLotteryKj = kj.substring(0, 5);
                     break;
 
@@ -163,32 +167,92 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     break;
 
                 // 一球号码
-                case YI_QIU_DING_WEI_DAN:
-                case YI_QIU_DA_XIAO_DAN_SHUANG:
+                case YI_QIU_DA:
+                case YI_QIU_XIAO:
+                case YI_QIU_DAN:
+                case YI_QIU_SHUANG:
+                case YI_QIU_DING_WEI_DAN_0:
+                case YI_QIU_DING_WEI_DAN_1:
+                case YI_QIU_DING_WEI_DAN_2:
+                case YI_QIU_DING_WEI_DAN_3:
+                case YI_QIU_DING_WEI_DAN_4:
+                case YI_QIU_DING_WEI_DAN_5:
+                case YI_QIU_DING_WEI_DAN_6:
+                case YI_QIU_DING_WEI_DAN_7:
+                case YI_QIU_DING_WEI_DAN_8:
+                case YI_QIU_DING_WEI_DAN_9:
                     realLotteryKj = kj.substring(0, 1);
                     break;
 
                 // 二球号码
-                case ER_QIU_DING_WEI_DAN:
-                case ER_QIU_DA_XIAO_DAN_SHUANG:
+                case ER_QIU_DA:
+                case ER_QIU_XIAO:
+                case ER_QIU_DAN:
+                case ER_QIU_SHUANG:
+                case ER_QIU_DING_WEI_DAN_0:
+                case ER_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_9:
                     realLotteryKj = kj.substring(1, 2);
                     break;
 
                 // 三球号码
-                case SAN_QIU_DING_WEI_DAN:
-                case SAN_QIU_DA_XIAO_DAN_SHUANG:
+                case SAN_QIU_DA:
+                case SAN_QIU_XIAO:
+                case SAN_QIU_DAN:
+                case SAN_QIU_SHUANG:
+                case SAN_QIU_DING_WEI_DAN_0:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_9:
                     realLotteryKj = kj.substring(2, 3);
                     break;
 
                 // 四球号码
-                case SI_QIU_DING_WEI_DAN:
-                case SI_QIU_DA_XIAO_DAN_SHUANG:
+                case SI_QIU_DA:
+                case SI_QIU_XIAO:
+                case SI_QIU_DAN:
+                case SI_QIU_SHUANG:
+                case SI_QIU_DING_WEI_DAN_0:
+                case SI_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_9:
                     realLotteryKj = kj.substring(3, 4);
                     break;
 
                 // 五球号码
-                case WU_QIU_DING_WEI_DAN:
-                case WU_QIU_DA_XIAO_DAN_SHUANG:
+                case WU_QIU_DA:
+                case WU_QIU_XIAO:
+                case WU_QIU_DAN:
+                case WU_QIU_SHUANG:
+                case WU_QIU_DING_WEI_DAN_0:
+                case WU_QIU_DING_WEI_DAN_1:
+                case WU_QIU_DING_WEI_DAN_2:
+                case WU_QIU_DING_WEI_DAN_3:
+                case WU_QIU_DING_WEI_DAN_4:
+                case WU_QIU_DING_WEI_DAN_5:
+                case WU_QIU_DING_WEI_DAN_6:
+                case WU_QIU_DING_WEI_DAN_7:
+                case WU_QIU_DING_WEI_DAN_8:
+                case WU_QIU_DING_WEI_DAN_9:
                     realLotteryKj = kj.substring(4, 5);
                     break;
             }
@@ -929,7 +993,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
 
                 //总和大小单双
-                case ZONG_HE_DA_XIAO_DAN_SHUANG:
+                case ZONG_HE_DA:
+                case ZONG_HE_XIAO:
+                case ZONG_HE_DAN:
+                case ZONG_HE_SHUANG:
 
                     if (betNumbers.size() == 1) {
 
@@ -947,12 +1014,13 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     continue;
 
                     //总和龙虎和
-                case ZONG_HE_LONG_HU:
-                case ZONG_HE_LONG_HU_HE:
+                case ZONG_HE_LONG:
+                case ZONG_HE_HU:
+                case ZONG_HE_HE:
 
                     if (betNumbers.size() == 1 && kjArr.length == 5) {
 
-                        //获取中奖号的第一个号码的大小单双
+                        //获取中奖号的龙虎和信息
                         List<String> firstBetList = LotteryUtils.getLongHuHeList(Integer.parseInt(kjArr[0]), Integer.parseInt(kjArr[4]));
 
                         for (String betNumber : betNumbers.get(0)) {
@@ -967,11 +1035,30 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
 
                     //单球大小单双
-                case YI_QIU_DA_XIAO_DAN_SHUANG:
-                case ER_QIU_DA_XIAO_DAN_SHUANG:
-                case SAN_QIU_DA_XIAO_DAN_SHUANG:
-                case SI_QIU_DA_XIAO_DAN_SHUANG:
-                case WU_QIU_DA_XIAO_DAN_SHUANG:
+                case YI_QIU_DA:
+                case YI_QIU_XIAO:
+                case YI_QIU_DAN:
+                case YI_QIU_SHUANG:
+
+                case ER_QIU_DA:
+                case ER_QIU_XIAO:
+                case ER_QIU_DAN:
+                case ER_QIU_SHUANG:
+
+                case SAN_QIU_DA:
+                case SAN_QIU_XIAO:
+                case SAN_QIU_DAN:
+                case SAN_QIU_SHUANG:
+
+                case SI_QIU_DA:
+                case SI_QIU_XIAO:
+                case SI_QIU_DAN:
+                case SI_QIU_SHUANG:
+
+                case WU_QIU_DA:
+                case WU_QIU_XIAO:
+                case WU_QIU_DAN:
+                case WU_QIU_SHUANG:
 
                     if (betNumbers.size() == 1) {
 
@@ -989,11 +1076,61 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     continue;
 
                     // 单球定位模式
-                case YI_QIU_DING_WEI_DAN:
-                case ER_QIU_DING_WEI_DAN:
-                case SAN_QIU_DING_WEI_DAN:
-                case SI_QIU_DING_WEI_DAN:
-                case WU_QIU_DING_WEI_DAN:
+                case YI_QIU_DING_WEI_DAN_0:
+                case YI_QIU_DING_WEI_DAN_1:
+                case YI_QIU_DING_WEI_DAN_2:
+                case YI_QIU_DING_WEI_DAN_3:
+                case YI_QIU_DING_WEI_DAN_4:
+                case YI_QIU_DING_WEI_DAN_5:
+                case YI_QIU_DING_WEI_DAN_6:
+                case YI_QIU_DING_WEI_DAN_7:
+                case YI_QIU_DING_WEI_DAN_8:
+                case YI_QIU_DING_WEI_DAN_9:
+
+                case ER_QIU_DING_WEI_DAN_0:
+                case ER_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_9:
+
+                case SAN_QIU_DING_WEI_DAN_0:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_9:
+
+                case SI_QIU_DING_WEI_DAN_0:
+                case SI_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_9:
+
+                case WU_QIU_DING_WEI_DAN_0:
+                case WU_QIU_DING_WEI_DAN_1:
+                case WU_QIU_DING_WEI_DAN_2:
+                case WU_QIU_DING_WEI_DAN_3:
+                case WU_QIU_DING_WEI_DAN_4:
+                case WU_QIU_DING_WEI_DAN_5:
+                case WU_QIU_DING_WEI_DAN_6:
+                case WU_QIU_DING_WEI_DAN_7:
+                case WU_QIU_DING_WEI_DAN_8:
+                case WU_QIU_DING_WEI_DAN_9:
+
                     if (size == 1) {
                         //判断中间号码是否包含在所选的各组号码中
                         for (String betNumber : betNumbers.get(0)) {
