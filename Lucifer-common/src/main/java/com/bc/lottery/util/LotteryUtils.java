@@ -1,5 +1,7 @@
 package com.bc.lottery.util;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 /**
@@ -601,5 +603,11 @@ public class LotteryUtils {
         System.out.println(getLongHuHeList(4,3));
         System.out.println(getLongHuHeList(5,5));
 
+        System.out.println(checkNumberDecimal("12"));
+        System.out.println(checkNumberDecimal("12.2345"));
+    }
+    private static String checkNumberDecimal(Object obj) {
+        NumberFormat nf = new DecimalFormat("##0.00");
+        return String.format((obj == null) ? "0.00" : nf.format(Float.parseFloat(obj.toString())));
     }
 }
