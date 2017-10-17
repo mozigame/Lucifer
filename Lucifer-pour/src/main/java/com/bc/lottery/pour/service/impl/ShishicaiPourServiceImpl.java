@@ -265,6 +265,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     return 0;
 
+                case ZONG_HE_DA_XIAO_DAN_SHUANG:
                 case YI_FAN_FENG_SHUN:
                 case HAO_SHI_CHENG_SHUANG:
                 case SAN_XING_BAO_XI:

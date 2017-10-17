@@ -159,7 +159,11 @@ public class JsonUtils {
     public static void main(String[] args) {
 
         String string = "12,345,67,890,11";
+
+        String string2 = "大";
         List<List<String>> jsonList = json2LotteryList(string);
+        List<List<String>> jsonList2 = json2LotteryList(string2);
+        System.out.println(jsonList2);
         System.out.println(jsonList);
         System.out.println(string);
         String jsonString = lotteryList2Json(jsonList);
