@@ -50,21 +50,10 @@ public class JsonUtils {
         if (str == null || str.trim().equals("")) {
             return resultList;
         }
-        String[] strArr = str.split(" ");
-        if (strArr.length != 0) {
-            List<String> strList = new ArrayList<>();
-            for (String innerStr : strArr) {
-                String[] orderStrArr = innerStr.split("");
-                if (orderStrArr.length != 0) {
-                    for (String aimStr : orderStrArr) {
-                        if (!aimStr.trim().equals("")) {
-                            strList.add(aimStr);
-                        }
-                    }
-                }
-            }
-            resultList.add(strList);
-        }
+        String newStr = str.replace(",", "").replace("|", "").replace(" ", "");
+        List<String> strList = Arrays.asList(newStr.split(""));
+
+        resultList.add(strList);
         return resultList;
 
     }
@@ -180,7 +169,7 @@ public class JsonUtils {
         List<List<String>> zhixuanList = danShiJson2LotteryList(zhixuanStr);
         System.out.println(zhixuanList);
         System.out.println(zhixuanStr);
-        String danshiString = lotteryListToDanShi(zhixuanList,4);
+        String danshiString = lotteryListToDanShi(zhixuanList, 4);
         System.out.println(danshiString);
 
         String danhangStr = "1,2,4,22,23,1";
