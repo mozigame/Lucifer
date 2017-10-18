@@ -529,6 +529,50 @@ public class LotteryUtils {
     }
 
     /**
+     * 获取定单双 （格式为 x单x双）
+     *
+     * @param inStr
+     * @return
+     */
+    public static String getDingDanShuangString(List<String> inStr) {
+
+        if (inStr == null || inStr.size() == 0) {
+            return "0单0双";
+        }
+        StringBuilder resultBuilder = new StringBuilder();
+
+        int oddNum = 0;//奇数数量
+
+        for (String str : inStr) {
+            if (Integer.parseInt(str) % 2 == 1) {
+                oddNum++;
+            }
+        }
+
+        resultBuilder.append(oddNum).append("单").append(inStr.size() - oddNum).append("双");
+
+        return resultBuilder.toString();
+    }
+
+    /**
+     * 获取中位数字
+     *
+     * @param inStr
+     * @return
+     */
+    public static String getCaiZhongWeiString(List<String> inStr) {
+
+        if (inStr == null || inStr.size() == 0 || inStr.size() % 2 == 0) {
+            return "";
+        }
+        StringBuilder resultBuilder = new StringBuilder();
+
+        Collections.sort(inStr);
+
+        return inStr.get((inStr.size() - 1) / 2);
+    }
+
+    /**
      * 获取龙虎和信息
      *
      * @param firstNo
@@ -599,13 +643,24 @@ public class LotteryUtils {
         System.out.println(getDoubleTeShuWanFaList("665"));
         System.out.println(getDoubleTeShuWanFaList("368"));
 
-        System.out.println(getLongHuHeList(1,2));
-        System.out.println(getLongHuHeList(4,3));
-        System.out.println(getLongHuHeList(5,5));
+        System.out.println(getLongHuHeList(1, 2));
+        System.out.println(getLongHuHeList(4, 3));
+        System.out.println(getLongHuHeList(5, 5));
 
         System.out.println(checkNumberDecimal("12"));
         System.out.println(checkNumberDecimal("12.2345"));
+
+
+        List<String> sortList = new ArrayList<>();
+        sortList.add("02");
+        sortList.add("12");
+        sortList.add("04");
+        sortList.add("09");
+        sortList.add("07");
+        System.out.println(getCaiZhongWeiString(sortList));
+
     }
+
     private static String checkNumberDecimal(Object obj) {
         NumberFormat nf = new DecimalFormat("##0.00");
         return String.format((obj == null) ? "0.00" : nf.format(Float.parseFloat(obj.toString())));
