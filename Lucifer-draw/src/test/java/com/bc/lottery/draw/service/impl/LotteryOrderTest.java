@@ -477,13 +477,53 @@ public class LotteryOrderTest {
                     break;
             }
             priBetNumbers.add(numList);
-        } else if (lotteryId == 4) {
-            String numBig = "大";
+        } else if (lotteryId == 4) { String numBig = "大";
             String numSmall = "小";
             String numSingle = "单";
             String numDouble = "双";
             String numDragon = "龙";
             String numTiger = "虎";
+            String num1 = "01";
+            String num2 = "02";
+            String num3 = "03";
+            String num4 = "04";
+            String num5 = "05";
+            String num6 = "06";
+            String num7 = "07";
+            String num8 = "08";
+            String num9 = "09";
+            String num10 = "10";
+            String num11 = "11";
+            List<String> list = new ArrayList<>();
+            list.add(num1);
+            list.add(num2);
+            list.add(num3);
+            list.add(num4);
+            list.add(num5);
+            list.add(num6);
+            list.add(num7);
+            list.add(num8);
+            list.add(num9);
+            list.add(num10);
+            list.add(num11);
+            Collections.shuffle(list);
+            String[] twoNums = {list.get(0), list.get(1)};
+            Collections.shuffle(list);
+            String[] threeNums = {list.get(0), list.get(1), list.get(2)};
+            Collections.shuffle(list);
+            String[] fourNums = {list.get(0), list.get(1), list.get(2), list.get(3)};
+            Collections.shuffle(list);
+            String[] fiveNums = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4)};
+            Collections.shuffle(list);
+            String[] sixNums = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5)};
+            Collections.shuffle(list);
+            String[] sevenNums = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6)};
+            Collections.shuffle(list);
+            String[] eightNums = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)};
+            Collections.shuffle(list);
+            String[] zhixuan21 = {list.get(0), list.get(1)};
+            String[] zhixuan22 = {list.get(2), list.get(3)};
+            String[] zhixuan23 = {list.get(4), list.get(5)};
             List<String> numList = new ArrayList<>();
             Lottery11x5DoubleType doubleType = Lottery11x5DoubleType.parse(playId);
             switch (doubleType) {
@@ -494,6 +534,7 @@ public class LotteryOrderTest {
                 case ZONG_HE_DAN:
                 case YI_QIU_DAN:
                     numList.add(numSingle);
+                    priBetNumbers.add(numList);
                     break;
                 case WU_QIU_SHUANG:
                 case SI_QIU_SHUANG:
@@ -502,6 +543,7 @@ public class LotteryOrderTest {
                 case ZONG_HE_SHUANG:
                 case YI_QIU_SHUANG:
                     numList.add(numDouble);
+                    priBetNumbers.add(numList);
                     break;
                 case ZONG_HE_WEI_DA:
                 case WU_QIU_DA:
@@ -511,6 +553,7 @@ public class LotteryOrderTest {
                 case ZONG_HE_DA:
                 case YI_QIU_DA:
                     numList.add(numBig);
+                    priBetNumbers.add(numList);
                     break;
                 case ZONG_HE_WEI_XIAO:
                 case WU_QIU_XIAO:
@@ -520,16 +563,148 @@ public class LotteryOrderTest {
                 case ZONG_HE_XIAO:
                 case YI_QIU_XIAO:
                     numList.add(numSmall);
+                    priBetNumbers.add(numList);
                     break;
                 case ZONG_HE_LONG:
                     numList.add(numDragon);
+                    priBetNumbers.add(numList);
                     break;
                 case ZONG_HE_HU:
                     numList.add(numTiger);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_1:
+                case WU_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_1:
+                case YI_QIU_DING_WEI_DAN_1:
+                    numList.add(num1);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_2:
+                case WU_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_2:
+                case YI_QIU_DING_WEI_DAN_2:
+                    numList.add(num2);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_3:
+                case WU_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_3:
+                case YI_QIU_DING_WEI_DAN_3:
+                    numList.add(num3);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_4:
+                case WU_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_4:
+                case YI_QIU_DING_WEI_DAN_4:
+                    numList.add(num4);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_5:
+                case WU_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_5:
+                case YI_QIU_DING_WEI_DAN_5:
+                    numList.add(num5);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_6:
+                case WU_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_6:
+                case YI_QIU_DING_WEI_DAN_6:
+                    numList.add(num6);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_7:
+                case WU_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_7:
+                case YI_QIU_DING_WEI_DAN_7:
+                    numList.add(num7);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_8:
+                case WU_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_8:
+                case YI_QIU_DING_WEI_DAN_8:
+                    numList.add(num8);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_9:
+                case WU_QIU_DING_WEI_DAN_9:
+                case SI_QIU_DING_WEI_DAN_9:
+                case SAN_QIU_DING_WEI_DAN_9:
+                case ER_QIU_DING_WEI_DAN_9:
+                case YI_QIU_DING_WEI_DAN_9:
+                    numList.add(num9);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_10:
+                case WU_QIU_DING_WEI_DAN_10:
+                case SI_QIU_DING_WEI_DAN_10:
+                case SAN_QIU_DING_WEI_DAN_10:
+                case ER_QIU_DING_WEI_DAN_10:
+                case YI_QIU_DING_WEI_DAN_10:
+                    numList.add(num10);
+                    priBetNumbers.add(numList);
+                    break;
+                case YI_ZHONG_YI_11:
+                case WU_QIU_DING_WEI_DAN_11:
+                case SI_QIU_DING_WEI_DAN_11:
+                case SAN_QIU_DING_WEI_DAN_11:
+                case ER_QIU_DING_WEI_DAN_11:
+                case YI_QIU_DING_WEI_DAN_11:
+                    numList.add(num11);
+                    priBetNumbers.add(numList);
+                    break;
+                case LIAN_MA_ER_ZHONG_ER:
+                    priBetNumbers.add(Arrays.asList(twoNums));
+                    break;
+                case LIAN_MA_SAN_ZHONG_SAN:
+                    priBetNumbers.add(Arrays.asList(threeNums));
+                    break;
+                case LIAN_MA_SI_ZHONG_SI:
+                    priBetNumbers.add(Arrays.asList(fourNums));
+                    break;
+                case QIAN_SAN_ZU_XUAN:
+                case QIAN_ER_ZU_XUAN:
+                case LIAN_MA_WU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(fiveNums));
+                    break;
+                case LIAN_MA_LIU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sixNums));
+                    break;
+                case LIAN_MA_QI_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sevenNums));
+                    break;
+                case LIAN_MA_BA_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(eightNums));
+                    break;
+                case QIAN_ER_ZHI_XUAN:
+                    priBetNumbers.add(Arrays.asList(zhixuan21));
+                    priBetNumbers.add(Arrays.asList(zhixuan22));
+                    break;
+                case QIAN_SAN_ZHI_XUAN:
+                    priBetNumbers.add(Arrays.asList(zhixuan23));
+                    priBetNumbers.add(Arrays.asList(zhixuan21));
+                    priBetNumbers.add(Arrays.asList(zhixuan22));
                     break;
             }
-            priBetNumbers.add(numList);
-            return priBetNumbers;
         }
         return priBetNumbers;
     }

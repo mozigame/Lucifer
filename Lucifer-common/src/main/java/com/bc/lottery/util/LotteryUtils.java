@@ -456,6 +456,24 @@ public class LotteryUtils {
         return strSum;
     }
 
+    public static int getStrSum(List<String> iniStrList) {
+
+        int strSum = 0;//字符串和值
+        for (String str : iniStrList) {
+            strSum += Integer.parseInt(str);
+        }
+        return strSum;
+    }
+
+    public static int getStrSum(String... iniStrArr) {
+
+        int strSum = 0;//字符串和值
+        for (String str : iniStrArr) {
+            strSum += Integer.parseInt(str);
+        }
+        return strSum;
+    }
+
     /**
      * 按指定长度截取传入的strList数据
      *
@@ -523,6 +541,37 @@ public class LotteryUtils {
             resultList.add("小");
         } else {
             resultList.add("大");
+        }
+
+        return resultList;
+    }
+
+    /**
+     * 获取指定数字的大小单双
+     *
+     * @param aimNo 需要计算的数
+     * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
+     * @param maxNo 中间值（如果等于中间值，则为和）
+     * @return
+     */
+    public static List<String> getDaxiaodanshuangList(int aimNo, int maxNo, int ignoreNo) {
+
+        List<String> resultList = new ArrayList<>();
+
+        // 判断奇偶
+        if (aimNo % 2 == 1) {
+            resultList.add("单");
+        } else {
+            resultList.add("双");
+        }
+        if (aimNo != ignoreNo) {
+
+            // 判断大小
+            if (aimNo <= maxNo / 2) {
+                resultList.add("小");
+            } else {
+                resultList.add("大");
+            }
         }
 
         return resultList;

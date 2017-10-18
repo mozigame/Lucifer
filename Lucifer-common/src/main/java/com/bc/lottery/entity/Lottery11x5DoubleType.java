@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by clion on 2017/9/13.
+ * Created by clion on 2017/10/13.
  */
 // 双面盘11选5
 public enum Lottery11x5DoubleType implements LotteryType {
