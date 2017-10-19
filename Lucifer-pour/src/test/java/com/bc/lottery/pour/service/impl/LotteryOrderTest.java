@@ -575,7 +575,7 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case DAN_SHI_YI_ZHONG_YI:
-                    priBetNumbers.add(Arrays.asList(oneNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case DAN_SHI_ER_ZHONG_ER:
                     priBetNumbers.add(Arrays.asList(twoNumber));

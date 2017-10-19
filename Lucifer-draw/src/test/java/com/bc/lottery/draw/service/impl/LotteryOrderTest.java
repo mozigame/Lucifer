@@ -514,12 +514,15 @@ public class LotteryOrderTest {
             danShuangList.add("0单5双");
 
             Lottery11x5Type jiangxiType = Lottery11x5Type.parse(playId);
+            List<String> firstList = new ArrayList<>();
+
             switch (jiangxiType) {
                 case QIAN_ER_ZU_XUAN_DAN_SHI:
                 case QIAN_ER_ZHI_XUAN_DAN_SHI:
                 case QIAN_SAN_ZU_XUAN_DAN_SHI:
                 case QIAN_SAN_ZHI_XUAN_DAN_SHI:
-                    List<String> firstList = new ArrayList<>();
+
+                    firstList.clear();
                     firstList.addAll(Arrays.asList(fourNumber));
                     firstList.addAll(Arrays.asList(fiveNumber));
                     firstList.addAll(Arrays.asList(sixNumber));
@@ -569,13 +572,24 @@ public class LotteryOrderTest {
 
                     priBetNumbers.add(Arrays.asList(danShuangList.get(5)));
                     break;
+
                 case DAN_SHI_SAN_ZHONG_SAN:
+                case DAN_SHI_LIU_ZHONG_WU:
+                    firstList.clear();
+                    firstList.addAll(Arrays.asList(fourNumber));
+                    firstList.addAll(Arrays.asList(fiveNumber));
+                    firstList.addAll(Arrays.asList(sixNumber));
+                    firstList.addAll(Arrays.asList(sevenNumber));
+                    firstList.addAll(Arrays.asList(eightNumber));
+                    priBetNumbers.add(firstList);
+                    break;
+
                 case FU_SHI_SAN_ZHONG_SAN:
                 case FU_SHI_ER_ZHONG_ER:
                 case FU_SHI_YI_ZHONG_YI:
                     priBetNumbers.add(Arrays.asList(threeNumber));
                     break;
-                case DAN_SHI_LIU_ZHONG_WU:
+
                 case FU_SHI_SI_ZHONG_SI:
                 case FU_SHI_WU_ZHONG_WU:
                     priBetNumbers.add(Arrays.asList(sixNumber));
@@ -586,19 +600,32 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case DAN_SHI_YI_ZHONG_YI:
-                    priBetNumbers.add(Arrays.asList(oneNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case DAN_SHI_ER_ZHONG_ER:
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
                     break;
                 case DAN_SHI_SI_ZHONG_SI:
-                    priBetNumbers.add(Arrays.asList(fourNumber));
+                    firstList.clear();
+                    firstList.addAll(Arrays.asList(fiveNumber));
+                    firstList.addAll(Arrays.asList(sevenNumber));
+                    firstList.addAll(Arrays.asList(eightNumber));
+                    priBetNumbers.add(firstList);
                     break;
                 case DAN_SHI_QI_ZHONG_WU:
-                    priBetNumbers.add(Arrays.asList(sevenNumber));
+                    firstList.clear();
+                    firstList.addAll(Arrays.asList(sixNumber));
+                    firstList.addAll(Arrays.asList(sevenNumber));
+                    firstList.addAll(Arrays.asList(eightNumber));
+                    priBetNumbers.add(firstList);
                     break;
                 case DAN_SHI_BA_ZHONG_WU:
-                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    firstList.clear();
+                    firstList.addAll(Arrays.asList(fourNumber));
+                    firstList.addAll(Arrays.asList(fiveNumber));
+                    firstList.addAll(Arrays.asList(sevenNumber));
+                    firstList.addAll(Arrays.asList(eightNumber));
+                    priBetNumbers.add(firstList);
                     break;
                 case CAI_ZHONG_WEI_3:
                     middleList.add("03");
@@ -628,8 +655,6 @@ public class LotteryOrderTest {
                     middleList.add("09");
                     priBetNumbers.add(middleList);
                     break;
-
-
             }
         } else if (lotteryId == 4) {
             String numBig = "大";
