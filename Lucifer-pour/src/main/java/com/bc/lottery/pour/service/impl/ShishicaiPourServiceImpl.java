@@ -492,15 +492,15 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      * @return
      */
     private long getShiShiCaiBetCount(Long playId, List<List<String>> betNumbers) {
-        int size = betNumbers.size();
 
+        int size = betNumbers.size();
         ShishicaiType shishicaiType = ShishicaiType.parse(playId);
         if (shishicaiType != null) {
 
             switch (shishicaiType) {
 
                 case WU_XING_ZHI_XUAN_FU_SHI:
-                    if (size == 5) {
+                    if (size == 5 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
@@ -512,43 +512,43 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     return 0;
 
                 case WU_XING_ZHI_XUAN_ZU_HE:
-                    if (size == 5) {
+                    if (size == 5 && checkDuplicatedPerList(betNumbers)) {
                         return 5 * LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_120:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 5);
                     }
                     return 0;
 
                 case ZU_XUAN_60:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(1, 3, betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_30:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(2, 1, betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_20:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_10:
                 case ZU_XUAN_5:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
                     }
                     return 0;
                 case SI_XING_ZHI_XUAN_FU_SHI:
-                    if (size == 4) {
+                    if (size == 4 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
@@ -560,38 +560,38 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     return 0;
 
                 case SI_XING_ZHI_XUAN_ZU_HE:
-                    if (size == 4) {
+                    if (size == 4 && checkDuplicatedPerList(betNumbers)) {
                         return 4 * LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_24:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 4);
                     }
                     return 0;
 
                 case ZU_XUAN_12:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
                     }
                     return 0;
 
                 case ZU_XUAN_6:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
 
                 case ZU_XUAN_4:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
                     }
                     return 0;
                 case QIAN_SAN_FU_SHI:
                 case ZHONG_SAN_FU_SHI:
                 case HOU_SAN_FU_SHI:
-                    if (size == 3) {
+                    if (size == 3 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
@@ -607,7 +607,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZU_SAN:
                 case ZHONG_SAN_ZU_SAN:
                 case HOU_SAN_ZU_SAN:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return 2 * LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
@@ -615,7 +615,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZU_LIU:
                 case ZHONG_SAN_ZU_LIU:
                 case HOU_SAN_ZU_LIU:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
@@ -631,7 +631,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZHI_XUAN_HE_ZHI:
                 case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
                 case HOU_SAN_ZHI_XUAN_HE_ZHI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         int count = 0;
                         for (String number : betNumbers.get(0)) {
                             try {
@@ -646,7 +646,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZU_XUAN_HE_ZHI:
                 case ZHONG_SAN_ZU_XUAN_HE_ZHI:
                 case HOU_SAN_ZU_XUAN_HE_ZHI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         int count = 0;
                         for (String number : betNumbers.get(0)) {
                             try {
@@ -659,7 +659,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     return 0;
                 case QIAN_ER_ZHI_XUAN_FU_SHI:
                 case HOU_ER_ZHI_XUAN_FU_SHI:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
@@ -676,14 +676,14 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 case QIAN_ER_ZU_XUAN_FU_SHI:
                 case HOU_ER_ZU_XUAN_FU_SHI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
 
                 case QIAN_ER_ZHI_XUAN_HE_ZHI:
                 case HOU_ER_ZHI_XUAN_HE_ZHI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         int count = 0;
                         for (String number : betNumbers.get(0)) {
                             try {
@@ -697,7 +697,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 case QIAN_ER_ZU_XUAN_HE_ZHI:
                 case HOU_ER_ZU_XUAN_HE_ZHI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         int count = 0;
                         for (String number : betNumbers.get(0)) {
                             try {
@@ -709,27 +709,27 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     return 0;
                 case YI_XING_DING_WEI_DAN:
-                    if (size != 0) {
+                    if (size != 0 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toPlusAll(betNumbers);
                     }
                     return 0;
                 case QIAN_SAN_YI_MA:
                 case HOU_SAN_YI_MA:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return betNumbers.get(0).size();
                     }
                     return 0;
 
                 case QIAN_SAN_ER_MA:
                 case HOU_SAN_ER_MA:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
 
                 case QIAN_ER_DA_XIAO_DAN_SHUANG:
                 case HOU_ER_DA_XIAO_DAN_SHUANG:
-                    if (size == 2) {
+                    if (size == 2 && checkDuplicatedPerList(betNumbers)) {
                         return LotteryUtils.toMultiplyAll(betNumbers);
                     }
                     return 0;
@@ -739,7 +739,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case HAO_SHI_CHENG_SHUANG:
                 case SAN_XING_BAO_XI:
                 case SI_JI_FA_CAI:
-                    if (size == 1) {
+                    if (size == 1 && checkDuplicatedPerList(betNumbers)) {
                         return betNumbers.get(0).size();
                     }
                     return 0;
@@ -747,7 +747,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     return 0;
             }
         }
-
         return 0;
     }
 
@@ -926,5 +925,28 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         betCount = LotteryUtils.toMultiplyAll(betNumbers) - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1)) * betNumbers.get(2).size() - LotteryUtils.intersectionOfSetNum(betNumbers.get(1), betNumbers.get(2)) * betNumbers.get(0).size() - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(2)) * betNumbers.get(1).size() + 2 * LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1), betNumbers.get(2));
 
         return betCount;
+    }
+
+    /**
+     * 校验注单的每一行是否有重复（true-有重复）
+     *
+     * @param betList
+     * @return
+     */
+    private boolean checkDuplicatedPerList(List<List<String>> betList) {
+
+        if (betList.size() == 0) {
+            return false;
+        } else {
+            for (List<String> betLine : betList) {
+
+                Set<String> betSet = new HashSet<>();
+                betSet.addAll(betLine);
+                if (betLine.size() != betSet.size()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

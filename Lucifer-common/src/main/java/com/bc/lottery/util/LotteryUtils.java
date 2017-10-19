@@ -687,6 +687,167 @@ public class LotteryUtils {
         return resultList;
     }
 
+
+    /**
+     * 判断中奖号是否满足组120规则
+     *
+     * @param kjStr
+     * @return
+     */
+
+    public static boolean checkIsZu120(String kjStr) {
+        // TODO 可用正则优化  /^(\d),\1,\1/
+        //return !kjStr.matches("/^(\\d),\\1,\\1/") && !LotteryUtils.checkDifferent(kjStr);
+
+        return LotteryUtils.getUnDupStr(kjStr).size() == 5;
+    }
+
+    /**
+     * 判断中奖号是否满足组60规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu60(String kjStr) {
+        // TODO 可用正则优化  /^(\d),\1,\1/
+        //return !kjStr.matches("/^(\\d),\\1,\\1/") && !LotteryUtils.checkDifferent(kjStr);
+
+        return LotteryUtils.getDupStr(kjStr).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 3;
+    }
+
+    /**
+     * 判断中奖号是否满足组30规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu30(String kjStr) {
+        return LotteryUtils.getDupStr(kjStr).size() == 2 && LotteryUtils.getUnDupStr(kjStr).size() == 1;
+    }
+
+    /**
+     * 判断中奖号是否满足组20规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu20(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 2;
+    }
+
+    /**
+     * 判断中奖号是否满足组10规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu10(String kjStr) {
+
+        //return LotteryUtils.getDupStrByDupNum(kjStr, 3).size() == 1 && LotteryUtils.getDupStrByDupNum(kjStr, 2).size() == 1;
+        return LotteryUtils.getDupStr(kjStr).size() == 2 && LotteryUtils.getUnDupStr(kjStr).size() == 0;
+    }
+
+    /**
+     * 判断中奖号是否满足组5规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu5(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 1;
+    }
+
+    /**
+     * 判断中奖号是否满足组24规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu24(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 4;
+    }
+
+    /**
+     * 判断中奖号是否满足组12规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu12(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 2;
+    }
+
+    /**
+     * 判断中奖号是否满足组6规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu6(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 2;
+    }
+
+    /**
+     * 判断中奖号是否满足组4规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu4(String kjStr) {
+
+        return LotteryUtils.getDupStrByDupNum(kjStr, 3).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 1;
+    }
+
+    /**
+     * 判断中奖号是否满足三星组6规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsSanxingZu6(String kjStr) {
+
+        return LotteryUtils.getUnDupStr(kjStr).size() == 3;
+    }
+
+    /**
+     * 判断中奖号是否满足三星组选和值规则（即去除豹子号）
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsSanxingZuHe(String kjStr) {
+
+        return LotteryUtils.getDupStrByDupNum(kjStr, 3).size() == 0;
+    }
+
+    /**
+     * 判断中奖号是否满足三星组3规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsZu3(String kjStr) {
+
+        return LotteryUtils.getDupStrByDupNum(kjStr, 2).size() == 1 && LotteryUtils.getUnDupStr(kjStr).size() == 1;
+    }
+
+    /**
+     * 判断中奖号是否满足二星复式规则
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsErxingFuShi(String kjStr) {
+
+        return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 2;
+    }
+
+
     public static void main(String[] args) {
 
         System.out.println(combinationBig(21, 4));
