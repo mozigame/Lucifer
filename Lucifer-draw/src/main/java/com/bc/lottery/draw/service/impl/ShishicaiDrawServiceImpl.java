@@ -1472,7 +1472,12 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     continue;
 
                     // 定单双
-                case DING_DAN_SHUANG:
+                case DING_DAN_SHUANG_0:
+                case DING_DAN_SHUANG_1:
+                case DING_DAN_SHUANG_2:
+                case DING_DAN_SHUANG_3:
+                case DING_DAN_SHUANG_4:
+                case DING_DAN_SHUANG_5:
 
                     if (betNumbers.size() == 1) {
 
@@ -1490,7 +1495,13 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     continue;
 
                     //猜中位
-                case CAI_ZHONG_WEI:
+                case CAI_ZHONG_WEI_3:
+                case CAI_ZHONG_WEI_4:
+                case CAI_ZHONG_WEI_5:
+                case CAI_ZHONG_WEI_6:
+                case CAI_ZHONG_WEI_7:
+                case CAI_ZHONG_WEI_8:
+                case CAI_ZHONG_WEI_9:
 
                     if (betNumbers.size() == 1) {
 
@@ -1609,7 +1620,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      * 11选5双面盘开奖算法
      *
      * @param lotteryType
-     * @param kj
+     * @param kjNo
      * @param lotteryOrderList
      * @return
      */
@@ -1635,7 +1646,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (betNumbers.size() == 1) {
 
                         //获取中奖号的总和的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60,30);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
 
                         for (String betNumber : betNumbers.get(0)) {
                             if (firstBetList.contains(betNumber)) {
@@ -1714,7 +1725,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (betNumbers.size() == 1) {
 
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 11,11);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 11, 11);
 
                         for (String betNumber : betNumbers.get(0)) {
                             if (firstBetList.contains(betNumber)) {

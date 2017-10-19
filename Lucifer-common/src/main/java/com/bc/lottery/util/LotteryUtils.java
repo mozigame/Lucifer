@@ -558,13 +558,13 @@ public class LotteryUtils {
 
         List<String> resultList = new ArrayList<>();
 
-        // 判断奇偶
-        if (aimNo % 2 == 1) {
-            resultList.add("单");
-        } else {
-            resultList.add("双");
-        }
         if (aimNo != ignoreNo) {
+            // 判断奇偶
+            if (aimNo % 2 == 1) {
+                resultList.add("单");
+            } else {
+                resultList.add("双");
+            }
 
             // 判断大小
             if (aimNo <= maxNo / 2) {

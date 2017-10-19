@@ -16,7 +16,17 @@ public interface LotteryPourHandle {
      * @param playId
      * @return
      */
+    @Deprecated
     long getBetCount(List<List<String>> betNumbers, Long playId);
+
+    /**
+     * 获取彩票注单数量
+     *
+     * @param betNumbers
+     * @param playId
+     * @return
+     */
+    long getLotteryBetCount(Long lotteryId, Long playId, List<List<String>> betNumbers);
 
     /**
      * 生成随机注单

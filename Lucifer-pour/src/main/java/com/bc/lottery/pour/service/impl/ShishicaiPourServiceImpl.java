@@ -1,5 +1,6 @@
 package com.bc.lottery.pour.service.impl;
 
+import com.bc.lottery.entity.Lottery11x5Type;
 import com.bc.lottery.entity.ShishicaiType;
 import com.bc.lottery.pour.service.LotteryPourHandle;
 import com.bc.lottery.util.JsonUtils;
@@ -20,265 +21,20 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     private static final int[] ER_XING_ZHI_XUAN_HE_ZHI = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
     private static final int[] ER_XING_ZU_XUAN_HE_ZHI = {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 4, 4, 3, 3, 2, 2, 1, 1};
 
-
     @Override
     public long getBetCount(List<List<String>> betNumbers, Long playId) {
-        int size = betNumbers.size();
 
-        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
-        if (shishicaiType != null) {
+        return getShiShiCaiBetCount(playId, betNumbers);
+    }
 
-            switch (shishicaiType) {
+    @Override
+    public long getLotteryBetCount(Long lotteryId, Long playId, List<List<String>> betNumbers) {
 
-                case WU_XING_ZHI_XUAN_FU_SHI:
-                    if (size == 5) {
-                        return LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case WU_XING_ZHI_XUAN_DAN_SHI:
-                    if (size == 1) {
-                        return betNumbers.get(0).size() / 5;
-                    }
-                    return 0;
-
-                case WU_XING_ZHI_XUAN_ZU_HE:
-                    if (size == 5) {
-                        return 5 * LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_120:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 5);
-                    }
-                    return 0;
-
-                case ZU_XUAN_60:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(1, 3, betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_30:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(2, 1, betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_20:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_10:
-                case ZU_XUAN_5:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
-                    }
-                    return 0;
-                case SI_XING_ZHI_XUAN_FU_SHI:
-                    if (size == 4) {
-                        return LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case SI_XING_ZHI_XUAN_DAN_SHI:
-                    if (size == 1) {
-                        return betNumbers.get(0).size() / 4;
-                    }
-                    return 0;
-
-                case SI_XING_ZHI_XUAN_ZU_HE:
-                    if (size == 4) {
-                        return 4 * LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_24:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
-                    }
-                    return 0;
-
-                case ZU_XUAN_12:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
-                    }
-                    return 0;
-
-                case ZU_XUAN_6:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
-                    }
-                    return 0;
-
-                case ZU_XUAN_4:
-                    if (size == 2) {
-                        return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
-                    }
-                    return 0;
-                case QIAN_SAN_FU_SHI:
-                case ZHONG_SAN_FU_SHI:
-                case HOU_SAN_FU_SHI:
-                    if (size == 3) {
-                        return LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case QIAN_SAN_DAN_SHI:
-                case ZHONG_SAN_DAN_SHI:
-                case HOU_SAN_DAN_SHI:
-                    if (size == 1) {
-                        return betNumbers.get(0).size() / 3;
-                    }
-                    return 0;
-
-                case QIAN_SAN_ZU_SAN:
-                case ZHONG_SAN_ZU_SAN:
-                case HOU_SAN_ZU_SAN:
-                    if (size == 1) {
-                        return 2 * LotteryUtils.combination(betNumbers.get(0).size(), 2);
-                    }
-                    return 0;
-
-                case QIAN_SAN_ZU_LIU:
-                case ZHONG_SAN_ZU_LIU:
-                case HOU_SAN_ZU_LIU:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
-                    }
-                    return 0;
-
-                case QIAN_SAN_HUN_HE_ZU_XUAN:
-                case ZHONG_SAN_HUN_HE_ZU_XUAN:
-                case HOU_SAN_HUN_HE_ZU_XUAN:
-                    if (size == 1) {
-                        return betNumbers.get(0).size() / 3;
-                    }
-                    return 0;
-
-                case QIAN_SAN_ZHI_XUAN_HE_ZHI:
-                case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
-                case HOU_SAN_ZHI_XUAN_HE_ZHI:
-                    if (size == 1) {
-                        int count = 0;
-                        for (String number : betNumbers.get(0)) {
-                            try {
-                                count += SAN_XING_ZHI_XUAN_HE_ZHI[Integer.parseInt(number)];
-                            } catch (NumberFormatException e) {
-                            }
-                        }
-                        return count;
-                    }
-                    return 0;
-
-                case QIAN_SAN_ZU_XUAN_HE_ZHI:
-                case ZHONG_SAN_ZU_XUAN_HE_ZHI:
-                case HOU_SAN_ZU_XUAN_HE_ZHI:
-                    if (size == 1) {
-                        int count = 0;
-                        for (String number : betNumbers.get(0)) {
-                            try {
-                                count += SAN_XING_ZU_XUAN_HE_ZHI[Integer.parseInt(number)];
-                            } catch (NumberFormatException e) {
-                            }
-                        }
-                        return count;
-                    }
-                    return 0;
-                case QIAN_ER_ZHI_XUAN_FU_SHI:
-                case HOU_ER_ZHI_XUAN_FU_SHI:
-                    if (size == 2) {
-                        return LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case QIAN_ER_ZHI_XUAN_DAN_SHI:
-                case HOU_ER_ZHI_XUAN_DAN_SHI:
-
-                case QIAN_ER_ZU_XUAN_DAN_SHI:
-                case HOU_ER_ZU_XUAN_DAN_SHI:
-                    if (size == 1) {
-                        return betNumbers.get(0).size() / 2;
-                    }
-                    return 0;
-
-                case QIAN_ER_ZU_XUAN_FU_SHI:
-                case HOU_ER_ZU_XUAN_FU_SHI:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
-                    }
-                    return 0;
-
-                case QIAN_ER_ZHI_XUAN_HE_ZHI:
-                case HOU_ER_ZHI_XUAN_HE_ZHI:
-                    if (size == 1) {
-                        int count = 0;
-                        for (String number : betNumbers.get(0)) {
-                            try {
-                                count += ER_XING_ZHI_XUAN_HE_ZHI[Integer.parseInt(number)];
-                            } catch (NumberFormatException e) {
-                            }
-                        }
-                        return count;
-                    }
-                    return 0;
-
-                case QIAN_ER_ZU_XUAN_HE_ZHI:
-                case HOU_ER_ZU_XUAN_HE_ZHI:
-                    if (size == 1) {
-                        int count = 0;
-                        for (String number : betNumbers.get(0)) {
-                            try {
-                                count += ER_XING_ZU_XUAN_HE_ZHI[Integer.parseInt(number)];
-                            } catch (NumberFormatException e) {
-                            }
-                        }
-                        return count;
-                    }
-                    return 0;
-                case YI_XING_DING_WEI_DAN:
-                    if (size != 0) {
-                        return LotteryUtils.toPlusAll(betNumbers);
-                    }
-                    return 0;
-                case QIAN_SAN_YI_MA:
-                case HOU_SAN_YI_MA:
-                    if (size == 1) {
-                        return betNumbers.get(0).size();
-                    }
-                    return 0;
-
-                case QIAN_SAN_ER_MA:
-                case HOU_SAN_ER_MA:
-                    if (size == 1) {
-                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
-                    }
-                    return 0;
-
-                case QIAN_ER_DA_XIAO_DAN_SHUANG:
-                case HOU_ER_DA_XIAO_DAN_SHUANG:
-                    if (size == 2) {
-                        return LotteryUtils.toMultiplyAll(betNumbers);
-                    }
-                    return 0;
-
-                case ZONG_HE_DA_XIAO_DAN_SHUANG:
-                case YI_FAN_FENG_SHUN:
-                case HAO_SHI_CHENG_SHUANG:
-                case SAN_XING_BAO_XI:
-                case SI_JI_FA_CAI:
-                    if (size == 1) {
-                        return betNumbers.get(0).size();
-                    }
-                    return 0;
-                default:
-                    return 0;
-            }
+        if (lotteryId == 1) {
+            return getShiShiCaiBetCount(playId, betNumbers);
+        } else if (lotteryId == 3) {
+            return getLottery11x5BetCount(playId, betNumbers);
         }
-
         return 0;
     }
 
@@ -698,5 +454,423 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             returnList.add(oneList);
         }
         return returnList;
+    }
+
+
+    /**
+     * 获取时时彩下注算法
+     *
+     * @param playId
+     * @param betNumbers
+     * @return
+     */
+    private long getShiShiCaiBetCount(Long playId, List<List<String>> betNumbers) {
+        int size = betNumbers.size();
+
+        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
+        if (shishicaiType != null) {
+
+            switch (shishicaiType) {
+
+                case WU_XING_ZHI_XUAN_FU_SHI:
+                    if (size == 5) {
+                        return LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case WU_XING_ZHI_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 5;
+                    }
+                    return 0;
+
+                case WU_XING_ZHI_XUAN_ZU_HE:
+                    if (size == 5) {
+                        return 5 * LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_120:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 5);
+                    }
+                    return 0;
+
+                case ZU_XUAN_60:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(1, 3, betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_30:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(2, 1, betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_20:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_10:
+                case ZU_XUAN_5:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
+                    }
+                    return 0;
+                case SI_XING_ZHI_XUAN_FU_SHI:
+                    if (size == 4) {
+                        return LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case SI_XING_ZHI_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 4;
+                    }
+                    return 0;
+
+                case SI_XING_ZHI_XUAN_ZU_HE:
+                    if (size == 4) {
+                        return 4 * LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_24:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
+                    }
+                    return 0;
+
+                case ZU_XUAN_12:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(1, 2, betNumbers);
+                    }
+                    return 0;
+
+                case ZU_XUAN_6:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                case ZU_XUAN_4:
+                    if (size == 2) {
+                        return LotteryUtils.twoCombinationRemoveRepeat(1, 1, betNumbers);
+                    }
+                    return 0;
+                case QIAN_SAN_FU_SHI:
+                case ZHONG_SAN_FU_SHI:
+                case HOU_SAN_FU_SHI:
+                    if (size == 3) {
+                        return LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case QIAN_SAN_DAN_SHI:
+                case ZHONG_SAN_DAN_SHI:
+                case HOU_SAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 3;
+                    }
+                    return 0;
+
+                case QIAN_SAN_ZU_SAN:
+                case ZHONG_SAN_ZU_SAN:
+                case HOU_SAN_ZU_SAN:
+                    if (size == 1) {
+                        return 2 * LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                case QIAN_SAN_ZU_LIU:
+                case ZHONG_SAN_ZU_LIU:
+                case HOU_SAN_ZU_LIU:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
+
+                case QIAN_SAN_HUN_HE_ZU_XUAN:
+                case ZHONG_SAN_HUN_HE_ZU_XUAN:
+                case HOU_SAN_HUN_HE_ZU_XUAN:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 3;
+                    }
+                    return 0;
+
+                case QIAN_SAN_ZHI_XUAN_HE_ZHI:
+                case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
+                case HOU_SAN_ZHI_XUAN_HE_ZHI:
+                    if (size == 1) {
+                        int count = 0;
+                        for (String number : betNumbers.get(0)) {
+                            try {
+                                count += SAN_XING_ZHI_XUAN_HE_ZHI[Integer.parseInt(number)];
+                            } catch (NumberFormatException e) {
+                            }
+                        }
+                        return count;
+                    }
+                    return 0;
+
+                case QIAN_SAN_ZU_XUAN_HE_ZHI:
+                case ZHONG_SAN_ZU_XUAN_HE_ZHI:
+                case HOU_SAN_ZU_XUAN_HE_ZHI:
+                    if (size == 1) {
+                        int count = 0;
+                        for (String number : betNumbers.get(0)) {
+                            try {
+                                count += SAN_XING_ZU_XUAN_HE_ZHI[Integer.parseInt(number)];
+                            } catch (NumberFormatException e) {
+                            }
+                        }
+                        return count;
+                    }
+                    return 0;
+                case QIAN_ER_ZHI_XUAN_FU_SHI:
+                case HOU_ER_ZHI_XUAN_FU_SHI:
+                    if (size == 2) {
+                        return LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+                case HOU_ER_ZHI_XUAN_DAN_SHI:
+
+                case QIAN_ER_ZU_XUAN_DAN_SHI:
+                case HOU_ER_ZU_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 2;
+                    }
+                    return 0;
+
+                case QIAN_ER_ZU_XUAN_FU_SHI:
+                case HOU_ER_ZU_XUAN_FU_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                case QIAN_ER_ZHI_XUAN_HE_ZHI:
+                case HOU_ER_ZHI_XUAN_HE_ZHI:
+                    if (size == 1) {
+                        int count = 0;
+                        for (String number : betNumbers.get(0)) {
+                            try {
+                                count += ER_XING_ZHI_XUAN_HE_ZHI[Integer.parseInt(number)];
+                            } catch (NumberFormatException e) {
+                            }
+                        }
+                        return count;
+                    }
+                    return 0;
+
+                case QIAN_ER_ZU_XUAN_HE_ZHI:
+                case HOU_ER_ZU_XUAN_HE_ZHI:
+                    if (size == 1) {
+                        int count = 0;
+                        for (String number : betNumbers.get(0)) {
+                            try {
+                                count += ER_XING_ZU_XUAN_HE_ZHI[Integer.parseInt(number)];
+                            } catch (NumberFormatException e) {
+                            }
+                        }
+                        return count;
+                    }
+                    return 0;
+                case YI_XING_DING_WEI_DAN:
+                    if (size != 0) {
+                        return LotteryUtils.toPlusAll(betNumbers);
+                    }
+                    return 0;
+                case QIAN_SAN_YI_MA:
+                case HOU_SAN_YI_MA:
+                    if (size == 1) {
+                        return betNumbers.get(0).size();
+                    }
+                    return 0;
+
+                case QIAN_SAN_ER_MA:
+                case HOU_SAN_ER_MA:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                case QIAN_ER_DA_XIAO_DAN_SHUANG:
+                case HOU_ER_DA_XIAO_DAN_SHUANG:
+                    if (size == 2) {
+                        return LotteryUtils.toMultiplyAll(betNumbers);
+                    }
+                    return 0;
+
+                case ZONG_HE_DA_XIAO_DAN_SHUANG:
+                case YI_FAN_FENG_SHUN:
+                case HAO_SHI_CHENG_SHUANG:
+                case SAN_XING_BAO_XI:
+                case SI_JI_FA_CAI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size();
+                    }
+                    return 0;
+                default:
+                    return 0;
+            }
+        }
+
+        return 0;
+    }
+
+
+    private long getLottery11x5BetCount(Long playId, List<List<String>> betNumbers) {
+        int size = betNumbers.size();
+
+        Lottery11x5Type lottery11x5Type = Lottery11x5Type.parse(playId);
+        if (lottery11x5Type != null) {
+
+            switch (lottery11x5Type) {
+
+                // 一中一
+                case FU_SHI_YI_ZHONG_YI:
+                case DAN_SHI_YI_ZHONG_YI:
+
+                    // 定单双
+                case DING_DAN_SHUANG_0:
+                case DING_DAN_SHUANG_1:
+                case DING_DAN_SHUANG_2:
+                case DING_DAN_SHUANG_3:
+                case DING_DAN_SHUANG_4:
+                case DING_DAN_SHUANG_5:
+
+                    // 猜中位
+                case CAI_ZHONG_WEI_3:
+                case CAI_ZHONG_WEI_4:
+                case CAI_ZHONG_WEI_5:
+                case CAI_ZHONG_WEI_6:
+                case CAI_ZHONG_WEI_7:
+                case CAI_ZHONG_WEI_8:
+                case CAI_ZHONG_WEI_9:
+
+                    // 不定胆
+                case QIAN_SAN_YI_MA:
+
+                    if (size == 1) {
+                        return betNumbers.get(0).size();
+                    }
+                    return 0;
+
+                // 二中二
+                case FU_SHI_ER_ZHONG_ER:
+                case DAN_SHI_ER_ZHONG_ER:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                // 三中三
+                case FU_SHI_SAN_ZHONG_SAN:
+                case DAN_SHI_SAN_ZHONG_SAN:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
+
+                // 四中四
+                case FU_SHI_SI_ZHONG_SI:
+                case DAN_SHI_SI_ZHONG_SI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
+                    }
+                    return 0;
+
+                //五中五
+                case FU_SHI_WU_ZHONG_WU:
+                case DAN_SHI_WU_ZHONG_WU:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 5);
+                    }
+                    return 0;
+
+                // 六中五
+                case FU_SHI_LIU_ZHONG_WU:
+                case DAN_SHI_LIU_ZHONG_WU:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 6);
+                    }
+                    return 0;
+
+                // 七中五
+                case FU_SHI_QI_ZHONG_WU:
+                case DAN_SHI_QI_ZHONG_WU:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 7);
+                    }
+                    return 0;
+
+                // 八中五
+                case FU_SHI_BA_ZHONG_WU:
+                case DAN_SHI_BA_ZHONG_WU:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 8);
+                    }
+                    return 0;
+
+                // 一星定位胆
+                case YI_XING_DING_WEI_DAN:
+                    if (size != 0) {
+                        return LotteryUtils.toPlusAll(betNumbers);
+                    }
+                    return 0;
+
+                // 前二直选复式
+                case QIAN_ER_ZHI_XUAN_FU_SHI:
+                    if (size == 2) {
+                        return LotteryUtils.toMultiplyAll(betNumbers) - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1));
+                    }
+                    return 0;
+
+                //前二直选单式
+                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+                    //前二组选单式
+                case QIAN_ER_ZU_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 2;
+                    }
+                    return 0;
+
+                // 前二组选复式
+                case QIAN_ER_ZU_XUAN_FU_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                // 前三直选单式
+                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
+                    // 前三组选单式
+                case QIAN_SAN_ZU_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        return betNumbers.get(0).size() / 3;
+                    }
+                    return 0;
+                // 前三直选复式
+                case QIAN_SAN_ZHI_XUAN_FU_SHI:
+                    //TODO
+
+                case QIAN_SAN_ZU_XUAN_FU_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
+
+                default:
+                    return 0;
+            }
+        }
+
+        return 0;
     }
 }
