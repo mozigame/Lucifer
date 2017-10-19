@@ -497,6 +497,26 @@ public class LotteryUtils {
     }
 
     /**
+     * 截取11选5的单式模式玩法
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<List<String>> getSubStrList11x5(List<String> strList, int length) {
+
+        List<List<String>> resultList = new ArrayList<>();
+        for (int i = 0; i < strList.size() / length; i++) {
+            List<String> oneList = new ArrayList<>();
+            for (int j = 0; j < length; j++) {
+                oneList.add(strList.get(i * length + j));
+            }
+            resultList.add(oneList);
+        }
+        return resultList;
+    }
+
+    /**
      * 按指定长度截取传入的strList数据
      *
      * @param strList

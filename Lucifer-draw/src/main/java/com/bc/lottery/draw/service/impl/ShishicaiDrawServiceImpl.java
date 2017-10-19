@@ -260,6 +260,13 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
     }
 
 
+    /**
+     * 整理11选5的开奖号码
+     *
+     * @param kj
+     * @param lotteryType
+     * @return
+     */
     private List<String> getRealLottery11x5Kj(String kj, LotteryType lotteryType) {
 
         List<String> resultList = new ArrayList<>();
@@ -413,6 +420,70 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case WU_QIU_DING_WEI_DAN_11:
                     resultList.add(kjList.get(4));
                     break;
+            }
+        } else if (lotteryType instanceof Lottery11x5Type) {
+
+            Lottery11x5Type lottery11x5Type = (Lottery11x5Type) lotteryType;
+            switch (lottery11x5Type) {
+
+                // 截取总和
+                case QIAN_SAN_YI_MA:
+                case YI_XING_DING_WEI_DAN:
+                case QIAN_SAN_ZHI_XUAN_FU_SHI:
+                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
+                case QIAN_SAN_ZU_XUAN_FU_SHI:
+                case QIAN_SAN_ZU_XUAN_DAN_SHI:
+
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(2));
+                    break;
+
+                case QIAN_ER_ZHI_XUAN_FU_SHI:
+                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+                case QIAN_ER_ZU_XUAN_FU_SHI:
+                case QIAN_ER_ZU_XUAN_DAN_SHI:
+
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    break;
+
+                case CAI_ZHONG_WEI_3:
+                case CAI_ZHONG_WEI_4:
+                case CAI_ZHONG_WEI_5:
+                case CAI_ZHONG_WEI_6:
+                case CAI_ZHONG_WEI_7:
+                case CAI_ZHONG_WEI_8:
+                case CAI_ZHONG_WEI_9:
+
+                case DING_DAN_SHUANG_0:
+                case DING_DAN_SHUANG_1:
+                case DING_DAN_SHUANG_2:
+                case DING_DAN_SHUANG_3:
+                case DING_DAN_SHUANG_4:
+                case DING_DAN_SHUANG_5:
+
+                case DAN_SHI_YI_ZHONG_YI:
+                case DAN_SHI_ER_ZHONG_ER:
+                case DAN_SHI_SAN_ZHONG_SAN:
+                case DAN_SHI_SI_ZHONG_SI:
+                case DAN_SHI_WU_ZHONG_WU:
+                case DAN_SHI_LIU_ZHONG_WU:
+                case DAN_SHI_QI_ZHONG_WU:
+                case DAN_SHI_BA_ZHONG_WU:
+
+                case FU_SHI_YI_ZHONG_YI:
+                case FU_SHI_ER_ZHONG_ER:
+                case FU_SHI_SAN_ZHONG_SAN:
+                case FU_SHI_SI_ZHONG_SI:
+                case FU_SHI_WU_ZHONG_WU:
+                case FU_SHI_LIU_ZHONG_WU:
+                case FU_SHI_QI_ZHONG_WU:
+                case FU_SHI_BA_ZHONG_WU:
+
+                    resultList.addAll(kjList);
+                    break;
+
             }
         }
 
@@ -1345,61 +1416,41 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      * @param lotteryOrderList
      * @return
      */
-    private List<UserOrderPO> getBoundsInfoOfLottery11x5(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
+    private List<UserOrderPO> getBoundsInfoOfLottery11x5(LotteryType lotteryType, String kjNo, List<UserOrderPO> lotteryOrderList) {
 
-        String[] kjArr = kj.split(" ");
+        List<String> kjList = getRealLottery11x5Kj(kjNo, lotteryType);
         for (UserOrderPO lotteryOrder : lotteryOrderList) {
 
             List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
 
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
-            int secondPrizeNum = 0;// 二等奖次数
-            int thirdPrizeNum = 0; // 三等奖次数
-            int forthPrizeNum = 0; // 四等奖次数
-            int fifthPrizeNum = 0; // 五等奖次数
 
-            Set<String> kjStrList = new HashSet<>();
             Lottery11x5Type Lottery11x5Type = (Lottery11x5Type) lotteryType;
             switch (Lottery11x5Type) {
 
-                // 三星玩法
-                //三星直选复式
+                // 复式玩法
+                //前三直选复式
                 case QIAN_SAN_ZHI_XUAN_FU_SHI:
 
                     if (size == 3) {
                         //判断中奖号码是否包含在所选的各组号码中
-                        if (betNumbers.get(0).contains(kjArr[0])
-                                && betNumbers.get(1).contains(kjArr[1])
-                                && betNumbers.get(2).contains(kjArr[2])) {
+                        if (betNumbers.get(0).contains(kjList.get(0))
+                                && betNumbers.get(1).contains(kjList.get(1))
+                                && betNumbers.get(2).contains(kjList.get(2))) {
                             firstPrizeNum = 1;
                         }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
-                    // 三星直选单式
-                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
-                    if (size == 1) {
-                        List<String> betNumberList = getBetNumbers(lotteryType, betNumbers);
-                        for (String betNumber : betNumberList) {
-                            if (betNumber != null && betNumber.equals(kj)) {
-                                firstPrizeNum++;
-                            }
-                        }
-                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
-                    }
-                    continue;
-
-
-                    // 二星
-                    //二星直选复式
+                    //前二直选复式
                 case QIAN_ER_ZHI_XUAN_FU_SHI:
 
                     if (size == 2) {
                         //判断中奖号码是否包含在所选的各组号码中
-                        if (betNumbers.get(0).contains(kjArr[0])
-                                && betNumbers.get(1).contains(kjArr[1])
+                        if (betNumbers.get(0).contains(kjList.get(0))
+                                && betNumbers.get(1).contains(kjList.get(1))
                                 ) {
                             firstPrizeNum = 1;
                         }
@@ -1407,13 +1458,48 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     }
                     continue;
 
-                    // 二星直选单式
-                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+                    //前三组选复式
+                case QIAN_SAN_ZU_XUAN_FU_SHI:
+                    //前二组选复式
+                case QIAN_ER_ZU_XUAN_FU_SHI:
+                    if (size == 1) {
+
+                        //获取中奖号中的非重复字符
+                        if (betNumbers.get(0).containsAll(kjList)) {
+                            firstPrizeNum = 1;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+
+                    continue;
+
+                    // 单式玩法
+                    // 前三组选单式
+                case QIAN_SAN_ZU_XUAN_DAN_SHI:
+                    if (size == 1) {
+                        List<List<String>> realStringList = LotteryUtils.getSubStrList11x5(betNumbers.get(0), 3);
+                        for (List<String> stringList : realStringList) {
+                            if (stringList.size() != 3) {
+                                continue;
+                            }
+                            if (stringList.containsAll(kjList)) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 前二组选单式
+                case QIAN_ER_ZU_XUAN_DAN_SHI:
 
                     if (size == 1) {
-                        List<String> betNumberList = getBetNumbers(lotteryType, betNumbers);
-                        for (String betNumber : betNumberList) {
-                            if (betNumber != null && betNumber.equals(kj)) {
+                        List<List<String>> realStringList = LotteryUtils.getSubStrList11x5(betNumbers.get(0), 2);
+                        for (List<String> stringList : realStringList) {
+                            if (stringList.size() != 2) {
+                                continue;
+                            }
+                            if (stringList.containsAll(kjList)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -1422,30 +1508,51 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                     continue;
 
-                    //二星组选复式
-                case QIAN_ER_ZU_XUAN_FU_SHI:
-                    //二星组选单式
-                case QIAN_ER_ZU_XUAN_DAN_SHI:
-                    //三星组选复式
-                case QIAN_SAN_ZU_XUAN_FU_SHI:
-                    //三星组选单式
-                case QIAN_SAN_ZU_XUAN_DAN_SHI:
+                    //前三直选单式
+                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
                     if (size == 1) {
 
-                        //获取中奖号中的非重复字符
-                        if (betNumbers.get(0).containsAll(Arrays.asList(kjArr))) {
-                            firstPrizeNum = 1;
+                        List<List<String>> realStringList = LotteryUtils.getSubStrList11x5(betNumbers.get(0), 3);
+                        for (List<String> stringList : realStringList) {
+                            //判断中奖号码是否全部相等
+                            if (stringList.size() != 3) {
+                                continue;
+                            }
+                            if (stringList.get(0).contains(kjList.get(0))
+                                    && stringList.get(1).contains(kjList.get(1))
+                                    && stringList.get(2).contains(kjList.get(2))) {
+                                firstPrizeNum++;
+                            }
                         }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
+                    continue;
 
+                    //前二直选单式
+                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+
+                    if (size == 1) {
+
+                        List<List<String>> realStringList = LotteryUtils.getSubStrList11x5(betNumbers.get(0), 2);
+                        for (List<String> stringList : realStringList) {
+                            //判断中奖号码是否全部相等
+                            if (stringList.size() != 2) {
+                                continue;
+                            }
+                            if (stringList.get(0).contains(kjList.get(0))
+                                    && stringList.get(1).contains(kjList.get(1))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
                     continue;
 
                     //一星定位胆
                 case YI_XING_DING_WEI_DAN:
 
                     for (int i = 0; i < betNumbers.size(); i++) {
-                        if (betNumbers.get(i) != null && betNumbers.get(i).size() > 0 && betNumbers.get(i).contains(kjArr[i])) {
+                        if (betNumbers.get(i) != null && betNumbers.get(i).size() > 0 && betNumbers.get(i).contains(kjList.get(i))) {
                             firstPrizeNum++;
                         }
                     }
@@ -1457,13 +1564,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case QIAN_SAN_YI_MA:
 
                     if (size == 1) {
-                        //TODO 是否需要优化
-                        //获取中奖号中的重复字符
-                        Set<String> dupStrList = LotteryUtils.getDupStr(kj);
-                        //获取中奖号中的非重复字符
-                        List<String> unDupStrList = LotteryUtils.getUnDupStr(kj);
+
                         for (String betNumber : betNumbers.get(0)) {
-                            if (dupStrList.contains(betNumber) || unDupStrList.contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -1482,7 +1585,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (betNumbers.size() == 1) {
 
                         //获取中奖号的大小单双
-                        String dingDSStr = LotteryUtils.getDingDanShuangString(Arrays.asList(kjArr));
+                        String dingDSStr = LotteryUtils.getDingDanShuangString(kjList);
 
                         for (String betNumber : betNumbers.get(0)) {
                             if (betNumber.equals(dingDSStr)) {
@@ -1506,7 +1609,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (betNumbers.size() == 1) {
 
                         //获取开奖号码的中位号
-                        String dingDSStr = LotteryUtils.getCaiZhongWeiString(Arrays.asList(kjArr));
+                        String dingDSStr = LotteryUtils.getCaiZhongWeiString(kjList);
 
                         for (String betNumber : betNumbers.get(0)) {
                             if (betNumber.equals(dingDSStr)) {
@@ -1524,7 +1627,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (betNumbers.size() == 1) {
 
                         for (String betNumber : betNumbers.get(0)) {
-                            if (Arrays.asList(kjArr).contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -1540,7 +1643,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                         int prizeNum = 0;
                         for (String betNumber : betNumbers.get(0)) {
-                            if (Arrays.asList(kjArr).contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 prizeNum++;
                             }
                         }
@@ -1558,7 +1661,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                         int prizeNum = 0;
                         for (String betNumber : betNumbers.get(0)) {
-                            if (Arrays.asList(kjArr).contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 prizeNum++;
                             }
                         }
@@ -1577,7 +1680,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                         int prizeNum = 0;
                         for (String betNumber : betNumbers.get(0)) {
-                            if (Arrays.asList(kjArr).contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 prizeNum++;
                             }
                         }
@@ -1603,7 +1706,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                         int prizeNum = 0;
                         for (String betNumber : betNumbers.get(0)) {
-                            if (Arrays.asList(kjArr).contains(betNumber)) {
+                            if (kjList.contains(betNumber)) {
                                 prizeNum++;
                             }
                         }
@@ -1920,22 +2023,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case HOU_ER_ZU_XUAN_DAN_SHI:
                     return LotteryUtils.getSubStrList(betNumbers.get(0), 2);
             }
-        } else if (lotteryType instanceof Lottery11x5Type) {
 
-            // 如果类型属于五星
-            Lottery11x5Type lottery11x5Type = (Lottery11x5Type) lotteryType;
-            switch (lottery11x5Type) {
-
-                // 三星混合组选
-                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
-                    return LotteryUtils.getSubStrList(betNumbers.get(0), 3);
-
-                // 二星直选单式
-                case QIAN_ER_ZHI_XUAN_DAN_SHI:
-                    // 二星混合组选
-                case QIAN_ER_ZU_XUAN_DAN_SHI:
-                    return LotteryUtils.getSubStrList(betNumbers.get(0), 2);
-            }
         }
         return new ArrayList<String>();
     }

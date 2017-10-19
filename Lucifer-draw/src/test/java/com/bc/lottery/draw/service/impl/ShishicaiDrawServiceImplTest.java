@@ -267,7 +267,7 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println("==========中奖号码========>>>" + kj);
 
             for (Lottery11x5Type lottery11x5Type : Lottery11x5Type.values()) {
-                for (int i = 1; i < 10; i++) {
+                for (int i = 1; i < 11; i++) {
                     System.out.println(lottery11x5Type);
                     System.out.println(lottery11x5Type.desc());
                     System.out.println("==============第 " + i + " 次下注===============");

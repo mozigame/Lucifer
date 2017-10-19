@@ -519,7 +519,13 @@ public class LotteryOrderTest {
                 case QIAN_ER_ZHI_XUAN_DAN_SHI:
                 case QIAN_SAN_ZU_XUAN_DAN_SHI:
                 case QIAN_SAN_ZHI_XUAN_DAN_SHI:
-                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    List<String> firstList = new ArrayList<>();
+                    firstList.addAll(Arrays.asList(fourNumber));
+                    firstList.addAll(Arrays.asList(fiveNumber));
+                    firstList.addAll(Arrays.asList(sixNumber));
+                    firstList.addAll(Arrays.asList(sevenNumber));
+                    firstList.addAll(Arrays.asList(eightNumber));
+                    priBetNumbers.add(firstList);
                     break;
                 case QIAN_ER_ZHI_XUAN_FU_SHI:
                     priBetNumbers.add(Arrays.asList(threeNumber));
