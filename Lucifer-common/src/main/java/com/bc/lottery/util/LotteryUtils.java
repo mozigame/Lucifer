@@ -614,10 +614,7 @@ public class LotteryUtils {
         if (inStr == null || inStr.size() == 0 || inStr.size() % 2 == 0) {
             return "";
         }
-        StringBuilder resultBuilder = new StringBuilder();
-
         Collections.sort(inStr);
-
         return inStr.get((inStr.size() - 1) / 2);
     }
 

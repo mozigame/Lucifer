@@ -2,6 +2,7 @@ package com.bc.lottery.draw.service.impl;
 
 import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.entity.Lottery11x5DoubleType;
+import com.bc.lottery.entity.Lottery11x5Type;
 import com.bc.lottery.entity.ShishicaiDoubleType;
 import com.bc.lottery.entity.ShishicaiType;
 import org.junit.Test;
@@ -226,5 +227,62 @@ public class ShishicaiDrawServiceImplTest {
             }
         }
         System.out.println("*******************************11选5双面盘开奖测试结束*******************************");
+    }
+
+    /**
+     * 11选5传统盘
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetBatchBoundsInfoOfLottery11x5() throws Exception {
+
+        kj = "01 02 03 04 05";
+        kj1 = "06 08 03 05 09";
+        kj2 = "11 07 03 05 10";
+        kj3 = "03 09 08 04 02";
+        kj4 = "06 10 02 08 03";
+        kj5 = "01 03 05 07 09";
+        kj6 = "06 08 04 02 10";
+        kj7 = "04 05 09 03 11";
+        kj8 = "07 05 02 11 08";
+        kj9 = "02 03 04 06 05";
+
+        System.out.println("*******************************11选5传统盘开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            for (Lottery11x5Type lottery11x5Type : Lottery11x5Type.values()) {
+                for (int i = 1; i < 10; i++) {
+                    System.out.println(lottery11x5Type);
+                    System.out.println(lottery11x5Type.desc());
+                    System.out.println("==============第 " + i + " 次下注===============");
+                    List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(3, lottery11x5Type.value());
+                    System.out.println(betNumberList);
+                    for (String kjno : kjList) {
+                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                        userOrder.setLotteryId(3L);
+                        userOrder.setPlayId(lottery11x5Type.value());
+                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    }
+                }
+            }
+        }
+        System.out.println("*******************************11选5传统盘开奖测试结束*******************************");
     }
 }

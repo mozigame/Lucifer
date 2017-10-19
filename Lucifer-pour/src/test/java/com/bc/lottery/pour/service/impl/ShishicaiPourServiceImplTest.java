@@ -1,5 +1,6 @@
 package com.bc.lottery.pour.service.impl;
 
+import com.bc.lottery.entity.Lottery11x5Type;
 import com.bc.lottery.entity.ShishicaiType;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ public class ShishicaiPourServiceImplTest {
 
     @Test
     public void testGetBetCount() throws Exception {
-        System.out.println("*******************************下注算法测试开始*******************************");
+        System.out.println("*******************************官彩时时彩下注算法测试开始*******************************");
 
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiPourServiceImpl shishicaiService = new ShishicaiPourServiceImpl();
@@ -27,14 +28,39 @@ public class ShishicaiPourServiceImplTest {
                 System.out.println(shishicaiType.desc());
                 System.out.println("==============第 " + i + " 次下注===============");
 
-                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(shishicaiType.value());
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(1, shishicaiType.value());
                 System.out.println(betNumberList);
                 long boundsNo = shishicaiService.getBetCount(betNumberList, shishicaiType.value());
                 System.out.println("下注单数: " + boundsNo);
             }
         }
 
-        System.out.println("*******************************下注算法测试结束*******************************");
+        System.out.println("*******************************官彩时时彩下注算法测试结束*******************************");
+    }
+
+    @Test
+    public void testGetLottery11x5BetCount() throws Exception {
+        System.out.println("*******************************官彩11x5下注算法测试开始*******************************");
+
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiPourServiceImpl shishicaiService = new ShishicaiPourServiceImpl();
+
+        for (Lottery11x5Type lottery11x5Type : Lottery11x5Type.values()) {
+
+            System.out.println("---------------------------11选5类型----------------------------------");
+            for (int i = 1; i < 11; i++) {
+                System.out.println(lottery11x5Type);
+                System.out.println(lottery11x5Type.desc());
+                System.out.println("==============第 " + i + " 次下注===============");
+
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(3, lottery11x5Type.value());
+                System.out.println(betNumberList);
+                long boundsNo = shishicaiService.getLotteryBetCount(3L, lottery11x5Type.value(), betNumberList);
+                System.out.println("下注单数: " + boundsNo);
+            }
+        }
+
+        System.out.println("*******************************官彩11x5下注算法测试结束*******************************");
     }
 
     @Test

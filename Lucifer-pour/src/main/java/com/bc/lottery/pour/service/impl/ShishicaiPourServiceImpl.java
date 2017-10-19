@@ -341,6 +341,33 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     }
 
     @Override
+    public List<Integer> getLotteryCountByType(Long lotteryId, Long playId, String str) {
+
+        List<Integer> resultList = new ArrayList<>();
+
+        if (lotteryId == 1) {
+
+            ShishicaiType shishicaiType = ShishicaiType.parse(playId);
+            if (shishicaiType == null) {
+                return resultList;
+            }
+            switch (shishicaiType) {
+
+                case YI_XING_DING_WEI_DAN:
+
+                    JsonUtils.json2LotteryList(str).forEach(lotteryCount -> {
+                        resultList.add(lotteryCount.size());
+                    });
+                    break;
+
+                default:
+                    return resultList;
+            }
+        }
+        return resultList;
+    }
+
+    @Override
     public String getStringByLotteryList(Long playId, List<List<String>> lotteryList) {
 
         ShishicaiType shishicaiType = ShishicaiType.parse(playId);
@@ -725,6 +752,13 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     }
 
 
+    /**
+     * 获取11x5的下注单数
+     *
+     * @param playId
+     * @param betNumbers
+     * @return
+     */
     private long getLottery11x5BetCount(Long playId, List<List<String>> betNumbers) {
         int size = betNumbers.size();
 
@@ -859,6 +893,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 // 前三直选复式
                 case QIAN_SAN_ZHI_XUAN_FU_SHI:
                     //TODO
+                    return getQianSanZhiXuanFuShiBetCount(betNumbers);
 
                 case QIAN_SAN_ZU_XUAN_FU_SHI:
                     if (size == 1) {
@@ -872,5 +907,24 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         }
 
         return 0;
+    }
+
+    /**
+     * 前三组选复式
+     *
+     * @param betNumbers 第一位数量a,第二位数量b,第三位c，ab交集j,bc交集k,ac交集l,abc交集m
+     *                   公式为 abc-ak-bl-cj+2m
+     * @return
+     */
+    private long getQianSanZhiXuanFuShiBetCount(List<List<String>> betNumbers) {
+
+        long betCount = 0;
+        if (betNumbers.size() != 3) {
+            return betCount;
+        }
+
+        betCount = LotteryUtils.toMultiplyAll(betNumbers) - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1)) * betNumbers.get(2).size() - LotteryUtils.intersectionOfSetNum(betNumbers.get(1), betNumbers.get(2)) * betNumbers.get(0).size() - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(2)) * betNumbers.get(1).size() + 2 * LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1), betNumbers.get(2));
+
+        return betCount;
     }
 }

@@ -3,6 +3,7 @@ package com.bc.lottery.draw.service.impl;
 
 import com.babel.forseti_order.model.UserOrderPO;
 import com.bc.lottery.entity.Lottery11x5DoubleType;
+import com.bc.lottery.entity.Lottery11x5Type;
 import com.bc.lottery.entity.ShishicaiDoubleType;
 import com.bc.lottery.entity.ShishicaiType;
 
@@ -477,7 +478,155 @@ public class LotteryOrderTest {
                     break;
             }
             priBetNumbers.add(numList);
-        } else if (lotteryId == 4) { String numBig = "大";
+        } else if (lotteryId == 3) {
+
+            List<String> list = new ArrayList<>();
+            List<String> middleList = new ArrayList<>();
+            for (int i = 1; i < 10; i++) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("0").append(String.valueOf(i));
+                list.add(stringBuilder.toString());
+            }
+            list.add("10");
+            list.add("11");
+            Collections.shuffle(list);
+            String[] oneNumber = {list.get(0)};
+            Collections.shuffle(list);
+            String[] twoNumber = {list.get(0), list.get(1)};
+            Collections.shuffle(list);
+            String[] threeNumber = {list.get(0), list.get(1), list.get(2)};
+            Collections.shuffle(list);
+            String[] fourNumber = {list.get(0), list.get(1), list.get(2), list.get(3)};
+            Collections.shuffle(list);
+            String[] fiveNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4)};
+            Collections.shuffle(list);
+            String[] sixNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5)};
+            Collections.shuffle(list);
+            String[] sevenNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6)};
+            Collections.shuffle(list);
+            String[] eightNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)};
+            List<String> danShuangList = new ArrayList<>();
+            danShuangList.add("5单0双");
+            danShuangList.add("4单1双");
+            danShuangList.add("3单2双");
+            danShuangList.add("2单3双");
+            danShuangList.add("1单4双");
+            danShuangList.add("0单5双");
+
+            Lottery11x5Type jiangxiType = Lottery11x5Type.parse(playId);
+            switch (jiangxiType) {
+                case QIAN_ER_ZU_XUAN_DAN_SHI:
+                case QIAN_ER_ZHI_XUAN_DAN_SHI:
+                case QIAN_SAN_ZU_XUAN_DAN_SHI:
+                case QIAN_SAN_ZHI_XUAN_DAN_SHI:
+                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    break;
+                case QIAN_ER_ZHI_XUAN_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    break;
+                case QIAN_SAN_YI_MA:
+                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    break;
+                case DAN_SHI_WU_ZHONG_WU:
+                case QIAN_SAN_ZU_XUAN_FU_SHI:
+                case QIAN_ER_ZU_XUAN_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(fiveNumber));
+                    break;
+                case YI_XING_DING_WEI_DAN:
+                case QIAN_SAN_ZHI_XUAN_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
+                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    break;
+                case DING_DAN_SHUANG_0:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(0)));
+                    break;
+                case DING_DAN_SHUANG_1:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(1)));
+                    break;
+                case DING_DAN_SHUANG_2:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(2)));
+                    break;
+                case DING_DAN_SHUANG_3:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(3)));
+                    break;
+                case DING_DAN_SHUANG_4:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(4)));
+                    break;
+                case DING_DAN_SHUANG_5:
+
+                    priBetNumbers.add(Arrays.asList(danShuangList.get(5)));
+                    break;
+                case DAN_SHI_SAN_ZHONG_SAN:
+                case FU_SHI_SAN_ZHONG_SAN:
+                case FU_SHI_ER_ZHONG_ER:
+                case FU_SHI_YI_ZHONG_YI:
+                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    break;
+                case DAN_SHI_LIU_ZHONG_WU:
+                case FU_SHI_SI_ZHONG_SI:
+                case FU_SHI_WU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    break;
+                case FU_SHI_BA_ZHONG_WU:
+                case FU_SHI_QI_ZHONG_WU:
+                case FU_SHI_LIU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    break;
+                case DAN_SHI_YI_ZHONG_YI:
+                    priBetNumbers.add(Arrays.asList(oneNumber));
+                    break;
+                case DAN_SHI_ER_ZHONG_ER:
+                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    break;
+                case DAN_SHI_SI_ZHONG_SI:
+                    priBetNumbers.add(Arrays.asList(fourNumber));
+                    break;
+                case DAN_SHI_QI_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
+                    break;
+                case DAN_SHI_BA_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    break;
+                case CAI_ZHONG_WEI_3:
+                    middleList.add("03");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_4:
+                    middleList.add("04");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_5:
+                    middleList.add("05");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_6:
+                    middleList.add("06");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_7:
+                    middleList.add("07");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_8:
+                    middleList.add("08");
+                    priBetNumbers.add(middleList);
+                    break;
+                case CAI_ZHONG_WEI_9:
+                    middleList.add("09");
+                    priBetNumbers.add(middleList);
+                    break;
+
+
+            }
+        } else if (lotteryId == 4) {
+            String numBig = "大";
             String numSmall = "小";
             String numSingle = "单";
             String numDouble = "双";

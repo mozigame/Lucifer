@@ -30,12 +30,12 @@ public enum Lottery11x5Type implements LotteryType {
     YI_XING_DING_WEI_DAN(36101L, "定位胆"),
 
     // 趣味
-    DING_DAN_SHUANG_0(37101L, "定单双-0双5单"),
-    DING_DAN_SHUANG_1(37102L, "定单双-1双4单"),
-    DING_DAN_SHUANG_2(37103L, "定单双-2双3单"),
-    DING_DAN_SHUANG_3(37104L, "定单双-3双2单"),
-    DING_DAN_SHUANG_4(37105L, "定单双-4双1单"),
-    DING_DAN_SHUANG_5(37106L, "定单双-5双0单"),
+    DING_DAN_SHUANG_0(37101L, "定单双-5单0双"),
+    DING_DAN_SHUANG_1(37102L, "定单双-4单1双"),
+    DING_DAN_SHUANG_2(37103L, "定单双-3单2双"),
+    DING_DAN_SHUANG_3(37104L, "定单双-2单3双"),
+    DING_DAN_SHUANG_4(37105L, "定单双-1单4双"),
+    DING_DAN_SHUANG_5(37106L, "定单双-0单5双"),
 
     CAI_ZHONG_WEI_3(37201L, "猜中位号源3"),
     CAI_ZHONG_WEI_4(37202L, "猜中位号源4"),

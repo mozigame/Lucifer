@@ -44,6 +44,15 @@ public interface LotteryPourHandle {
      */
     List<List<String>> getLotteryListByType(Long playId, String str);
 
+
+    /**
+     * 获取彩票单行注数（目前只支持时时彩定位胆）
+     *
+     * @param playId
+     * @return
+     */
+    List<Integer> getLotteryCountByType(Long lotteryId, Long playId, String str);
+
     /**
      * 根据彩票可接收的List转换成
      *
