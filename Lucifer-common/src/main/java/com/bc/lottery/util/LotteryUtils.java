@@ -62,6 +62,10 @@ public class LotteryUtils {
         }
         long result = 0;
         for (List<String> i : args) {
+            // 去除“-”
+            if (i.contains("-")) {
+                continue;
+            }
             result += i.size();
         }
         return result;
@@ -850,7 +854,7 @@ public class LotteryUtils {
 
     public static void main(String[] args) {
 
-        System.out.println(combinationBig(21, 4));
+        /*System.out.println(combinationBig(21, 4));
 
         System.out.println(6 / 2);
 
@@ -885,11 +889,39 @@ public class LotteryUtils {
         sortList.add("09");
         sortList.add("07");
         System.out.println(getCaiZhongWeiString(sortList));
-
+*/
+        getShaizi();
     }
 
     private static String checkNumberDecimal(Object obj) {
         NumberFormat nf = new DecimalFormat("##0.00");
         return String.format((obj == null) ? "0.00" : nf.format(Float.parseFloat(obj.toString())));
+    }
+
+    private static void getShaizi() {
+        int m = 0;
+        int n = 0;
+        int l = 0;
+        for (int i = 1; i < 7; i++) {
+            for (int j = 1; j < 7; j++) {
+
+                for (int k = 1; k < 7; k++) {
+                    m++;
+                    l++;
+                    String result = String.valueOf(i) + String.valueOf(j) + String.valueOf(k) + " ";
+                    System.out.print(result);
+                    if (m > 5) {
+                        System.out.println();
+                        m = 0;
+                    }
+                    if (result.contains("1") && result.contains("2")) {
+                        n++;
+                    }
+                }
+            }
+
+        }
+        System.out.println(l);
+        System.out.println(n);
     }
 }
