@@ -2186,7 +2186,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             LotteryKuai3DoubleType lotteryKuai3DoubleType = (LotteryKuai3DoubleType) lotteryType;
             switch (lotteryKuai3DoubleType) {
 
-                //总和大小单双
+                //三军
                 case SAN_JUN_1:
                 case SAN_JUN_2:
                 case SAN_JUN_3:
@@ -2195,13 +2195,11 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case SAN_JUN_6:
 
                     if (betNumbers.size() == 1) {
-
                         for (String betNumber : betNumbers.get(0)) {
                             if (kjList.contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
-
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
@@ -2210,9 +2208,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case SAN_JUN_大:
                 case SAN_JUN_小:
 
-                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 2).size() == 0) {
-
-                        int strSum = LotteryUtils.getStrSum(kjList);
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 0) {
 
                         Map<String, Integer> scapeMap = new HashMap<>();
                         scapeMap.put("smallSmall", 4);

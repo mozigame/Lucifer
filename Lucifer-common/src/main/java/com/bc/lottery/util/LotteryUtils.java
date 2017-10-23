@@ -574,7 +574,7 @@ public class LotteryUtils {
      * 获取指定数字的大小单双
      *
      * @param aimNo    需要计算的数
-     * @param scapeMap 数范围区间（[smallSmall,smallBig],[bigSmall,bigBig]）
+     * @param scapeMap 范围区间（[smallSmall,smallBig],[bigSmall,bigBig]）
      * @return
      */
     public static List<String> getDaxiaodanshuangList(int aimNo, Map<String, Integer> scapeMap) {
