@@ -2,10 +2,7 @@ package com.bc.lottery.draw.service.impl;
 
 
 import com.babel.forseti_order.model.UserOrderPO;
-import com.bc.lottery.entity.Lottery11x5DoubleType;
-import com.bc.lottery.entity.Lottery11x5Type;
-import com.bc.lottery.entity.ShishicaiDoubleType;
-import com.bc.lottery.entity.ShishicaiType;
+import com.bc.lottery.entity.*;
 
 import java.util.*;
 
@@ -883,6 +880,253 @@ public class LotteryOrderTest {
                     priBetNumbers.add(Arrays.asList(zhixuan23));
                     priBetNumbers.add(Arrays.asList(zhixuan21));
                     priBetNumbers.add(Arrays.asList(zhixuan22));
+                    break;
+            }
+        } else if (lotteryId == 6) {
+            List<String> oneSets = new ArrayList<>();
+            String touzi1 = "1";
+            String touzi2 = "2";
+            String touzi3 = "3";
+            String touzi4 = "4";
+            String touzi5 = "5";
+            String touzi6 = "6";
+            String big = "大";
+            String small = "小";
+            String quanTou = "全骰";
+            LotteryKuai3DoubleType doubleType = LotteryKuai3DoubleType.parse(playId);
+            switch (doubleType) {
+                case SAN_JUN_1:
+                    oneSets.add(touzi1);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_2:
+                    oneSets.add(touzi2);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_3:
+                    oneSets.add(touzi3);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_4:
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_5:
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_6:
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_大:
+                    oneSets.add(big);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case SAN_JUN_小:
+                    oneSets.add(small);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_1:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi1);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_2:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi2);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_3:
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi3);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_4:
+                    oneSets.add(touzi4);
+                    oneSets.add(touzi4);
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_5:
+                    oneSets.add(touzi5);
+                    oneSets.add(touzi5);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case WEI_SHAI_6:
+                    oneSets.add(touzi6);
+                    oneSets.add(touzi6);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case QUAN_SHAI:
+                    oneSets.add(quanTou);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_4:
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_5:
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_6:
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_7:
+                    oneSets.add("7");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_8:
+                    oneSets.add("8");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_9:
+                    oneSets.add("9");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_10:
+                    oneSets.add("10");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_11:
+                    oneSets.add("11");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_12:
+                    oneSets.add("12");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_13:
+                    oneSets.add("13");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_14:
+                    oneSets.add("14");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_15:
+                    oneSets.add("`15");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_16:
+                    oneSets.add("16");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DIAN_SHU_HE_17:
+                    oneSets.add("17");
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_12:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi2);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_13:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi3);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_14:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_15:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_16:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_23:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi3);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_24:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_25:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_26:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_34:
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_35:
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_36:
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_45:
+                    oneSets.add(touzi4);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_46:
+                    oneSets.add(touzi4);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case CHANG_PAI_56:
+                    oneSets.add(touzi5);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_1:
+                    oneSets.add(touzi1);
+                    oneSets.add(touzi1);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_2:
+                    oneSets.add(touzi2);
+                    oneSets.add(touzi2);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_3:
+                    oneSets.add(touzi3);
+                    oneSets.add(touzi3);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_4:
+                    oneSets.add(touzi4);
+                    oneSets.add(touzi4);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_5:
+                    oneSets.add(touzi5);
+                    oneSets.add(touzi5);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DUAN_PAI_6:
+                    oneSets.add(touzi6);
+                    oneSets.add(touzi6);
+                    priBetNumbers.add(oneSets);
                     break;
             }
         }

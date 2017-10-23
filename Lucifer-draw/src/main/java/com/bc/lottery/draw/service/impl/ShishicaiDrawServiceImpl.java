@@ -38,15 +38,43 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             return getBoundsInfoOfShishicaiDouble(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof Lottery11x5DoubleType) {
             // 双面盘11选5
-
             return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof Lottery11x5Type) {
             // 传统盘11选5
-
             return getBoundsInfoOfLottery11x5(lotteryType, kj, lotteryOrderList).get(0);
+        } else if (lotteryType instanceof LotteryKuai3DoubleType) {
+            // 双面盘快3
+            return getBoundsInfoOfLotteryKuai35Double(lotteryType, kj, lotteryOrderList).get(0);
+        }
+        return order;
+    }
+
+    @Override
+    public List<UserOrderPO> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
+
+        if (lotteryOrderList.size() == 0) {
+            return null;
         }
 
-        return order;
+        // 如果类型属于传统时时彩
+        if (lotteryType instanceof ShishicaiType) {
+
+            return getBoundsInfoOfShishicai(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof ShishicaiDoubleType) {
+            // 双面盘时时彩
+            return getBoundsInfoOfShishicaiDouble(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof Lottery11x5DoubleType) {
+            // 双面盘11选5
+            return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof Lottery11x5Type) {
+            // 传统盘11选5
+            return getBoundsInfoOfLottery11x5(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof LotteryKuai3DoubleType) {
+            // 双面盘快3
+            return getBoundsInfoOfLotteryKuai35Double(lotteryType, kj, lotteryOrderList);
+        }
+
+        return null;
     }
 
     private String getRealShiShiCaiKj(String kj, LotteryType lotteryType) {
@@ -490,18 +518,22 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         return resultList;
     }
 
+    /**
+     * 快3开奖号整理
+     *
+     * @param kj
+     * @param lotteryType
+     * @return
+     */
+    private List<String> getRealLotteryKuai3Kj(String kj, LotteryType lotteryType) {
 
-    @Override
-    public List<UserOrderPO> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
+        List<String> resultList = new ArrayList<>();
+        if (lotteryType instanceof LotteryKuai3DoubleType) {
 
-        if (kj.length() != 5 || lotteryOrderList.size() == 0) {
-            return null;
+            resultList = Arrays.asList(kj.split(""));
         }
-        // 如果类型属于五星
-        String realLotteryKj = getRealShiShiCaiKj(kj, lotteryType);
 
-        return getBoundsInfoOfShishicai(lotteryType, realLotteryKj, lotteryOrderList);
-
+        return resultList;
     }
 
     //TODO 把循环放在switch的里面效率会不会有明显提高？
@@ -1761,7 +1793,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                             }
                         }
                         firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
-                        lotteryOrder.setFirstPrizeNum((int)LotteryUtils.combination((betNumbers.get(0).size()-5),1) * firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum((int) LotteryUtils.combination((betNumbers.get(0).size() - 5), 1) * firstPrizeNum);
                     }
                     continue;
 
@@ -1848,7 +1880,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                             }
                         }
                         firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
-                        lotteryOrder.setFirstPrizeNum((int)LotteryUtils.combination((betNumbers.get(0).size()-5),2) * firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum((int) LotteryUtils.combination((betNumbers.get(0).size() - 5), 2) * firstPrizeNum);
                     }
                     continue;
 
@@ -1863,7 +1895,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                             }
                         }
                         firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
-                        lotteryOrder.setFirstPrizeNum((int)LotteryUtils.combination((betNumbers.get(0).size()-5),3) * firstPrizeNum);
+                        lotteryOrder.setFirstPrizeNum((int) LotteryUtils.combination((betNumbers.get(0).size() - 5), 3) * firstPrizeNum);
                     }
                     continue;
             }
@@ -2127,6 +2159,178 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
 
+                    continue;
+            }
+        }
+        return lotteryOrderList;
+    }
+
+    /**
+     * 快3双面盘开奖算法
+     *
+     * @param lotteryType
+     * @param kjNo
+     * @param lotteryOrderList
+     * @return
+     */
+    private List<UserOrderPO> getBoundsInfoOfLotteryKuai35Double(LotteryType lotteryType, String kjNo, List<UserOrderPO> lotteryOrderList) {
+
+        List<String> kjList = getRealLotteryKuai3Kj(kjNo, lotteryType);
+        for (UserOrderPO lotteryOrder : lotteryOrderList) {
+
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
+
+            int size = betNumbers.size();
+            int firstPrizeNum = 0; // 一等奖次数
+
+            LotteryKuai3DoubleType lotteryKuai3DoubleType = (LotteryKuai3DoubleType) lotteryType;
+            switch (lotteryKuai3DoubleType) {
+
+                //总和大小单双
+                case SAN_JUN_1:
+                case SAN_JUN_2:
+                case SAN_JUN_3:
+                case SAN_JUN_4:
+                case SAN_JUN_5:
+                case SAN_JUN_6:
+
+                    if (betNumbers.size() == 1) {
+
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (kjList.contains(betNumber)) {
+                                firstPrizeNum++;
+                            }
+                        }
+
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //总和尾大小
+                case SAN_JUN_大:
+                case SAN_JUN_小:
+
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 2).size() == 0) {
+
+                        int strSum = LotteryUtils.getStrSum(kjList);
+
+                        Map<String, Integer> scapeMap = new HashMap<>();
+                        scapeMap.put("smallSmall", 4);
+                        scapeMap.put("smallBig", 10);
+                        scapeMap.put("bigSmall", 11);
+                        scapeMap.put("bigBig", 17);
+
+                        //获取中奖号的总和的大小
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), scapeMap);
+
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (firstBetList.contains(betNumber)) {
+                                firstPrizeNum++;
+                            }
+                        }
+
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //围骰
+                case WEI_SHAI_1:
+                case WEI_SHAI_2:
+                case WEI_SHAI_3:
+                case WEI_SHAI_4:
+                case WEI_SHAI_5:
+                case WEI_SHAI_6:
+
+                    if (betNumbers.size() == 1) {
+                        Set<String> stringSet = LotteryUtils.getDupStrByDupNum(kjNo, 3);
+                        if (stringSet.size() != 0 && stringSet.containsAll(betNumbers.get(0))) {
+                            firstPrizeNum = 1;
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
+
+                    // 全骰
+                case QUAN_SHAI:
+
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 1) {
+                        firstPrizeNum = 1;
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
+
+                    //点数
+                case DIAN_SHU_HE_4:
+                case DIAN_SHU_HE_5:
+                case DIAN_SHU_HE_6:
+                case DIAN_SHU_HE_7:
+                case DIAN_SHU_HE_8:
+                case DIAN_SHU_HE_9:
+                case DIAN_SHU_HE_10:
+                case DIAN_SHU_HE_11:
+                case DIAN_SHU_HE_12:
+                case DIAN_SHU_HE_13:
+                case DIAN_SHU_HE_14:
+                case DIAN_SHU_HE_15:
+                case DIAN_SHU_HE_16:
+                case DIAN_SHU_HE_17:
+
+                    // TODO 确认是否去除豹子（）
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 0) {
+
+                        //获取中奖号的和值
+                        int sumString = LotteryUtils.getStrSum(kjList);
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (betNumber.equals(String.valueOf(sumString))) {
+                                firstPrizeNum++;
+                            }
+                        }
+
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 长牌
+                case CHANG_PAI_12:
+                case CHANG_PAI_13:
+                case CHANG_PAI_14:
+                case CHANG_PAI_15:
+                case CHANG_PAI_16:
+                case CHANG_PAI_23:
+                case CHANG_PAI_24:
+                case CHANG_PAI_25:
+                case CHANG_PAI_26:
+                case CHANG_PAI_34:
+                case CHANG_PAI_35:
+                case CHANG_PAI_36:
+                case CHANG_PAI_45:
+                case CHANG_PAI_46:
+                case CHANG_PAI_56:
+
+                    if (size == 1) {
+                        //判断中间号码是否包含所选的各组号码
+                        if (kjList.containsAll(betNumbers.get(0))) {
+                            firstPrizeNum = 1;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //短牌
+                case DUAN_PAI_1:
+                case DUAN_PAI_2:
+                case DUAN_PAI_3:
+                case DUAN_PAI_4:
+                case DUAN_PAI_5:
+                case DUAN_PAI_6:
+
+                    if (size == 1) {
+                        //判断中间号码是否包含所选的各组号码
+                        if (LotteryUtils.getDupStr(kjNo).containsAll(betNumbers.get(0))) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
                     continue;
             }
         }

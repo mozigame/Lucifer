@@ -1,10 +1,7 @@
 package com.bc.lottery.draw.service.impl;
 
 import com.babel.forseti_order.model.UserOrderPO;
-import com.bc.lottery.entity.Lottery11x5DoubleType;
-import com.bc.lottery.entity.Lottery11x5Type;
-import com.bc.lottery.entity.ShishicaiDoubleType;
-import com.bc.lottery.entity.ShishicaiType;
+import com.bc.lottery.entity.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -288,6 +285,57 @@ public class ShishicaiDrawServiceImplTest {
         System.out.println("*******************************11选5传统盘开奖测试结束*******************************");
     }
 
+    /**
+     * 快3双面盘
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetBoundsInfoOfLotteryKuai3Double() throws Exception {
+
+        kj = "123";
+        kj1 = "456";
+        kj2 = "124";
+        kj3 = "256";
+        kj4 = "222";
+        kj5 = "666";
+        kj6 = "445";
+        kj7 = "225";
+        kj8 = "147";
+        kj9 = "111";
+
+        System.out.println("*******************************快3双面盘开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+            for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
+                for (int i = 1; i < 2; i++) {
+                    System.out.println(lotteryKuai3DoubleType);
+                    System.out.println(lotteryKuai3DoubleType.desc());
+                    System.out.println("==============第 " + i + " 次下注===============");
+                    List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(6, lotteryKuai3DoubleType.value());
+                    System.out.println(betNumberList);
+                    for (String kjno : kjList) {
+                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                        userOrder.setLotteryId(6L);
+                        userOrder.setPlayId(lotteryKuai3DoubleType.value());
+                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                    }
+                }
+            }
+        System.out.println("*******************************快3双面盘开奖测试结束*******************************");
+    }
 
     @Test
     public void testSingleLottery() throws Exception {
@@ -302,7 +350,7 @@ public class ShishicaiDrawServiceImplTest {
 
         for (ShishicaiType shishicaiType : ShishicaiType.values()) {
 
-            if(shishicaiType.value()==HOU_SAN_ZU_XUAN_HE_ZHI.value()){
+            if (shishicaiType.value() == HOU_SAN_ZU_XUAN_HE_ZHI.value()) {
 
                 List<String> betList = new ArrayList<>();
                 betList.add("4");
@@ -321,13 +369,12 @@ public class ShishicaiDrawServiceImplTest {
                 System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum() + ";  三等奖次数：" + boundsInfo.getThirdPrizeNum() + ";  四等奖次数：" + boundsInfo.getForthPrizeNum() + ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                 if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
                     System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@中奖了@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            }
+                }
 
             }
         }
 
         System.out.println("*******************************单独开奖测试结束*******************************");
-
     }
 
 }

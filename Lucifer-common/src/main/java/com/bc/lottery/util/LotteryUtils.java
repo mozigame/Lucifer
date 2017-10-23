@@ -573,6 +573,33 @@ public class LotteryUtils {
     /**
      * 获取指定数字的大小单双
      *
+     * @param aimNo    需要计算的数
+     * @param scapeMap 数范围区间（[smallSmall,smallBig],[bigSmall,bigBig]）
+     * @return
+     */
+    public static List<String> getDaxiaodanshuangList(int aimNo, Map<String, Integer> scapeMap) {
+
+        List<String> resultList = new ArrayList<>();
+
+        // 判断奇偶
+        if (aimNo % 2 == 1) {
+            resultList.add("单");
+        } else {
+            resultList.add("双");
+        }
+        // 判断大小
+        if (scapeMap.get("smallSmall") <= aimNo && aimNo <= scapeMap.get("smallBig")) {
+            resultList.add("小");
+        } else if (scapeMap.get("bigSmall") <= aimNo && aimNo <= scapeMap.get("bigBig")) {
+            resultList.add("大");
+        }
+
+        return resultList;
+    }
+
+    /**
+     * 获取指定数字的大小单双
+     *
      * @param aimNo 需要计算的数
      * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
      * @param maxNo 中间值（如果等于中间值，则为和）
@@ -890,7 +917,21 @@ public class LotteryUtils {
         sortList.add("07");
         System.out.println(getCaiZhongWeiString(sortList));
 */
-        getShaizi();
+        //getShaizi();
+
+        List<String> list1 = new ArrayList<>();
+        list1.add("1");
+        list1.add("1");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("1");
+        list2.add("2");
+
+        if(list2.containsAll(list1)){
+            System.out.println("true");
+        }else {
+            System.out.println("false");
+        }
     }
 
     private static String checkNumberDecimal(Object obj) {
