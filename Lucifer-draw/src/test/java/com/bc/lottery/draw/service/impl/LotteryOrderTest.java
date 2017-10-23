@@ -1129,6 +1129,274 @@ public class LotteryOrderTest {
                     priBetNumbers.add(oneSets);
                     break;
             }
+        } else if (lotteryId == 8) {
+            List<String> numList = new ArrayList<>();
+            String first = "1";
+            String second = "2";
+            String third = "3";
+            String fourth = "4";
+            String fifth = "5";
+            String sixth = "6";
+            String seventh = "7";
+            String eighth = "8";
+            String ninth = "9";
+            String tenth = "10";
+            String big = "大";
+            String small = "小";
+            String single = "单";
+            String shuang = "双";
+            String dragon = "龙";
+            String tiger = "虎";
+            LotteryPK10DoubleType pk10DoubleType = LotteryPK10DoubleType.parse(playId);
+            switch (pk10DoubleType) {
+                case DAN_HAO_TENTH_DA:
+                case DAN_HAO_NINTH_DA:
+                case DAN_HAO_EIGHTH_DA:
+                case DAN_HAO_SEVENTH_DA:
+                case DAN_HAO_SIXTH_DA:
+                case DAN_HAO_FIFTH_DA:
+                case DAN_HAO_FORTH_DA:
+                case DAN_HAO_THIRD_DA:
+                case DAN_HAO_YA_DA:
+                case DAN_HAO_GUAN_DA:
+                case GUAN_YA_HE_DA:
+                    numList.add(big);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_TENTH_XIAO:
+                case DAN_HAO_NINTH_XIAO:
+                case DAN_HAO_EIGHTH_XIAO:
+                case DAN_HAO_SEVENTH_XIAO:
+                case DAN_HAO_SIXTH_XIAO:
+                case DAN_HAO_FIFTH_XIAO:
+                case DAN_HAO_FORTH_XIAO:
+                case DAN_HAO_THIRD_XIAO:
+                case DAN_HAO_YA_XIAO:
+                case DAN_HAO_GUAN_XIAO:
+                case GUAN_YA_HE_XIAO:
+                    numList.add(small);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_TENTH_DAN:
+                case DAN_HAO_NINTH_DAN:
+                case DAN_HAO_EIGHTH_DAN:
+                case DAN_HAO_SEVENTH_DAN:
+                case DAN_HAO_SIXTH_DAN:
+                case DAN_HAO_FIFTH_DAN:
+                case DAN_HAO_FORTH_DAN:
+                case DAN_HAO_THIRD_DAN:
+                case DAN_HAO_YA_DAN:
+                case DAN_HAO_GUAN_DAN:
+                case GUAN_YA_HE_DAN:
+                    numList.add(single);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_TENTH_SHUANG:
+                case DAN_HAO_NINTH_SHUANG:
+                case DAN_HAO_EIGHTH_SHUANG:
+                case DAN_HAO_SIXTH_SHUANG:
+                case DAN_HAO_SEVENTH_SHUANG:
+                case DAN_HAO_FIFTH_SHUANG:
+                case DAN_HAO_FORTH_SHUANG:
+                case DAN_HAO_THIRD_SHUANG:
+                case DAN_HAO_YA_SHUANG:
+                case DAN_HAO_GUAN_SHUANG:
+                case GUAN_YA_HE_SHUANG:
+                    numList.add(shuang);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_FIFTH_LONG:
+                case DAN_HAO_FORTH_LONG:
+                case DAN_HAO_THIRD_LONG:
+                case DAN_HAO_YA_LONG:
+                case DAN_HAO_GUAN_LONG:
+                    numList.add(dragon);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_FIFTH_HU:
+                case DAN_HAO_FORTH_HU:
+                case DAN_HAO_THIRD_HU:
+                case DAN_HAO_YA_HU:
+                case DAN_HAO_GUAN_HU:
+                    numList.add(tiger);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_TENTH_1:
+                case DAN_HAO_NINTH_1:
+                case DAN_HAO_EIGHTH_1:
+                case DAN_HAO_SIXTH_1:
+                case DAN_HAO_GUAN_1:
+                case DAN_HAO_FORTH_1:
+                case DAN_HAO_THIRD_1:
+                case DAN_HAO_YA_1:
+                case DAN_HAO_SEVENTH_1:
+                case DAN_HAO_FIFTH_1:
+                    numList.add(first);
+                    priBetNumbers.add(numList);
+                    break;
+                case DAN_HAO_TENTH_2:
+                case DAN_HAO_NINTH_2:
+                case DAN_HAO_EIGHTH_2:
+                case DAN_HAO_SIXTH_2:
+                case DAN_HAO_GUAN_2:
+                case DAN_HAO_FORTH_2:
+                case DAN_HAO_THIRD_2:
+                case DAN_HAO_YA_2:
+                case DAN_HAO_SEVENTH_2:
+                case DAN_HAO_FIFTH_2:
+                    numList.add(second);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_3:
+                case DAN_HAO_TENTH_3:
+                case DAN_HAO_NINTH_3:
+                case DAN_HAO_EIGHTH_3:
+                case DAN_HAO_SIXTH_3:
+                case DAN_HAO_GUAN_3:
+                case DAN_HAO_FORTH_3:
+                case DAN_HAO_THIRD_3:
+                case DAN_HAO_YA_3:
+                case DAN_HAO_SEVENTH_3:
+                case DAN_HAO_FIFTH_3:
+                    numList.add(third);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_4:
+                case DAN_HAO_TENTH_4:
+                case DAN_HAO_NINTH_4:
+                case DAN_HAO_EIGHTH_4:
+                case DAN_HAO_SIXTH_4:
+                case DAN_HAO_GUAN_4:
+                case DAN_HAO_FORTH_4:
+                case DAN_HAO_THIRD_4:
+                case DAN_HAO_YA_4:
+                case DAN_HAO_SEVENTH_4:
+                case DAN_HAO_FIFTH_4:
+                    numList.add(fourth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_5:
+                case DAN_HAO_TENTH_5:
+                case DAN_HAO_NINTH_5:
+                case DAN_HAO_EIGHTH_5:
+                case DAN_HAO_SIXTH_5:
+                case DAN_HAO_GUAN_5:
+                case DAN_HAO_FORTH_5:
+                case DAN_HAO_THIRD_5:
+                case DAN_HAO_YA_5:
+                case DAN_HAO_SEVENTH_5:
+                case DAN_HAO_FIFTH_5:
+                    numList.add(fifth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_6:
+                case DAN_HAO_TENTH_6:
+                case DAN_HAO_NINTH_6:
+                case DAN_HAO_EIGHTH_6:
+                case DAN_HAO_SIXTH_6:
+                case DAN_HAO_GUAN_6:
+                case DAN_HAO_FORTH_6:
+                case DAN_HAO_THIRD_6:
+                case DAN_HAO_YA_6:
+                case DAN_HAO_SEVENTH_6:
+                case DAN_HAO_FIFTH_6:
+                    numList.add(sixth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_7:
+                case DAN_HAO_TENTH_7:
+                case DAN_HAO_NINTH_7:
+                case DAN_HAO_EIGHTH_7:
+                case DAN_HAO_SIXTH_7:
+                case DAN_HAO_GUAN_7:
+                case DAN_HAO_FORTH_7:
+                case DAN_HAO_THIRD_7:
+                case DAN_HAO_YA_7:
+                case DAN_HAO_SEVENTH_7:
+                case DAN_HAO_FIFTH_7:
+                    numList.add(seventh);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_8:
+                case DAN_HAO_TENTH_8:
+                case DAN_HAO_NINTH_8:
+                case DAN_HAO_EIGHTH_8:
+                case DAN_HAO_SIXTH_8:
+                case DAN_HAO_GUAN_8:
+                case DAN_HAO_FORTH_8:
+                case DAN_HAO_THIRD_8:
+                case DAN_HAO_YA_8:
+                case DAN_HAO_SEVENTH_8:
+                case DAN_HAO_FIFTH_8:
+                    numList.add(eighth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_9:
+                case DAN_HAO_TENTH_9:
+                case DAN_HAO_NINTH_9:
+                case DAN_HAO_EIGHTH_9:
+                case DAN_HAO_SIXTH_9:
+                case DAN_HAO_GUAN_9:
+                case DAN_HAO_FORTH_9:
+                case DAN_HAO_THIRD_9:
+                case DAN_HAO_YA_9:
+                case DAN_HAO_SEVENTH_9:
+                case DAN_HAO_FIFTH_9:
+                    numList.add(ninth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_10:
+                case DAN_HAO_TENTH_10:
+                case DAN_HAO_NINTH_10:
+                case DAN_HAO_EIGHTH_10:
+                case DAN_HAO_SIXTH_10:
+                case DAN_HAO_GUAN_10:
+                case DAN_HAO_FORTH_10:
+                case DAN_HAO_THIRD_10:
+                case DAN_HAO_YA_10:
+                case DAN_HAO_SEVENTH_10:
+                case DAN_HAO_FIFTH_10:
+                    numList.add(tenth);
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_11:
+                    numList.add("11");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_12:
+                    numList.add("12");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_13:
+                    numList.add("13");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_14:
+                    numList.add("14");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_15:
+                    numList.add("15");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_16:
+                    numList.add("16");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_17:
+                    numList.add("17");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_18:
+                    numList.add("18");
+                    priBetNumbers.add(numList);
+                    break;
+                case GUAN_YA_HE_19:
+                    numList.add("19");
+                    priBetNumbers.add(numList);
+                    break;
+            }
+            return priBetNumbers;
         }
         return priBetNumbers;
     }

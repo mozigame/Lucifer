@@ -501,7 +501,7 @@ public class LotteryUtils {
     }
 
     /**
-     * 截取11选5的单式模式玩法
+     * 截取11选5的单式模式玩法（11选5）
      *
      * @param strList
      * @param length
@@ -509,6 +509,35 @@ public class LotteryUtils {
      */
     public static List<List<String>> getSubStrList11x5(List<String> strList, int length) {
 
+        return getSubStrLists(strList, length);
+    }
+
+
+    /**
+     * 按指定长度截取传入的strList数据(三星)
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<List<String>> getStrListForSanxing(List<String> strList, int length) {
+
+        return getSubStrLists(strList, length);
+    }
+
+    /**
+     * 按指定长度截取传入的strList数据(PK10)
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<List<String>> getStrListForPK10(List<String> strList, int length) {
+
+        return getSubStrLists(strList, length);
+    }
+
+    private static List<List<String>> getSubStrLists(List<String> strList, int length) {
         List<List<String>> resultList = new ArrayList<>();
         for (int i = 0; i < strList.size() / length; i++) {
             List<String> oneList = new ArrayList<>();
@@ -519,29 +548,6 @@ public class LotteryUtils {
         }
         return resultList;
     }
-
-    /**
-     * 按指定长度截取传入的strList数据
-     *
-     * @param strList
-     * @param length
-     * @return 返回开奖号列表
-     */
-    public static List<List<String>> getStrListForSanxing(List<String> strList, int length) {
-
-        List<List<String>> resultList = new ArrayList<>();
-
-        for (int i = 0; i < strList.size() / length; i++) {
-            List<String> strForEach = new ArrayList<>();
-            for (int j = 0; j < length; j++) {
-
-                strForEach.add(strList.get(i * length + j));
-            }
-            resultList.add(strForEach);
-        }
-        return resultList;
-    }
-
 
     /**
      * 获取指定数字的大小单双
@@ -574,10 +580,10 @@ public class LotteryUtils {
      * 获取指定数字的大小单双
      *
      * @param aimNo    需要计算的数
-     * @param scapeMap 范围区间（[smallSmall,smallBig],[bigSmall,bigBig]）
+     * @param scopeMap 范围区间（[smallSmall,smallBig],[bigSmall,bigBig]）
      * @return
      */
-    public static List<String> getDaxiaodanshuangList(int aimNo, Map<String, Integer> scapeMap) {
+    public static List<String> getDaxiaodanshuangList(int aimNo, Map<String, Integer> scopeMap) {
 
         List<String> resultList = new ArrayList<>();
 
@@ -588,9 +594,9 @@ public class LotteryUtils {
             resultList.add("双");
         }
         // 判断大小
-        if (scapeMap.get("smallSmall") <= aimNo && aimNo <= scapeMap.get("smallBig")) {
+        if (scopeMap.get("smallSmall") <= aimNo && aimNo <= scopeMap.get("smallBig")) {
             resultList.add("小");
-        } else if (scapeMap.get("bigSmall") <= aimNo && aimNo <= scapeMap.get("bigBig")) {
+        } else if (scopeMap.get("bigSmall") <= aimNo && aimNo <= scopeMap.get("bigBig")) {
             resultList.add("大");
         }
 
@@ -927,16 +933,16 @@ public class LotteryUtils {
         list2.add("1");
         list2.add("2");
 
-        if(list2.containsAll(list1)){
+        if (list2.containsAll(list1)) {
             System.out.println("true");
-        }else {
+        } else {
             System.out.println("false");
         }
     }
 
     private static String checkNumberDecimal(Object obj) {
         NumberFormat nf = new DecimalFormat("##0.00");
-        return String.format((obj == null) ? "0.00" : nf.format(Float.parseFloat(obj.toString())));
+        return String.format((obj == null) ? "0.00" : nf.format(Double.parseDouble(obj.toString())));
     }
 
     private static void getShaizi() {
