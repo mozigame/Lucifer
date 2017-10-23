@@ -1012,7 +1012,7 @@ public class LotteryOrderTest {
                     priBetNumbers.add(oneSets);
                     break;
                 case DIAN_SHU_HE_15:
-                    oneSets.add("`15");
+                    oneSets.add("15");
                     priBetNumbers.add(oneSets);
                     break;
                 case DIAN_SHU_HE_16:
