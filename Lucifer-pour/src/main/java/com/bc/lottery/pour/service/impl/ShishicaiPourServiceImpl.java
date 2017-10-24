@@ -33,10 +33,18 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
         if (lotteryId == 1) {
             return getShiShiCaiBetCount(playId, betNumbers);
+        } else if (lotteryId == 2) {
+            return 1;
         } else if (lotteryId == 3) {
             return getLottery11x5BetCount(playId, betNumbers);
+        } else if (lotteryId == 4) {
+            return 1;
+        } else if (lotteryId == 6) {
+            return 1;
         } else if (lotteryId == 7) {
             return getLotteryPK10BetCount(playId, betNumbers);
+        } else if (lotteryId == 8) {
+            return 1;
         }
         return 0;
     }

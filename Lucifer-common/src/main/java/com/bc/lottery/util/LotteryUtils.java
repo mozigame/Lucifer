@@ -258,6 +258,31 @@ public class LotteryUtils {
     }
 
     /**
+     * 获取字符串中的重复字符
+     *
+     * @param strList
+     * @return
+     */
+    public static Set<String> getDupStr(List<String> strList) {
+
+        Set<String> dupStrSet = new HashSet<>();
+
+        for (String str1 : strList) {
+            int i = 0;//重复次数
+            for (String str2 : strList) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i >= 2) {
+                dupStrSet.add(str1);
+            }
+        }
+        return dupStrSet;
+    }
+
+    /**
      * 获取字符串中的非重复字符
      *
      * @param iniString
@@ -296,6 +321,30 @@ public class LotteryUtils {
         for (String str1 : inStrArr) {
             int i = 0;//重复次数
             for (String str2 : inStrArr) {
+
+                if (str1.equals(str2)) {
+                    i++;
+                }
+            }
+            if (i == dupNum) {
+                dupStrList.add(str1);
+            }
+        }
+        return dupStrList;
+    }
+
+    /**
+     * 获取指定重复次数的字符串
+     *
+     * @param strList 需要计算的字符串
+     * @param dupNum  重复次数
+     * @return
+     */
+    public static Set<String> getDupStrByDupNum(List<String> strList, int dupNum) {
+        Set<String> dupStrList = new HashSet<>();
+        for (String str1 : strList) {
+            int i = 0;//重复次数
+            for (String str2 : strList) {
 
                 if (str1.equals(str2)) {
                     i++;
@@ -521,6 +570,18 @@ public class LotteryUtils {
      * @return 返回开奖号列表
      */
     public static List<List<String>> getStrListForSanxing(List<String> strList, int length) {
+
+        return getSubStrLists(strList, length);
+    }
+
+    /**
+     * 按指定长度截取传入的strList数据(快3)
+     *
+     * @param strList
+     * @param length
+     * @return 返回开奖号列表
+     */
+    public static List<List<String>> getStrListForKuai3(List<String> strList, int length) {
 
         return getSubStrLists(strList, length);
     }

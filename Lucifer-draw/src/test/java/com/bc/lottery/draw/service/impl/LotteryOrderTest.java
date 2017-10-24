@@ -1129,6 +1129,215 @@ public class LotteryOrderTest {
                     priBetNumbers.add(oneSets);
                     break;
             }
+        } else if (lotteryId == 7) {
+
+            List<String> normalList = new ArrayList<>();
+            List<String> sum3List = new ArrayList<>();
+            List<String> sum2List = new ArrayList<>();
+            List<String> oneSets = new ArrayList<>();
+            String da = "大";
+            String xiao = "小";
+            String dan = "单";
+            String shuang = "双";
+            String dragon = "龙";
+            String tiger = "虎";
+            for (int i = 1; i < 10; i++) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("0").append(String.valueOf(i));
+                normalList.add(stringBuilder.toString());
+                if (i >= 6) {
+                    sum3List.add(stringBuilder.toString());
+                }
+                if (i >= 3) {
+                    sum2List.add(stringBuilder.toString());
+                }
+            }
+            for (int i = 10; i < 20; i++) {
+                sum2List.add(String.valueOf(i));
+                ;
+            }
+            for (int i = 10; i < 28; i++) {
+                sum3List.add(String.valueOf(i));
+            }
+            Collections.shuffle(sum2List);
+            Collections.shuffle(sum3List);
+            normalList.add("10");
+            Collections.shuffle(normalList);
+            String[] twoNum = {normalList.get(0), normalList.get(1)};
+            Collections.shuffle(normalList);
+            String[] threeNum = {normalList.get(0), normalList.get(1), normalList.get(2)};
+            Collections.shuffle(normalList);
+            String[] fourNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3)};
+            Collections.shuffle(normalList);
+            String[] fiveNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3), normalList.get(4)};
+            Collections.shuffle(normalList);
+            String[] sixNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3), normalList.get(4), normalList.get(6)};
+            Collections.shuffle(normalList);
+            Collections.shuffle(normalList);
+            String[] sevenNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3), normalList.get(4), normalList.get(6), normalList.get(5)};
+            Collections.shuffle(normalList);
+            String[] eightNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3),
+                    normalList.get(4), normalList.get(5), normalList.get(6), normalList.get(7)};
+            Collections.shuffle(normalList);
+            String[] tenNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3),
+                    normalList.get(4), normalList.get(5), normalList.get(6), normalList.get(7), normalList.get(8), normalList.get(9)};
+            String[] twiveNum = {normalList.get(0), normalList.get(1), normalList.get(2), normalList.get(3),
+                    normalList.get(4), normalList.get(5), normalList.get(6), normalList.get(7), normalList.get(8), normalList.get(9), normalList.get(3), normalList.get(1)};
+            LotteryPK10Type pk10Type = LotteryPK10Type.parse(playId);
+            switch (pk10Type) {
+                case GUAN_JUN_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    break;
+                case QIAN_ER_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    break;
+                case QIAN_ER_DAN_SHI:
+                    priBetNumbers.add(Arrays.asList(twiveNum));
+                    break;
+                case QIAN_SAN_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    break;
+                case QIAN_SAN_DAN_SHI:
+                    priBetNumbers.add(Arrays.asList(twiveNum));
+                    break;
+                case QIAN_SI_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(tenNum));
+                    break;
+                case QIAN_SI_DAN_SHI:
+                    priBetNumbers.add(Arrays.asList(twiveNum));
+                    break;
+                case QIAN_WU_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    break;
+                case QIAN_WU_DAN_SHI:
+                    oneSets.addAll(Arrays.asList(tenNum));
+                    oneSets.addAll(Arrays.asList(sixNum));
+                    oneSets.addAll(Arrays.asList(fourNum));
+                    priBetNumbers.add(oneSets);
+                    break;
+                case QIAN_LIU_FU_SHI:
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(tenNum));
+                    break;
+                case QIAN_LIU_DAN_SHI:
+                    oneSets.clear();
+                    oneSets.addAll(Arrays.asList(twiveNum));
+                    oneSets.addAll(Arrays.asList(twoNum));
+                    oneSets.addAll(Arrays.asList(sixNum));
+                    oneSets.addAll(Arrays.asList(fourNum));
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DING_WEI_DAN:
+                    priBetNumbers.add(Arrays.asList(fourNum));
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    priBetNumbers.add(Arrays.asList(eightNum));
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    priBetNumbers.add(Arrays.asList(fourNum));
+                    priBetNumbers.add(Arrays.asList(sixNum));
+                    priBetNumbers.add(Arrays.asList(fourNum));
+                    priBetNumbers.add(Arrays.asList(fiveNum));
+                    priBetNumbers.add(Arrays.asList(sevenNum));
+                    break;
+                case HOU_SAN_HE_ZHI:
+                case QIAN_SAN_HE_ZHI:
+                    oneSets.clear();
+                    oneSets.add(sum3List.get(1));
+                    oneSets.add(sum3List.get(2));
+                    oneSets.add(sum3List.get(3));
+                    priBetNumbers.add(oneSets);
+                    break;
+
+                case JING_SU:
+                    priBetNumbers.add(Arrays.asList(twoNum));
+
+                    List<String> oneList = new ArrayList<>();
+                    oneList.add(sixNum[0]);
+                    oneList.add(sixNum[1]);
+                    priBetNumbers.add(oneList);
+
+                    oneSets.clear();
+                    oneSets.add(sevenNum[4]);
+                    oneSets.add(sevenNum[5]);
+                    priBetNumbers.add(oneSets);
+
+                    List<String> twoList = new ArrayList<>();
+                    twoList.add(eightNum[6]);
+                    twoList.add(eightNum[7]);
+                    priBetNumbers.add(twoList);
+                    break;
+
+                case HOU_ER_HE_ZHI:
+                case ZHONG_ER_HE_ZHI:
+                case QIAN_ER_HE_ZHI:
+                    oneSets.add(sum2List.get(0));
+                    oneSets.add(sum2List.get(2));
+                    oneSets.add(sum2List.get(3));
+                    oneSets.add(sum2List.get(4));
+                    oneSets.add(sum2List.get(5));
+                    priBetNumbers.add(oneSets);
+                    break;
+
+
+                case GUAN_DA_XIAO_DAN_SHUANG:
+                    oneSets.clear();
+                    oneSets.add(da);
+                    oneSets.add(dan);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case YA_DA_XIAO_DAN_SHUANG:
+                    oneSets.clear();
+                    oneSets.add(xiao);
+                    oneSets.add(shuang);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case THIRD_DA_XIAO_DAN_SHUANG:
+                    oneSets.clear();
+                    oneSets.add(xiao);
+                    oneSets.add(dan);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DAN_HAO_GUAN_LONG_HU:
+                    oneSets.clear();
+                    oneSets.add(dragon);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DAN_HAO_YA_LONG_HU:
+                    oneSets.clear();
+                    oneSets.add(dragon);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DAN_HAO_THIRD_LONG_HU:
+                    oneSets.clear();
+                    oneSets.add(tiger);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DAN_HAO_FORTH_LONG_HU:
+                    oneSets.clear();
+                    oneSets.add(dragon);
+                    priBetNumbers.add(oneSets);
+                    break;
+                case DAN_HAO_FIFTH_LONG_HU:
+                    oneSets.clear();
+                    oneSets.add(tiger);
+                    priBetNumbers.add(oneSets);
+                    break;
+            }
         } else if (lotteryId == 8) {
             List<String> numList = new ArrayList<>();
             String first = "1";
@@ -1396,7 +1605,6 @@ public class LotteryOrderTest {
                     priBetNumbers.add(numList);
                     break;
             }
-            return priBetNumbers;
         }
         return priBetNumbers;
     }

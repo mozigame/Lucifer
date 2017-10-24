@@ -178,7 +178,7 @@ public class ShishicaiDrawServiceImplTest {
      * @throws Exception
      */
     @Test
-    public void testGetBatchBoundsInfoOfLottery11x5Double() throws Exception {
+    public void testGetBoundsInfoOfLottery11x5Double() throws Exception {
 
         kj = "01 02 03 04 05";
         kj1 = "06 08 03 05 09";
@@ -210,7 +210,7 @@ public class ShishicaiDrawServiceImplTest {
             System.out.println("==========中奖号码========>>>" + kj);
 
             for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
-                for (int i = 1; i < 10; i++) {
+                for (int i = 1; i < 11; i++) {
                     System.out.println(lottery11x5DoubleType);
                     System.out.println(lottery11x5DoubleType.desc());
                     System.out.println("==============第 " + i + " 次下注===============");
@@ -235,7 +235,7 @@ public class ShishicaiDrawServiceImplTest {
      * @throws Exception
      */
     @Test
-    public void testGetBatchBoundsInfoOfLottery11x5() throws Exception {
+    public void testGetBoundsInfoOfLottery11x5() throws Exception {
 
         kj = "01 02 03 04 05";
         kj1 = "06 08 03 05 09";
@@ -347,15 +347,15 @@ public class ShishicaiDrawServiceImplTest {
     public void testGetBoundsInfoOfLotteryPK10() throws Exception {
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("1");
-        betNumbers.add("2");
-        betNumbers.add("3");
-        betNumbers.add("4");
-        betNumbers.add("5");
-        betNumbers.add("6");
-        betNumbers.add("7");
-        betNumbers.add("8");
-        betNumbers.add("9");
+        betNumbers.add("01");
+        betNumbers.add("02");
+        betNumbers.add("03");
+        betNumbers.add("04");
+        betNumbers.add("05");
+        betNumbers.add("06");
+        betNumbers.add("07");
+        betNumbers.add("08");
+        betNumbers.add("09");
         betNumbers.add("10");
 
         System.out.println("*******************************PK10传统盘开奖测试开始*******************************");

@@ -2551,6 +2551,233 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
     }
 
     /**
+     * 快3传统开奖算法
+     *
+     * @param lotteryType
+     * @param kjNo
+     * @param lotteryOrderList
+     * @return
+     */
+    private List<UserOrderPO> getBoundsInfoOfLotteryKuai3(LotteryType lotteryType, String kjNo, List<UserOrderPO> lotteryOrderList) {
+
+        List<String> kjList = getRealLotteryKuai3Kj(kjNo, lotteryType);
+        for (UserOrderPO lotteryOrder : lotteryOrderList) {
+
+            List<List<String>> betNumbers = lotteryOrder.getBetContentProc();
+
+            int size = betNumbers.size();
+            int firstPrizeNum = 0; // 一等奖次数
+
+            LotteryKuai3Type lotteryKuai3Type = (LotteryKuai3Type) lotteryType;
+            switch (lotteryKuai3Type) {
+
+
+                // 二同号复选
+                case ER_TONG_HAO_FU_XUAN:
+                    // TODO 后期优化
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 2).size() > 0) {
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (LotteryUtils.getDupStrByDupNum(betNumber, 2).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 2))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 三不同号标准选号
+                case SAN_BU_TONG_HAO_FU_SHI:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 1).size() == 3) {
+
+                        if (betNumbers.get(0).containsAll(kjList)) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 三不同号手选
+                case SAN_BU_TONG_HAO_DAN_SHI:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 1).size() == 3) {
+
+                        List<List<String>> realStringList = LotteryUtils.getStrListForKuai3(betNumbers.get(0), 3);
+
+                        for (List<String> strList : realStringList) {
+                            if (strList.containsAll(LotteryUtils.getDupStrByDupNum(kjList, 1))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //三不同号胆拖选号
+                case SAN_BU_TONG_HAO_DAN_TUO:
+                    if (size == 2) {
+                        for (String str : betNumbers.get(0)) {
+
+                            List<String> stringList = new ArrayList<>();
+                            stringList.addAll(betNumbers.get(1));
+                            stringList.add(str);
+                            if (stringList.containsAll(kjList)) {
+                                firstPrizeNum++;
+                            }
+
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 三同号单选
+                case SAN_TONG_HAO_DAN_XUAN:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 1) {
+
+                        for (String str : betNumbers.get(0)) {
+                            if (LotteryUtils.getDupStrByDupNum(kjList, 3).containsAll(LotteryUtils.getDupStrByDupNum(str, 3))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 三同号通选
+                case SAN_TONG_HAO_TONG_XUAN:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 1) {
+
+                        firstPrizeNum++;
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //和值大小单双
+                case HE_ZHI_DA_XIAO:
+                case HE_ZHI_DAN_SHUANG:
+
+                    if (size == 1) {
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (LotteryUtils.getDaxiaodanshuangList(Integer.parseInt(kjList.get(0)), 20).contains(betNumber)) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 和值点数
+                case HE_ZHI_DIAN_SHU:
+                    if (size == 1) {
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (betNumber.equals(String.valueOf(LotteryUtils.getStrSum(kjList)))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 二不同号标准
+                case ER_BU_TONG_HAO_FU_SHI:
+                    if (size == 1) {
+
+                        int betNo = 0;
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (kjList.contains(betNumber)) {
+                                betNo++;
+                            }
+                        }
+                        firstPrizeNum = (int) LotteryUtils.combination(betNo, 2);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 二不同号手动号
+                case ER_BU_TONG_HAO_DAN_SHI:
+
+                    if (size == 1) {
+                        List<List<String>> realList = LotteryUtils.getStrListForKuai3(betNumbers.get(0), 2);
+                        for (List<String> betList : realList) {
+                            if (kjList.containsAll(betList)) {
+                                firstPrizeNum++;
+                            }
+                        }
+
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 二不同号胆拖
+                case ER_BU_TONG_HAO_DAN_TUO:
+                    if (size == 2 && betNumbers.get(0).size() == 1 && kjList.containsAll(betNumbers.get(0))) {
+                        for (String str : betNumbers.get(1)) {
+                            if (kjList.contains(str)) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 二同号单选
+                case ER_TONG_HAO_FU_SHI:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 2).size() == 1) {
+
+                        if (betNumbers.get(0).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 2))
+                                && betNumbers.get(1).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 1))) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 二同号单式
+                case ER_TONG_HAO_DAN_SHI:
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 2).size() == 1) {
+
+                        List<List<String>> realList = LotteryUtils.getStrListForKuai3(betNumbers.get(0), 3);
+                        for (List<String> betList : realList) {
+                            if (LotteryUtils.getDupStrByDupNum(betList, 2).size() == 1
+                                    && LotteryUtils.getDupStrByDupNum(betList, 2).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 2))
+                                    && LotteryUtils.getDupStrByDupNum(betList, 1).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 1))) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    // 三连号通选
+                case SAN_LIAN_HAO_TONG_XUAN:
+                    // TODO 暂时偷懒用简单方法--依赖前端
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 1).size() == 3) {
+
+                        for (List<String> betList : betNumbers) {
+                            if (betList.containsAll(kjList)) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+
+                    //一号中奖不定胆
+                case YI_HAO_DING_WEI_DAN:
+
+                    if (size == 1) {
+                        for (String betNumber : betNumbers.get(0)) {
+                            if (kjList.contains(betNumber)) {
+                                firstPrizeNum++;
+                            }
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+            }
+        }
+        return lotteryOrderList;
+    }
+
+    /**
      * 快3双面盘开奖算法
      *
      * @param lotteryType
@@ -2935,7 +3162,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                                 firstPrizeNum++;
                             }
                         }
-                        LotteryUtils.getStrSum(kjList);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
@@ -2950,7 +3177,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                         if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kjList)))) {
                             firstPrizeNum++;
                         }
-                        LotteryUtils.getStrSum(kjList);
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
@@ -2974,9 +3201,18 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     // 竞速
                 case JING_SU:
                     if (size != 0) {
+
+                        Map<String, Integer> resultMap = new HashMap<>();
+                        int j = 0;
+                        for (String kjStr : kjList) {
+                            j++;
+                            resultMap.put(kjStr, j);
+                        }
+
                         for (int i = 0; i < size; i++) {
-                            if (Integer.parseInt(kjList.get(Integer.parseInt(betNumbers.get(i).get(0))))
-                                    > Integer.parseInt(kjList.get(Integer.parseInt(betNumbers.get(i).get(1))))) {
+
+                            if (resultMap.get(betNumbers.get(i).get(0))
+                                    < resultMap.get(betNumbers.get(i).get(1))) {
                                 firstPrizeNum++;
                             }
                         }
