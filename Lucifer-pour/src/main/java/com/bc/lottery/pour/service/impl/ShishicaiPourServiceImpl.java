@@ -36,7 +36,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         } else if (lotteryId == 3) {
             return getLottery11x5BetCount(playId, betNumbers);
         } else if (lotteryId == 7) {
-            return getLottery11x5BetCount(playId, betNumbers);
+            return getLotteryPK10BetCount(playId, betNumbers);
         }
         return 0;
     }
@@ -247,6 +247,11 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     @Override
     public List<List<String>> getLotteryListByType(Long playId, String str) {
 
+        return getLotteryShishicaiByType(playId, str);
+    }
+
+    //官方时时彩的字符串转换
+    private List<List<String>> getLotteryShishicaiByType(Long playId, String str) {
         List<List<String>> strList = new ArrayList<>();
 
         ShishicaiType shishicaiType = ShishicaiType.parse(playId);
@@ -340,6 +345,48 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             default:
                 return strList;
         }
+    }
+
+    // 双面彩时时彩转换
+    private List<List<String>> getLotteryShishicaiDoubleByType(Long playId, String str) {
+
+        return JsonUtils.oneOnlyJson2LotteryList(str);
+    }
+
+    // 双面彩11x5转换
+    private List<List<String>> getLottery11x5DoubleByType(Long playId, String str) {
+
+        return JsonUtils.oneOnlyJson2LotteryList(str);
+    }
+
+    // 双面彩快3转换
+    private List<List<String>> getLotteryKuai3DoubleByType(Long playId, String str) {
+
+        return JsonUtils.oneOnlyJson2LotteryList(str);
+    }
+
+    // 双面彩PK10转换
+    private List<List<String>> getLotteryPK10DoubleByType(Long playId, String str) {
+
+        return JsonUtils.oneOnlyJson2LotteryList(str);
+    }
+
+    @Override
+    public List<List<String>> getLotteryListByType(Long lotteryId, Long playId, String str) {
+
+        List<List<String>> strList = new ArrayList<>();
+        if (lotteryId == 1) {
+            return getLotteryListByType(playId, str);
+        } else if (lotteryId == 2) {
+            return getLotteryShishicaiDoubleByType(playId, str);
+        } else if (lotteryId == 4) {
+            return getLottery11x5DoubleByType(playId, str);
+        } else if (lotteryId == 6) {
+            return getLotteryKuai3DoubleByType(playId, str);
+        } else if (lotteryId == 8) {
+            return getLotteryPK10DoubleByType(playId, str);
+        }
+        return strList;
     }
 
     @Override

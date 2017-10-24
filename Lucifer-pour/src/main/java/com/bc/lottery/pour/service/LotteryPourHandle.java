@@ -42,8 +42,17 @@ public interface LotteryPourHandle {
      * @param playId
      * @return
      */
+
+    @Deprecated
     List<List<String>> getLotteryListByType(Long playId, String str);
 
+    /**
+     * 根据类型获取彩票可接收的List
+     *
+     * @param playId
+     * @return
+     */
+    List<List<String>> getLotteryListByType(Long lotteryId, Long playId, String str);
 
     /**
      * 获取彩票单行注数（目前只支持时时彩定位胆）
