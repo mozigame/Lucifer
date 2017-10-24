@@ -339,6 +339,101 @@ public class ShishicaiDrawServiceImplTest {
     }
 
     /**
+     * PK10传统盘
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetBoundsInfoOfLotteryPK10() throws Exception {
+
+        List<String> betNumbers = new ArrayList<>();
+        betNumbers.add("1");
+        betNumbers.add("2");
+        betNumbers.add("3");
+        betNumbers.add("4");
+        betNumbers.add("5");
+        betNumbers.add("6");
+        betNumbers.add("7");
+        betNumbers.add("8");
+        betNumbers.add("9");
+        betNumbers.add("10");
+
+        System.out.println("*******************************PK10传统盘开奖测试开始*******************************");
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (LotteryPK10Type lotteryPK10Type : LotteryPK10Type.values()) {
+            for (int i = 1; i < 2; i++) {
+                kjList.clear();
+                System.out.println(lotteryPK10Type);
+                System.out.println(lotteryPK10Type.desc());
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(7, lotteryPK10Type.value());
+                System.out.println(betNumberList);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder1 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder1.append(bet).append(",");
+                });
+
+                String betNumber1 = betBuilder1.toString().substring(0, betBuilder1.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder2 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder2.append(bet).append(",");
+                });
+
+                String betNumber2 = betBuilder2.toString().substring(0, betBuilder2.toString().length() - 1);
+
+                kjList.add(betNumber2);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder3 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder3.append(bet).append(",");
+                });
+
+                String betNumber3 = betBuilder3.toString().substring(0, betBuilder3.toString().length() - 1);
+
+                kjList.add(betNumber3);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder4 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder4.append(bet).append(",");
+                });
+
+                betNumber1 = betBuilder4.toString().substring(0, betBuilder4.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder5 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder5.append(bet).append(",");
+                });
+
+                betNumber1 = betBuilder5.toString().substring(0, betBuilder5.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                for (String kjno : kjList) {
+                    UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                    userOrder.setLotteryId(7L);
+                    userOrder.setPlayId(lotteryPK10Type.value());
+                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
+                }
+            }
+        }
+        System.out.println("*******************************PK10传统开奖测试结束*******************************");
+    }
+
+    /**
      * PK10双面盘
      *
      * @throws Exception

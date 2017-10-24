@@ -1,6 +1,7 @@
 package com.bc.lottery.pour.service.impl;
 
 import com.bc.lottery.entity.Lottery11x5Type;
+import com.bc.lottery.entity.LotteryPK10Type;
 import com.bc.lottery.entity.ShishicaiType;
 import com.bc.lottery.pour.service.LotteryPourHandle;
 import com.bc.lottery.util.JsonUtils;
@@ -33,6 +34,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         if (lotteryId == 1) {
             return getShiShiCaiBetCount(playId, betNumbers);
         } else if (lotteryId == 3) {
+            return getLottery11x5BetCount(playId, betNumbers);
+        } else if (lotteryId == 7) {
             return getLottery11x5BetCount(playId, betNumbers);
         }
         return 0;
@@ -336,7 +339,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
             default:
                 return strList;
-
         }
     }
 
@@ -899,6 +901,124 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
+
+                default:
+                    return 0;
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * 获取PK10的下注单数
+     *
+     * @param playId
+     * @param betNumbers
+     * @return
+     */
+    private long getLotteryPK10BetCount(Long playId, List<List<String>> betNumbers) {
+        int size = betNumbers.size();
+
+        LotteryPK10Type lotteryPK10Type = LotteryPK10Type.parse(playId);
+        if (lotteryPK10Type != null) {
+
+            switch (lotteryPK10Type) {
+
+                // 冠军复式
+                case GUAN_JUN_FU_SHI:
+
+                    // 龙虎
+                case DAN_HAO_GUAN_LONG_HU:
+                case DAN_HAO_YA_LONG_HU:
+                case DAN_HAO_THIRD_LONG_HU:
+                case DAN_HAO_FORTH_LONG_HU:
+                case DAN_HAO_FIFTH_LONG_HU:
+
+                    // 大小单双
+                case GUAN_DA_XIAO_DAN_SHUANG:
+                case YA_DA_XIAO_DAN_SHUANG:
+                case THIRD_DA_XIAO_DAN_SHUANG:
+
+                    // 和值
+                case QIAN_SAN_HE_ZHI:
+                case HOU_SAN_HE_ZHI:
+                case QIAN_ER_HE_ZHI:
+                case ZHONG_ER_HE_ZHI:
+                case HOU_ER_HE_ZHI:
+
+                    if (size == 1) {
+                        return betNumbers.get(0).size();
+                    }
+                    return 0;
+
+                //定位胆
+                case DING_WEI_DAN:
+                    if (size != 0) {
+                        return LotteryUtils.toPlusAll(betNumbers);
+                    }
+                    return 0;
+
+                //竞速
+                case JING_SU:
+
+                    return size;
+
+
+                // 前二单式
+                case QIAN_ER_DAN_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                // 前三单式
+                case QIAN_SAN_DAN_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
+
+                // 前四单式
+                case QIAN_SI_DAN_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
+                    }
+                    return 0;
+
+                //前五单式
+                case QIAN_WU_DAN_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 5);
+                    }
+                    return 0;
+
+                // 前六单式
+                case QIAN_LIU_DAN_SHI:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 6);
+                    }
+                    return 0;
+
+                // 前二复式
+                case QIAN_ER_FU_SHI:
+
+                    if (size == 2) {
+                        return LotteryUtils.toMultiplyAll(betNumbers) - LotteryUtils.intersectionOfSetNum(betNumbers.get(0), betNumbers.get(1));
+                    }
+                    return 0;
+
+                // 前三复式
+                case QIAN_SAN_FU_SHI:
+
+                    return getQianSanZhiXuanFuShiBetCount(betNumbers);
+
+                // 复式
+                case QIAN_SI_FU_SHI:
+                case QIAN_WU_FU_SHI:
+                case QIAN_LIU_FU_SHI:
+
+                    // TODO
 
                 default:
                     return 0;

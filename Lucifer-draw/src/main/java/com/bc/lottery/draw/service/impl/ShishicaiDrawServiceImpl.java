@@ -45,6 +45,9 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         } else if (lotteryType instanceof LotteryKuai3DoubleType) {
             // 双面盘快3
             return getBoundsInfoOfLotteryKuai3Double(lotteryType, kj, lotteryOrderList).get(0);
+        } else if (lotteryType instanceof LotteryPK10Type) {
+            // 传统盘PK10
+            return getBoundsInfoOfLotteryPK10(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof LotteryPK10DoubleType) {
             // 双面盘PK10
             return getBoundsInfoOfLotteryPK10Double(lotteryType, kj, lotteryOrderList).get(0);
@@ -793,6 +796,127 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     resultList = kjList;
             }
 
+        } else if (lotteryType instanceof LotteryPK10Type) {
+
+            LotteryPK10Type lotteryPK10Type = (LotteryPK10Type) lotteryType;
+            switch (lotteryPK10Type) {
+
+                // 冠军龙虎
+                case DAN_HAO_GUAN_LONG_HU:
+
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(9));
+                    break;
+
+                // 亚军龙虎
+                case DAN_HAO_YA_LONG_HU:
+
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(8));
+                    break;
+
+                //第三名龙虎
+                case DAN_HAO_THIRD_LONG_HU:
+
+                    resultList.add(kjList.get(2));
+                    resultList.add(kjList.get(7));
+                    break;
+
+                // 第四名龙虎
+                case DAN_HAO_FORTH_LONG_HU:
+
+                    resultList.add(kjList.get(3));
+                    resultList.add(kjList.get(6));
+                    break;
+
+                // 第五名龙虎
+                case DAN_HAO_FIFTH_LONG_HU:
+                case ZHONG_ER_HE_ZHI
+
+                    resultList.add(kjList.get(4));
+                    resultList.add(kjList.get(5));
+                    break;
+
+                // 冠军
+                case GUAN_JUN_FU_SHI:
+                case GUAN_DA_XIAO_DAN_SHUANG:
+                    resultList.add(kjList.get(0));
+                    break;
+
+                // 亚军
+                case YA_DA_XIAO_DAN_SHUANG:
+                    resultList.add(kjList.get(1));
+                    break;
+
+                //季军
+                case THIRD_DA_XIAO_DAN_SHUANG:
+                    resultList.add(kjList.get(2));
+                    break;
+
+                //前二
+                case QIAN_ER_DAN_SHI:
+                case QIAN_ER_FU_SHI:
+                case QIAN_ER_HE_ZHI:
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    break;
+
+                // 前三
+                case QIAN_SAN_DAN_SHI:
+                case QIAN_SAN_FU_SHI:
+                case QIAN_SAN_HE_ZHI:
+
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(2));
+                    break;
+
+                //前四
+                case QIAN_SI_DAN_SHI:
+                case QIAN_SI_FU_SHI:
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(2));
+                    resultList.add(kjList.get(3));
+                    break;
+
+                // 前五
+                case QIAN_WU_DAN_SHI:
+                case QIAN_WU_FU_SHI:
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(2));
+                    resultList.add(kjList.get(3));
+                    resultList.add(kjList.get(4));
+                    break;
+
+                // 前六
+                case QIAN_LIU_DAN_SHI:
+                case QIAN_LIU_FU_SHI:
+
+                    resultList.add(kjList.get(0));
+                    resultList.add(kjList.get(1));
+                    resultList.add(kjList.get(2));
+                    resultList.add(kjList.get(3));
+                    resultList.add(kjList.get(4));
+                    resultList.add(kjList.get(5));
+                    break;
+
+                // 后三和值
+                case HOU_SAN_HE_ZHI:
+                    resultList.add(kjList.get(7));
+                    resultList.add(kjList.get(8));
+                    resultList.add(kjList.get(9));
+                    break;
+
+                // 后二和值
+                case HOU_ER_HE_ZHI:
+                    resultList.add(kjList.get(8));
+                    resultList.add(kjList.get(9));
+                    break;
+                default:
+                    resultList = kjList;
+            }
         }
         return resultList;
     }
@@ -2818,6 +2942,10 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     // 和值
                 case QIAN_SAN_HE_ZHI:
                 case HOU_SAN_HE_ZHI:
+                case QIAN_ER_HE_ZHI:
+                case ZHONG_ER_HE_ZHI:
+                case HOU_ER_HE_ZHI:
+
                     if (size == 1) {
                         if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kjList)))) {
                             firstPrizeNum++;

@@ -30,6 +30,9 @@ public enum LotteryPK10Type implements LotteryType {
 
     QIAN_SAN_HE_ZHI(61511L, "前三和值"),
     HOU_SAN_HE_ZHI(61512L, "后三和值"),
+    QIAN_ER_HE_ZHI(61522L, "前二和值"),
+    HOU_ER_HE_ZHI(61523L, "后二和值"),
+    ZHONG_ER_HE_ZHI(61524L, "中二和值"),
 
     // 大小单双
     GUAN_DA_XIAO_DAN_SHUANG(61701L, "冠军大小单双"),
