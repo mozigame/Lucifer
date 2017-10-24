@@ -1,6 +1,7 @@
 package com.bc.lottery.pour.service.impl;
 
 import com.bc.lottery.entity.Lottery11x5Type;
+import com.bc.lottery.entity.LotteryKuai3Type;
 import com.bc.lottery.entity.LotteryPK10Type;
 import com.bc.lottery.entity.ShishicaiType;
 import com.bc.lottery.pour.service.LotteryPourHandle;
@@ -39,6 +40,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLottery11x5BetCount(playId, betNumbers);
         } else if (lotteryId == 4) {
             return 1;
+        } else if (lotteryId == 5) {
+            return getLotteryKuai3BetCount(playId, betNumbers);
         } else if (lotteryId == 6) {
             return 1;
         } else if (lotteryId == 7) {
@@ -965,6 +968,68 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         return 0;
     }
 
+    private long getLotteryKuai3BetCount(Long playId, List<List<String>> betNumbers) {
+
+        int size = betNumbers.size();
+
+        LotteryKuai3Type lotteryKuai3Type = LotteryKuai3Type.parse(playId);
+        if (lotteryKuai3Type != null) {
+
+            switch (lotteryKuai3Type) {
+
+                // 二同号复选
+                case ER_TONG_HAO_FU_XUAN:
+                    // 三同号单选
+                case SAN_TONG_HAO_DAN_XUAN:
+                    // 和值点数
+                case HE_ZHI_DIAN_SHU:
+                    //和值大小单双
+                case HE_ZHI_DA_XIAO:
+                case HE_ZHI_DAN_SHUANG:
+
+                    //一号中奖不定胆
+                case YI_HAO_DING_WEI_DAN:
+                    return betNumbers.get(0).size();
+
+                // 三不同号标准选号
+                case SAN_BU_TONG_HAO_FU_SHI:
+                    return LotteryUtils.combination(size, 3);
+
+                // 三不同号手选
+                case SAN_BU_TONG_HAO_DAN_SHI:
+                    // 二同号单式
+                case ER_TONG_HAO_DAN_SHI:
+                    return betNumbers.get(0).size() / 3;
+
+                //三不同号胆拖选号
+                case SAN_BU_TONG_HAO_DAN_TUO:
+                    // 二不同号胆拖
+                case ER_BU_TONG_HAO_DAN_TUO:
+                    // 二同号单选
+                case ER_TONG_HAO_FU_SHI:
+                    return LotteryUtils.toMultiplyAll(betNumbers);
+
+                // 三同号通选
+                case SAN_TONG_HAO_TONG_XUAN:
+                    // 三连号通选
+                case SAN_LIAN_HAO_TONG_XUAN:
+                    return 1;
+
+                // 二不同号标准
+                case ER_BU_TONG_HAO_FU_SHI:
+                    return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+
+                // 二不同号手动号
+                case ER_BU_TONG_HAO_DAN_SHI:
+                    return betNumbers.get(0).size() / 2;
+
+                default:
+                    return 0;
+            }
+        }
+        return 0;
+    }
+
     /**
      * 获取PK10的下注单数
      *
@@ -972,6 +1037,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      * @param betNumbers
      * @return
      */
+
     private long getLotteryPK10BetCount(Long playId, List<List<String>> betNumbers) {
         int size = betNumbers.size();
 

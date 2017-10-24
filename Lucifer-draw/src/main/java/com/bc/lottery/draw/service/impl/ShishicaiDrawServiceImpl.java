@@ -2571,13 +2571,12 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             LotteryKuai3Type lotteryKuai3Type = (LotteryKuai3Type) lotteryType;
             switch (lotteryKuai3Type) {
 
-
                 // 二同号复选
                 case ER_TONG_HAO_FU_XUAN:
                     // TODO 后期优化
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 2).size() > 0) {
                         for (String betNumber : betNumbers.get(0)) {
-                            if (LotteryUtils.getDupStrByDupNum(betNumber, 2).containsAll(LotteryUtils.getDupStrByDupNum(kjList, 2))) {
+                            if (LotteryUtils.getDupStrByDupNum(kjList, 2).contains(betNumber)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -2633,7 +2632,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 1) {
 
                         for (String str : betNumbers.get(0)) {
-                            if (LotteryUtils.getDupStrByDupNum(kjList, 3).containsAll(LotteryUtils.getDupStrByDupNum(str, 3))) {
+                            if (LotteryUtils.getDupStrByDupNum(kjList, 3).contains(str)) {
                                 firstPrizeNum++;
                             }
                         }
@@ -2644,7 +2643,6 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     // 三同号通选
                 case SAN_TONG_HAO_TONG_XUAN:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 1) {
-
                         firstPrizeNum++;
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
