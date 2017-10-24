@@ -831,7 +831,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                 // 第五名龙虎
                 case DAN_HAO_FIFTH_LONG_HU:
-                case ZHONG_ER_HE_ZHI
+                case ZHONG_ER_HE_ZHI:
 
                     resultList.add(kjList.get(4));
                     resultList.add(kjList.get(5));
@@ -2935,7 +2935,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                                 firstPrizeNum++;
                             }
                         }
-                        LotteryUtils.getStrSum(kjList)
+                        LotteryUtils.getStrSum(kjList);
                     }
                     continue;
 
@@ -2950,7 +2950,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                         if (betNumbers.get(0).contains(String.valueOf(LotteryUtils.getStrSum(kjList)))) {
                             firstPrizeNum++;
                         }
-                        LotteryUtils.getStrSum(kjList)
+                        LotteryUtils.getStrSum(kjList);
                     }
                     continue;
 
