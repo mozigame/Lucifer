@@ -173,63 +173,6 @@ public class ShishicaiDrawServiceImplTest {
     }
 
     /**
-     * 11x5双面盘
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetBoundsInfoOfLottery11x5Double() throws Exception {
-
-        kj = "01 02 03 04 05";
-        kj1 = "06 08 03 05 09";
-        kj2 = "11 07 03 05 10";
-        kj3 = "03 09 08 04 02";
-        kj4 = "06 10 02 08 03";
-        kj5 = "01 03 05 07 09";
-        kj6 = "06 08 04 02 10";
-        kj7 = "04 05 09 03 11";
-        kj8 = "07 05 02 11 08";
-        kj9 = "02 03 04 06 05";
-
-        System.out.println("*******************************11选5双面盘开奖测试开始*******************************");
-        kjList.add(kj);
-        kjList.add(kj1);
-        kjList.add(kj2);
-        kjList.add(kj3);
-        kjList.add(kj4);
-        kjList.add(kj5);
-        kjList.add(kj6);
-        kjList.add(kj7);
-        kjList.add(kj8);
-        kjList.add(kj9);
-        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
-
-        for (String kj : kjList) {
-
-            System.out.println("==========中奖号码========>>>" + kj);
-
-            for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
-                for (int i = 1; i < 11; i++) {
-                    System.out.println(lottery11x5DoubleType);
-                    System.out.println(lottery11x5DoubleType.desc());
-                    System.out.println("==============第 " + i + " 次下注===============");
-                    List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(4, lottery11x5DoubleType.value());
-                    System.out.println(betNumberList);
-                    for (String kjno : kjList) {
-                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
-                        userOrder.setLotteryId(4L);
-                        userOrder.setPlayId(lottery11x5DoubleType.value());
-                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
-                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
-                    }
-                }
-            }
-        }
-        System.out.println("*******************************11选5双面盘开奖测试结束*******************************");
-    }
-
-    /**
      * 11选5传统盘
      *
      * @throws Exception
@@ -285,6 +228,64 @@ public class ShishicaiDrawServiceImplTest {
         }
         System.out.println("*******************************11选5传统盘开奖测试结束*******************************");
     }
+
+    /**
+     * 11x5双面盘
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetBoundsInfoOfLottery11x5Double() throws Exception {
+
+        kj = "01 02 03 04 05";
+        kj1 = "06 08 03 05 09";
+        kj2 = "11 07 03 05 10";
+        kj3 = "03 09 08 04 02";
+        kj4 = "06 10 02 08 03";
+        kj5 = "01 03 05 07 09";
+        kj6 = "06 08 04 02 10";
+        kj7 = "04 05 09 03 11";
+        kj8 = "07 05 02 11 08";
+        kj9 = "02 03 04 06 05";
+
+        System.out.println("*******************************11选5双面盘开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
+                for (int i = 1; i < 11; i++) {
+                    System.out.println(lottery11x5DoubleType);
+                    System.out.println(lottery11x5DoubleType.desc());
+                    System.out.println("==============第 " + i + " 次下注===============");
+                    List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(4, lottery11x5DoubleType.value());
+                    System.out.println(betNumberList);
+                    for (String kjno : kjList) {
+                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                        userOrder.setLotteryId(4L);
+                        userOrder.setPlayId(lottery11x5DoubleType.value());
+                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + (boundsInfo.getIsTied() == 0 ? "" : "    和"));
+                    }
+                }
+            }
+        }
+        System.out.println("*******************************11选5双面盘开奖测试结束*******************************");
+    }
+
 
     /**
      * 快3双面盘

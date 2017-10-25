@@ -29,19 +29,22 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         List<UserOrderPO> lotteryOrderList = new ArrayList<>();
         lotteryOrderList.add(order);
         LotteryType lotteryType = LotteryType.parseType(order.getLotteryId(), order.getPlayId());
-        // 如果类型属于传统时时彩
-        if (lotteryType instanceof ShishicaiType) {
 
+        if (lotteryType instanceof ShishicaiType) {
+            // 传统时时彩
             return getBoundsInfoOfShishicai(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof ShishicaiDoubleType) {
             // 双面盘时时彩
             return getBoundsInfoOfShishicaiDouble(lotteryType, kj, lotteryOrderList).get(0);
-        } else if (lotteryType instanceof Lottery11x5DoubleType) {
-            // 双面盘11选5
-            return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof Lottery11x5Type) {
             // 传统盘11选5
             return getBoundsInfoOfLottery11x5(lotteryType, kj, lotteryOrderList).get(0);
+        } else if (lotteryType instanceof Lottery11x5DoubleType) {
+            // 双面盘11选5
+            return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList).get(0);
+        } else if (lotteryType instanceof LotteryKuai3Type) {
+            // 传统盘快3
+            return getBoundsInfoOfLotteryKuai3(lotteryType, kj, lotteryOrderList).get(0);
         } else if (lotteryType instanceof LotteryKuai3DoubleType) {
             // 双面盘快3
             return getBoundsInfoOfLotteryKuai3Double(lotteryType, kj, lotteryOrderList).get(0);
@@ -62,19 +65,21 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             return null;
         }
 
-        // 如果类型属于传统时时彩
         if (lotteryType instanceof ShishicaiType) {
-
+            // 传统时时彩
             return getBoundsInfoOfShishicai(lotteryType, kj, lotteryOrderList);
         } else if (lotteryType instanceof ShishicaiDoubleType) {
             // 双面盘时时彩
             return getBoundsInfoOfShishicaiDouble(lotteryType, kj, lotteryOrderList);
-        } else if (lotteryType instanceof Lottery11x5DoubleType) {
-            // 双面盘11选5
-            return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList);
         } else if (lotteryType instanceof Lottery11x5Type) {
             // 传统盘11选5
             return getBoundsInfoOfLottery11x5(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof Lottery11x5DoubleType) {
+            // 双面盘11选5
+            return getBoundsInfoOfLottery11x5Double(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof LotteryKuai3Type) {
+            // 传统盘快3
+            return getBoundsInfoOfLotteryKuai3(lotteryType, kj, lotteryOrderList);
         } else if (lotteryType instanceof LotteryKuai3DoubleType) {
             // 双面盘快3
             return getBoundsInfoOfLotteryKuai3Double(lotteryType, kj, lotteryOrderList);
@@ -2317,16 +2322,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                     if (betNumbers.size() == 1) {
 
-                        //获取中奖号的总和的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
+                        if (LotteryUtils.getStrSum(kjList) == 30) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的总和的大小单双
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
 
-                        for (String betNumber : betNumbers.get(0)) {
-                            if (firstBetList.contains(betNumber)) {
-                                firstPrizeNum++;
+                            for (String betNumber : betNumbers.get(0)) {
+                                if (firstBetList.contains(betNumber)) {
+                                    firstPrizeNum++;
+                                }
                             }
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-
-                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
@@ -2396,16 +2404,19 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
                     if (betNumbers.size() == 1) {
 
-                        //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 11, 11);
+                        if (LotteryUtils.getStrSum(kjList) == 11) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 11, 11);
 
-                        for (String betNumber : betNumbers.get(0)) {
-                            if (firstBetList.contains(betNumber)) {
-                                firstPrizeNum++;
+                            for (String betNumber : betNumbers.get(0)) {
+                                if (firstBetList.contains(betNumber)) {
+                                    firstPrizeNum++;
+                                }
                             }
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
-
-                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
