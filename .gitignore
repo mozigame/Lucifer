@@ -32,5 +32,6 @@ include/
 *.o
 *.out
 rebel.xml
+*.smproj
 dt-dynamic-web/youyun/gw/service/
 dt-dynamic-web/youyun/phpcustomer/

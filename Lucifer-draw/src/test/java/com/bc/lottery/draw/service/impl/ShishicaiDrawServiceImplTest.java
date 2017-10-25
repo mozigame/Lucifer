@@ -278,7 +278,7 @@ public class ShishicaiDrawServiceImplTest {
                         userOrder.setLotteryId(4L);
                         userOrder.setPlayId(lottery11x5DoubleType.value());
                         UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
-                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + (boundsInfo.getIsTied() == 0 ? "" : "    和"));
+                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() );
                     }
                 }
             }
