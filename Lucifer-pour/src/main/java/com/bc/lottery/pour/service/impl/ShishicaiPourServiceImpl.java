@@ -529,6 +529,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
     }
 
+
     // 获取随机数（可重复）
     private List<List<String>> getRandomList(int maxNum, int outerLength, int innerLength) {
 

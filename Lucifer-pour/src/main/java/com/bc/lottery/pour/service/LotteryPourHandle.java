@@ -70,4 +70,5 @@ public interface LotteryPourHandle {
      * @return
      */
     String getStringByLotteryList(Long playId, List<List<String>> lotteryList);
+
 }

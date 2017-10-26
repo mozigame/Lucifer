@@ -93,6 +93,286 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         return null;
     }
 
+    @Override
+    public List<Long> getLotteryBetPlayIds(Long lotteryId, String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        switch (String.valueOf(lotteryId)) {
+            case 2 + "":
+                return getShishicaiDoubleBetPlayIds(str);
+
+            default:
+                return resultList;
+        }
+    }
+
+    /**
+     * 获取双面时时彩的中奖玩法idlist
+     *
+     * @param str
+     * @return
+     */
+    private List<Long> getShishicaiDoubleBetPlayIds(String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
+
+            String kj = getRealShiShiCaiKj(str, shishicaiDoubleType);
+            String[] kjArr = kj.split("");
+            //获取总和的大小单双
+            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
+
+            //获取单球的大小单双
+            List<String> singleBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 9);
+
+            //获取中奖号的龙虎和信息
+            List<String> longhuBetList = new ArrayList<>();
+            if (kjArr.length == 5) {
+                longhuBetList = LotteryUtils.getLongHuHeList(Integer.parseInt(kjArr[0]), Integer.parseInt(kjArr[4]));
+            }
+
+            //获取中奖号码的的特殊玩法值
+            List<String> specialBetList = new ArrayList<>();
+            if (kjArr.length == 3) {
+                specialBetList = LotteryUtils.getDoubleTeShuWanFaList(kj);
+            }
+
+            switch (shishicaiDoubleType) {
+
+                //总和大小单双
+                case ZONG_HE_DA:
+                    if (firstBetList.contains("大")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case ZONG_HE_XIAO:
+                    if (firstBetList.contains("小")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case ZONG_HE_DAN:
+                    if (firstBetList.contains("单")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_SHUANG:
+                    if (firstBetList.contains("双")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                    //总和龙虎和
+                case ZONG_HE_LONG:
+                    if (longhuBetList.contains("龙")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_HU:
+                    if (longhuBetList.contains("虎")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_HE:
+                    if (longhuBetList.contains("和")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                    //单球大小单双
+                case YI_QIU_DA:
+                case ER_QIU_DA:
+                case SAN_QIU_DA:
+                case SI_QIU_DA:
+                case WU_QIU_DA:
+                    if (singleBetList.contains("大")) {
+
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_XIAO:
+                case ER_QIU_XIAO:
+                case SAN_QIU_XIAO:
+                case SI_QIU_XIAO:
+                case WU_QIU_XIAO:
+                    if (singleBetList.contains("小")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DAN:
+                case ER_QIU_DAN:
+                case SAN_QIU_DAN:
+                case SI_QIU_DAN:
+                case WU_QIU_DAN:
+                    if (singleBetList.contains("单")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_SHUANG:
+                case ER_QIU_SHUANG:
+                case SAN_QIU_SHUANG:
+                case SI_QIU_SHUANG:
+                case WU_QIU_SHUANG:
+                    if (singleBetList.contains("双")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                    // 单球定位模式
+                case YI_QIU_DING_WEI_DAN_0:
+                case ER_QIU_DING_WEI_DAN_0:
+                case SAN_QIU_DING_WEI_DAN_0:
+                case SI_QIU_DING_WEI_DAN_0:
+                case WU_QIU_DING_WEI_DAN_0:
+                    if (kj.contains("0")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_1:
+                case WU_QIU_DING_WEI_DAN_1:
+                    if (kj.contains("1")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_2:
+                case WU_QIU_DING_WEI_DAN_2:
+                    if (kj.contains("2")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_3:
+                case WU_QIU_DING_WEI_DAN_3:
+                    if (kj.contains("3")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_4:
+                case WU_QIU_DING_WEI_DAN_4:
+                    if (kj.contains("4")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_5:
+                case WU_QIU_DING_WEI_DAN_5:
+                    if (kj.contains("5")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_6:
+                case WU_QIU_DING_WEI_DAN_6:
+                    if (kj.contains("6")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_7:
+                case WU_QIU_DING_WEI_DAN_7:
+                    if (kj.contains("7")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_8:
+                case WU_QIU_DING_WEI_DAN_8:
+                    if (kj.contains("8")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DING_WEI_DAN_9:
+                case ER_QIU_DING_WEI_DAN_9:
+                case SAN_QIU_DING_WEI_DAN_9:
+                case SI_QIU_DING_WEI_DAN_9:
+                case WU_QIU_DING_WEI_DAN_9:
+                    if (kj.contains("9")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                    // 特殊玩法模式
+                case QIAN_SAN_BAO_ZI:
+                case ZHONG_SAN_BAO_ZI:
+                case HOU_SAN_BAO_ZI:
+                    if (specialBetList.contains("豹子")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+
+                case QIAN_SAN_SHUN_ZI:
+                case ZHONG_SAN_SHUN_ZI:
+                case HOU_SAN_SHUN_ZI:
+                    if (specialBetList.contains("顺子")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case QIAN_SAN_DUI_ZI:
+                case ZHONG_SAN_DUI_ZI:
+                case HOU_SAN_DUI_ZI:
+                    if (specialBetList.contains("对子")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case QIAN_SAN_BAN_SHUN:
+                case ZHONG_SAN_BAN_SHUN:
+                case HOU_SAN_BAN_SHUN:
+                    if (specialBetList.contains("半顺")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+                case QIAN_SAN_ZA_LIU:
+                case ZHONG_SAN_ZA_LIU:
+                case HOU_SAN_ZA_LIU:
+                    if (specialBetList.contains("杂六")) {
+                        resultList.add(shishicaiDoubleType.value());
+                    }
+                    continue;
+            }
+        }
+        return resultList;
+    }
+
+
+    /**
+     * 截取时时彩开奖号码
+     *
+     * @param kj
+     * @param lotteryType
+     * @return
+     */
+
     private String getRealShiShiCaiKj(String kj, LotteryType lotteryType) {
 
         String realLotteryKj = kj;

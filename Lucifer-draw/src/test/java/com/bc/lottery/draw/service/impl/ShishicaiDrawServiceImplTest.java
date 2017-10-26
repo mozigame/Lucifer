@@ -278,7 +278,7 @@ public class ShishicaiDrawServiceImplTest {
                         userOrder.setLotteryId(4L);
                         userOrder.setPlayId(lottery11x5DoubleType.value());
                         UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
-                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() );
+                        System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied());
                     }
                 }
             }
@@ -575,4 +575,38 @@ public class ShishicaiDrawServiceImplTest {
         System.out.println("*******************************单独开奖测试结束*******************************");
     }
 
+    /**
+     * 双面盘时时彩中奖类型
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetShishicaiDoublePlayIds() throws Exception {
+
+        System.out.println("*******************************单独开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(2L, kj);
+            System.out.println(playIdList);
+
+            System.out.println("*******************************单独开奖测试结束*******************************");
+
+        }
+
+    }
 }

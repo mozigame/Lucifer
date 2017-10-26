@@ -29,4 +29,13 @@ public interface LotteryDrawHandle {
      * @return
      */
     List<UserOrderPO> getBatchBoundsInfoOfLottery(LotteryType lotteryType, String kj, List<UserOrderPO> orderList);
+
+    /**
+     * 获取彩票开奖号码的中奖玩法--双面长龙
+     *
+     * @param lotteryId
+     * @param str
+     * @return
+     */
+    List<Long> getLotteryBetPlayIds(Long lotteryId, String str);
 }
