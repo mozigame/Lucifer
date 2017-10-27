@@ -100,7 +100,12 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         switch (String.valueOf(lotteryId)) {
             case 2 + "":
                 return getShishicaiDoubleBetPlayIds(str);
-
+            case 4 + "":
+                return getLottery11x5DoubleBetPlayIds(str);
+            case 6 + "":
+                return getLotteryKuai3DoubleBetPlayIds(str);
+            case 8 + "":
+                return getLotteryPK10DoubleBetPlayIds(str);
             default:
                 return resultList;
         }
@@ -364,6 +369,421 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         return resultList;
     }
 
+    /**
+     * 获取双面11x5的中奖玩法idlist
+     *
+     * @param str
+     * @return
+     */
+    private List<Long> getLottery11x5DoubleBetPlayIds(String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
+
+            List<String> kjList = getRealLottery11x5Kj(str, lottery11x5DoubleType);
+
+            //获取总和的大小单双
+            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
+
+            //获取中奖号的总和的尾数单双
+            List<String> tailBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9);
+
+            //获取单球的大小单双
+            List<String> singleBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 9);
+
+            //获取中奖号的龙虎和信息
+            List<String> longhuBetList = new ArrayList<>();
+            if (kjList.size() == 5) {
+                longhuBetList = LotteryUtils.getLongHuHeList(Integer.parseInt(kjList.get(0)), Integer.parseInt(kjList.get(4)));
+            }
+
+            switch (lottery11x5DoubleType) {
+
+                //总和大小单双
+                case ZONG_HE_DA:
+                    if (firstBetList.contains("大")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case ZONG_HE_XIAO:
+                    if (firstBetList.contains("小")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_DAN:
+                    if (firstBetList.contains("单")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_SHUANG:
+                    if (firstBetList.contains("双")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                    //总和尾大小
+                case ZONG_HE_WEI_DA:
+                    if (tailBetList.contains("大")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case ZONG_HE_WEI_XIAO:
+                    if (tailBetList.contains("小")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                    //总和龙虎和
+                case ZONG_HE_LONG:
+                    if (longhuBetList.contains("龙")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case ZONG_HE_HU:
+
+                    if (longhuBetList.contains("虎")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                    //单球大小单双
+                case YI_QIU_DA:
+                case ER_QIU_DA:
+                case SAN_QIU_DA:
+                case SI_QIU_DA:
+                case WU_QIU_DA:
+
+                    if (singleBetList.contains("大")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_XIAO:
+                case ER_QIU_XIAO:
+                case SAN_QIU_XIAO:
+                case SI_QIU_XIAO:
+                case WU_QIU_XIAO:
+                    if (singleBetList.contains("小")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_DAN:
+                case ER_QIU_DAN:
+                case SAN_QIU_DAN:
+                case SI_QIU_DAN:
+                case WU_QIU_DAN:
+                    if (singleBetList.contains("单")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+
+                case YI_QIU_SHUANG:
+                case ER_QIU_SHUANG:
+                case SAN_QIU_SHUANG:
+                case SI_QIU_SHUANG:
+                case WU_QIU_SHUANG:
+                    if (singleBetList.contains("双")) {
+                        resultList.add(lottery11x5DoubleType.value());
+                    }
+                    continue;
+            }
+        }
+        return resultList;
+    }
+
+    /**
+     * 获取双面快3的中奖玩法idlist
+     *
+     * @param str
+     * @return
+     */
+    private List<Long> getLotteryKuai3DoubleBetPlayIds(String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        Map<String, Integer> scopeMap = new HashMap<>();
+        scopeMap.put("smallSmall", 4);
+        scopeMap.put("smallBig", 10);
+        scopeMap.put("bigSmall", 11);
+        scopeMap.put("bigBig", 17);
+        for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
+
+            List<String> kjList = getRealLotteryKuai3Kj(str, lotteryKuai3DoubleType);
+            Set<String> baoziSet = LotteryUtils.getDupStrByDupNum(kjList, 3);
+
+            switch (lotteryKuai3DoubleType) {
+                //三军
+                case SAN_JUN_1:
+                    if (kjList.contains("1")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+
+                case SAN_JUN_2:
+                    if (kjList.contains("2")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case SAN_JUN_3:
+                    if (kjList.contains("3")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case SAN_JUN_4:
+                    if (kjList.contains("4")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case SAN_JUN_5:
+                    if (kjList.contains("5")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case SAN_JUN_6:
+                    if (kjList.contains("6")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+
+                    //总和大小
+                case SAN_JUN_大:
+                    if (LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 0) {
+                        //获取中奖号的总和的大小
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), scopeMap);
+                        if (firstBetList.contains("大")) {
+                            resultList.add(lotteryKuai3DoubleType.value());
+                        }
+                    }
+                    continue;
+
+                case SAN_JUN_小:
+                    if (LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 0) {
+                        //获取中奖号的总和的大小
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), scopeMap);
+                        if (firstBetList.contains("小")) {
+                            resultList.add(lotteryKuai3DoubleType.value());
+                        }
+                    }
+                    continue;
+                    //围骰
+                case WEI_SHAI_1:
+                    if (baoziSet.size() == 1 && baoziSet.contains("1")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case WEI_SHAI_2:
+                    if (baoziSet.size() == 1 && baoziSet.contains("2")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case WEI_SHAI_3:
+                    if (baoziSet.size() == 1 && baoziSet.contains("3")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case WEI_SHAI_4:
+                    if (baoziSet.size() == 1 && baoziSet.contains("4")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case WEI_SHAI_5:
+                    if (baoziSet.size() == 1 && baoziSet.contains("5")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case WEI_SHAI_6:
+                    if (baoziSet.size() == 1 && baoziSet.contains("6")) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+
+                    // 全骰
+                case QUAN_SHAI:
+                    if (baoziSet.size() == 1) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+
+                    //短牌
+                case DUAN_PAI_1:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(1)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+
+                case DUAN_PAI_2:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(2)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case DUAN_PAI_3:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(3)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case DUAN_PAI_4:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(4)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case DUAN_PAI_5:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(5)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+                case DUAN_PAI_6:
+                    if (baoziSet.size() == 0 && LotteryUtils.getDupStr(str).contains(6)) {
+                        resultList.add(lotteryKuai3DoubleType.value());
+                    }
+                    continue;
+            }
+        }
+        return resultList;
+    }
+
+    /**
+     * 获取双面PK10的中奖玩法idlist
+     *
+     * @param str
+     * @return
+     */
+    private List<Long> getLotteryPK10DoubleBetPlayIds(String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        int sumStr = 0;
+        for (LotteryPK10DoubleType lotteryPK10DoubleType : LotteryPK10DoubleType.values()) {
+
+            List<String> kjList = getRealLotteryPK10Kj(str, lotteryPK10DoubleType);
+
+            //获取单球的大小单双
+            List<String> singleBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 9);
+
+            //获取中奖号的龙虎和信息
+            List<String> longhuBetList = new ArrayList<>();
+            if (kjList.size() == 2) {
+                longhuBetList = LotteryUtils.getLongHuHeList(Integer.parseInt(kjList.get(0)), Integer.parseInt(kjList.get(1)));
+            }
+
+            switch (lotteryPK10DoubleType) {
+                //冠亚和值大小单双
+                case GUAN_YA_HE_DA:
+                    // 和值
+                    sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                    if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("大")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+                case GUAN_YA_HE_XIAO:
+                    // 和值
+                    sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                    if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("小")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+                case GUAN_YA_HE_DAN:
+                    // 和值
+                    sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                    if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("单")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+                case GUAN_YA_HE_SHUANG:
+                    // 和值
+                    sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                    if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("双")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                    //单球大小单双
+                case DAN_HAO_GUAN_DA:
+                case DAN_HAO_YA_DA:
+                case DAN_HAO_THIRD_DA:
+                case DAN_HAO_FORTH_DA:
+                case DAN_HAO_FIFTH_DA:
+                case DAN_HAO_SIXTH_DA:
+                case DAN_HAO_SEVENTH_DA:
+                case DAN_HAO_EIGHTH_DA:
+                case DAN_HAO_NINTH_DA:
+                case DAN_HAO_TENTH_DA:
+                    if (singleBetList.contains("大")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                case DAN_HAO_GUAN_XIAO:
+                case DAN_HAO_YA_XIAO:
+                case DAN_HAO_THIRD_XIAO:
+                case DAN_HAO_FORTH_XIAO:
+                case DAN_HAO_FIFTH_XIAO:
+                case DAN_HAO_SIXTH_XIAO:
+                case DAN_HAO_SEVENTH_XIAO:
+                case DAN_HAO_EIGHTH_XIAO:
+                case DAN_HAO_NINTH_XIAO:
+                case DAN_HAO_TENTH_XIAO:
+                    if (singleBetList.contains("小")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                case DAN_HAO_GUAN_DAN:
+                case DAN_HAO_YA_DAN:
+                case DAN_HAO_THIRD_DAN:
+                case DAN_HAO_FORTH_DAN:
+                case DAN_HAO_FIFTH_DAN:
+                case DAN_HAO_SIXTH_DAN:
+                case DAN_HAO_SEVENTH_DAN:
+                case DAN_HAO_EIGHTH_DAN:
+                case DAN_HAO_NINTH_DAN:
+                case DAN_HAO_TENTH_DAN:
+                    if (singleBetList.contains("单")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                case DAN_HAO_GUAN_SHUANG:
+                case DAN_HAO_YA_SHUANG:
+                case DAN_HAO_THIRD_SHUANG:
+                case DAN_HAO_FORTH_SHUANG:
+                case DAN_HAO_FIFTH_SHUANG:
+                case DAN_HAO_SIXTH_SHUANG:
+                case DAN_HAO_SEVENTH_SHUANG:
+                case DAN_HAO_EIGHTH_SHUANG:
+                case DAN_HAO_NINTH_SHUANG:
+                case DAN_HAO_TENTH_SHUANG:
+                    if (singleBetList.contains("双")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                    //单号龙虎
+                case DAN_HAO_GUAN_LONG:
+                case DAN_HAO_YA_LONG:
+                case DAN_HAO_THIRD_LONG:
+                case DAN_HAO_FORTH_LONG:
+                case DAN_HAO_FIFTH_LONG:
+                    if (longhuBetList.contains("龙")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+                case DAN_HAO_GUAN_HU:
+                case DAN_HAO_YA_HU:
+                case DAN_HAO_THIRD_HU:
+                case DAN_HAO_FORTH_HU:
+                case DAN_HAO_FIFTH_HU:
+                    if (longhuBetList.contains("虎")) {
+                        resultList.add(lotteryPK10DoubleType.value());
+                    }
+                    continue;
+
+            }
+        }
+        return resultList;
+    }
 
     /**
      * 截取时时彩开奖号码
@@ -582,7 +1002,6 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         }
         return realLotteryKj;
     }
-
 
     /**
      * 整理11选5的开奖号码
@@ -3105,7 +3524,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     }
                     continue;
 
-                    //总和尾大小
+                    //总和大小
                 case SAN_JUN_大:
                 case SAN_JUN_小:
 
@@ -3172,7 +3591,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case DIAN_SHU_HE_16:
                 case DIAN_SHU_HE_17:
 
-                    // TODO 确认是否去除豹子（）
+                    // 去除豹子
                     if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 0) {
 
                         //获取中奖号的和值
@@ -3221,7 +3640,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                 case DUAN_PAI_5:
                 case DUAN_PAI_6:
 
-                    if (size == 1) {
+                    //去除豹子
+                    if (size == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 0) {
                         //判断中间号码是否包含所选的各组号码
                         if (LotteryUtils.getDupStr(kjNo).containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
