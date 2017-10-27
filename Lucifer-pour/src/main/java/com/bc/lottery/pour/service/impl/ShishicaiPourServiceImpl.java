@@ -974,7 +974,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      * @return
      */
     private long getLottery11x5DoubleBetCount(Long playId, List<List<String>> betNumbers) {
-        int size = betNumbers.size();
 
         int betCount = 1;
         Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
@@ -987,9 +986,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZU_XUAN:
                     betCount = (int) LotteryUtils.combination(betNumbers.get(0).size(), 3);
                 case QIAN_ER_ZHI_XUAN:
-                    betCount = size / 2;
+                    betCount = betNumbers.get(0).size() / 2;
                 case QIAN_SAN_ZHI_XUAN:
-                    betCount = size / 3;
+                    betCount = betNumbers.get(0).size() / 3;
             }
         }
         return betCount;
