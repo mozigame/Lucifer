@@ -2,6 +2,7 @@ package com.bc.lottery.pour.service.impl;
 
 import com.bc.lottery.entity.Lottery11x5Type;
 import com.bc.lottery.entity.ShishicaiType;
+import com.bc.lottery.pour.service.LotteryPourHandle;
 import org.junit.Test;
 
 import java.util.List;
@@ -82,4 +83,15 @@ public class ShishicaiPourServiceImplTest {
         System.out.println("*******************************生成注单测试开始*******************************");
     }
 
+    @Test
+    public void testLotteryPourBetNumber() throws Exception {
+
+        LotteryPourHandle lotteryPourHandler=new ShishicaiPourServiceImpl();
+        Long lotteryId=4l;
+        Long playId=43801l;
+        String betContent="2,3";
+        List<List<String>> betNumbers=lotteryPourHandler.getLotteryListByType(lotteryId, playId, betContent);
+        Long count=lotteryPourHandler.getLotteryBetCount(lotteryId, playId, betNumbers);
+        System.out.println(count);
+    }
 }
