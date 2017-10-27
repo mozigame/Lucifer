@@ -983,9 +983,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             switch (lottery11x5DoubleType) {
 
                 case QIAN_ER_ZU_XUAN:
-                    betCount = (int) LotteryUtils.combination(size, 2);
+                    betCount = (int) LotteryUtils.combination(betNumbers.get(0).size(), 2);
                 case QIAN_SAN_ZU_XUAN:
-                    betCount = (int) LotteryUtils.combination(size, 3);
+                    betCount = (int) LotteryUtils.combination(betNumbers.get(0).size(), 3);
                 case QIAN_ER_ZHI_XUAN:
                     betCount = size / 2;
                 case QIAN_SAN_ZHI_XUAN:
