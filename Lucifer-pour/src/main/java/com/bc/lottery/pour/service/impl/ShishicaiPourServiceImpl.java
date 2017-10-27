@@ -1,9 +1,6 @@
 package com.bc.lottery.pour.service.impl;
 
-import com.bc.lottery.entity.Lottery11x5Type;
-import com.bc.lottery.entity.LotteryKuai3Type;
-import com.bc.lottery.entity.LotteryPK10Type;
-import com.bc.lottery.entity.ShishicaiType;
+import com.bc.lottery.entity.*;
 import com.bc.lottery.pour.service.LotteryPourHandle;
 import com.bc.lottery.util.JsonUtils;
 import com.bc.lottery.util.LotteryUtils;
@@ -39,7 +36,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         } else if (lotteryId == 3) {
             return getLottery11x5BetCount(playId, betNumbers);
         } else if (lotteryId == 4) {
-            return 1;
+            return getLottery11x5DoubleBetCount(playId, betNumbers);
         } else if (lotteryId == 5) {
             return getLotteryKuai3BetCount(playId, betNumbers);
         } else if (lotteryId == 6) {
@@ -967,6 +964,35 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         }
 
         return 0;
+    }
+
+    /**
+     * 获取11x5的下注单数
+     *
+     * @param playId
+     * @param betNumbers
+     * @return
+     */
+    private long getLottery11x5DoubleBetCount(Long playId, List<List<String>> betNumbers) {
+        int size = betNumbers.size();
+
+        int betCount = 1;
+        Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
+        if (lottery11x5DoubleType != null) {
+
+            switch (lottery11x5DoubleType) {
+
+                case QIAN_ER_ZU_XUAN:
+                    betCount = (int) LotteryUtils.combination(size, 2);
+                case QIAN_SAN_ZU_XUAN:
+                    betCount = (int) LotteryUtils.combination(size, 3);
+                case QIAN_ER_ZHI_XUAN:
+                    betCount = size / 2;
+                case QIAN_SAN_ZHI_XUAN:
+                    betCount = size / 3;
+            }
+        }
+        return betCount;
     }
 
     private long getLotteryKuai3BetCount(Long playId, List<List<String>> betNumbers) {
