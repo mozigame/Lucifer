@@ -974,8 +974,11 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      * @return
      */
     private long getLottery11x5DoubleBetCount(Long playId, List<List<String>> betNumbers) {
-
+        int size = betNumbers.size();
         int betCount = 1;
+        if (size == 0) {
+            return betCount;
+        }
         Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
         if (lottery11x5DoubleType != null) {
 
