@@ -122,7 +122,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         List<Long> resultList = new ArrayList<>();
         for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
 
-            String kj = getRealShiShiCaiKj(str, shishicaiDoubleType);
+            String kj = getRealShiShiCaiKj(str.replace(",", "").replace("|", ""), shishicaiDoubleType);
             String[] kjArr = kj.split("");
             //获取总和的大小单双
             List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
@@ -1637,7 +1637,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      */
     private List<UserOrderPO> getBoundsInfoOfShishicai(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
 
-        kj = getRealShiShiCaiKj(kj, lotteryType);
+        kj = getRealShiShiCaiKj(kj.replace(",", "").replace("|", ""), lotteryType);
         String[] kjArr = kj.split("");
         for (UserOrderPO lotteryOrder : lotteryOrderList) {
 
@@ -2331,7 +2331,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
      */
     private List<UserOrderPO> getBoundsInfoOfShishicaiDouble(LotteryType lotteryType, String kj, List<UserOrderPO> lotteryOrderList) {
 
-        kj = getRealShiShiCaiKj(kj, lotteryType);
+        kj = getRealShiShiCaiKj(kj.replace(",", "").replace("|", ""), lotteryType);
         String[] kjArr = kj.split("");
         for (UserOrderPO lotteryOrder : lotteryOrderList) {
 
@@ -2340,10 +2340,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
             int size = betNumbers.size();
             int firstPrizeNum = 0; // 一等奖次数
 
-            Set<String> kjStrList = new HashSet<>();
             ShishicaiDoubleType shishicaiType = (ShishicaiDoubleType) lotteryType;
             switch (shishicaiType) {
-
 
                 //总和大小单双
                 case ZONG_HE_DA:
