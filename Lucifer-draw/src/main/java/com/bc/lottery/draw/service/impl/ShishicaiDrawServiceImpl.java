@@ -227,7 +227,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     }
                     continue;
 
-                    // 单球定位模式
+                   /* // 单球定位模式
                 case YI_QIU_DING_WEI_DAN_0:
                 case ER_QIU_DING_WEI_DAN_0:
                 case SAN_QIU_DING_WEI_DAN_0:
@@ -326,7 +326,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
                     if (kj.contains("9")) {
                         resultList.add(shishicaiDoubleType.value());
                     }
-                    continue;
+                    continue;*/
                     // 特殊玩法模式
                 case QIAN_SAN_BAO_ZI:
                 case ZHONG_SAN_BAO_ZI:
@@ -1014,7 +1014,8 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
 
         List<String> resultList = new ArrayList<>();
 
-        List<String> kjList = Arrays.asList(kj.split(" "));
+        List<String> kjList = Arrays.asList(kj.replace(" ", ",").replace("|", ",").split(","));
+
         if (kjList.size() != 5) {
             return resultList;
         }
@@ -1245,7 +1246,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
         List<String> resultList = new ArrayList<>();
         if (lotteryType instanceof LotteryKuai3DoubleType) {
 
-            resultList = Arrays.asList(kj.split(""));
+            resultList = Arrays.asList(kj.replace(",", "").replace("|", "").trim().split(""));
         }
 
         return resultList;

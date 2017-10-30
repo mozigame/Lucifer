@@ -609,4 +609,190 @@ public class ShishicaiDrawServiceImplTest {
         }
 
     }
+
+
+    @Test
+    public void testGetLottery11x5DoublePlayIds() throws Exception {
+
+        kj = "01,02,03,04,05";
+        kj1 = "06,08,03,05,09";
+        kj2 = "11 07 03 05 10";
+        kj3 = "03 09 08 04 02";
+        kj4 = "06 10 02 08 03";
+        kj5 = "01 03 05 07 09";
+        kj6 = "06 08 04 02 10";
+        kj7 = "04 05 09 03 11";
+        kj8 = "07 05 02 11 08";
+        kj9 = "02 03 04 06 05";
+
+        System.out.println("*******************************11选5双面盘开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(4L, kj);
+            System.out.println(playIdList);
+
+            System.out.println("*******************************单独开奖测试结束*******************************");
+
+        }
+
+    }
+
+    @Test
+    public void testGetLotteryKuai3DoublePlayIds() throws Exception {
+
+        kj = "1,2,3";
+        kj1 = "456";
+        kj2 = "124";
+        kj3 = "256";
+        kj4 = "222";
+        kj5 = "666";
+        kj6 = "445";
+        kj7 = "225";
+        kj8 = "1,4,7";
+        kj9 = "1,1,1";
+
+        System.out.println("*******************************快3双面盘开奖测试开始*******************************");
+        kjList.add(kj);
+        kjList.add(kj1);
+        kjList.add(kj2);
+        kjList.add(kj3);
+        kjList.add(kj4);
+        kjList.add(kj5);
+        kjList.add(kj6);
+        kjList.add(kj7);
+        kjList.add(kj8);
+        kjList.add(kj9);
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(6L, kj);
+            System.out.println(playIdList);
+
+            System.out.println("*******************************单独开奖测试结束*******************************");
+
+        }
+
+    }
+
+    /**
+     * PK10双面盘
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetLotteryPK10DoublePlayIds() throws Exception {
+
+ /*       kj = "1,2,3,4,5,6,7,8,9,10";
+        kj1 = "10,9,8,7,6,5,4,3,2,1";
+        kj2 = "5,4,3,2,1,9,8,7,6,10";
+        kj3 = "3,4,9,5,7,1,6,2,10,8";
+        kj4 = "6,9,5,4,8,2,1,7,10,3";*/
+
+        List<String> betNumbers = new ArrayList<>();
+        betNumbers.add("1");
+        betNumbers.add("2");
+        betNumbers.add("3");
+        betNumbers.add("4");
+        betNumbers.add("5");
+        betNumbers.add("6");
+        betNumbers.add("7");
+        betNumbers.add("8");
+        betNumbers.add("9");
+        betNumbers.add("10");
+
+        System.out.println("*******************************PK10双面盘开奖测试开始*******************************");
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+
+        for (LotteryPK10DoubleType lotteryPK10DoubleType : LotteryPK10DoubleType.values()) {
+            for (int i = 1; i < 2; i++) {
+                kjList.clear();
+                System.out.println(lotteryPK10DoubleType);
+                System.out.println(lotteryPK10DoubleType.desc());
+                System.out.println("==============第 " + i + " 次下注===============");
+                List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(8, lotteryPK10DoubleType.value());
+                System.out.println(betNumberList);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder1 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder1.append(bet).append(",");
+                });
+
+                String betNumber1 = betBuilder1.toString().substring(0, betBuilder1.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder2 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder2.append(bet).append(",");
+                });
+
+                String betNumber2 = betBuilder2.toString().substring(0, betBuilder2.toString().length() - 1);
+
+                kjList.add(betNumber2);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder3 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder3.append(bet).append(",");
+                });
+
+                String betNumber3 = betBuilder3.toString().substring(0, betBuilder3.toString().length() - 1);
+
+                kjList.add(betNumber3);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder4 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder4.append(bet).append(",");
+                });
+
+                betNumber1 = betBuilder4.toString().substring(0, betBuilder4.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                Collections.shuffle(betNumbers);
+                StringBuilder betBuilder5 = new StringBuilder();
+                betNumbers.forEach(bet -> {
+                    betBuilder5.append(bet).append(",");
+                });
+
+                betNumber1 = betBuilder5.toString().substring(0, betBuilder5.toString().length() - 1);
+
+                kjList.add(betNumber1);
+
+                for (String kj : kjList) {
+
+                    System.out.println("==========中奖号码========>>>" + kj);
+
+                    List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(8L, kj);
+                    System.out.println(playIdList);
+
+                    System.out.println("*******************************单独开奖测试结束*******************************");
+
+                }
+            }
+        }
+        System.out.println("*******************************PK10双面盘开奖测试结束*******************************");
+    }
+
 }
