@@ -449,15 +449,15 @@ public class ShishicaiDrawServiceImplTest {
         kj4 = "6,9,5,4,8,2,1,7,10,3";*/
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("1");
-        betNumbers.add("2");
-        betNumbers.add("3");
-        betNumbers.add("4");
-        betNumbers.add("5");
-        betNumbers.add("6");
-        betNumbers.add("7");
-        betNumbers.add("8");
-        betNumbers.add("9");
+        betNumbers.add("01");
+        betNumbers.add("02");
+        betNumbers.add("03");
+        betNumbers.add("04");
+        betNumbers.add("05");
+        betNumbers.add("06");
+        betNumbers.add("07");
+        betNumbers.add("08");
+        betNumbers.add("09");
         betNumbers.add("10");
 
         System.out.println("*******************************PK10双面盘开奖测试开始*******************************");
@@ -625,7 +625,7 @@ public class ShishicaiDrawServiceImplTest {
         kj8 = "07 05 02 11 08";
         kj9 = "02 03 04 06 05";
 
-        System.out.println("*******************************11选5双面盘开奖测试开始*******************************");
+        System.out.println("*******************************11选5双面长龙测试开始*******************************");
         kjList.add(kj);
         kjList.add(kj1);
         kjList.add(kj2);
@@ -645,8 +645,6 @@ public class ShishicaiDrawServiceImplTest {
             List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(4L, kj);
             System.out.println(playIdList);
 
-            System.out.println("*******************************单独开奖测试结束*******************************");
-
         }
 
     }
@@ -665,7 +663,7 @@ public class ShishicaiDrawServiceImplTest {
         kj8 = "1,4,7";
         kj9 = "1,1,1";
 
-        System.out.println("*******************************快3双面盘开奖测试开始*******************************");
+        System.out.println("*******************************快3双面长龙测试开始*******************************");
         kjList.add(kj);
         kjList.add(kj1);
         kjList.add(kj2);
@@ -684,8 +682,6 @@ public class ShishicaiDrawServiceImplTest {
 
             List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(6L, kj);
             System.out.println(playIdList);
-
-            System.out.println("*******************************单独开奖测试结束*******************************");
 
         }
 
@@ -706,18 +702,18 @@ public class ShishicaiDrawServiceImplTest {
         kj4 = "6,9,5,4,8,2,1,7,10,3";*/
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("1");
-        betNumbers.add("2");
-        betNumbers.add("3");
-        betNumbers.add("4");
-        betNumbers.add("5");
-        betNumbers.add("6");
-        betNumbers.add("7");
-        betNumbers.add("8");
-        betNumbers.add("9");
+        betNumbers.add("01");
+        betNumbers.add("02");
+        betNumbers.add("03");
+        betNumbers.add("04");
+        betNumbers.add("05");
+        betNumbers.add("06");
+        betNumbers.add("07");
+        betNumbers.add("08");
+        betNumbers.add("09");
         betNumbers.add("10");
 
-        System.out.println("*******************************PK10双面盘开奖测试开始*******************************");
+        System.out.println("*******************************PK10双面长龙开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
 
@@ -787,12 +783,10 @@ public class ShishicaiDrawServiceImplTest {
                     List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(8L, kj);
                     System.out.println(playIdList);
 
-                    System.out.println("*******************************单独开奖测试结束*******************************");
-
                 }
             }
         }
-        System.out.println("*******************************PK10双面盘开奖测试结束*******************************");
+        System.out.println("*******************************PK10双面长龙测试结束*******************************");
     }
 
 }
