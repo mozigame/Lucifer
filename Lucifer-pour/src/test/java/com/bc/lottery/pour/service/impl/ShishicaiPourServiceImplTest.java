@@ -94,4 +94,13 @@ public class ShishicaiPourServiceImplTest {
         Long count=lotteryPourHandler.getLotteryBetCount(lotteryId, playId, betNumbers);
         System.out.println(count);
     }
+
+    @Test
+    public void testRandomBetContent(){
+        LotteryPourHandle lotteryPourHandler = new ShishicaiPourServiceImpl();
+        Long playId=22504l;
+        List<List<String>> list= lotteryPourHandler.getBetNumbersByType(playId);
+        String betContent=lotteryPourHandler.getStringByLotteryList(playId, list);
+        System.out.println("----betContent="+betContent);
+    }
 }

@@ -15,7 +15,7 @@ import static com.bc.lottery.entity.ShishicaiType.HOU_SAN_ZU_XUAN_HE_ZHI;
  * Date: 2017/9/8
  * Time: 18:50
  **/
-public class ShishicaiDrawServiceImplTest {
+public class LotteryDrawServiceImplTest {
 
     private static String kj = "01234";
     private static String kj1 = "55237";
@@ -48,7 +48,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj9);
 
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (ShishicaiType shishicaiType : ShishicaiType.values()) {
 
@@ -62,7 +62,7 @@ public class ShishicaiDrawServiceImplTest {
                     UserOrderPO userOrder = new UserOrderPO(betNumberList);
                     userOrder.setLotteryId(1L);
                     userOrder.setPlayId(shishicaiType.value());
-                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum() + ";  三等奖次数：" + boundsInfo.getThirdPrizeNum() + ";  四等奖次数：" + boundsInfo.getForthPrizeNum() + ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                     if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
@@ -94,7 +94,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
@@ -106,7 +106,7 @@ public class ShishicaiDrawServiceImplTest {
                 //System.out.println(lotteryOrderList);
                 long currTime1 = System.currentTimeMillis();
                 for (int i = 0; i < 1000; i++) {
-                    shishicaiService.getBatchBoundsInfoOfLottery(shishicaiType, kj, lotteryOrderList);
+                    lotteryDrawService.getBatchBoundsInfoOfLottery(shishicaiType, kj, lotteryOrderList);
                 }
                 long currTime2 = System.currentTimeMillis();
                 long time = currTime2 - currTime1;
@@ -143,7 +143,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
@@ -160,7 +160,7 @@ public class ShishicaiDrawServiceImplTest {
                         UserOrderPO userOrder = new UserOrderPO(betNumberList);
                         userOrder.setLotteryId(2L);
                         userOrder.setPlayId(shishicaiDoubleType.value());
-                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                         System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     }
                 }
@@ -203,7 +203,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
@@ -220,7 +220,7 @@ public class ShishicaiDrawServiceImplTest {
                         UserOrderPO userOrder = new UserOrderPO(betNumberList);
                         userOrder.setLotteryId(3L);
                         userOrder.setPlayId(lottery11x5Type.value());
-                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                         System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                     }
                 }
@@ -260,7 +260,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
@@ -277,7 +277,7 @@ public class ShishicaiDrawServiceImplTest {
                         UserOrderPO userOrder = new UserOrderPO(betNumberList);
                         userOrder.setLotteryId(4L);
                         userOrder.setPlayId(lottery11x5DoubleType.value());
-                        UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                        UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                         System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum() + "   是否为和：" + boundsInfo.getIsTied());
                     }
                 }
@@ -318,7 +318,7 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
             for (int i = 1; i < 2; i++) {
@@ -331,7 +331,7 @@ public class ShishicaiDrawServiceImplTest {
                     UserOrderPO userOrder = new UserOrderPO(betNumberList);
                     userOrder.setLotteryId(6L);
                     userOrder.setPlayId(lotteryKuai3DoubleType.value());
-                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                 }
             }
@@ -361,7 +361,7 @@ public class ShishicaiDrawServiceImplTest {
 
         System.out.println("*******************************PK10传统盘开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (LotteryPK10Type lotteryPK10Type : LotteryPK10Type.values()) {
             for (int i = 1; i < 2; i++) {
@@ -426,7 +426,7 @@ public class ShishicaiDrawServiceImplTest {
                     UserOrderPO userOrder = new UserOrderPO(betNumberList);
                     userOrder.setLotteryId(7L);
                     userOrder.setPlayId(lotteryPK10Type.value());
-                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                 }
             }
@@ -462,7 +462,7 @@ public class ShishicaiDrawServiceImplTest {
 
         System.out.println("*******************************PK10双面盘开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (LotteryPK10DoubleType lotteryPK10DoubleType : LotteryPK10DoubleType.values()) {
             for (int i = 1; i < 2; i++) {
@@ -527,7 +527,7 @@ public class ShishicaiDrawServiceImplTest {
                     UserOrderPO userOrder = new UserOrderPO(betNumberList);
                     userOrder.setLotteryId(8L);
                     userOrder.setPlayId(lotteryPK10DoubleType.value());
-                    UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjno, userOrder);
+                    UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjno, userOrder);
                     System.out.println("开奖号码->" + kjno + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                 }
             }
@@ -544,7 +544,7 @@ public class ShishicaiDrawServiceImplTest {
 
         kjList.add(kjt);
 
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (ShishicaiType shishicaiType : ShishicaiType.values()) {
 
@@ -562,7 +562,7 @@ public class ShishicaiDrawServiceImplTest {
                 UserOrderPO userOrder = new UserOrderPO(betNumberList);
                 userOrder.setLotteryId(1L);
                 userOrder.setPlayId(shishicaiType.value());
-                UserOrderPO boundsInfo = shishicaiService.getBoundsInfoOfLottery(kjt, userOrder);
+                UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjt, userOrder);
                 System.out.println("开奖号码->" + kjt + "    中奖次数: " + boundsInfo.getFirstPrizeNum());
                 System.out.println("一等奖次数：" + boundsInfo.getFirstPrizeNum() + ";  二等奖次数：" + boundsInfo.getSecondPrizeNum() + ";  三等奖次数：" + boundsInfo.getThirdPrizeNum() + ";  四等奖次数：" + boundsInfo.getForthPrizeNum() + ";  五等奖次数：" + boundsInfo.getFifthPrizeNum());
                 if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
@@ -595,13 +595,13 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj8);
         kjList.add(kj9);
 
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
             System.out.println("==========中奖号码========>>>" + kj);
 
-            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(2L, kj);
+            List<Long> playIdList = lotteryDrawService.getLotteryBetPlayIds(2L, kj);
             System.out.println(playIdList);
 
             System.out.println("*******************************单独开奖测试结束*******************************");
@@ -636,13 +636,13 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj7);
         kjList.add(kj8);
         kjList.add(kj9);
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
             System.out.println("==========中奖号码========>>>" + kj);
 
-            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(4L, kj);
+            List<Long> playIdList = lotteryDrawService.getLotteryBetPlayIds(4L, kj);
             System.out.println(playIdList);
 
         }
@@ -674,13 +674,13 @@ public class ShishicaiDrawServiceImplTest {
         kjList.add(kj7);
         kjList.add(kj8);
         kjList.add(kj9);
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {
 
             System.out.println("==========中奖号码========>>>" + kj);
 
-            List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(6L, kj);
+            List<Long> playIdList = lotteryDrawService.getLotteryBetPlayIds(6L, kj);
             System.out.println(playIdList);
 
         }
@@ -715,7 +715,7 @@ public class ShishicaiDrawServiceImplTest {
 
         System.out.println("*******************************PK10双面长龙开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        ShishicaiDrawServiceImpl shishicaiService = new ShishicaiDrawServiceImpl();
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (LotteryPK10DoubleType lotteryPK10DoubleType : LotteryPK10DoubleType.values()) {
             for (int i = 1; i < 2; i++) {
@@ -780,7 +780,7 @@ public class ShishicaiDrawServiceImplTest {
 
                     System.out.println("==========中奖号码========>>>" + kj);
 
-                    List<Long> playIdList = shishicaiService.getLotteryBetPlayIds(8L, kj);
+                    List<Long> playIdList = lotteryDrawService.getLotteryBetPlayIds(8L, kj);
                     System.out.println(playIdList);
 
                 }

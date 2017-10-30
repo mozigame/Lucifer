@@ -51,6 +51,132 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
     @Override
     public List<List<String>> getBetNumbersByType(Long playId) {
+        return getShishicaiNumbers(playId);
+    }
+
+    @Override
+    public List<List<String>> getBetNumbersByType(Long lotteryId, Long playId) {
+
+        List<List<String>> resultList = new ArrayList<>();
+        if (lotteryId == 1) {
+            return getShishicaiNumbers(playId);
+        } else if (lotteryId == 2) {
+            return getShishicaiDoubleNumbers(playId);
+        } else if (lotteryId == 4) {
+            return get11x5DoubleNumbers(playId);
+        } else if (lotteryId == 6) {
+            return getKuai3DoubleNumbers(playId);
+        } else if (lotteryId == 8) {
+            return getPK10DoubleNumbers(playId);
+        }
+
+        return resultList;
+    }
+
+    @Override
+    public List<List<String>> getLotteryListByType(Long playId, String str) {
+
+        return getLotteryShishicaiByType(playId, str);
+    }
+
+    //官方时时彩的字符串转换
+    private List<List<String>> getLotteryShishicaiByType(Long playId, String str) {
+        List<List<String>> strList = new ArrayList<>();
+
+        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
+        if (shishicaiType == null) {
+            return strList;
+        }
+        switch (shishicaiType) {
+
+            case WU_XING_ZHI_XUAN_FU_SHI:
+            case WU_XING_ZHI_XUAN_ZU_HE:
+            case ZU_XUAN_60:
+            case ZU_XUAN_30:
+            case ZU_XUAN_20:
+            case ZU_XUAN_10:
+            case ZU_XUAN_5:
+
+            case SI_XING_ZHI_XUAN_FU_SHI:
+            case SI_XING_ZHI_XUAN_ZU_HE:
+            case ZU_XUAN_12:
+            case ZU_XUAN_4:
+
+            case QIAN_SAN_FU_SHI:
+            case ZHONG_SAN_FU_SHI:
+            case HOU_SAN_FU_SHI:
+
+            case QIAN_ER_ZHI_XUAN_FU_SHI:
+            case HOU_ER_ZHI_XUAN_FU_SHI:
+
+            case YI_XING_DING_WEI_DAN:
+
+            case QIAN_ER_DA_XIAO_DAN_SHUANG:
+            case HOU_ER_DA_XIAO_DAN_SHUANG:
+            case ZONG_HE_DA_XIAO_DAN_SHUANG:
+
+                return JsonUtils.json2LotteryList(str);
+
+            case WU_XING_ZHI_XUAN_DAN_SHI:
+
+            case SI_XING_ZHI_XUAN_DAN_SHI:
+
+            case QIAN_SAN_DAN_SHI:
+            case ZHONG_SAN_DAN_SHI:
+            case HOU_SAN_DAN_SHI:
+            case QIAN_SAN_HUN_HE_ZU_XUAN:
+            case ZHONG_SAN_HUN_HE_ZU_XUAN:
+            case HOU_SAN_HUN_HE_ZU_XUAN:
+
+            case QIAN_ER_ZHI_XUAN_DAN_SHI:
+            case HOU_ER_ZHI_XUAN_DAN_SHI:
+            case QIAN_ER_ZU_XUAN_DAN_SHI:
+            case HOU_ER_ZU_XUAN_DAN_SHI:
+
+                return JsonUtils.danShiJson2LotteryList(str);
+
+            case ZU_XUAN_120:
+            case ZU_XUAN_24:
+            case ZU_XUAN_6:
+
+            case QIAN_SAN_ZHI_XUAN_HE_ZHI:
+            case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
+            case HOU_SAN_ZHI_XUAN_HE_ZHI:
+            case QIAN_SAN_ZU_SAN:
+            case ZHONG_SAN_ZU_SAN:
+            case HOU_SAN_ZU_SAN:
+            case QIAN_SAN_ZU_LIU:
+            case HOU_SAN_ZU_LIU:
+            case ZHONG_SAN_ZU_LIU:
+            case QIAN_SAN_ZU_XUAN_HE_ZHI:
+            case ZHONG_SAN_ZU_XUAN_HE_ZHI:
+            case HOU_SAN_ZU_XUAN_HE_ZHI:
+
+            case QIAN_ER_ZHI_XUAN_HE_ZHI:
+            case HOU_ER_ZHI_XUAN_HE_ZHI:
+            case QIAN_ER_ZU_XUAN_FU_SHI:
+            case HOU_ER_ZU_XUAN_FU_SHI:
+            case QIAN_ER_ZU_XUAN_HE_ZHI:
+            case HOU_ER_ZU_XUAN_HE_ZHI:
+
+            case QIAN_SAN_YI_MA:
+            case HOU_SAN_YI_MA:
+            case QIAN_SAN_ER_MA:
+            case HOU_SAN_ER_MA:
+
+            case YI_FAN_FENG_SHUN:
+            case HAO_SHI_CHENG_SHUANG:
+            case SAN_XING_BAO_XI:
+            case SI_JI_FA_CAI:
+
+                return JsonUtils.oneOnlyJson2LotteryList(str);
+
+            default:
+                return strList;
+        }
+    }
+
+    private List<List<String>> getShishicaiNumbers(Long playId) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i <= 9; i++) {
             list.add(String.valueOf(i));
@@ -252,107 +378,956 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         return priBetNumbers;
     }
 
-    @Override
-    public List<List<String>> getLotteryListByType(Long playId, String str) {
+    private List<List<String>> getShishicaiDoubleNumbers(Long playId) {
 
-        return getLotteryShishicaiByType(playId, str);
+        List<List<String>> priBetNumbers = new ArrayList<>();
+
+        ShishicaiDoubleType shishicaiDoubleType = ShishicaiDoubleType.parse(playId);
+        List<String> firstList = new ArrayList<>();
+        if (shishicaiDoubleType != null) {
+            for (List<String> lists : priBetNumbers) {
+                lists.clear();
+            }
+            switch (shishicaiDoubleType) {
+
+                case ZONG_HE_DA:
+                case YI_QIU_DA:
+                case ER_QIU_DA:
+                case SAN_QIU_DA:
+                case SI_QIU_DA:
+                case WU_QIU_DA:
+                    firstList.add("大");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_XIAO:
+                case YI_QIU_XIAO:
+                case ER_QIU_XIAO:
+                case SAN_QIU_XIAO:
+                case SI_QIU_XIAO:
+                case WU_QIU_XIAO:
+                    firstList.add("小");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_DAN:
+                case YI_QIU_DAN:
+                case ER_QIU_DAN:
+                case SAN_QIU_DAN:
+                case SI_QIU_DAN:
+                case WU_QIU_DAN:
+                    firstList.add("单");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_SHUANG:
+                case YI_QIU_SHUANG:
+                case ER_QIU_SHUANG:
+                case SAN_QIU_SHUANG:
+                case SI_QIU_SHUANG:
+                case WU_QIU_SHUANG:
+                    firstList.add("双");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_LONG:
+                    firstList.add("龙");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_HU:
+                    firstList.add("虎");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case ZONG_HE_HE:
+                    firstList.add("和");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_0:
+                case ER_QIU_DING_WEI_DAN_0:
+                case SAN_QIU_DING_WEI_DAN_0:
+                case SI_QIU_DING_WEI_DAN_0:
+                case WU_QIU_DING_WEI_DAN_0:
+                    firstList.add("0");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_1:
+                case WU_QIU_DING_WEI_DAN_1:
+                    firstList.add("1");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_2:
+                case WU_QIU_DING_WEI_DAN_2:
+                    firstList.add("2");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_3:
+                case WU_QIU_DING_WEI_DAN_3:
+                    firstList.add("3");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_4:
+                case WU_QIU_DING_WEI_DAN_4:
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_5:
+                case WU_QIU_DING_WEI_DAN_5:
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_6:
+                case WU_QIU_DING_WEI_DAN_6:
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_7:
+                case WU_QIU_DING_WEI_DAN_7:
+                    firstList.add("7");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_8:
+                case WU_QIU_DING_WEI_DAN_8:
+                    firstList.add("8");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case YI_QIU_DING_WEI_DAN_9:
+                case ER_QIU_DING_WEI_DAN_9:
+                case SAN_QIU_DING_WEI_DAN_9:
+                case SI_QIU_DING_WEI_DAN_9:
+                case WU_QIU_DING_WEI_DAN_9:
+                    firstList.add("9");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QIAN_SAN_BAO_ZI:
+                case ZHONG_SAN_BAO_ZI:
+                case HOU_SAN_BAO_ZI:
+                    firstList.add("豹子");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QIAN_SAN_SHUN_ZI:
+                case ZHONG_SAN_SHUN_ZI:
+                case HOU_SAN_SHUN_ZI:
+                    firstList.add("顺子");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QIAN_SAN_DUI_ZI:
+                case ZHONG_SAN_DUI_ZI:
+                case HOU_SAN_DUI_ZI:
+                    firstList.add("对子");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QIAN_SAN_BAN_SHUN:
+                case ZHONG_SAN_BAN_SHUN:
+                case HOU_SAN_BAN_SHUN:
+                    firstList.add("半顺");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QIAN_SAN_ZA_LIU:
+                case ZHONG_SAN_ZA_LIU:
+                case HOU_SAN_ZA_LIU:
+                    firstList.add("杂六");
+                    priBetNumbers.add(firstList);
+                    break;
+            }
+        }
+
+        return priBetNumbers;
     }
 
-    //官方时时彩的字符串转换
-    private List<List<String>> getLotteryShishicaiByType(Long playId, String str) {
-        List<List<String>> strList = new ArrayList<>();
-
-        ShishicaiType shishicaiType = ShishicaiType.parse(playId);
-        if (shishicaiType == null) {
-            return strList;
+    private List<List<String>> get11x5DoubleNumbers(Long playId) {
+        List<String> list = new ArrayList<>();
+        for (int i = 1; i <= 11; i++) {
+            list.add(String.valueOf(i));
         }
-        switch (shishicaiType) {
+        Collections.shuffle(list);
+        String[] oneNumber = {list.get(0)};
+        Collections.shuffle(list);
+        String[] twoNumber = {list.get(0), list.get(1)};
+        Collections.shuffle(list);
+        String[] threeNumber = {list.get(0), list.get(1), list.get(2)};
+        Collections.shuffle(list);
+        String[] fourNumber = {list.get(0), list.get(1), list.get(2), list.get(3)};
+        Collections.shuffle(list);
+        String[] fiveNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4)};
+        Collections.shuffle(list);
+        String[] sixNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5)};
+        Collections.shuffle(list);
+        String[] sevenNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6)};
+        Collections.shuffle(list);
+        String[] eightNumber = {list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7)};
 
-            case WU_XING_ZHI_XUAN_FU_SHI:
-            case WU_XING_ZHI_XUAN_ZU_HE:
-            case ZU_XUAN_60:
-            case ZU_XUAN_30:
-            case ZU_XUAN_20:
-            case ZU_XUAN_10:
-            case ZU_XUAN_5:
+        List<List<String>> priBetNumbers = new ArrayList<>();
+        List<String> priBetNumber0 = new ArrayList<>();
+        List<String> priBetNumber1 = new ArrayList<>();
 
-            case SI_XING_ZHI_XUAN_FU_SHI:
-            case SI_XING_ZHI_XUAN_ZU_HE:
-            case ZU_XUAN_12:
-            case ZU_XUAN_4:
+        Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
+        List<String> firstList = new ArrayList<>();
+        List<String> secondList = new ArrayList<>();
+        List<String> thirdList = new ArrayList<>();
 
-            case QIAN_SAN_FU_SHI:
-            case ZHONG_SAN_FU_SHI:
-            case HOU_SAN_FU_SHI:
+        if (lottery11x5DoubleType != null) {
+            for (List<String> lists : priBetNumbers) {
+                lists.clear();
+            }
+            priBetNumber0.clear();
+            switch (lottery11x5DoubleType) {
+                case ZONG_HE_DA:
+                case ZONG_HE_WEI_DA:
+                case YI_QIU_DA:
+                case ER_QIU_DA:
+                case SAN_QIU_DA:
+                case SI_QIU_DA:
+                case WU_QIU_DA:
+                    firstList.add("大");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_ER_ZHI_XUAN_FU_SHI:
-            case HOU_ER_ZHI_XUAN_FU_SHI:
+                case ZONG_HE_XIAO:
+                case ZONG_HE_WEI_XIAO:
+                case YI_QIU_XIAO:
+                case ER_QIU_XIAO:
+                case SAN_QIU_XIAO:
+                case SI_QIU_XIAO:
+                case WU_QIU_XIAO:
+                    firstList.add("小");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case YI_XING_DING_WEI_DAN:
+                case ZONG_HE_DAN:
+                case YI_QIU_DAN:
+                case ER_QIU_DAN:
+                case SAN_QIU_DAN:
+                case SI_QIU_DAN:
+                case WU_QIU_DAN:
+                    firstList.add("单");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_ER_DA_XIAO_DAN_SHUANG:
-            case HOU_ER_DA_XIAO_DAN_SHUANG:
-            case ZONG_HE_DA_XIAO_DAN_SHUANG:
+                case ZONG_HE_SHUANG:
+                case YI_QIU_SHUANG:
+                case ER_QIU_SHUANG:
+                case SAN_QIU_SHUANG:
+                case SI_QIU_SHUANG:
+                case WU_QIU_SHUANG:
+                    firstList.add("双");
+                    priBetNumbers.add(firstList);
+                    break;
 
-                return JsonUtils.json2LotteryList(str);
+                case ZONG_HE_LONG:
+                    firstList.add("龙");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case WU_XING_ZHI_XUAN_DAN_SHI:
+                case ZONG_HE_HU:
+                    firstList.add("虎");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case SI_XING_ZHI_XUAN_DAN_SHI:
+                case YI_ZHONG_YI_1:
+                case YI_QIU_DING_WEI_DAN_1:
+                case ER_QIU_DING_WEI_DAN_1:
+                case SAN_QIU_DING_WEI_DAN_1:
+                case SI_QIU_DING_WEI_DAN_1:
+                case WU_QIU_DING_WEI_DAN_1:
+                    firstList.add("1");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_SAN_DAN_SHI:
-            case ZHONG_SAN_DAN_SHI:
-            case HOU_SAN_DAN_SHI:
-            case QIAN_SAN_HUN_HE_ZU_XUAN:
-            case ZHONG_SAN_HUN_HE_ZU_XUAN:
-            case HOU_SAN_HUN_HE_ZU_XUAN:
+                case YI_ZHONG_YI_2:
+                case YI_QIU_DING_WEI_DAN_2:
+                case ER_QIU_DING_WEI_DAN_2:
+                case SAN_QIU_DING_WEI_DAN_2:
+                case SI_QIU_DING_WEI_DAN_2:
+                case WU_QIU_DING_WEI_DAN_2:
+                    firstList.add("2");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_ER_ZHI_XUAN_DAN_SHI:
-            case HOU_ER_ZHI_XUAN_DAN_SHI:
-            case QIAN_ER_ZU_XUAN_DAN_SHI:
-            case HOU_ER_ZU_XUAN_DAN_SHI:
+                case YI_ZHONG_YI_3:
+                case YI_QIU_DING_WEI_DAN_3:
+                case ER_QIU_DING_WEI_DAN_3:
+                case SAN_QIU_DING_WEI_DAN_3:
+                case SI_QIU_DING_WEI_DAN_3:
+                case WU_QIU_DING_WEI_DAN_3:
+                    firstList.add("3");
+                    priBetNumbers.add(firstList);
+                    break;
 
-                return JsonUtils.danShiJson2LotteryList(str);
+                case YI_ZHONG_YI_4:
+                case YI_QIU_DING_WEI_DAN_4:
+                case ER_QIU_DING_WEI_DAN_4:
+                case SAN_QIU_DING_WEI_DAN_4:
+                case SI_QIU_DING_WEI_DAN_4:
+                case WU_QIU_DING_WEI_DAN_4:
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case ZU_XUAN_120:
-            case ZU_XUAN_24:
-            case ZU_XUAN_6:
+                case YI_ZHONG_YI_5:
+                case YI_QIU_DING_WEI_DAN_5:
+                case ER_QIU_DING_WEI_DAN_5:
+                case SAN_QIU_DING_WEI_DAN_5:
+                case SI_QIU_DING_WEI_DAN_5:
+                case WU_QIU_DING_WEI_DAN_5:
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_SAN_ZHI_XUAN_HE_ZHI:
-            case ZHONG_SAN_ZHI_XUAN_HE_ZHI:
-            case HOU_SAN_ZHI_XUAN_HE_ZHI:
-            case QIAN_SAN_ZU_SAN:
-            case ZHONG_SAN_ZU_SAN:
-            case HOU_SAN_ZU_SAN:
-            case QIAN_SAN_ZU_LIU:
-            case HOU_SAN_ZU_LIU:
-            case ZHONG_SAN_ZU_LIU:
-            case QIAN_SAN_ZU_XUAN_HE_ZHI:
-            case ZHONG_SAN_ZU_XUAN_HE_ZHI:
-            case HOU_SAN_ZU_XUAN_HE_ZHI:
+                case YI_ZHONG_YI_6:
+                case YI_QIU_DING_WEI_DAN_6:
+                case ER_QIU_DING_WEI_DAN_6:
+                case SAN_QIU_DING_WEI_DAN_6:
+                case SI_QIU_DING_WEI_DAN_6:
+                case WU_QIU_DING_WEI_DAN_6:
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_ER_ZHI_XUAN_HE_ZHI:
-            case HOU_ER_ZHI_XUAN_HE_ZHI:
-            case QIAN_ER_ZU_XUAN_FU_SHI:
-            case HOU_ER_ZU_XUAN_FU_SHI:
-            case QIAN_ER_ZU_XUAN_HE_ZHI:
-            case HOU_ER_ZU_XUAN_HE_ZHI:
+                case YI_ZHONG_YI_7:
+                case YI_QIU_DING_WEI_DAN_7:
+                case ER_QIU_DING_WEI_DAN_7:
+                case SAN_QIU_DING_WEI_DAN_7:
+                case SI_QIU_DING_WEI_DAN_7:
+                case WU_QIU_DING_WEI_DAN_7:
+                    firstList.add("7");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case QIAN_SAN_YI_MA:
-            case HOU_SAN_YI_MA:
-            case QIAN_SAN_ER_MA:
-            case HOU_SAN_ER_MA:
+                case YI_ZHONG_YI_8:
+                case YI_QIU_DING_WEI_DAN_8:
+                case ER_QIU_DING_WEI_DAN_8:
+                case SAN_QIU_DING_WEI_DAN_8:
+                case SI_QIU_DING_WEI_DAN_8:
+                case WU_QIU_DING_WEI_DAN_8:
+                    firstList.add("8");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            case YI_FAN_FENG_SHUN:
-            case HAO_SHI_CHENG_SHUANG:
-            case SAN_XING_BAO_XI:
-            case SI_JI_FA_CAI:
+                case YI_ZHONG_YI_9:
+                case YI_QIU_DING_WEI_DAN_9:
+                case ER_QIU_DING_WEI_DAN_9:
+                case SAN_QIU_DING_WEI_DAN_9:
+                case SI_QIU_DING_WEI_DAN_9:
+                case WU_QIU_DING_WEI_DAN_9:
+                    firstList.add("9");
+                    priBetNumbers.add(firstList);
+                    break;
 
-                return JsonUtils.oneOnlyJson2LotteryList(str);
+                case YI_ZHONG_YI_10:
+                case YI_QIU_DING_WEI_DAN_10:
+                case ER_QIU_DING_WEI_DAN_10:
+                case SAN_QIU_DING_WEI_DAN_10:
+                case SI_QIU_DING_WEI_DAN_10:
+                case WU_QIU_DING_WEI_DAN_10:
+                    firstList.add("10");
+                    priBetNumbers.add(firstList);
+                    break;
 
-            default:
-                return strList;
+                case YI_ZHONG_YI_11:
+                case YI_QIU_DING_WEI_DAN_11:
+                case ER_QIU_DING_WEI_DAN_11:
+                case SAN_QIU_DING_WEI_DAN_11:
+                case SI_QIU_DING_WEI_DAN_11:
+                case WU_QIU_DING_WEI_DAN_11:
+                    firstList.add("11");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case LIAN_MA_ER_ZHONG_ER:
+                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    break;
+
+                case LIAN_MA_SAN_ZHONG_SAN:
+                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    break;
+
+                case LIAN_MA_SI_ZHONG_SI:
+                    priBetNumbers.add(Arrays.asList(fourNumber));
+                    break;
+
+                case LIAN_MA_WU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(fiveNumber));
+                    break;
+
+                case LIAN_MA_LIU_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sixNumber));
+                    break;
+
+                case LIAN_MA_QI_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(sevenNumber));
+                    break;
+
+                case LIAN_MA_BA_ZHONG_WU:
+                    priBetNumbers.add(Arrays.asList(eightNumber));
+                    break;
+
+                case QIAN_ER_ZU_XUAN:
+                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    break;
+
+                case QIAN_SAN_ZU_XUAN:
+                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    break;
+
+                case QIAN_ER_ZHI_XUAN:
+                    firstList.add(Arrays.asList(eightNumber).get(0));
+                    secondList.add(Arrays.asList(eightNumber).get(1));
+                    priBetNumbers.add(firstList);
+                    priBetNumbers.add(secondList);
+                    break;
+
+                case QIAN_SAN_ZHI_XUAN:
+
+                    firstList.add(Arrays.asList(eightNumber).get(0));
+                    secondList.add(Arrays.asList(eightNumber).get(1));
+                    thirdList.add(Arrays.asList(eightNumber).get(2));
+                    priBetNumbers.add(firstList);
+                    priBetNumbers.add(secondList);
+                    priBetNumbers.add(thirdList);
+                    break;
+            }
         }
+        return priBetNumbers;
+    }
+
+    private List<List<String>> getKuai3DoubleNumbers(Long playId) {
+
+        List<List<String>> priBetNumbers = new ArrayList<>();
+        List<String> priBetNumber0 = new ArrayList<>();
+
+        LotteryKuai3DoubleType lotteryKuai3DoubleType = LotteryKuai3DoubleType.parse(playId);
+        List<String> firstList = new ArrayList<>();
+
+        if (lotteryKuai3DoubleType != null) {
+            for (List<String> lists : priBetNumbers) {
+                lists.clear();
+            }
+            priBetNumber0.clear();
+            switch (lotteryKuai3DoubleType) {
+                case SAN_JUN_大:
+                    firstList.add("大");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_小:
+                    firstList.add("小");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_1:
+                case WEI_SHAI_1:
+                case DUAN_PAI_1:
+                    firstList.add("1");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_2:
+                case WEI_SHAI_2:
+                case DUAN_PAI_2:
+                    firstList.add("2");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_3:
+                case WEI_SHAI_3:
+                case DUAN_PAI_3:
+                    firstList.add("3");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_4:
+                case WEI_SHAI_4:
+                case DUAN_PAI_4:
+                case DIAN_SHU_HE_4:
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_5:
+                case DUAN_PAI_5:
+                case WEI_SHAI_5:
+                case DIAN_SHU_HE_5:
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case SAN_JUN_6:
+                case DUAN_PAI_6:
+                case WEI_SHAI_6:
+                case DIAN_SHU_HE_6:
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_7:
+                    firstList.add("7");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_8:
+                    firstList.add("8");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_9:
+                    firstList.add("9");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_10:
+                    firstList.add("10");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_11:
+                    firstList.add("11");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DIAN_SHU_HE_12:
+                    firstList.add("12");
+                    priBetNumbers.add(firstList);
+                    break;
+                case DIAN_SHU_HE_13:
+                    firstList.add("13");
+                    priBetNumbers.add(firstList);
+                    break;
+                case DIAN_SHU_HE_14:
+                    firstList.add("14");
+                    priBetNumbers.add(firstList);
+                    break;
+                case DIAN_SHU_HE_15:
+                    firstList.add("15");
+                    priBetNumbers.add(firstList);
+                    break;
+                case DIAN_SHU_HE_16:
+                    firstList.add("16");
+                    priBetNumbers.add(firstList);
+                    break;
+                case DIAN_SHU_HE_17:
+                    firstList.add("17");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case QUAN_SHAI:
+                    firstList.add("全");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_12:
+                    firstList.add("1");
+                    firstList.add("2");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_13:
+                    firstList.add("1");
+                    firstList.add("3");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_14:
+                    firstList.add("1");
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_15:
+                    firstList.add("1");
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_16:
+                    firstList.add("1");
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_23:
+                    firstList.add("2");
+                    firstList.add("3");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_24:
+                    firstList.add("2");
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_25:
+                    firstList.add("2");
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_26:
+                    firstList.add("2");
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case CHANG_PAI_34:
+                    firstList.add("3");
+                    firstList.add("4");
+                    priBetNumbers.add(firstList);
+                    break;
+                case CHANG_PAI_35:
+                    firstList.add("3");
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+                case CHANG_PAI_36:
+                    firstList.add("3");
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+                case CHANG_PAI_45:
+                    firstList.add("4");
+                    firstList.add("5");
+                    priBetNumbers.add(firstList);
+                    break;
+                case CHANG_PAI_46:
+                    firstList.add("4");
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+                case CHANG_PAI_56:
+                    firstList.add("5");
+                    firstList.add("6");
+                    priBetNumbers.add(firstList);
+                    break;
+            }
+        }
+        return priBetNumbers;
+    }
+
+    private List<List<String>> getPK10DoubleNumbers(Long playId) {
+
+        List<List<String>> priBetNumbers = new ArrayList<>();
+        List<String> priBetNumber0 = new ArrayList<>();
+
+        LotteryPK10DoubleType lotteryPK10DoubleType = LotteryPK10DoubleType.parse(playId);
+        List<String> firstList = new ArrayList<>();
+
+        if (lotteryPK10DoubleType != null) {
+            for (List<String> lists : priBetNumbers) {
+                lists.clear();
+            }
+            priBetNumber0.clear();
+            switch (lotteryPK10DoubleType) {
+                case GUAN_YA_HE_DA:
+                case DAN_HAO_GUAN_DA:
+                case DAN_HAO_YA_DA:
+                case DAN_HAO_THIRD_DA:
+                case DAN_HAO_FORTH_DA:
+                case DAN_HAO_FIFTH_DA:
+                case DAN_HAO_SIXTH_DA:
+                case DAN_HAO_SEVENTH_DA:
+                case DAN_HAO_EIGHTH_DA:
+                case DAN_HAO_NINTH_DA:
+                case DAN_HAO_TENTH_DA:
+                    firstList.add("大");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_XIAO:
+                case DAN_HAO_GUAN_XIAO:
+                case DAN_HAO_YA_XIAO:
+                case DAN_HAO_THIRD_XIAO:
+                case DAN_HAO_FORTH_XIAO:
+                case DAN_HAO_FIFTH_XIAO:
+                case DAN_HAO_SIXTH_XIAO:
+                case DAN_HAO_SEVENTH_XIAO:
+                case DAN_HAO_EIGHTH_XIAO:
+                case DAN_HAO_NINTH_XIAO:
+                case DAN_HAO_TENTH_XIAO:
+                    firstList.add("小");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_DAN:
+                case DAN_HAO_GUAN_DAN:
+                case DAN_HAO_YA_DAN:
+                case DAN_HAO_THIRD_DAN:
+                case DAN_HAO_FORTH_DAN:
+                case DAN_HAO_FIFTH_DAN:
+                case DAN_HAO_SIXTH_DAN:
+                case DAN_HAO_SEVENTH_DAN:
+                case DAN_HAO_EIGHTH_DAN:
+                case DAN_HAO_NINTH_DAN:
+                case DAN_HAO_TENTH_DAN:
+                    firstList.add("单");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_SHUANG:
+                case DAN_HAO_GUAN_SHUANG:
+                case DAN_HAO_YA_SHUANG:
+                case DAN_HAO_THIRD_SHUANG:
+                case DAN_HAO_FORTH_SHUANG:
+                case DAN_HAO_FIFTH_SHUANG:
+                case DAN_HAO_SIXTH_SHUANG:
+                case DAN_HAO_SEVENTH_SHUANG:
+                case DAN_HAO_EIGHTH_SHUANG:
+                case DAN_HAO_NINTH_SHUANG:
+                case DAN_HAO_TENTH_SHUANG:
+                    firstList.add("双");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DAN_HAO_GUAN_LONG:
+                case DAN_HAO_YA_LONG:
+                case DAN_HAO_THIRD_LONG:
+                case DAN_HAO_FORTH_LONG:
+                case DAN_HAO_FIFTH_LONG:
+                    firstList.add("龙");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DAN_HAO_GUAN_HU:
+                case DAN_HAO_YA_HU:
+                case DAN_HAO_THIRD_HU:
+                case DAN_HAO_FORTH_HU:
+                case DAN_HAO_FIFTH_HU:
+
+                    firstList.add("虎");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DAN_HAO_GUAN_1:
+                case DAN_HAO_YA_1:
+                case DAN_HAO_THIRD_1:
+                case DAN_HAO_FORTH_1:
+                case DAN_HAO_FIFTH_1:
+                case DAN_HAO_SIXTH_1:
+                case DAN_HAO_SEVENTH_1:
+                case DAN_HAO_EIGHTH_1:
+                case DAN_HAO_NINTH_1:
+                case DAN_HAO_TENTH_1:
+                    firstList.add("01");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case DAN_HAO_GUAN_2:
+                case DAN_HAO_YA_2:
+                case DAN_HAO_THIRD_2:
+                case DAN_HAO_FORTH_2:
+                case DAN_HAO_FIFTH_2:
+                case DAN_HAO_SIXTH_2:
+                case DAN_HAO_SEVENTH_2:
+                case DAN_HAO_EIGHTH_2:
+                case DAN_HAO_NINTH_2:
+                case DAN_HAO_TENTH_2:
+                    firstList.add("02");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_3:
+                case DAN_HAO_GUAN_3:
+                case DAN_HAO_YA_3:
+                case DAN_HAO_THIRD_3:
+                case DAN_HAO_FORTH_3:
+                case DAN_HAO_FIFTH_3:
+                case DAN_HAO_SIXTH_3:
+                case DAN_HAO_SEVENTH_3:
+                case DAN_HAO_EIGHTH_3:
+                case DAN_HAO_NINTH_3:
+                case DAN_HAO_TENTH_3:
+                    firstList.add("03");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_4:
+                case DAN_HAO_GUAN_4:
+                case DAN_HAO_YA_4:
+                case DAN_HAO_THIRD_4:
+                case DAN_HAO_FORTH_4:
+                case DAN_HAO_FIFTH_4:
+                case DAN_HAO_SIXTH_4:
+                case DAN_HAO_SEVENTH_4:
+                case DAN_HAO_EIGHTH_4:
+                case DAN_HAO_NINTH_4:
+                case DAN_HAO_TENTH_4:
+
+                    firstList.add("04");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_5:
+                case DAN_HAO_GUAN_5:
+                case DAN_HAO_YA_5:
+                case DAN_HAO_THIRD_5:
+                case DAN_HAO_FORTH_5:
+                case DAN_HAO_FIFTH_5:
+                case DAN_HAO_SIXTH_5:
+                case DAN_HAO_SEVENTH_5:
+                case DAN_HAO_EIGHTH_5:
+                case DAN_HAO_NINTH_5:
+                case DAN_HAO_TENTH_5:
+                    firstList.add("05");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_6:
+                case DAN_HAO_GUAN_6:
+                case DAN_HAO_YA_6:
+                case DAN_HAO_THIRD_6:
+                case DAN_HAO_FORTH_6:
+                case DAN_HAO_FIFTH_6:
+                case DAN_HAO_SIXTH_6:
+                case DAN_HAO_SEVENTH_6:
+                case DAN_HAO_EIGHTH_6:
+                case DAN_HAO_NINTH_6:
+                case DAN_HAO_TENTH_6:
+                    firstList.add("06");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_7:
+                case DAN_HAO_GUAN_7:
+                case DAN_HAO_YA_7:
+                case DAN_HAO_THIRD_7:
+                case DAN_HAO_FORTH_7:
+                case DAN_HAO_FIFTH_7:
+                case DAN_HAO_SIXTH_7:
+                case DAN_HAO_SEVENTH_7:
+                case DAN_HAO_EIGHTH_7:
+                case DAN_HAO_NINTH_7:
+                case DAN_HAO_TENTH_7:
+                    firstList.add("07");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_8:
+                case DAN_HAO_GUAN_8:
+                case DAN_HAO_YA_8:
+                case DAN_HAO_THIRD_8:
+                case DAN_HAO_FORTH_8:
+                case DAN_HAO_FIFTH_8:
+                case DAN_HAO_SIXTH_8:
+                case DAN_HAO_SEVENTH_8:
+                case DAN_HAO_EIGHTH_8:
+                case DAN_HAO_NINTH_8:
+                case DAN_HAO_TENTH_8:
+                    firstList.add("08");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_9:
+                case DAN_HAO_GUAN_9:
+                case DAN_HAO_YA_9:
+                case DAN_HAO_THIRD_9:
+                case DAN_HAO_FORTH_9:
+                case DAN_HAO_FIFTH_9:
+                case DAN_HAO_SIXTH_9:
+                case DAN_HAO_SEVENTH_9:
+                case DAN_HAO_EIGHTH_9:
+                case DAN_HAO_NINTH_9:
+                case DAN_HAO_TENTH_9:
+                    firstList.add("09");
+                    priBetNumbers.add(firstList);
+                    break;
+
+                case GUAN_YA_HE_10:
+                case DAN_HAO_GUAN_10:
+                case DAN_HAO_YA_10:
+                case DAN_HAO_THIRD_10:
+                case DAN_HAO_FORTH_10:
+                case DAN_HAO_FIFTH_10:
+                case DAN_HAO_SIXTH_10:
+                case DAN_HAO_SEVENTH_10:
+                case DAN_HAO_EIGHTH_10:
+                case DAN_HAO_NINTH_10:
+                case DAN_HAO_TENTH_10:
+                    firstList.add("10");
+                    priBetNumbers.add(firstList);
+                    break;
+
+
+                case GUAN_YA_HE_19:
+                    firstList.add("19");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_18:
+                    firstList.add("18");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_17:
+                    firstList.add("17");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_16:
+                    firstList.add("16");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_15:
+                    firstList.add("15");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_14:
+                    firstList.add("14");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_13:
+                    firstList.add("13");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_12:
+                    firstList.add("12");
+                    priBetNumbers.add(firstList);
+                    break;
+                case GUAN_YA_HE_11:
+                    firstList.add("11");
+                    priBetNumbers.add(firstList);
+                    break;
+
+            }
+        }
+        return priBetNumbers;
+
     }
 
     // 双面彩时时彩转换
@@ -549,6 +1524,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      * @param betNumbers
      * @return
      */
+
     private long getShiShiCaiBetCount(Long playId, List<List<String>> betNumbers) {
 
         int size = betNumbers.size();

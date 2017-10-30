@@ -34,7 +34,16 @@ public interface LotteryPourHandle {
      * @param playId
      * @return
      */
+    @Deprecated
     List<List<String>> getBetNumbersByType(Long playId);
+
+    /**
+     * 根据彩种生成随机注单
+     *
+     * @param playId
+     * @return
+     */
+    List<List<String>> getBetNumbersByType(Long lotteryId, Long playId);
 
     /**
      * 根据类型获取彩票可接收的List
