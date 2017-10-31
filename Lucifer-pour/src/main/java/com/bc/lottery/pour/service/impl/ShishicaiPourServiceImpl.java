@@ -219,23 +219,46 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     break;
                 case ZU_XUAN_60:
 
-                    firstList.add(list.get(8));
+                    Collections.shuffle(list);
+                    firstList.clear();
+                    secondList.clear();
+                    firstList.add(list.get(0));
+                    secondList.add(list.get(1));
+                    secondList.add(list.get(2));
+                    secondList.add(list.get(3));
                     priBetNumbers.add(firstList);
-                    priBetNumbers.add(Arrays.asList(threeNumber));
+                    priBetNumbers.add(secondList);
                     break;
                 case ZU_XUAN_30:
+
+                    Collections.shuffle(list);
+                    firstList.clear();
+                    secondList.clear();
+                    firstList.add(list.get(0));
+                    firstList.add(list.get(1));
+                    secondList.add(list.get(2));
+                    priBetNumbers.add(firstList);
+                    priBetNumbers.add(secondList);
+                    break;
                 case ZU_XUAN_20:
                 case ZU_XUAN_12:
 
-                    firstList.add(list.get(8));
-                    priBetNumbers.add(Arrays.asList(twoNumber));
+                    Collections.shuffle(list);
+                    firstList.clear();
+                    secondList.clear();
+                    firstList.add(list.get(0));
+                    secondList.add(list.get(1));
+                    secondList.add(list.get(2));
                     priBetNumbers.add(firstList);
+                    priBetNumbers.add(secondList);
                     break;
-
                 case ZU_XUAN_10:
                 case ZU_XUAN_5:
                 case ZU_XUAN_4:
 
+                    Collections.shuffle(list);
+                    firstList.clear();
+                    secondList.clear();
                     firstList.add(list.get(0));
                     secondList.add(list.get(1));
                     priBetNumbers.add(firstList);
@@ -604,7 +627,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
         List<List<String>> priBetNumbers = new ArrayList<>();
         List<String> priBetNumber0 = new ArrayList<>();
-        List<String> priBetNumber1 = new ArrayList<>();
 
         Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
         List<String> firstList = new ArrayList<>();
@@ -816,20 +838,11 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     break;
 
                 case QIAN_ER_ZHI_XUAN:
-                    firstList.add(Arrays.asList(eightNumber).get(0));
-                    secondList.add(Arrays.asList(eightNumber).get(1));
-                    priBetNumbers.add(firstList);
-                    priBetNumbers.add(secondList);
+                    priBetNumbers.add(Arrays.asList(twoNumber));
                     break;
 
                 case QIAN_SAN_ZHI_XUAN:
-
-                    firstList.add(Arrays.asList(eightNumber).get(0));
-                    secondList.add(Arrays.asList(eightNumber).get(1));
-                    thirdList.add(Arrays.asList(eightNumber).get(2));
-                    priBetNumbers.add(firstList);
-                    priBetNumbers.add(secondList);
-                    priBetNumbers.add(thirdList);
+                    priBetNumbers.add(Arrays.asList(threeNumber));
                     break;
             }
         }

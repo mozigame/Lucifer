@@ -39,8 +39,8 @@ public enum LotteryKuai3DoubleType implements LotteryType {
     DIAN_SHU_HE_16(64113L, "点数16"),
     DIAN_SHU_HE_17(64114L, "点数17"),
 
-    SAN_JUN_大(61115L, "三军大"),
-    SAN_JUN_小(61116L, "三军小"),
+    SAN_JUN_大(64115L, "三军大"),
+    SAN_JUN_小(64116L, "三军小"),
 
     CHANG_PAI_12(62101L, "长牌12"),
     CHANG_PAI_13(62102L, "长牌13"),

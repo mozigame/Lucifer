@@ -106,44 +106,49 @@ public class ShishicaiPourServiceImplTest {
     @Test
     public void testGetLotteryBetContent() {
         LotteryPourHandle lotteryPourHandler = new ShishicaiPourServiceImpl();
-        System.out.println("========================双面时时彩========================");
-        for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
-            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(2L, shishicaiDoubleType.value());
-            System.out.println(shishicaiDoubleType.desc() + "=" + list);
-            String betContent = lotteryPourHandler.getStringByLotteryList(2L, shishicaiDoubleType.value(), list);
-            System.out.println("----betContent=" + betContent);
-
-        }
         System.out.println("========================官方时时彩========================");
         for (ShishicaiType shishicaiType : ShishicaiType.values()) {
             List<List<String>> list = lotteryPourHandler.getBetNumbersByType(1L, shishicaiType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(1L, shishicaiType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(1L, shishicaiType.value(), list);
             System.out.println(shishicaiType.desc() + "=" + list);
-            String betContent = lotteryPourHandler.getStringByLotteryList(shishicaiType.value(), list);
-            System.out.println("----betContent=" + betContent);
+            System.out.println(betCount + "|" + betContent);
+
+        }
+        System.out.println("========================双面时时彩========================");
+        for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(2L, shishicaiDoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(2L, shishicaiDoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(2L, shishicaiDoubleType.value(), list);
+            System.out.println(shishicaiDoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
 
         }
         System.out.println("========================双面11x5========================");
         for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
             List<List<String>> list = lotteryPourHandler.getBetNumbersByType(4L, lottery11x5DoubleType.value());
-            System.out.println(lottery11x5DoubleType.desc() + "=" + list);
             String betContent = lotteryPourHandler.getStringByLotteryList(4L, lottery11x5DoubleType.value(), list);
-            System.out.println("----betContent=" + betContent);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(4L, lottery11x5DoubleType.value(), list);
+            System.out.println(lottery11x5DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
         }
 
         System.out.println("========================双面快3========================");
         for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
             List<List<String>> list = lotteryPourHandler.getBetNumbersByType(6L, lotteryKuai3DoubleType.value());
-            System.out.println(lotteryKuai3DoubleType.desc() + "=" + list);
             String betContent = lotteryPourHandler.getStringByLotteryList(6L, lotteryKuai3DoubleType.value(), list);
-            System.out.println("----betContent=" + betContent);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(6L, lotteryKuai3DoubleType.value(), list);
+            System.out.println(lotteryKuai3DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
         }
 
         System.out.println("========================双面PK10========================");
         for (LotteryPK10DoubleType lotteryPK10DoubleType : LotteryPK10DoubleType.values()) {
             List<List<String>> list = lotteryPourHandler.getBetNumbersByType(8L, lotteryPK10DoubleType.value());
-            System.out.println(lotteryPK10DoubleType.desc() + "=" + list);
             String betContent = lotteryPourHandler.getStringByLotteryList(8L, lotteryPK10DoubleType.value(), list);
-            System.out.println("----betContent=" + betContent);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(8L, lotteryPK10DoubleType.value(), list);
+            System.out.println(lotteryPK10DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
         }
     }
 
