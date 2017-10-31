@@ -1407,6 +1407,28 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     @Override
     public String getStringByLotteryList(Long playId, List<List<String>> lotteryList) {
 
+        return getShishicaiStringByLotteryList(playId, lotteryList);
+    }
+
+    @Override
+    public String getStringByLotteryList(Long lotteryId, Long playId, List<List<String>> lotteryList) {
+
+        if (lotteryId == 1) {
+            return getShishicaiStringByLotteryList(playId, lotteryList);
+        } else {
+            return JsonUtils.lotteryList2OneOnlyJson(lotteryList);
+        }
+    }
+
+    /**
+     * 官彩时时彩
+     *
+     * @param playId
+     * @param lotteryList
+     * @return
+     */
+    private String getShishicaiStringByLotteryList(Long playId, List<List<String>> lotteryList) {
+
         ShishicaiType shishicaiType = ShishicaiType.parse(playId);
         if (shishicaiType == null || lotteryList.size() == 0) {
             return "";

@@ -78,6 +78,16 @@ public interface LotteryPourHandle {
      * @param lotteryList
      * @return
      */
+    @Deprecated
     String getStringByLotteryList(Long playId, List<List<String>> lotteryList);
+
+    /**
+     * 根据彩票可接收的List转换成字符串
+     *
+     * @param playId
+     * @param lotteryList
+     * @return
+     */
+    String getStringByLotteryList(Long lotteryId, Long playId, List<List<String>> lotteryList);
 
 }
