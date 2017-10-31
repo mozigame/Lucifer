@@ -72,7 +72,7 @@ public interface LotteryPourHandle {
     List<Integer> getLotteryCountByType(Long lotteryId, Long playId, String str);
 
     /**
-     * 根据彩票可接收的List转换成
+     * 根据彩票可接收的List转换成字符串
      *
      * @param playId
      * @param lotteryList

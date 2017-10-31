@@ -578,7 +578,12 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     private List<List<String>> get11x5DoubleNumbers(Long playId) {
         List<String> list = new ArrayList<>();
         for (int i = 1; i <= 11; i++) {
-            list.add(String.valueOf(i));
+            StringBuilder stringBuilder = new StringBuilder();
+            if (i < 10) {
+                stringBuilder.append("0");
+            }
+            stringBuilder.append(i);
+            list.add(stringBuilder.toString());
         }
         Collections.shuffle(list);
         String[] oneNumber = {list.get(0)};
@@ -670,7 +675,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_1:
                 case SI_QIU_DING_WEI_DAN_1:
                 case WU_QIU_DING_WEI_DAN_1:
-                    firstList.add("1");
+                    firstList.add("01");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -680,7 +685,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_2:
                 case SI_QIU_DING_WEI_DAN_2:
                 case WU_QIU_DING_WEI_DAN_2:
-                    firstList.add("2");
+                    firstList.add("02");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -690,7 +695,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_3:
                 case SI_QIU_DING_WEI_DAN_3:
                 case WU_QIU_DING_WEI_DAN_3:
-                    firstList.add("3");
+                    firstList.add("03");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -700,7 +705,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_4:
                 case SI_QIU_DING_WEI_DAN_4:
                 case WU_QIU_DING_WEI_DAN_4:
-                    firstList.add("4");
+                    firstList.add("04");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -710,7 +715,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_5:
                 case SI_QIU_DING_WEI_DAN_5:
                 case WU_QIU_DING_WEI_DAN_5:
-                    firstList.add("5");
+                    firstList.add("05");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -720,7 +725,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_6:
                 case SI_QIU_DING_WEI_DAN_6:
                 case WU_QIU_DING_WEI_DAN_6:
-                    firstList.add("6");
+                    firstList.add("06");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -730,7 +735,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_7:
                 case SI_QIU_DING_WEI_DAN_7:
                 case WU_QIU_DING_WEI_DAN_7:
-                    firstList.add("7");
+                    firstList.add("07");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -740,7 +745,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_8:
                 case SI_QIU_DING_WEI_DAN_8:
                 case WU_QIU_DING_WEI_DAN_8:
-                    firstList.add("8");
+                    firstList.add("08");
                     priBetNumbers.add(firstList);
                     break;
 
@@ -750,7 +755,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_QIU_DING_WEI_DAN_9:
                 case SI_QIU_DING_WEI_DAN_9:
                 case WU_QIU_DING_WEI_DAN_9:
-                    firstList.add("9");
+                    firstList.add("09");
                     priBetNumbers.add(firstList);
                     break;
 
