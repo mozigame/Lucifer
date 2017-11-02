@@ -150,6 +150,56 @@ public class ShishicaiPourServiceImplTest {
             System.out.println(lotteryPK10DoubleType.desc() + "=" + list);
             System.out.println(betCount + "|" + betContent);
         }
+
+        System.out.println("========================天津时时彩========================");
+        for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(12L, shishicaiDoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(12L, shishicaiDoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(12L, shishicaiDoubleType.value(), list);
+            System.out.println(shishicaiDoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
+        System.out.println("========================新疆时时彩========================");
+        for (ShishicaiDoubleType shishicaiDoubleType : ShishicaiDoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(14L, shishicaiDoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(14L, shishicaiDoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(14L, shishicaiDoubleType.value(), list);
+            System.out.println(shishicaiDoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
+
+        System.out.println("========================广东11选5========================");
+        for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(16L, lottery11x5DoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(16L, lottery11x5DoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(16L, lottery11x5DoubleType.value(), list);
+            System.out.println(lottery11x5DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
+        System.out.println("========================山东11选5========================");
+        for (Lottery11x5DoubleType lottery11x5DoubleType : Lottery11x5DoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(18L, lottery11x5DoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(18L, lottery11x5DoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(18L, lottery11x5DoubleType.value(), list);
+            System.out.println(lottery11x5DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
+        System.out.println("========================安徽快3========================");
+        for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(20L, lotteryKuai3DoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(20L, lotteryKuai3DoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(20L, lotteryKuai3DoubleType.value(), list);
+            System.out.println(lotteryKuai3DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
+        System.out.println("========================湖北快3========================");
+        for (LotteryKuai3DoubleType lotteryKuai3DoubleType : LotteryKuai3DoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(22L, lotteryKuai3DoubleType.value());
+            String betContent = lotteryPourHandler.getStringByLotteryList(22L, lotteryKuai3DoubleType.value(), list);
+            Long betCount = lotteryPourHandler.getLotteryBetCount(22L, lotteryKuai3DoubleType.value(), list);
+            System.out.println(lotteryKuai3DoubleType.desc() + "=" + list);
+            System.out.println(betCount + "|" + betContent);
+        }
     }
 
 }
