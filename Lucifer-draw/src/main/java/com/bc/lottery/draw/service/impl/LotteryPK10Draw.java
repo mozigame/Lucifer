@@ -317,22 +317,45 @@ public class LotteryPK10Draw {
 
                 //冠亚和值大小单双
                 case GUAN_YA_HE_DA:
-                case GUAN_YA_HE_XIAO:
-                case GUAN_YA_HE_DAN:
-                case GUAN_YA_HE_SHUANG:
-
                     if (size == 1) {
                         // 和值
                         int sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
-                        for (String betNumber : betNumbers.get(0)) {
-                            if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains(betNumber)) {
-                                firstPrizeNum++;
-                            }
+                        if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("大")) {
+                            firstPrizeNum++;
                         }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
-
+                case GUAN_YA_HE_XIAO:
+                    if (size == 1) {
+                        // 和值
+                        int sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                        if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("小")) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case GUAN_YA_HE_DAN:
+                    if (size == 1) {
+                        // 和值
+                        int sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                        if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("单")) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case GUAN_YA_HE_SHUANG:
+                    if (size == 1) {
+                        // 和值
+                        int sumStr = Integer.parseInt(kjList.get(0)) + Integer.parseInt(kjList.get(1));
+                        if (LotteryUtils.getDaxiaodanshuangList(sumStr, 22).contains("双")) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
                     //冠亚和值
                 case GUAN_YA_HE_3:
                 case GUAN_YA_HE_4:

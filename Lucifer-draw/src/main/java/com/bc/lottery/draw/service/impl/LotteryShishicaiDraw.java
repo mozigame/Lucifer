@@ -994,21 +994,47 @@ public class LotteryShishicaiDraw {
 
                 //总和大小单双
                 case ZONG_HE_DA:
-                case ZONG_HE_XIAO:
-                case ZONG_HE_DAN:
-                case ZONG_HE_SHUANG:
-
                     if (betNumbers.size() == 1) {
-
                         //获取总和的大小单双
                         List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
 
-                        for (String betNumber : betNumbers.get(0)) {
-                            if (firstBetList.contains(betNumber)) {
-                                firstPrizeNum++;
-                            }
+                        if (firstBetList.contains("大")) {
+                            firstPrizeNum++;
                         }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case ZONG_HE_XIAO:
+                    if (betNumbers.size() == 1) {
+                        //获取总和的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
 
+                        if (firstBetList.contains("小")) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case ZONG_HE_DAN:
+                    if (betNumbers.size() == 1) {
+                        //获取总和的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
+
+                        if (firstBetList.contains("单")) {
+                            firstPrizeNum++;
+                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case ZONG_HE_SHUANG:
+
+                    if (betNumbers.size() == 1) {
+                        //获取总和的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kj), 45);
+
+                        if (firstBetList.contains("双")) {
+                            firstPrizeNum++;
+                        }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;

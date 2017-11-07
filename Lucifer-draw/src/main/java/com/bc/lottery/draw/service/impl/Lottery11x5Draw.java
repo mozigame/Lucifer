@@ -504,22 +504,58 @@ public class Lottery11x5Draw {
 
                 //总和大小单双
                 case ZONG_HE_DA:
-                case ZONG_HE_XIAO:
-                case ZONG_HE_DAN:
-                case ZONG_HE_SHUANG:
-
                     if (betNumbers.size() == 1) {
-
                         if (LotteryUtils.getStrSum(kjList) == 30) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的总和的大小单双
                             List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
-
-                            for (String betNumber : betNumbers.get(0)) {
-                                if (firstBetList.contains(betNumber)) {
+                                if (firstBetList.contains("大")) {
                                     firstPrizeNum++;
                                 }
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                        }
+                    }
+                    continue;
+
+                case ZONG_HE_XIAO:
+                    if (betNumbers.size() == 1) {
+                        if (LotteryUtils.getStrSum(kjList) == 30) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的总和的大小单双
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
+                            if (firstBetList.contains("小")) {
+                                firstPrizeNum++;
+                            }
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                        }
+                    }
+                    continue;
+                case ZONG_HE_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (LotteryUtils.getStrSum(kjList) == 30) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的总和的大小单双
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
+                            if (firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                        }
+                    }
+                    continue;
+                case ZONG_HE_SHUANG:
+
+                    if (betNumbers.size() == 1) {
+                        if (LotteryUtils.getStrSum(kjList) == 30) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的总和的大小单双
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
+                            if (firstBetList.contains("双")) {
+                                firstPrizeNum++;
                             }
                             lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                         }
@@ -528,19 +564,25 @@ public class Lottery11x5Draw {
 
                     //总和尾大小
                 case ZONG_HE_WEI_DA:
-                case ZONG_HE_WEI_XIAO:
-
                     if (betNumbers.size() == 1) {
-
                         //获取中奖号的总和的尾数单双
                         List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9);
 
-                        for (String betNumber : betNumbers.get(0)) {
-                            if (firstBetList.contains(betNumber)) {
+                            if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
                             }
-                        }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    }
+                    continue;
+                case ZONG_HE_WEI_XIAO:
 
+                    if (betNumbers.size() == 1) {
+                        //获取中奖号的总和的尾数单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9);
+
+                        if (firstBetList.contains("小")) {
+                            firstPrizeNum++;
+                        }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
