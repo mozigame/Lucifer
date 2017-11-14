@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * User: clion
- * Date: 2017/9/5
+ * Date: 217/9/5
  * Time: 14:17
  **/
 public class LotteryOrderTest {
@@ -625,31 +625,31 @@ public class LotteryOrderTest {
                     priBetNumbers.add(firstList);
                     break;
                 case CAI_ZHONG_WEI_3:
-                    middleList.add("03");
+                    middleList.add("3");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_4:
-                    middleList.add("04");
+                    middleList.add("4");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_5:
-                    middleList.add("05");
+                    middleList.add("5");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_6:
-                    middleList.add("06");
+                    middleList.add("6");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_7:
-                    middleList.add("07");
+                    middleList.add("7");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_8:
-                    middleList.add("08");
+                    middleList.add("8");
                     priBetNumbers.add(middleList);
                     break;
                 case CAI_ZHONG_WEI_9:
-                    middleList.add("09");
+                    middleList.add("9");
                     priBetNumbers.add(middleList);
                     break;
             }
@@ -660,15 +660,15 @@ public class LotteryOrderTest {
             String numDouble = "双";
             String numDragon = "龙";
             String numTiger = "虎";
-            String num1 = "01";
-            String num2 = "02";
-            String num3 = "03";
-            String num4 = "04";
-            String num5 = "05";
-            String num6 = "06";
-            String num7 = "07";
-            String num8 = "08";
-            String num9 = "09";
+            String num1 = "1";
+            String num2 = "2";
+            String num3 = "3";
+            String num4 = "4";
+            String num5 = "5";
+            String num6 = "6";
+            String num7 = "7";
+            String num8 = "8";
+            String num9 = "9";
             String num10 = "10";
             String num11 = "11";
             List<String> list = new ArrayList<>();

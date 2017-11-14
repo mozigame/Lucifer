@@ -669,7 +669,7 @@ public class LotteryUtils {
      *
      * @param aimNo 需要计算的数
      * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
-     * @param maxNo 中间值（如果等于中间值，则为和）
+     * @param ignoreNo 排除的号码
      * @return
      */
     public static List<String> getDaxiaodanshuangList(int aimNo, int maxNo, int ignoreNo) {
