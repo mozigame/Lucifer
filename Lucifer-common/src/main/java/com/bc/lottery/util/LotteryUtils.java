@@ -460,7 +460,7 @@ public class LotteryUtils {
         }
         if (Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 1 || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 9
                 || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 9
-                || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[2]) - Integer.parseInt(strArr[1])) == 9) {
+                || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 9) {
             return true;
         }
         return false;

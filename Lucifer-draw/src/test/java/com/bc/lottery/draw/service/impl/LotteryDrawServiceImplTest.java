@@ -17,7 +17,7 @@ import static com.bc.lottery.entity.ShishicaiType.HOU_SAN_ZU_XUAN_HE_ZHI;
  **/
 public class LotteryDrawServiceImplTest {
 
-    private static String kj = "1234";
+    private static String kj = "12345";
     private static String kj1 = "55237";
     private static String kj2 = "64461";
     private static String kj3 = "13343";
@@ -653,13 +653,13 @@ public class LotteryDrawServiceImplTest {
     public void testGetLotteryKuai3DoublePlayIds() throws Exception {
 
         kj = "1,2,3";
-        kj1 = "456";
-        kj2 = "124";
-        kj3 = "256";
-        kj4 = "222";
-        kj5 = "666";
-        kj6 = "445";
-        kj7 = "225";
+        kj1 = "4,5,6";
+        kj2 = "1,2,4";
+        kj3 = "2,5,6";
+        kj4 = "2,2,2";
+        kj5 = "6,6,6";
+        kj6 = "4,4,5";
+        kj7 = "2,2,5";
         kj8 = "1,4,7";
         kj9 = "1,1,1";
 
