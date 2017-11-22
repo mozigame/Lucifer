@@ -535,31 +535,24 @@ public class Lottery11x5Draw {
                     continue;
                 case ZONG_HE_DAN:
                     if (betNumbers.size() == 1) {
-                        if (LotteryUtils.getStrSum(kjList) == 30) {
-                            lotteryOrder.setIsTied(1);
-                        } else {
-                            //获取中奖号的总和的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
-                            if (firstBetList.contains("单")) {
-                                firstPrizeNum++;
-                            }
-                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+
+                        //获取中奖号的总和的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60);
+                        if (firstBetList.contains("单")) {
+                            firstPrizeNum++;
                         }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
                 case ZONG_HE_SHUANG:
 
                     if (betNumbers.size() == 1) {
-                        if (LotteryUtils.getStrSum(kjList) == 30) {
-                            lotteryOrder.setIsTied(1);
-                        } else {
-                            //获取中奖号的总和的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60, 30);
-                            if (firstBetList.contains("双")) {
-                                firstPrizeNum++;
-                            }
-                            lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                        //获取中奖号的总和的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 60);
+                        if (firstBetList.contains("双")) {
+                            firstPrizeNum++;
                         }
+                        lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;
 
