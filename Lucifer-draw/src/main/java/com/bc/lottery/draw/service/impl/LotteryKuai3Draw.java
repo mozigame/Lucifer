@@ -283,7 +283,7 @@ public class LotteryKuai3Draw {
                 case SAN_JUN_大:
                 case SAN_JUN_小:
 
-                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 0) {
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 0) {
 
                         Map<String, Integer> scopeMap = new HashMap<>();
                         scopeMap.put("smallSmall", 4);
@@ -313,7 +313,7 @@ public class LotteryKuai3Draw {
                 case WEI_SHAI_6:
 
                     if (betNumbers.size() == 1) {
-                        Set<String> stringSet = LotteryUtils.getDupStrByDupNum(kjNo, 3);
+                        Set<String> stringSet = LotteryUtils.getDupStrByDupNum(kjList, 3);
                         if (stringSet.size() != 0 && stringSet.containsAll(betNumbers.get(0))) {
                             firstPrizeNum = 1;
                         }
@@ -324,7 +324,7 @@ public class LotteryKuai3Draw {
                     // 全骰
                 case QUAN_SHAI:
 
-                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 1) {
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 1) {
                         firstPrizeNum = 1;
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
@@ -347,7 +347,7 @@ public class LotteryKuai3Draw {
                 case DIAN_SHU_HE_17:
 
                     // 去除豹子
-                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjNo, 3).size() == 0) {
+                    if (betNumbers.size() == 1 && LotteryUtils.getDupStrByDupNum(kjList, 3).size() == 0) {
 
                         //获取中奖号的和值
                         int sumString = LotteryUtils.getStrSum(kjList);
@@ -356,7 +356,6 @@ public class LotteryKuai3Draw {
                                 firstPrizeNum++;
                             }
                         }
-
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
                     continue;

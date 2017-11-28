@@ -31,19 +31,19 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
         if (lotteryId == 1) {
             return getShiShiCaiBetCount(playId, betNumbers);
-        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14) {
+        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14 || lotteryId == 102) {
             return 1;
         } else if (lotteryId == 3) {
             return getLottery11x5BetCount(playId, betNumbers);
-        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18) {
+        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18 || lotteryId == 104) {
             return getLottery11x5DoubleBetCount(playId, betNumbers);
         } else if (lotteryId == 5) {
             return getLotteryKuai3BetCount(playId, betNumbers);
-        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22) {
+        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22 || lotteryId == 106) {
             return 1;
         } else if (lotteryId == 7) {
             return getLotteryPK10BetCount(playId, betNumbers);
-        } else if (lotteryId == 8) {
+        } else if (lotteryId == 8 || lotteryId == 108) {
             return 1;
         }
         return 0;
@@ -1378,13 +1378,13 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         List<List<String>> strList = new ArrayList<>();
         if (lotteryId == 1) {
             return getLotteryListByType(playId, str);
-        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14) {
+        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14|| lotteryId == 102) {
             return getLotteryShishicaiDoubleByType(playId, str);
-        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18) {
+        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18|| lotteryId == 104) {
             return getLottery11x5DoubleByType(playId, str);
-        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22) {
+        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22|| lotteryId == 106) {
             return getLotteryKuai3DoubleByType(playId, str);
-        } else if (lotteryId == 8) {
+        } else if (lotteryId == 8|| lotteryId == 108) {
             return getLotteryPK10DoubleByType(playId, str);
         }
         return strList;

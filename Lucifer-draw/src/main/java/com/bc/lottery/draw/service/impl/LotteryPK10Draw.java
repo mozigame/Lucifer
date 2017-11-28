@@ -304,6 +304,7 @@ public class LotteryPK10Draw {
      */
     public static List<UserOrderPO> getBoundsInfoOfLotteryPK10Double(LotteryType lotteryType, String kjNo, List<UserOrderPO> lotteryOrderList) {
 
+        kjNo = kjNo.replace("01", "1").replace("02", "2").replace("03", "3").replace("04", "4").replace("05", "5").replace("06", "6").replace("07", "7").replace("08", "8").replace("09", "9");
         List<String> kjList = getRealLotteryPK10Kj(kjNo, lotteryType);
         for (UserOrderPO lotteryOrder : lotteryOrderList) {
 

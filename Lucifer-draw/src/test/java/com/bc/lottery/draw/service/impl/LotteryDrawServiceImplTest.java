@@ -12,12 +12,12 @@ import static com.bc.lottery.entity.ShishicaiType.HOU_SAN_ZU_XUAN_HE_ZHI;
 
 /**
  * User: clion
- * Date: 2017/9/8
+ * Date: 217/9/8
  * Time: 18:50
  **/
 public class LotteryDrawServiceImplTest {
 
-    private static String kj = "01234";
+    private static String kj = "12345";
     private static String kj1 = "55237";
     private static String kj2 = "64461";
     private static String kj3 = "13343";
@@ -180,16 +180,16 @@ public class LotteryDrawServiceImplTest {
     @Test
     public void testGetBoundsInfoOfLottery11x5() throws Exception {
 
-        kj = "01 02 03 04 05";
-        kj1 = "06 08 03 05 09";
-        kj2 = "11 07 03 05 10";
-        kj3 = "03 09 08 04 02";
-        kj4 = "06 10 02 08 03";
-        kj5 = "01 03 05 07 09";
-        kj6 = "06 08 04 02 10";
-        kj7 = "04 05 09 03 11";
-        kj8 = "07 05 02 11 08";
-        kj9 = "02 03 04 06 05";
+        kj = "1 2 3 4 5";
+        kj1 = "6 8 3 5 9";
+        kj2 = "11 7 3 5 10";
+        kj3 = "3 9 8 4 2";
+        kj4 = "6 10 2 8 3";
+        kj5 = "1 3 5 7 9";
+        kj6 = "6 8 4 2 10";
+        kj7 = "4 5 9 3 11";
+        kj8 = "7 5 2 11 8";
+        kj9 = "2 3 4 6 5";
 
         System.out.println("*******************************11选5传统盘开奖测试开始*******************************");
         kjList.add(kj);
@@ -237,16 +237,16 @@ public class LotteryDrawServiceImplTest {
     @Test
     public void testGetBoundsInfoOfLottery11x5Double() throws Exception {
 
-        kj = "01 02 03 04 05";
-        kj1 = "06 08 03 05 09";
-        kj2 = "11 07 03 05 10";
-        kj3 = "03 09 08 04 02";
-        kj4 = "06 10 02 08 03";
-        kj5 = "01 03 05 07 09";
-        kj6 = "06 08 04 02 10";
-        kj7 = "04 05 09 03 11";
-        kj8 = "07 05 02 11 08";
-        kj9 = "02 03 04 06 05";
+        kj = "1,2,3,4,5";
+        kj1 = "6,8,3,5,9";
+        kj2 = "11,7,3,5,10";
+        kj3 = "5,9,8,4,2";
+        kj4 = "6,10,2,8,3";
+        kj5 = "1,3,5,7,9";
+        kj6 = "6,8,4,3,10";
+        kj7 = "4,5,9,3,11";
+        kj8 = "7,5,2,11,8";
+        kj9 = "2,3,4,6,5";
 
         System.out.println("*******************************11选5双面盘开奖测试开始*******************************");
         kjList.add(kj);
@@ -295,16 +295,16 @@ public class LotteryDrawServiceImplTest {
     @Test
     public void testGetBoundsInfoOfLotteryKuai3Double() throws Exception {
 
-        kj = "123";
-        kj1 = "456";
-        kj2 = "124";
-        kj3 = "256";
-        kj4 = "222";
-        kj5 = "666";
-        kj6 = "445";
-        kj7 = "225";
-        kj8 = "147";
-        kj9 = "111";
+        kj = "1,2,3";
+        kj1 = "4,5,6";
+        kj2 = "1,2,4";
+        kj3 = "2,5,6";
+        kj4 = "2,2,2";
+        kj5 = "6,6,6";
+        kj6 = "4,4,5";
+        kj7 = "2,2,5";
+        kj8 = "1,4,7";
+        kj9 = "1,1,1";
 
         System.out.println("*******************************快3双面盘开奖测试开始*******************************");
         kjList.add(kj);
@@ -348,15 +348,15 @@ public class LotteryDrawServiceImplTest {
     public void testGetBoundsInfoOfLotteryPK10() throws Exception {
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("01");
-        betNumbers.add("02");
-        betNumbers.add("03");
-        betNumbers.add("04");
-        betNumbers.add("05");
-        betNumbers.add("06");
-        betNumbers.add("07");
-        betNumbers.add("08");
-        betNumbers.add("09");
+        betNumbers.add("1");
+        betNumbers.add("2");
+        betNumbers.add("3");
+        betNumbers.add("4");
+        betNumbers.add("5");
+        betNumbers.add("6");
+        betNumbers.add("7");
+        betNumbers.add("8");
+        betNumbers.add("9");
         betNumbers.add("10");
 
         System.out.println("*******************************PK10传统盘开奖测试开始*******************************");
@@ -449,15 +449,15 @@ public class LotteryDrawServiceImplTest {
         kj4 = "6,9,5,4,8,2,1,7,10,3";*/
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("01");
-        betNumbers.add("02");
-        betNumbers.add("03");
-        betNumbers.add("04");
-        betNumbers.add("05");
-        betNumbers.add("06");
-        betNumbers.add("07");
-        betNumbers.add("08");
-        betNumbers.add("09");
+        betNumbers.add("1");
+        betNumbers.add("2");
+        betNumbers.add("3");
+        betNumbers.add("4");
+        betNumbers.add("5");
+        betNumbers.add("6");
+        betNumbers.add("7");
+        betNumbers.add("8");
+        betNumbers.add("9");
         betNumbers.add("10");
 
         System.out.println("*******************************PK10双面盘开奖测试开始*******************************");
@@ -614,16 +614,16 @@ public class LotteryDrawServiceImplTest {
     @Test
     public void testGetLottery11x5DoublePlayIds() throws Exception {
 
-        kj = "01,02,03,04,05";
-        kj1 = "06,08,03,05,09";
-        kj2 = "11 07 03 05 10";
-        kj3 = "03 09 08 04 02";
-        kj4 = "06 10 02 08 03";
-        kj5 = "01 03 05 07 09";
-        kj6 = "06 08 04 02 10";
-        kj7 = "04 05 09 03 11";
-        kj8 = "07 05 02 11 08";
-        kj9 = "02 03 04 06 05";
+        kj = "1,2,3,4,5";
+        kj1 = "6,8,3,5,9";
+        kj2 = "11 7 3 5 10";
+        kj3 = "3 9 8 4 2";
+        kj4 = "6 10 2 8 3";
+        kj5 = "1 3 5 7 9";
+        kj6 = "6 8 4 2 10";
+        kj7 = "4 5 9 3 11";
+        kj8 = "7 5 2 11 8";
+        kj9 = "2 3 4 6 5";
 
         System.out.println("*******************************11选5双面长龙测试开始*******************************");
         kjList.add(kj);
@@ -653,13 +653,13 @@ public class LotteryDrawServiceImplTest {
     public void testGetLotteryKuai3DoublePlayIds() throws Exception {
 
         kj = "1,2,3";
-        kj1 = "456";
-        kj2 = "124";
-        kj3 = "256";
-        kj4 = "222";
-        kj5 = "666";
-        kj6 = "445";
-        kj7 = "225";
+        kj1 = "4,5,6";
+        kj2 = "1,2,4";
+        kj3 = "2,5,6";
+        kj4 = "2,2,2";
+        kj5 = "6,6,6";
+        kj6 = "4,4,5";
+        kj7 = "2,2,5";
         kj8 = "1,4,7";
         kj9 = "1,1,1";
 
@@ -702,15 +702,15 @@ public class LotteryDrawServiceImplTest {
         kj4 = "6,9,5,4,8,2,1,7,10,3";*/
 
         List<String> betNumbers = new ArrayList<>();
-        betNumbers.add("01");
-        betNumbers.add("02");
-        betNumbers.add("03");
-        betNumbers.add("04");
-        betNumbers.add("05");
-        betNumbers.add("06");
-        betNumbers.add("07");
-        betNumbers.add("08");
-        betNumbers.add("09");
+        betNumbers.add("1");
+        betNumbers.add("2");
+        betNumbers.add("3");
+        betNumbers.add("4");
+        betNumbers.add("5");
+        betNumbers.add("6");
+        betNumbers.add("7");
+        betNumbers.add("8");
+        betNumbers.add("9");
         betNumbers.add("10");
 
         System.out.println("*******************************PK10双面长龙开奖测试开始*******************************");

@@ -202,4 +202,17 @@ public class ShishicaiPourServiceImplTest {
         }
     }
 
+    @Test
+    public void testGetLottery11x5BetContent() {
+        LotteryPourHandle lotteryPourHandler = new ShishicaiPourServiceImpl();
+        System.out.println("========================双面11选5========================");
+        List<List<String>> strList = lotteryPourHandler.getLotteryListByType(4L, 41601L, "总和大");
+
+        System.out.println(strList);
+
+        long betCount = lotteryPourHandler.getLotteryBetCount(4L, 41601L, strList);
+
+        System.out.println(betCount);
+    }
+
 }

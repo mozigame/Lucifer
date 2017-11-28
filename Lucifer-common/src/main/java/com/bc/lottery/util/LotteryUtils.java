@@ -11,6 +11,14 @@ import java.util.*;
 
 public class LotteryUtils {
 
+    public static String[] hongboArr = {"01", "02", "07", "08", "12", "13", "18", "19", "23", "24", "29", "30", "34", "35", "40", "45", "46"};
+    public static String[] lanboArr = {"03", "04", "09", "10", "14", "15", "20", "25", "26", "31", "36", "37", "41", "42", "47", "48"};
+    public static String[] lvboArr = {"05", "06", "11", "16", "17", "21", "22", "27", "28", "32", "33", "38", "39", "43", "44", "49"};
+
+    public static String[] tianXiaoArr = {"兔", "马", "猴", "猪", "牛", "龙"};
+    public static String[] qianXiaoArr = {"鼠", "牛", "虎", "兔", "龙", "蛇"};
+    public static String[] jiaXiaoArr = {"牛", "马", "羊", "鸡", "狗", "猪"};
+
     /**
      * 相乘
      *
@@ -460,7 +468,7 @@ public class LotteryUtils {
         }
         if (Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 1 || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[1])) == 9
                 || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[1]) - Integer.parseInt(strArr[2])) == 9
-                || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[2]) - Integer.parseInt(strArr[1])) == 9) {
+                || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 1 || Math.abs(Integer.parseInt(strArr[0]) - Integer.parseInt(strArr[2])) == 9) {
             return true;
         }
         return false;
@@ -638,6 +646,231 @@ public class LotteryUtils {
     }
 
     /**
+     * 获取指定数字的大小单双色波
+     *
+     * @param aimNo 需要计算的数
+     * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
+     * @return
+     */
+    public static List<String> getDaXiaoDanShuangSeBoList(String aimNo, int maxNo) {
+
+        List<String> resultList = new ArrayList<>();
+
+        // 判断奇偶
+        if (Integer.parseInt(aimNo) % 2 == 1) {
+            resultList.add("单");
+        } else {
+            resultList.add("双");
+        }
+        // 判断大小
+        if (Integer.parseInt(aimNo) <= maxNo / 2) {
+            resultList.add("小");
+        } else {
+            resultList.add("大");
+        }
+        //判断色波
+        if (Arrays.asList(lanboArr).contains(aimNo)) {
+            resultList.add("蓝");
+        } else if (Arrays.asList(hongboArr).contains(aimNo)) {
+            resultList.add("红");
+        } else {
+            resultList.add("绿");
+        }
+
+        return resultList;
+    }
+
+    /**
+     * 获取指定数字的五行类型
+     *
+     * @param kjStr
+     * @return
+     */
+    public static List<String> getWuxingTypeList(String kjStr) {
+
+        List<String> resultList = new ArrayList<>();
+
+        // 判断五行
+        if (Integer.parseInt(kjStr) % 5 == 1) {
+            resultList.add("金");
+        } else if (Integer.parseInt(kjStr) % 5 == 2) {
+            resultList.add("木");
+        } else if (Integer.parseInt(kjStr) % 5 == 3) {
+            resultList.add("水");
+        } else if (Integer.parseInt(kjStr) % 5 == 4) {
+            resultList.add("火");
+        } else {
+            resultList.add("土");
+        }
+        return resultList;
+    }
+
+    /**
+     * 获取指定列表的尾数集合
+     *
+     * @param kjList
+     * @return
+     */
+    public static Set<String> getWeishuSet(List<String> kjList) {
+
+        Set<String> resultSet = new HashSet<>();
+        // 获取指定列表的尾数集合
+        kjList.forEach(str -> {
+            resultSet.add(String.valueOf(Integer.parseInt(str) % 10));
+        });
+        return resultSet;
+    }
+
+    /**
+     * 获取指定数字的生肖类型
+     *
+     * @param kjStr
+     * @return
+     */
+    public static List<String> getShengxiaoTypeList(String kjStr) {
+
+        List<String> resultList = new ArrayList<>();
+        // 判断生肖
+        int year = DateUtils.getCurrYear();
+        int shengXiaoNo = year + Integer.parseInt(kjStr) - 2008;
+        if (shengXiaoNo % 12 == 7) {
+            resultList.add("鼠");
+        } else if (shengXiaoNo % 12 == 6) {
+            resultList.add("牛");
+        } else if (shengXiaoNo % 12 == 5) {
+            resultList.add("虎");
+        } else if (shengXiaoNo % 12 == 4) {
+            resultList.add("兔");
+        } else if (shengXiaoNo % 12 == 3) {
+            resultList.add("龙");
+        } else if (shengXiaoNo % 12 == 2) {
+            resultList.add("蛇");
+        } else if (shengXiaoNo % 12 == 1) {
+            resultList.add("马");
+        } else if (shengXiaoNo % 12 == 0) {
+            resultList.add("羊");
+        } else if (shengXiaoNo % 12 == 11) {
+            resultList.add("猴");
+        } else if (shengXiaoNo % 12 == 10) {
+            resultList.add("鸡");
+        } else if (shengXiaoNo % 12 == 9) {
+            resultList.add("狗");
+        } else if (shengXiaoNo % 12 == 8) {
+            resultList.add("猪");
+        }
+        return resultList;
+    }
+
+    /**
+     * 获取指定数字的生肖集合
+     *
+     * @param kjList
+     * @return
+     */
+    public static Set<String> getShengxiaoTypeSet(List<String> kjList) {
+
+        Set<String> resultSet = new HashSet<>();
+        kjList.forEach(str -> {
+            resultSet.addAll(getShengxiaoTypeList(str));
+        });
+        return resultSet;
+    }
+
+    /**
+     * 判断是否是天肖
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsTianxiao(String kjStr) {
+
+        List<String> shengxiaoList = getShengxiaoTypeList(kjStr);
+
+        if (Arrays.asList(tianXiaoArr).containsAll(shengxiaoList)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 判断是否是前肖
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsQianxiao(String kjStr) {
+
+        List<String> shengxiaoList = getShengxiaoTypeList(kjStr);
+
+        if (Arrays.asList(qianXiaoArr).containsAll(shengxiaoList)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 判断是否是家肖
+     *
+     * @param kjStr
+     * @return
+     */
+    public static boolean checkIsJiaxiao(String kjStr) {
+
+        List<String> shengxiaoList = getShengxiaoTypeList(kjStr);
+        if (Arrays.asList(jiaXiaoArr).containsAll(shengxiaoList)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取七色波
+     *
+     * @param kjList
+     * @return
+     */
+    public static List<String> getQiSeBoList(List<String> kjList) {
+
+        List<String> resultList = new ArrayList<>();
+
+        double hongNo = 0;
+        double lanNo = 0;
+        double lvNo = 0;
+
+        for (String kj : kjList) {
+            //判断色波
+            if (Arrays.asList(lanboArr).contains(kj)) {
+                lanNo++;
+            } else if (Arrays.asList(hongboArr).contains(kj)) {
+                hongNo++;
+            } else {
+                lvNo++;
+            }
+        }
+
+        //判断色波
+        if (Arrays.asList(lanboArr).contains(kjList.get(6))) {
+            lanNo = lanNo + 0.5;
+        } else if (Arrays.asList(hongboArr).contains(kjList.get(6))) {
+            hongNo = hongNo + 0.5;
+        } else {
+            lvNo = lvNo + 0.5;
+        }
+
+        if ((hongNo == 1.5 && lanNo == 3 && lvNo == 3) || (lanNo == 1.5 && hongNo == 3 && lvNo == 3) || (lvNo == 1.5 && lanNo == 3 && hongNo == 3)) {
+            resultList.add("和");
+        } else if (hongNo > lanNo && hongNo > lvNo) {
+            resultList.add("红");
+        } else if (lanNo > hongNo && lvNo > hongNo) {
+            resultList.add("蓝");
+        } else {
+            resultList.add("绿");
+        }
+
+        return resultList;
+    }
+
+    /**
      * 获取指定数字的大小单双
      *
      * @param aimNo    需要计算的数
@@ -667,9 +900,9 @@ public class LotteryUtils {
     /**
      * 获取指定数字的大小单双
      *
-     * @param aimNo 需要计算的数
-     * @param maxNo 数范围的最大值（从0开始，如0-9，maxNo=9）
-     * @param maxNo 中间值（如果等于中间值，则为和）
+     * @param aimNo    需要计算的数
+     * @param maxNo    数范围的最大值（从0开始，如0-9，maxNo=9）
+     * @param ignoreNo 排除的号码
      * @return
      */
     public static List<String> getDaxiaodanshuangList(int aimNo, int maxNo, int ignoreNo) {

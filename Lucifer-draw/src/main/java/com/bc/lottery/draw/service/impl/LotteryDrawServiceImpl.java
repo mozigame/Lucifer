@@ -46,6 +46,9 @@ public class LotteryDrawServiceImpl implements LotteryDrawHandle {
         } else if (lotteryType instanceof LotteryPK10DoubleType) {
             // 双面盘PK10
             return LotteryPK10Draw.getBoundsInfoOfLotteryPK10Double(lotteryType, kj, lotteryOrderList).get(0);
+        } else if (lotteryType instanceof LotteryMark6DoubleType) {
+            // 双面盘六合彩
+            return LotteryMark6Draw.getBoundsInfoOfLotteryMark6Double(lotteryType, kj, lotteryOrderList).get(0);
         }
         return order;
     }
@@ -80,6 +83,9 @@ public class LotteryDrawServiceImpl implements LotteryDrawHandle {
         } else if (lotteryType instanceof LotteryPK10DoubleType) {
             // 双面盘PK10
             return LotteryPK10Draw.getBoundsInfoOfLotteryPK10Double(lotteryType, kj, lotteryOrderList);
+        } else if (lotteryType instanceof LotteryMark6DoubleType) {
+            // 双面盘六合彩
+            return LotteryMark6Draw.getBoundsInfoOfLotteryMark6Double(lotteryType, kj, lotteryOrderList);
         }
         return null;
     }
