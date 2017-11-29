@@ -37,5 +37,5 @@ public interface LotteryDrawHandle {
      * @param str
      * @return
      */
-    List<Long> getLotteryBetPlayIds(Long lotteryId, String str);
+    List<Long> getLotteryBetPlayIds(long lotteryId, String str);
 }

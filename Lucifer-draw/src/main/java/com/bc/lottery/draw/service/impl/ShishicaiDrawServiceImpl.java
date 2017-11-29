@@ -87,7 +87,7 @@ public class ShishicaiDrawServiceImpl implements LotteryDrawHandle {
     }
 
     @Override
-    public List<Long> getLotteryBetPlayIds(Long lotteryId, String str) {
+    public List<Long> getLotteryBetPlayIds(long lotteryId, String str) {
 
         List<Long> resultList = new ArrayList<>();
         switch (String.valueOf(lotteryId)) {

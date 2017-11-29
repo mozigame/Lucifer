@@ -91,23 +91,27 @@ public class LotteryDrawServiceImpl implements LotteryDrawHandle {
     }
 
     @Override
-    public List<Long> getLotteryBetPlayIds(Long lotteryId, String str) {
+    public List<Long> getLotteryBetPlayIds(long lotteryId, String str) {
 
         List<Long> resultList = new ArrayList<>();
-        switch (String.valueOf(lotteryId)) {
-            case 2 + "":
-            case 12 + "":
-            case 14 + "":
+        switch ((int) lotteryId) {
+            case 2:
+            case 12:
+            case 14:
+            case 102:
                 return LotteryShishicaiDraw.getShishicaiDoubleBetPlayIds(str);
-            case 4 + "":
-            case 16 + "":
-            case 18 + "":
+            case 4:
+            case 16:
+            case 18:
+            case 104:
                 return Lottery11x5Draw.getLottery11x5DoubleBetPlayIds(str);
-            case 6 + "":
-            case 20 + "":
-            case 22 + "":
+            case 6:
+            case 20:
+            case 22:
+            case 106:
                 return LotteryKuai3Draw.getLotteryKuai3DoubleBetPlayIds(str);
-            case 8 + "":
+            case 8:
+            case 108:
                 return LotteryPK10Draw.getLotteryPK10DoubleBetPlayIds(str);
             default:
                 return resultList;
