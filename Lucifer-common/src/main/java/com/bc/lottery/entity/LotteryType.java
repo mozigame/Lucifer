@@ -7,7 +7,6 @@ package com.bc.lottery.entity;
 public interface LotteryType<E extends Enum<E>> {
 
     static LotteryType parseType(long lotteryId, long playId) {
-
         switch ((int) lotteryId) {
             case 1:
                 return ShishicaiType.parse(playId);
