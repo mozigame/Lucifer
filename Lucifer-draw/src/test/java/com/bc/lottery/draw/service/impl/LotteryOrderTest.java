@@ -1605,6 +1605,34 @@ public class LotteryOrderTest {
                     priBetNumbers.add(numList);
                     break;
             }
+        }else if(lotteryId==60){
+
+            List<String> numList = new ArrayList<>();
+            String first = "01";
+            String second = "02";
+            String third = "03";
+            String fourth = "04";
+            String fifth = "5";
+            String sixth = "6";
+            String seventh = "7";
+            String eighth = "8";
+            String ninth = "9";
+            String tenth = "10";
+            String big = "大";
+            String small = "小";
+            String single = "单";
+            String shuang = "双";
+            String dragon = "龙";
+            String tiger = "虎";
+            LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
+            switch (lotteryMark6DoubleType) {
+
+
+
+            }
+
+
+
         }
         return priBetNumbers;
     }

@@ -45,6 +45,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLotteryPK10BetCount(playId, betNumbers);
         } else if (lotteryId == 8 || lotteryId == 108) {
             return 1;
+        } else if (lotteryId == 60) {
+            return getLotteryMark6DoubleBetCount(playId, betNumbers);
         }
         return 0;
     }
@@ -1380,7 +1382,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLotteryListByType(playId, str);
         } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14) {
             return getLotteryShishicaiDoubleByType(playId, str);
-        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18) {
+        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18|| lotteryId == 104) {
             return getLottery11x5DoubleByType(playId, str);
         } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22) {
             return getLotteryKuai3DoubleByType(playId, str);
@@ -2192,6 +2194,56 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 default:
                     return 0;
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * 获取六合彩的下注单数
+     *
+     * @param playId
+     * @param betNumbers
+     * @return
+     */
+
+    private long getLotteryMark6DoubleBetCount(Long playId, List<List<String>> betNumbers) {
+        int size = betNumbers.size();
+        int betCount = 1;
+        if (size == 0) {
+            return 0;
+        }
+
+        LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
+        if (lotteryMark6DoubleType != null) {
+
+            switch (lotteryMark6DoubleType) {
+
+                // 连码
+                case LIAN_MA_ER_QUAN_ZHONG:
+                case LIAN_MA_ER_ZHONG_TE:
+                case LIAN_MA_TE_CHUAN:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
+
+                case LIAN_MA_SAN_QUAN_ZHONG:
+                case LIAN_MA_SAN_ZHONG_ER:
+
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
+                case LIAN_MA_SI_QUAN_ZHONG:
+
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
+                    }
+                    return 0;
+                default:
+                    return 1;
             }
         }
 

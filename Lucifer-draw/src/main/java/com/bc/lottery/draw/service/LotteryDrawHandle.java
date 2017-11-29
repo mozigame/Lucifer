@@ -21,7 +21,7 @@ public interface LotteryDrawHandle {
     UserOrderPO getBoundsInfoOfLottery(String kj, UserOrderPO order);
 
     /**
-     * 根据批量获取奖金信息
+     * 批量获取奖金信息
      *
      * @param lotteryType
      * @param kj
