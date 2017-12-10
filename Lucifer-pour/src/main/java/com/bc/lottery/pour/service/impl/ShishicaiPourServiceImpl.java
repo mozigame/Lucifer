@@ -2063,9 +2063,20 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     break;
 
+                case ZONG_HE_DA:
+                case ZONG_HE_XIAO:
+                case ZONG_HE_DAN:
+                case ZONG_HE_SHUANG:
+                case ZONG_HE_WEI_XIAO:
+                case ZONG_HE_WEI_DA:
+                case ZONG_HE_LONG:
+                case ZONG_HE_HU:
+
+                    betCount = 1;
+                    break;
                 default:
-                    if (LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() != 1) {
-                        return 0;
+                    if (LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 1) {
+                        return 1;
                     }
             }
         }
