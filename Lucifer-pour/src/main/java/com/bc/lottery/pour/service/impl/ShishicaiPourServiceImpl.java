@@ -2075,9 +2075,10 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     betCount = 1;
                     break;
                 default:
-                    if (betNumbers.get(0).size() == 1) {
+                    if (betNumbers.get(0).size() == 1 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
+                    return 0;
             }
         }
         return betCount;
