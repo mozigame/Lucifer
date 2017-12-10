@@ -2000,7 +2000,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     private long getLottery11x5DoubleBetCount(Long playId, List<List<String>> betNumbers) {
         int size = betNumbers.size();
         int betCount = 0;
-        if (size == 0) {
+        if (size != 1) {
             return 0;
         }
         Lottery11x5DoubleType lottery11x5DoubleType = Lottery11x5DoubleType.parse(playId);
@@ -2028,37 +2028,37 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     break;
 
                 case LIAN_MA_ER_ZHONG_ER:
-                    if (betNumbers.get(0).size() == 2 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 2 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_SAN_ZHONG_SAN:
-                    if (betNumbers.get(0).size() == 3 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 3 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_SI_ZHONG_SI:
-                    if (betNumbers.get(0).size() == 4 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 4 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_WU_ZHONG_WU:
-                    if (betNumbers.get(0).size() == 5 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 5 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_LIU_ZHONG_WU:
-                    if (betNumbers.get(0).size() == 6 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 6 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_QI_ZHONG_WU:
-                    if (betNumbers.get(0).size() == 7 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 7 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
                 case LIAN_MA_BA_ZHONG_WU:
-                    if (betNumbers.get(0).size() == 8 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                    if (betNumbers.get(0).size() == 8 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
                         return 1;
                     }
                     break;
