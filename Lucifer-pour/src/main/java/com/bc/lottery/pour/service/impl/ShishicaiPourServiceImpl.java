@@ -32,6 +32,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         if (lotteryId == 1) {
             return getShiShiCaiBetCount(playId, betNumbers);
         } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14 || lotteryId == 102) {
+            if (LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() != 1) {
+                return 0;
+            }
             return 1;
         } else if (lotteryId == 3) {
             return getLottery11x5BetCount(playId, betNumbers);
@@ -40,10 +43,13 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         } else if (lotteryId == 5) {
             return getLotteryKuai3BetCount(playId, betNumbers);
         } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22 || lotteryId == 106) {
-            return 1;
+            return getLotteryKuai3DoubleBetCount(playId, betNumbers);
         } else if (lotteryId == 7) {
             return getLotteryPK10BetCount(playId, betNumbers);
         } else if (lotteryId == 8 || lotteryId == 108) {
+            if (betNumbers.get(0).size() != 1) {
+                return 0;
+            }
             return 1;
         } else if (lotteryId == 60) {
             return getLotteryMark6DoubleBetCount(playId, betNumbers);
@@ -1380,13 +1386,13 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         List<List<String>> strList = new ArrayList<>();
         if (lotteryId == 1) {
             return getLotteryListByType(playId, str);
-        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14|| lotteryId == 102) {
+        } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14 || lotteryId == 102) {
             return getLotteryShishicaiDoubleByType(playId, str);
-        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18|| lotteryId == 104) {
+        } else if (lotteryId == 4 || lotteryId == 16 || lotteryId == 18 || lotteryId == 104) {
             return getLottery11x5DoubleByType(playId, str);
-        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22|| lotteryId == 106) {
+        } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22 || lotteryId == 106) {
             return getLotteryKuai3DoubleByType(playId, str);
-        } else if (lotteryId == 8|| lotteryId == 108) {
+        } else if (lotteryId == 8 || lotteryId == 108) {
             return getLotteryPK10DoubleByType(playId, str);
         }
         return strList;
@@ -1993,7 +1999,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
      */
     private long getLottery11x5DoubleBetCount(Long playId, List<List<String>> betNumbers) {
         int size = betNumbers.size();
-        int betCount = 1;
+        int betCount = 0;
         if (size == 0) {
             return 0;
         }
@@ -2003,9 +2009,15 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             switch (lottery11x5DoubleType) {
 
                 case QIAN_ER_ZU_XUAN:
+                    if (LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 0;
+                    }
                     betCount = (int) LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     break;
                 case QIAN_SAN_ZU_XUAN:
+                    if (LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 0;
+                    }
                     betCount = (int) LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     break;
                 case QIAN_ER_ZHI_XUAN:
@@ -2014,6 +2026,47 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case QIAN_SAN_ZHI_XUAN:
                     betCount = betNumbers.get(0).size() / 3;
                     break;
+
+                case LIAN_MA_ER_ZHONG_ER:
+                    if (betNumbers.get(0).size() == 2 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_SAN_ZHONG_SAN:
+                    if (betNumbers.get(0).size() == 3 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_SI_ZHONG_SI:
+                    if (betNumbers.get(0).size() == 4 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_WU_ZHONG_WU:
+                    if (betNumbers.get(0).size() == 5 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_LIU_ZHONG_WU:
+                    if (betNumbers.get(0).size() == 6 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_QI_ZHONG_WU:
+                    if (betNumbers.get(0).size() == 7 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+                case LIAN_MA_BA_ZHONG_WU:
+                    if (betNumbers.get(0).size() == 8 && LotteryUtils.getDupStr(betNumbers.get(0)).size() > 0) {
+                        return 1;
+                    }
+                    break;
+
+                default:
+                    if (LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() != 1) {
+                        return 0;
+                    }
             }
         }
         return betCount;
@@ -2075,6 +2128,77 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     return betNumbers.get(0).size() / 2;
 
                 default:
+                    return 0;
+            }
+        }
+        return 0;
+    }
+
+    private long getLotteryKuai3DoubleBetCount(Long playId, List<List<String>> betNumbers) {
+
+        int size = betNumbers.size();
+        if (size != 1) {
+            return 0;
+        }
+        LotteryKuai3DoubleType lotteryKuai3DoubleType = LotteryKuai3DoubleType.parse(playId);
+        if (lotteryKuai3DoubleType != null) {
+
+            switch (lotteryKuai3DoubleType) {
+
+                // 三同号
+                case WEI_SHAI_1:
+                case WEI_SHAI_2:
+                case WEI_SHAI_3:
+                case WEI_SHAI_4:
+                case WEI_SHAI_5:
+                case WEI_SHAI_6:
+                    if (betNumbers.get(0).size() == 3 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 1) {
+                        return 1;
+                    }
+                    break;
+
+                case QUAN_SHAI:
+                    if (betNumbers.get(0).contains("全骰")) {
+                        return 1;
+                    }
+                    break;
+
+                case CHANG_PAI_12:
+                case CHANG_PAI_13:
+                case CHANG_PAI_14:
+                case CHANG_PAI_15:
+                case CHANG_PAI_16:
+                case CHANG_PAI_23:
+                case CHANG_PAI_24:
+                case CHANG_PAI_25:
+                case CHANG_PAI_26:
+                case CHANG_PAI_34:
+                case CHANG_PAI_35:
+                case CHANG_PAI_36:
+                case CHANG_PAI_45:
+                case CHANG_PAI_46:
+                case CHANG_PAI_56:
+
+                    if (betNumbers.get(0).size() == 2 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 0) {
+                        return 1;
+                    }
+                    break;
+
+                case DUAN_PAI_1:
+                case DUAN_PAI_2:
+                case DUAN_PAI_3:
+                case DUAN_PAI_4:
+                case DUAN_PAI_5:
+                case DUAN_PAI_6:
+                    if (betNumbers.get(0).size() == 2 && LotteryUtils.getDupStr(betNumbers.get(0)).size() == 1) {
+                        return 1;
+                    }
+                    break;
+
+                default:
+                    if (betNumbers.get(0).size() == 1) {
+                        return 1;
+                    }
                     return 0;
             }
         }

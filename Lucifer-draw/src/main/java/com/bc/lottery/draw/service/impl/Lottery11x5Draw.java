@@ -729,7 +729,7 @@ public class Lottery11x5Draw {
                 case YI_ZHONG_YI_10:
                 case YI_ZHONG_YI_11:
 
-                    if (size == 1) {
+                    if (size == 1 && betNumbers.get(0).size() == 1) {
                         //判断中奖号码是否包含在所选的各组号码中
                         if (kjList.containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
@@ -742,7 +742,7 @@ public class Lottery11x5Draw {
                 case LIAN_MA_ER_ZHONG_ER:
 
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 2) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (kjList.containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
                         }
@@ -752,7 +752,7 @@ public class Lottery11x5Draw {
 
                 case LIAN_MA_SAN_ZHONG_SAN:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 3) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (kjList.containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
                         }
@@ -761,7 +761,7 @@ public class Lottery11x5Draw {
                     continue;
                 case LIAN_MA_SI_ZHONG_SI:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 4) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (kjList.containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
                         }
@@ -771,7 +771,7 @@ public class Lottery11x5Draw {
                 case LIAN_MA_WU_ZHONG_WU:
 
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 5) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (kjList.containsAll(betNumbers.get(0))) {
                             firstPrizeNum++;
                         }
@@ -782,7 +782,7 @@ public class Lottery11x5Draw {
                     //连码玩法（从上面拆分出来提高效率）
                 case LIAN_MA_LIU_ZHONG_WU:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 6) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (betNumbers.get(0).containsAll(kjList)) {
                             firstPrizeNum++;
                         }
@@ -792,7 +792,7 @@ public class Lottery11x5Draw {
 
                 case LIAN_MA_QI_ZHONG_WU:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 7) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (betNumbers.get(0).containsAll(kjList)) {
                             firstPrizeNum++;
                         }
@@ -801,7 +801,7 @@ public class Lottery11x5Draw {
                     continue;
                 case LIAN_MA_BA_ZHONG_WU:
                     if (size == 1 && LotteryUtils.getDupStrByDupNum(betNumbers.get(0), 1).size() == 8) {
-                        //判断中间号码是否包含在所选的各组号码中
+                        //判断中奖号码是否包含在所选的各组号码中
                         if (betNumbers.get(0).containsAll(kjList)) {
                             firstPrizeNum++;
                         }
