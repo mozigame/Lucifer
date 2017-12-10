@@ -1605,7 +1605,16 @@ public class LotteryOrderTest {
                     priBetNumbers.add(numList);
                     break;
             }
-        }else if(lotteryId==60){
+        } else if (lotteryId == 60) {
+
+
+            List<String> list = new ArrayList<>();
+            List<String> middleList = new ArrayList<>();
+            for (int i = 1; i < 50; i++) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("0").append(String.valueOf(i));
+                list.add(stringBuilder.toString());
+            }
 
             List<String> numList = new ArrayList<>();
             String first = "01";
@@ -1628,12 +1637,28 @@ public class LotteryOrderTest {
             switch (lotteryMark6DoubleType) {
 
 
-
             }
-
 
 
         }
         return priBetNumbers;
     }
+
+    public String getMark6RandomKjNumbersByType() {
+
+        List<String> list = new ArrayList<>();
+        for (int i = 1; i < 50; i++) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("0").append(String.valueOf(i));
+            list.add(stringBuilder.toString());
+        }
+        Collections.shuffle(list);
+
+        StringBuilder kjSBuilder = new StringBuilder();
+
+        kjSBuilder.append(list.get(0)).append(list.get(1)).append(list.get(2)).append(list.get(3)).append(list.get(4)).append(list.get(5)).append(list.get(6));
+
+        return kjSBuilder.toString();
+    }
+
 }

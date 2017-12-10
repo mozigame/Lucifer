@@ -2210,7 +2210,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
     private long getLotteryMark6DoubleBetCount(Long playId, List<List<String>> betNumbers) {
         int size = betNumbers.size();
-        int betCount = 1;
         if (size == 0) {
             return 0;
         }
@@ -2236,12 +2235,14 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
+
                 case LIAN_MA_SI_QUAN_ZHONG:
 
                     if (size == 1) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 4);
                     }
                     return 0;
+
                 default:
                     return 1;
             }
