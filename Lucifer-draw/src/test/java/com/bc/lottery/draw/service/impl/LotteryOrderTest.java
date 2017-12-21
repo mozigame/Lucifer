@@ -1605,7 +1605,7 @@ public class LotteryOrderTest {
                     priBetNumbers.add(numList);
                     break;
             }
-        } else if (lotteryId == 60) {
+        } else if (lotteryId == 10) {
 
 
             List<String> list = new ArrayList<>();

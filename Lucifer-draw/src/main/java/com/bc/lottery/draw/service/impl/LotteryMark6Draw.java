@@ -769,7 +769,16 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 合肖
-                case HE_XIAO:
+                case HE_XIAO_ER:
+                case HE_XIAO_SAN:
+                case HE_XIAO_SI:
+                case HE_XIAO_WU:
+                case HE_XIAO_LIU:
+                case HE_XIAO_QI:
+                case HE_XIAO_BA:
+                case HE_XIAO_JIU:
+                case HE_XIAO_SHI:
+                case HE_XIAO_SHI_YI:
                     if (betNumbers.size() == 1) {
 
                         List<String> firstBetList = LotteryUtils.getShengxiaoTypeList(kjList.get(0));
@@ -1327,10 +1336,6 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 自选不中
-                case ZI_XUAN_BU_ZHONG_1:
-                case ZI_XUAN_BU_ZHONG_2:
-                case ZI_XUAN_BU_ZHONG_3:
-                case ZI_XUAN_BU_ZHONG_4:
                 case ZI_XUAN_BU_ZHONG_5:
                 case ZI_XUAN_BU_ZHONG_6:
                 case ZI_XUAN_BU_ZHONG_7:
@@ -1340,46 +1345,6 @@ public class LotteryMark6Draw {
 
                 case ZI_XUAN_BU_ZHONG_11:
                 case ZI_XUAN_BU_ZHONG_12:
-                case ZI_XUAN_BU_ZHONG_13:
-                case ZI_XUAN_BU_ZHONG_14:
-                case ZI_XUAN_BU_ZHONG_15:
-                case ZI_XUAN_BU_ZHONG_16:
-                case ZI_XUAN_BU_ZHONG_17:
-                case ZI_XUAN_BU_ZHONG_18:
-                case ZI_XUAN_BU_ZHONG_19:
-                case ZI_XUAN_BU_ZHONG_20:
-
-                case ZI_XUAN_BU_ZHONG_21:
-                case ZI_XUAN_BU_ZHONG_22:
-                case ZI_XUAN_BU_ZHONG_23:
-                case ZI_XUAN_BU_ZHONG_24:
-                case ZI_XUAN_BU_ZHONG_25:
-                case ZI_XUAN_BU_ZHONG_26:
-                case ZI_XUAN_BU_ZHONG_27:
-                case ZI_XUAN_BU_ZHONG_28:
-                case ZI_XUAN_BU_ZHONG_29:
-                case ZI_XUAN_BU_ZHONG_30:
-
-                case ZI_XUAN_BU_ZHONG_31:
-                case ZI_XUAN_BU_ZHONG_32:
-                case ZI_XUAN_BU_ZHONG_33:
-                case ZI_XUAN_BU_ZHONG_34:
-                case ZI_XUAN_BU_ZHONG_35:
-                case ZI_XUAN_BU_ZHONG_36:
-                case ZI_XUAN_BU_ZHONG_37:
-                case ZI_XUAN_BU_ZHONG_38:
-                case ZI_XUAN_BU_ZHONG_39:
-                case ZI_XUAN_BU_ZHONG_40:
-
-                case ZI_XUAN_BU_ZHONG_41:
-                case ZI_XUAN_BU_ZHONG_42:
-                case ZI_XUAN_BU_ZHONG_43:
-                case ZI_XUAN_BU_ZHONG_44:
-                case ZI_XUAN_BU_ZHONG_45:
-                case ZI_XUAN_BU_ZHONG_46:
-                case ZI_XUAN_BU_ZHONG_47:
-                case ZI_XUAN_BU_ZHONG_48:
-                case ZI_XUAN_BU_ZHONG_49:
 
                     boolean bl = false;
                     if (betNumbers.size() == 1) {
@@ -1498,7 +1463,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 二连尾
-                case ER_LIAN_WEI:
+                case ER_LIAN_WEI_0:
+                case ER_LIAN_WEI_FEI_0:
                     prizeNum = 0;
                     Set<String> erWeiBetSet = LotteryUtils.getWeishuSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1513,7 +1479,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 三连尾
-                case SAN_LIAN_WEI:
+                case SAN_LIAN_WEI_0:
+                case SAN_LIAN_WEI_FEI_0:
                     prizeNum = 0;
                     Set<String> sanWeiBetSet = LotteryUtils.getWeishuSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1528,7 +1495,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 四连尾
-                case SI_LIAN_WEI:
+                case SI_LIAN_WEI_0:
+                case SI_LIAN_WEI_FEI_0:
                     prizeNum = 0;
                     Set<String> siWeiBetSet = LotteryUtils.getWeishuSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1543,7 +1511,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 五连尾
-                case WU_LIAN_WEI:
+                case WU_LIAN_WEI_0:
+                case WU_LIAN_WEI_FEI_0:
                     prizeNum = 0;
                     Set<String> wuWeiBetSet = LotteryUtils.getWeishuSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1558,7 +1527,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 二连肖
-                case ER_LIAN_XIAO:
+                case ER_LIAN_XIAO_BEN_MING:
+                case ER_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
                     Set<String> erXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1573,7 +1543,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 三连肖
-                case SAN_LIAN_XIAO:
+                case SAN_LIAN_XIAO_BEN_MING:
+                case SAN_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
                     Set<String> sanXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1588,7 +1559,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 四连肖
-                case SI_LIAN_XIAO:
+                case SI_LIAN_XIAO_BEN_MING:
+                case SI_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
                     Set<String> siXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1603,7 +1575,8 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 五连肖
-                case WU_LIAN_XIAO:
+                case WU_LIAN_XIAO_BEN_MING:
+                case WU_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
                     Set<String> wuXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
@@ -1616,7 +1589,6 @@ public class LotteryMark6Draw {
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
-
             }
         }
         return lotteryOrderList;
@@ -1840,7 +1812,16 @@ public class LotteryMark6Draw {
                 case TE_YE_XIAO:
 
                     // 合肖
-                case HE_XIAO:
+                case HE_XIAO_ER:
+                case HE_XIAO_SAN:
+                case HE_XIAO_SI:
+                case HE_XIAO_WU:
+                case HE_XIAO_LIU:
+                case HE_XIAO_QI:
+                case HE_XIAO_BA:
+                case HE_XIAO_JIU:
+                case HE_XIAO_SHI:
+                case HE_XIAO_SHI_YI:
 
                     //五行
                 case WU_XING_JIN:
@@ -2372,14 +2353,22 @@ public class LotteryMark6Draw {
                 case ZONG_SAN_XIAO:
                 case ZONG_ER_XIAO:
 
-                case WU_LIAN_XIAO:
-                case SI_LIAN_XIAO:
-                case SAN_LIAN_XIAO:
-                case ER_LIAN_XIAO:
-                case WU_LIAN_WEI:
-                case SI_LIAN_WEI:
-                case SAN_LIAN_WEI:
-                case ER_LIAN_WEI:
+                case WU_LIAN_XIAO_BEN_MING:
+                case WU_LIAN_XIAO_FEI_BEN_MING:
+                case SI_LIAN_XIAO_BEN_MING:
+                case SI_LIAN_XIAO_FEI_BEN_MING:
+                case SAN_LIAN_XIAO_BEN_MING:
+                case SAN_LIAN_XIAO_FEI_BEN_MING:
+                case ER_LIAN_XIAO_BEN_MING:
+                case ER_LIAN_XIAO_FEI_BEN_MING:
+                case WU_LIAN_WEI_0:
+                case WU_LIAN_WEI_FEI_0:
+                case SI_LIAN_WEI_0:
+                case SI_LIAN_WEI_FEI_0:
+                case SAN_LIAN_WEI_0:
+                case SAN_LIAN_WEI_FEI_0:
+                case ER_LIAN_WEI_0:
+                case ER_LIAN_WEI_FEI_0:
 
                 case ZONG_HE_DA:
                 case ZONG_HE_XIAO:
@@ -2422,10 +2411,6 @@ public class LotteryMark6Draw {
                 case PING_TE_WEI_SHU_8:
                 case PING_TE_WEI_SHU_9:
 
-                case ZI_XUAN_BU_ZHONG_1:
-                case ZI_XUAN_BU_ZHONG_2:
-                case ZI_XUAN_BU_ZHONG_3:
-                case ZI_XUAN_BU_ZHONG_4:
                 case ZI_XUAN_BU_ZHONG_5:
                 case ZI_XUAN_BU_ZHONG_6:
                 case ZI_XUAN_BU_ZHONG_7:
@@ -2434,43 +2419,6 @@ public class LotteryMark6Draw {
                 case ZI_XUAN_BU_ZHONG_10:
                 case ZI_XUAN_BU_ZHONG_11:
                 case ZI_XUAN_BU_ZHONG_12:
-                case ZI_XUAN_BU_ZHONG_13:
-                case ZI_XUAN_BU_ZHONG_14:
-                case ZI_XUAN_BU_ZHONG_15:
-                case ZI_XUAN_BU_ZHONG_16:
-                case ZI_XUAN_BU_ZHONG_17:
-                case ZI_XUAN_BU_ZHONG_18:
-                case ZI_XUAN_BU_ZHONG_19:
-                case ZI_XUAN_BU_ZHONG_20:
-                case ZI_XUAN_BU_ZHONG_21:
-                case ZI_XUAN_BU_ZHONG_22:
-                case ZI_XUAN_BU_ZHONG_23:
-                case ZI_XUAN_BU_ZHONG_24:
-                case ZI_XUAN_BU_ZHONG_25:
-                case ZI_XUAN_BU_ZHONG_26:
-                case ZI_XUAN_BU_ZHONG_27:
-                case ZI_XUAN_BU_ZHONG_28:
-                case ZI_XUAN_BU_ZHONG_29:
-                case ZI_XUAN_BU_ZHONG_30:
-                case ZI_XUAN_BU_ZHONG_31:
-                case ZI_XUAN_BU_ZHONG_32:
-                case ZI_XUAN_BU_ZHONG_33:
-                case ZI_XUAN_BU_ZHONG_34:
-                case ZI_XUAN_BU_ZHONG_35:
-                case ZI_XUAN_BU_ZHONG_36:
-                case ZI_XUAN_BU_ZHONG_37:
-                case ZI_XUAN_BU_ZHONG_38:
-                case ZI_XUAN_BU_ZHONG_39:
-                case ZI_XUAN_BU_ZHONG_40:
-                case ZI_XUAN_BU_ZHONG_41:
-                case ZI_XUAN_BU_ZHONG_42:
-                case ZI_XUAN_BU_ZHONG_43:
-                case ZI_XUAN_BU_ZHONG_44:
-                case ZI_XUAN_BU_ZHONG_45:
-                case ZI_XUAN_BU_ZHONG_46:
-                case ZI_XUAN_BU_ZHONG_47:
-                case ZI_XUAN_BU_ZHONG_48:
-                case ZI_XUAN_BU_ZHONG_49:
 
                     resultList.addAll(kjList);
                     break;

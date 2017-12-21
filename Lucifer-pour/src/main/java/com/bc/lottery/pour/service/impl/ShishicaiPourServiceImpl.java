@@ -51,7 +51,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 return 0;
             }
             return 1;
-        } else if (lotteryId == 60) {
+        } else if (lotteryId == 10) {
             return getLotteryMark6DoubleBetCount(playId, betNumbers);
         }
         return 0;
