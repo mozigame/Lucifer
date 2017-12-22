@@ -493,6 +493,7 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_MA_DA:
                 case ZHENG_WU_MA_DA:
                 case ZHENG_LIU_MA_DA:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -515,6 +516,7 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_MA_XIAO:
                 case ZHENG_WU_MA_XIAO:
                 case ZHENG_LIU_MA_XIAO:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -537,6 +539,7 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_MA_DAN:
                 case ZHENG_WU_MA_DAN:
                 case ZHENG_LIU_MA_DAN:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -559,6 +562,7 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_MA_SHUANG:
                 case ZHENG_WU_MA_SHUANG:
                 case ZHENG_LIU_MA_SHUANG:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -645,6 +649,15 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_WEI_DA:
                 case ZHENG_WU_WEI_DA:
                 case ZHENG_LIU_WEI_DA:
+
+                    // 正码尾大 跟上面一样
+                case ZHENG_YI_LIANG_MIAN_WEI_DA:
+                case ZHENG_ER_LIANG_MIAN_WEI_DA:
+                case ZHENG_SAN_LIANG_MIAN_WEI_DA:
+                case ZHENG_SI_LIANG_MIAN_WEI_DA:
+                case ZHENG_WU_LIANG_MIAN_WEI_DA:
+                case ZHENG_LIU_LIANG_MIAN_WEI_DA:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -667,6 +680,15 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_WEI_XIAO:
                 case ZHENG_WU_WEI_XIAO:
                 case ZHENG_LIU_WEI_XIAO:
+
+                    // 正码尾小 跟上面一样
+                case ZHENG_YI_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_ER_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_SI_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_WU_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_WEI_XIAO:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -798,6 +820,14 @@ public class LotteryMark6Draw {
                 case ZHENG_WU_HE_DA:
                 case ZHENG_LIU_HE_DA:
 
+                    // 正码两面 --跟上面的一样
+                case ZHENG_YI_LIANG_MIAN_HE_DA:
+                case ZHENG_ER_LIANG_MIAN_HE_DA:
+                case ZHENG_SAN_LIANG_MIAN_HE_DA:
+                case ZHENG_SI_LIANG_MIAN_HE_DA:
+                case ZHENG_WU_LIANG_MIAN_HE_DA:
+                case ZHENG_LIU_LIANG_MIAN_HE_DA:
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -820,6 +850,14 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_HE_XIAO:
                 case ZHENG_WU_HE_XIAO:
                 case ZHENG_LIU_HE_XIAO:
+
+                    // 正码两面 --跟上面的一样
+                case ZHENG_YI_LIANG_MIAN_HE_XIAO:
+                case ZHENG_ER_LIANG_MIAN_HE_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_HE_XIAO:
+                case ZHENG_SI_LIANG_MIAN_HE_XIAO:
+                case ZHENG_WU_LIANG_MIAN_HE_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_HE_XIAO:
 
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
@@ -844,6 +882,15 @@ public class LotteryMark6Draw {
                 case ZHENG_WU_HE_DAN:
                 case ZHENG_LIU_HE_DAN:
 
+                    // 正码两面 --跟上面的一样
+                case ZHENG_YI_LIANG_MIAN_HE_DAN:
+                case ZHENG_ER_LIANG_MIAN_HE_DAN:
+                case ZHENG_SAN_LIANG_MIAN_HE_DAN:
+                case ZHENG_SI_LIANG_MIAN_HE_DAN:
+                case ZHENG_WU_LIANG_MIAN_HE_DAN:
+                case ZHENG_LIU_LIANG_MIAN_HE_DAN:
+
+
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
@@ -866,6 +913,14 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_HE_SHUANG:
                 case ZHENG_WU_HE_SHUANG:
                 case ZHENG_LIU_HE_SHUANG:
+
+                    // 正码两面 --跟上面的一样
+                case ZHENG_YI_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_ER_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_SAN_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_SI_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_WU_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
 
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains("49")) {
@@ -1115,6 +1170,72 @@ public class LotteryMark6Draw {
                 case TE_MA_LV_DA_SHUANG:
                 case TE_MA_LV_XIAO_SHUANG:
 
+                case TE_MA_A_DA:
+                case TE_MA_A_XIAO:
+                case TE_MA_A_DAN:
+                case TE_MA_A_SHUANG:
+                case TE_MA_A_HONG:
+                case TE_MA_A_LV:
+                case TE_MA_A_LAN:
+
+                case TE_MA_B_DA:
+                case TE_MA_B_XIAO:
+                case TE_MA_B_DAN:
+                case TE_MA_B_SHUANG:
+                case TE_MA_B_HONG:
+                case TE_MA_B_LV:
+                case TE_MA_B_LAN:
+
+                    // 正码两面1-6
+                case ZHENG_YI_LIANG_MIAN_DA:
+                case ZHENG_YI_LIANG_MIAN_XIAO:
+                case ZHENG_YI_LIANG_MIAN_DAN:
+                case ZHENG_YI_LIANG_MIAN_SHUANG:
+                case ZHENG_YI_LIANG_MIAN_HONG:
+                case ZHENG_YI_LIANG_MIAN_LV:
+                case ZHENG_YI_LIANG_MIAN_LAN:
+
+                case ZHENG_ER_LIANG_MIAN_DA:
+                case ZHENG_ER_LIANG_MIAN_XIAO:
+                case ZHENG_ER_LIANG_MIAN_DAN:
+                case ZHENG_ER_LIANG_MIAN_SHUANG:
+                case ZHENG_ER_LIANG_MIAN_HONG:
+                case ZHENG_ER_LIANG_MIAN_LV:
+                case ZHENG_ER_LIANG_MIAN_LAN:
+
+                case ZHENG_SAN_LIANG_MIAN_DA:
+                case ZHENG_SAN_LIANG_MIAN_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_DAN:
+                case ZHENG_SAN_LIANG_MIAN_SHUANG:
+                case ZHENG_SAN_LIANG_MIAN_HONG:
+                case ZHENG_SAN_LIANG_MIAN_LV:
+                case ZHENG_SAN_LIANG_MIAN_LAN:
+
+
+                case ZHENG_SI_LIANG_MIAN_DA:
+                case ZHENG_SI_LIANG_MIAN_XIAO:
+                case ZHENG_SI_LIANG_MIAN_DAN:
+                case ZHENG_SI_LIANG_MIAN_SHUANG:
+                case ZHENG_SI_LIANG_MIAN_HONG:
+                case ZHENG_SI_LIANG_MIAN_LV:
+                case ZHENG_SI_LIANG_MIAN_LAN:
+
+
+                case ZHENG_WU_LIANG_MIAN_DA:
+                case ZHENG_WU_LIANG_MIAN_XIAO:
+                case ZHENG_WU_LIANG_MIAN_DAN:
+                case ZHENG_WU_LIANG_MIAN_SHUANG:
+                case ZHENG_WU_LIANG_MIAN_HONG:
+                case ZHENG_WU_LIANG_MIAN_LV:
+                case ZHENG_WU_LIANG_MIAN_LAN:
+
+                case ZHENG_LIU_LIANG_MIAN_DA:
+                case ZHENG_LIU_LIANG_MIAN_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_DAN:
+                case ZHENG_LIU_LIANG_MIAN_SHUANG:
+                case ZHENG_LIU_LIANG_MIAN_HONG:
+                case ZHENG_LIU_LIANG_MIAN_LV:
+                case ZHENG_LIU_LIANG_MIAN_LAN:
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双色波
@@ -1589,6 +1710,7 @@ public class LotteryMark6Draw {
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
+
             }
         }
         return lotteryOrderList;
