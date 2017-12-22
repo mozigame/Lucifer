@@ -1380,6 +1380,12 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         return JsonUtils.oneOnlyJson2LotteryList(str);
     }
 
+    // 双面彩六合彩转换
+    private List<List<String>> getLotteryMark6DoubleByType(Long playId, String str) {
+
+        return JsonUtils.oneOnlyJson2LotteryList(str);
+    }
+
     @Override
     public List<List<String>> getLotteryListByType(Long lotteryId, Long playId, String str) {
 
@@ -1394,6 +1400,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLotteryKuai3DoubleByType(playId, str);
         } else if (lotteryId == 8 || lotteryId == 108) {
             return getLotteryPK10DoubleByType(playId, str);
+        } else if (lotteryId == 10) {
+            return getLotteryMark6DoubleByType(playId, str);
         }
         return strList;
     }
@@ -2355,7 +2363,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
             switch (lotteryMark6DoubleType) {
 
-                // 连码
+                // 连码 二全中、二中特、特串
                 case LIAN_MA_ER_QUAN_ZHONG:
                 case LIAN_MA_ER_ZHONG_TE:
                 case LIAN_MA_TE_CHUAN:
@@ -2364,6 +2372,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     return 0;
 
+                // 连码 三全中、三中二
                 case LIAN_MA_SAN_QUAN_ZHONG:
                 case LIAN_MA_SAN_ZHONG_ER:
 
@@ -2372,6 +2381,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     return 0;
 
+                // 连码 四全中
                 case LIAN_MA_SI_QUAN_ZHONG:
 
                     if (size == 1) {
