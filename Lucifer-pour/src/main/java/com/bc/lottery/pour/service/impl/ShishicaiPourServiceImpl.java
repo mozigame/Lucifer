@@ -29,6 +29,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
     @Override
     public long getLotteryBetCount(Long lotteryId, Long playId, List<List<String>> betNumbers) {
 
+        if (betNumbers == null || betNumbers.size() == 0) {
+            return 0;
+        }
         if (lotteryId == 1) {
             return getShiShiCaiBetCount(playId, betNumbers);
         } else if (lotteryId == 2 || lotteryId == 12 || lotteryId == 14 || lotteryId == 102) {
@@ -77,7 +80,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         } else if (lotteryId == 8) {
             return getPK10DoubleNumbers(playId);
         }
-
         return resultList;
     }
 

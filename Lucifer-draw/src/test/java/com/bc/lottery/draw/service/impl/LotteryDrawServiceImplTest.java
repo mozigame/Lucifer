@@ -798,7 +798,7 @@ public class LotteryDrawServiceImplTest {
     @Test
     public void testGetBoundsInfoOfMark6Double() throws Exception {
 
-        kj = "47,30,21,28,14,22,03";
+       /* kj = "47,30,21,28,14,22,03";
         kj1 = "44,49,38,33,09,03,24";
         kj2 = "24,06,03,28,,09,01,36";
         kj3 = "07,34,10,35,25,20,08";
@@ -819,8 +819,15 @@ public class LotteryDrawServiceImplTest {
         kjList.add(kj6);
         kjList.add(kj7);
         kjList.add(kj8);
-        kjList.add(kj9);
+        kjList.add(kj9);*/
+
+        System.out.println("*******************************六合彩双面盘开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        for (int i = 0; i < 100; i++) {
+            String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
+            kjList.add(kjNo);
+        }
+
         LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
 
         for (String kj : kjList) {

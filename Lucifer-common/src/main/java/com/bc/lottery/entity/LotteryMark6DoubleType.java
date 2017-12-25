@@ -65,12 +65,12 @@ public enum LotteryMark6DoubleType implements LotteryType {
 
     // 特码A
     TE_MA_A_DA(1011201L, "特码A-大"),
-    TE_MA_A_XIAO(1021102L, "特码A-小"),
-    TE_MA_A_DAN(1021103L, "特码A-单"),
-    TE_MA_A_SHUANG(1021104L, "特码A-双"),
-    TE_MA_A_HONG(1021105L, "特码A-红波"),
-    TE_MA_A_LAN(1021106L, "特码A-蓝波"),
-    TE_MA_A_LV(1021107L, "特码A-绿波"),
+    TE_MA_A_XIAO(1011202L, "特码A-小"),
+    TE_MA_A_DAN(1011203L, "特码A-单"),
+    TE_MA_A_SHUANG(1011204L, "特码A-双"),
+    TE_MA_A_HONG(1011205L, "特码A-红波"),
+    TE_MA_A_LAN(1011206L, "特码A-蓝波"),
+    TE_MA_A_LV(1011207L, "特码A-绿波"),
 
     // 特码B
     TE_MA_B_1(1012101L, "特码B1"),
@@ -434,8 +434,8 @@ public enum LotteryMark6DoubleType implements LotteryType {
     ZHENG_ER_TE_49(1052149L, "正二特49"),
 
     ZHENG_ER_LIANG_MIAN_DA(1052201L, "正二两面大"),
-    ZHENG_ER_LIANG_MIAN_XIAO(1052201L, "正二两面小"),
-    ZHENG_ER_LIANG_MIAN_DAN(1052201L, "正二两面单"),
+    ZHENG_ER_LIANG_MIAN_XIAO(1052202L, "正二两面小"),
+    ZHENG_ER_LIANG_MIAN_DAN(1052203L, "正二两面单"),
     ZHENG_ER_LIANG_MIAN_SHUANG(1052204L, "正二两面双"),
     ZHENG_ER_LIANG_MIAN_HE_DA(1052205L, "正二两面合大"),
     ZHENG_ER_LIANG_MIAN_HE_XIAO(1052206L, "正二两面合小"),
