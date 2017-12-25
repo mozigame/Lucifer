@@ -689,8 +689,20 @@ public class LotteryUtils {
     public static List<String> getWuxingTypeList(String kjStr) {
 
         List<String> resultList = new ArrayList<>();
-
-        // 判断五行
+        //判断五行，先判断生肖
+        List<String> shengxiaoList = getShengxiaoTypeList(kjStr);
+        if (shengxiaoList.contains("猴") || shengxiaoList.contains("鸡")) {
+            resultList.add("金");
+        } else if (shengxiaoList.contains("虎") || shengxiaoList.contains("兔")) {
+            resultList.add("木");
+        } else if (shengxiaoList.contains("鼠") || shengxiaoList.contains("猪")) {
+            resultList.add("水");
+        } else if (shengxiaoList.contains("蛇") || shengxiaoList.contains("马")) {
+            resultList.add("火");
+        } else {
+            resultList.add("土");
+        }
+        /*// 判断五行
         if (Integer.parseInt(kjStr) % 5 == 1) {
             resultList.add("金");
         } else if (Integer.parseInt(kjStr) % 5 == 2) {
@@ -701,7 +713,7 @@ public class LotteryUtils {
             resultList.add("火");
         } else {
             resultList.add("土");
-        }
+        }*/
         return resultList;
     }
 
