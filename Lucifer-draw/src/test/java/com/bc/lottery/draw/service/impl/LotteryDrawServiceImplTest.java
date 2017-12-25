@@ -823,21 +823,17 @@ public class LotteryDrawServiceImplTest {
 
         System.out.println("*******************************六合彩双面盘开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
             kjList.add(kjNo);
         }
-
         LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
-
         for (String kj : kjList) {
-
             System.out.println("==========中奖号码========>>>" + kj);
-
             for (LotteryMark6DoubleType lotteryMark6DoubleType : LotteryMark6DoubleType.values()) {
-                for (int i = 1; i < 11; i++) {
+                for (int i = 1; i < 2; i++) {
                     System.out.println(lotteryMark6DoubleType);
-                    System.out.println(lotteryMark6DoubleType.desc());
+                    System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
                     System.out.println("==============第 " + i + " 次下注===============");
                     List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(10, lotteryMark6DoubleType.value());
                     System.out.println(betNumberList);

@@ -3236,28 +3236,7 @@ public class LotteryOrderTest {
                 numList.add("大小单双");
                 priBetNumbers.add(numList);
                 break;
-
         }
-
         return priBetNumbers;
     }
-
-    // 获取随机的开奖号码
-    public String getMark6RandomKjNumbers() {
-
-        List<String> list = new ArrayList<>();
-        for (int i = 1; i < 50; i++) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("0").append(String.valueOf(i));
-            list.add(stringBuilder.toString());
-        }
-        Collections.shuffle(list);
-
-        StringBuilder kjSBuilder = new StringBuilder();
-
-        kjSBuilder.append(list.get(0)).append(list.get(1)).append(list.get(2)).append(list.get(3)).append(list.get(4)).append(list.get(5)).append(list.get(6));
-
-        return kjSBuilder.toString();
-    }
-
 }

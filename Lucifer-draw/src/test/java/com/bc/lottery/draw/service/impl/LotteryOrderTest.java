@@ -3249,14 +3249,24 @@ public class LotteryOrderTest {
         List<String> list = new ArrayList<>();
         for (int i = 1; i < 50; i++) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("0").append(String.valueOf(i));
+            if (i < 10) {
+                stringBuilder.append("0");
+            }
+            stringBuilder.append(String.valueOf(i));
             list.add(stringBuilder.toString());
         }
         Collections.shuffle(list);
 
         StringBuilder kjSBuilder = new StringBuilder();
 
-        kjSBuilder.append(list.get(0)).append(list.get(1)).append(list.get(2)).append(list.get(3)).append(list.get(4)).append(list.get(5)).append(list.get(6));
+        kjSBuilder
+                .append(list.get(0)).append(",")
+                .append(list.get(1)).append(",")
+                .append(list.get(2)).append(",")
+                .append(list.get(3)).append(",")
+                .append(list.get(4)).append(",")
+                .append(list.get(5)).append(",")
+                .append(list.get(6));
 
         return kjSBuilder.toString();
     }

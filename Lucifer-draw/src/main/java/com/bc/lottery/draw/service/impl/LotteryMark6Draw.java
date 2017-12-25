@@ -504,11 +504,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_DA:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -536,11 +536,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_XIAO:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -568,11 +568,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_DAN:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -600,11 +600,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_SHUANG:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -616,11 +616,11 @@ public class LotteryMark6Draw {
 
                 case TE_MA_DA_DAN:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("大") && firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -632,11 +632,11 @@ public class LotteryMark6Draw {
 
                 case TE_MA_DA_SHUANG:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("大") && firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -648,11 +648,11 @@ public class LotteryMark6Draw {
 
                 case TE_MA_XIAO_DAN:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("小") && firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -664,11 +664,11 @@ public class LotteryMark6Draw {
 
                 case TE_MA_XIAO_SHUANG:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
 
                             if (firstBetList.contains("小") && firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -695,11 +695,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_WEI_DA:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)) % 10, 49, 49);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -726,11 +726,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_WEI_XIAO:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)) % 10, 49, 49);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -743,7 +743,7 @@ public class LotteryMark6Draw {
                     // 两面天肖
                 case TE_TIAN_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特天肖
@@ -758,7 +758,7 @@ public class LotteryMark6Draw {
                     // 两面地肖
                 case TE_DI_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特地肖
@@ -772,7 +772,7 @@ public class LotteryMark6Draw {
 
                 case TE_QIAN_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特前肖
@@ -786,7 +786,7 @@ public class LotteryMark6Draw {
 
                 case TE_HOU_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特后肖
@@ -800,7 +800,7 @@ public class LotteryMark6Draw {
 
                 case TE_JIA_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特家肖
@@ -814,7 +814,7 @@ public class LotteryMark6Draw {
 
                 case TE_YE_XIAO:
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //判断是否是特家肖
@@ -865,11 +865,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_HE_DA:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0).get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -896,11 +896,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_HE_XIAO:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0).get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -928,11 +928,11 @@ public class LotteryMark6Draw {
 
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0).get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -959,12 +959,11 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
 
                     if (betNumbers.size() == 1) {
-                        if (betNumbers.get(0).contains("49")) {
+                        if (kjList.get(0).contains("49")) {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0).get(0)), 13);
-
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
                             if (firstBetList.contains("双")) {
                                 firstPrizeNum++;
                             }
@@ -977,7 +976,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_DA:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
                         if (firstBetList.contains("大")) {
                             firstPrizeNum++;
                         }
@@ -989,7 +988,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_XIAO:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
                         if (firstBetList.contains("小")) {
                             firstPrizeNum++;
                         }
@@ -1001,7 +1000,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_DAN:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
                         if (firstBetList.contains("单")) {
                             firstPrizeNum++;
                         }
@@ -1013,7 +1012,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_SHUANG:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(betNumbers.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
                         if (firstBetList.contains("双")) {
                             firstPrizeNum++;
                         }
@@ -1134,7 +1133,7 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_HONG:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
-                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(betNumbers.get(0).get(0), 49);
+                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
                         if (firstBetList.contains("红")) {
                             firstPrizeNum++;
                         }
@@ -1152,7 +1151,7 @@ public class LotteryMark6Draw {
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
-                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(betNumbers.get(0).get(0), 49);
+                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
                         if (firstBetList.contains("蓝")) {
                             firstPrizeNum++;
                         }
@@ -1170,7 +1169,7 @@ public class LotteryMark6Draw {
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
-                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(betNumbers.get(0).get(0), 49);
+                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
                         if (firstBetList.contains("绿")) {
                             firstPrizeNum++;
                         }
@@ -1234,7 +1233,7 @@ public class LotteryMark6Draw {
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双色波
-                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(betNumbers.get(0).get(0), 49);
+                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
                         if (firstBetList.containsAll(Arrays.asList(betNumbers.get(0).get(0).split("")))) {
                             firstPrizeNum++;
                         }
@@ -1462,12 +1461,12 @@ public class LotteryMark6Draw {
                 case ZI_XUAN_BU_ZHONG_11:
                 case ZI_XUAN_BU_ZHONG_12:
 
-                    boolean bl = false;
+                    boolean bl = true;
                     if (betNumbers.size() == 1) {
                         //判断是否包含
                         for (String kjStr : kjList) {
-                            if (betNumbers.contains(kjStr)) {
-                                bl = true;
+                            if (betNumbers.get(0).contains(kjStr)) {
+                                bl = false;
                                 break;
                             }
                         }
