@@ -508,7 +508,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -540,7 +540,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -572,7 +572,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -604,7 +604,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -620,7 +620,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("大") && firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -636,7 +636,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("大") && firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -652,7 +652,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("小") && firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -668,7 +668,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
 
                             if (firstBetList.contains("小") && firstBetList.contains("双")) {
                                 firstPrizeNum++;
@@ -699,7 +699,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 49, 49);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -730,7 +730,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 49, 49);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -869,7 +869,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -900,7 +900,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -932,7 +932,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
 
                             if (firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -963,7 +963,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
                             if (firstBetList.contains("双")) {
                                 firstPrizeNum++;
                             }
@@ -976,7 +976,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_DA:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
                         if (firstBetList.contains("大")) {
                             firstPrizeNum++;
                         }
@@ -988,7 +988,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_XIAO:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
                         if (firstBetList.contains("小")) {
                             firstPrizeNum++;
                         }
@@ -1000,7 +1000,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_DAN:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
                         if (firstBetList.contains("单")) {
                             firstPrizeNum++;
                         }
@@ -1012,7 +1012,7 @@ public class LotteryMark6Draw {
                 case ZHENG_MA_ZONG_SHUANG:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
-                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 349);
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
                         if (firstBetList.contains("双")) {
                             firstPrizeNum++;
                         }
@@ -1946,6 +1946,21 @@ public class LotteryMark6Draw {
                 case WU_XING_HUO:
                 case WU_XING_TU:
 
+                case TE_MA_A_DA:
+                case TE_MA_A_XIAO:
+                case TE_MA_A_DAN:
+                case TE_MA_A_SHUANG:
+                case TE_MA_A_HONG:
+                case TE_MA_A_LAN:
+                case TE_MA_A_LV:
+                case TE_MA_B_DA:
+                case TE_MA_B_XIAO:
+                case TE_MA_B_DAN:
+                case TE_MA_B_SHUANG:
+                case TE_MA_B_HONG:
+                case TE_MA_B_LAN:
+                case TE_MA_B_LV:
+
                     resultList.add(kjList.get(6));
                     break;
 
@@ -2097,6 +2112,19 @@ public class LotteryMark6Draw {
                 case ZHENG_YI_LAN:
                 case ZHENG_YI_HONG:
 
+                case ZHENG_YI_LIANG_MIAN_DA:
+                case ZHENG_YI_LIANG_MIAN_XIAO:
+                case ZHENG_YI_LIANG_MIAN_DAN:
+                case ZHENG_YI_LIANG_MIAN_SHUANG:
+                case ZHENG_YI_LIANG_MIAN_HONG:
+                case ZHENG_YI_LIANG_MIAN_LAN:
+                case ZHENG_YI_LIANG_MIAN_LV:
+                case ZHENG_YI_LIANG_MIAN_HE_DA:
+                case ZHENG_YI_LIANG_MIAN_HE_XIAO:
+                case ZHENG_YI_LIANG_MIAN_HE_DAN:
+                case ZHENG_YI_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_YI_LIANG_MIAN_WEI_DA:
+                case ZHENG_YI_LIANG_MIAN_WEI_XIAO:
                     resultList.add(kjList.get(0));
                     break;
 
@@ -2168,6 +2196,20 @@ public class LotteryMark6Draw {
                 case ZHENG_ER_LV:
                 case ZHENG_ER_LAN:
                 case ZHENG_ER_HONG:
+
+                case ZHENG_ER_LIANG_MIAN_DA:
+                case ZHENG_ER_LIANG_MIAN_XIAO:
+                case ZHENG_ER_LIANG_MIAN_DAN:
+                case ZHENG_ER_LIANG_MIAN_SHUANG:
+                case ZHENG_ER_LIANG_MIAN_HONG:
+                case ZHENG_ER_LIANG_MIAN_LAN:
+                case ZHENG_ER_LIANG_MIAN_LV:
+                case ZHENG_ER_LIANG_MIAN_HE_DA:
+                case ZHENG_ER_LIANG_MIAN_HE_XIAO:
+                case ZHENG_ER_LIANG_MIAN_HE_DAN:
+                case ZHENG_ER_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_ER_LIANG_MIAN_WEI_DA:
+                case ZHENG_ER_LIANG_MIAN_WEI_XIAO:
 
                     resultList.add(kjList.get(1));
                     break;
@@ -2241,6 +2283,20 @@ public class LotteryMark6Draw {
                 case ZHENG_SAN_LAN:
                 case ZHENG_SAN_HONG:
 
+                case ZHENG_SAN_LIANG_MIAN_DA:
+                case ZHENG_SAN_LIANG_MIAN_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_DAN:
+                case ZHENG_SAN_LIANG_MIAN_SHUANG:
+                case ZHENG_SAN_LIANG_MIAN_HONG:
+                case ZHENG_SAN_LIANG_MIAN_LAN:
+                case ZHENG_SAN_LIANG_MIAN_LV:
+                case ZHENG_SAN_LIANG_MIAN_HE_DA:
+                case ZHENG_SAN_LIANG_MIAN_HE_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_HE_DAN:
+                case ZHENG_SAN_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_SAN_LIANG_MIAN_WEI_DA:
+                case ZHENG_SAN_LIANG_MIAN_WEI_XIAO:
+
                     resultList.add(kjList.get(2));
                     break;
 
@@ -2312,6 +2368,20 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_LV:
                 case ZHENG_SI_LAN:
                 case ZHENG_SI_HONG:
+
+                case ZHENG_SI_LIANG_MIAN_DA:
+                case ZHENG_SI_LIANG_MIAN_XIAO:
+                case ZHENG_SI_LIANG_MIAN_DAN:
+                case ZHENG_SI_LIANG_MIAN_SHUANG:
+                case ZHENG_SI_LIANG_MIAN_HONG:
+                case ZHENG_SI_LIANG_MIAN_LAN:
+                case ZHENG_SI_LIANG_MIAN_LV:
+                case ZHENG_SI_LIANG_MIAN_HE_DA:
+                case ZHENG_SI_LIANG_MIAN_HE_XIAO:
+                case ZHENG_SI_LIANG_MIAN_HE_DAN:
+                case ZHENG_SI_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_SI_LIANG_MIAN_WEI_DA:
+                case ZHENG_SI_LIANG_MIAN_WEI_XIAO:
 
                     resultList.add(kjList.get(3));
                     break;
@@ -2385,6 +2455,20 @@ public class LotteryMark6Draw {
                 case ZHENG_WU_LAN:
                 case ZHENG_WU_HONG:
 
+                case ZHENG_WU_LIANG_MIAN_DA:
+                case ZHENG_WU_LIANG_MIAN_XIAO:
+                case ZHENG_WU_LIANG_MIAN_DAN:
+                case ZHENG_WU_LIANG_MIAN_SHUANG:
+                case ZHENG_WU_LIANG_MIAN_HONG:
+                case ZHENG_WU_LIANG_MIAN_LAN:
+                case ZHENG_WU_LIANG_MIAN_LV:
+                case ZHENG_WU_LIANG_MIAN_HE_DA:
+                case ZHENG_WU_LIANG_MIAN_HE_XIAO:
+                case ZHENG_WU_LIANG_MIAN_HE_DAN:
+                case ZHENG_WU_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_WU_LIANG_MIAN_WEI_DA:
+                case ZHENG_WU_LIANG_MIAN_WEI_XIAO:
+
                     resultList.add(kjList.get(4));
                     break;
 
@@ -2456,6 +2540,20 @@ public class LotteryMark6Draw {
                 case ZHENG_LIU_LV:
                 case ZHENG_LIU_LAN:
                 case ZHENG_LIU_HONG:
+
+                case ZHENG_LIU_LIANG_MIAN_DA:
+                case ZHENG_LIU_LIANG_MIAN_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_DAN:
+                case ZHENG_LIU_LIANG_MIAN_SHUANG:
+                case ZHENG_LIU_LIANG_MIAN_HONG:
+                case ZHENG_LIU_LIANG_MIAN_LAN:
+                case ZHENG_LIU_LIANG_MIAN_LV:
+                case ZHENG_LIU_LIANG_MIAN_HE_DA:
+                case ZHENG_LIU_LIANG_MIAN_HE_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_HE_DAN:
+                case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
+                case ZHENG_LIU_LIANG_MIAN_WEI_DA:
+                case ZHENG_LIU_LIANG_MIAN_WEI_XIAO:
 
                     resultList.add(kjList.get(5));
                     break;
