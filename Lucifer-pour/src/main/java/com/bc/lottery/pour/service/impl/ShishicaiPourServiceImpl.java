@@ -2359,7 +2359,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         if (size == 0) {
             return 0;
         }
-
         LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
         if (lotteryMark6DoubleType != null) {
 
@@ -2391,11 +2390,63 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                     }
                     return 0;
 
+                // 合肖
+                case HE_XIAO_ER:
+                    if (size == 1 && betNumbers.get(0).size() == 2) {
+                        return 1;
+                    }
+                    return 0;
+
+                case HE_XIAO_SAN:
+                    if (size == 1 && betNumbers.get(0).size() == 3) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_SI:
+                    if (size == 1 && betNumbers.get(0).size() == 4) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_WU:
+                    if (size == 1 && betNumbers.get(0).size() == 5) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_LIU:
+                    if (size == 1 && betNumbers.get(0).size() == 6) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_QI:
+                    if (size == 1 && betNumbers.get(0).size() == 7) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_BA:
+                    if (size == 1 && betNumbers.get(0).size() == 8) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_JIU:
+                    if (size == 1 && betNumbers.get(0).size() == 9) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_SHI:
+                    if (size == 1 && betNumbers.get(0).size() == 10) {
+                        return 1;
+                    }
+                    return 0;
+                case HE_XIAO_SHI_YI:
+                    if (size == 1 && betNumbers.get(0).size() == 11) {
+                        return 1;
+                    }
+                    return 0;
+
                 default:
                     return 1;
             }
         }
-
         return 0;
     }
 

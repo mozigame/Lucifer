@@ -839,9 +839,14 @@ public class LotteryMark6Draw {
                 case HE_XIAO_SHI_YI:
                     if (betNumbers.size() == 1) {
 
-                        List<String> firstBetList = LotteryUtils.getShengxiaoTypeList(kjList.get(0));
-                        if (betNumbers.get(0).containsAll(firstBetList)) {
-                            firstPrizeNum++;
+                        // 49 视为和局
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            List<String> firstBetList = LotteryUtils.getShengxiaoTypeList(kjList.get(0));
+                            if (betNumbers.get(0).containsAll(firstBetList)) {
+                                firstPrizeNum++;
+                            }
                         }
                         lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     }
@@ -1281,16 +1286,45 @@ public class LotteryMark6Draw {
                 case ZHENG_XIAO_GOU:
                 case ZHENG_XIAO_ZHU:
 
-                    if (betNumbers.size() == 1) {
-                        //获取中奖号的生肖
+                    // 只支持一注
+                    if (betNumbers.size() == 1 && betNumbers.get(0).size() == 1) {
                         for (String betStr : kjList) {
+                            //获取中奖号的生肖
                             List<String> firstBetList = LotteryUtils.getShengxiaoTypeList(betStr);
                             if (betNumbers.get(0).containsAll(firstBetList)) {
                                 firstPrizeNum++;
                             }
                         }
+                        //获取本命生肖,判断是不是本命
+                        List<String> zodiacList = LotteryUtils.getShengxiaoTypeList("49");
+                        if (betNumbers.get(0).contains(zodiacList)) {
+                            lotteryOrder.setIsZodiacYear(1);
+                            if (firstPrizeNum == 5) {
+                                lotteryOrder.setFirstPrizeNum(1);
+                            } else if (firstPrizeNum == 4) {
+                                lotteryOrder.setSecondPrizeNum(1);
+                            } else if (firstPrizeNum == 3) {
+                                lotteryOrder.setThirdPrizeNum(1);
+                            } else if (firstPrizeNum == 2) {
+                                lotteryOrder.setForthPrizeNum(1);
+                            } else if (firstPrizeNum == 1) {
+                                lotteryOrder.setFifthPrizeNum(1);
+                            }
+                            continue;
+                        } else {
+                            lotteryOrder.setIsZodiacYear(0);
+                            if (firstPrizeNum == 4) {
+                                lotteryOrder.setFirstPrizeNum(1);
+                            } else if (firstPrizeNum == 3) {
+                                lotteryOrder.setSecondPrizeNum(1);
+                            } else if (firstPrizeNum == 2) {
+                                lotteryOrder.setThirdPrizeNum(1);
+                            } else if (firstPrizeNum == 1) {
+                                lotteryOrder.setForthPrizeNum(1);
+                            }
+                            continue;
+                        }
                     }
-                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
 
                     // 平特一肖
@@ -1477,7 +1511,7 @@ public class LotteryMark6Draw {
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
 
-                    // 连码
+                    // 连码 二全中
                 case LIAN_MA_ER_QUAN_ZHONG:
 
                     prizeNum = 0;
@@ -1492,7 +1526,7 @@ public class LotteryMark6Draw {
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
 
-                    // 连码
+                    // 连码 三全中
                 case LIAN_MA_SAN_QUAN_ZHONG:
                     prizeNum = 0;
                     if (betNumbers.size() == 1) {
@@ -1507,6 +1541,32 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 连码
+                case LIAN_MA_SAN_ZHONG_ER:
+                    // TODO 需要根据业务重新梳理
+
+                    prizeNum = 0;  //中奖个数
+                    firstPrizeNum = 0;
+                    secondPrizeNum = 0;
+                    if (betNumbers.size() == 1 && betNumbers.get(0).size() > 2) {
+                        // 集合内容个数
+                        int betNum = betNumbers.get(0).size();
+                        for (String betStr : betNumbers.get(0)) {
+                            if (kjList.contains(betStr)) {
+                                prizeNum++;
+                            }
+                        }
+                        if (prizeNum == 2) {
+                            secondPrizeNum = betNum - prizeNum;
+                        } else if (prizeNum > 2) {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 2) * (int) LotteryUtils.combination((betNum - prizeNum), 1);
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
+                    continue;
+
+                    // 连码四全中
                 case LIAN_MA_SI_QUAN_ZHONG:
                     prizeNum = 0;
                     if (betNumbers.size() == 1) {
@@ -1516,25 +1576,6 @@ public class LotteryMark6Draw {
                             }
                         }
                         firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
-                    }
-                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
-                    continue;
-
-                    // 连码
-                case LIAN_MA_SAN_ZHONG_ER:
-                    // TODO 需要根据业务重新梳理
-                    prizeNum = 0;
-                    if (betNumbers.size() == 1) {
-                        for (String betStr : betNumbers.get(0)) {
-                            if (kjList.contains(betStr)) {
-                                prizeNum++;
-                            }
-                        }
-                        if (prizeNum == 3) {
-                            lotteryOrder.setFirstPrizeNum(1);
-                        } else if (prizeNum == 2) {
-                            lotteryOrder.setSecondPrizeNum(1);
-                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
                     continue;
