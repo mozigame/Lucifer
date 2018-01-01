@@ -220,9 +220,8 @@ public class ShishicaiPourServiceImplTest {
 
         System.out.println("========================六合彩========================");
         LotteryPourHandle lotteryPourHandler = new ShishicaiPourServiceImpl();
-        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
         for (LotteryMark6DoubleType lotteryMark6DoubleType : LotteryMark6DoubleType.values()) {
-            List<List<String>> list = lotteryOrderTest.getBetNumbersByType(10L, lotteryMark6DoubleType.value());
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(10L, lotteryMark6DoubleType.value());
             String betContent = lotteryPourHandler.getStringByLotteryList(10L, lotteryMark6DoubleType.value(), list);
             Long betCount = lotteryPourHandler.getLotteryBetCount(10L, lotteryMark6DoubleType.value(), list);
             System.out.println(lotteryMark6DoubleType.desc() + "=" + list);

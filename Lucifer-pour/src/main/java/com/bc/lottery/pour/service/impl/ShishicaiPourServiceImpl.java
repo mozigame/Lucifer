@@ -2233,8 +2233,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("44");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_45:
             case TE_MA_B_45:
             case ZHENG_MA_45:
@@ -2247,8 +2247,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("45");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_46:
             case TE_MA_B_46:
             case ZHENG_MA_46:
@@ -2261,8 +2261,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("46");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_47:
             case TE_MA_B_47:
             case ZHENG_MA_47:
@@ -2275,8 +2275,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("47");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_48:
             case TE_MA_B_48:
             case ZHENG_MA_48:
@@ -2289,8 +2289,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("48");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_49:
             case TE_MA_B_49:
             case ZHENG_MA_49:
@@ -2303,7 +2303,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
                 numList.add("49");
                 priBetNumbers.add(numList);
-
                 break;
 
             case TE_MA_A_DA:
@@ -2456,6 +2455,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             case ZHENG_LIU_LIANG_MIAN_HE_DAN:
             case ZHENG_LIU_MA_DAN:
 
+            case ZONG_DAN_XIAO:
+
                 numList.add(single);
                 priBetNumbers.add(numList);
                 break;
@@ -2498,6 +2499,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             case ZHENG_LIU_LIANG_MIAN_SHUANG:
             case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
             case ZHENG_LIU_MA_SHUANG:
+
+            case ZONG_SHUANG_XIAO:
 
                 numList.add(shuang);
                 priBetNumbers.add(numList);
@@ -2918,25 +2921,64 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 priBetNumbers.add(numList);
                 break;
 
-            case ZONG_SHUANG_XIAO:
-            case ZONG_DAN_XIAO:
             case TE_MA_DA_DAN:
-            case TE_MA_DA_SHUANG:
+                numList.add("大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_XIAO_DAN:
+                numList.add("小单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_XIAO_SHUANG:
+                numList.add("小双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LV_DA_SHUANG:
+                numList.add("绿大双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LAN_DA_SHUANG:
+                numList.add("蓝大双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LV_DA_DAN:
+                numList.add("绿大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LAN_DA_DAN:
+                numList.add("蓝大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_HONG_DA_DAN:
+                numList.add("红大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LV_XIAO_DAN:
+                numList.add("绿大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LAN_XIAO_DAN:
+                numList.add("蓝大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_HONG_XIAO_DAN:
+                numList.add("红小单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_HONG_DA_SHUANG:
+                numList.add("红大双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LV_XIAO_SHUANG:
+                numList.add("绿小双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_LAN_XIAO_SHUANG:
+                numList.add("蓝小双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_HONG_XIAO_SHUANG:
-                numList.add("大小单双");
+                numList.add("红小双");
                 priBetNumbers.add(numList);
                 break;
         }
