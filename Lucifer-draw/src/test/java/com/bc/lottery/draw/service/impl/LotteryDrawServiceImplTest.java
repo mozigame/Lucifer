@@ -800,7 +800,7 @@ public class LotteryDrawServiceImplTest {
 
         System.out.println("*******************************六合彩双面盘开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 10; i++) {
             String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
             kjList.add(kjNo);
         }

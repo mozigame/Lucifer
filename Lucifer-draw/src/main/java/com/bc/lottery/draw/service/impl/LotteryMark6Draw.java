@@ -730,7 +730,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
