@@ -229,4 +229,16 @@ public class ShishicaiPourServiceImplTest {
             System.out.println(betCount + "|" + betContent);
         }
     }
+
+    @Test
+    public void testGetLotteryMark6NumbersByType() {
+        System.out.println("========================六合彩========================");
+
+        LotteryPourHandle lotteryPourHandler = new ShishicaiPourServiceImpl();
+        for (LotteryMark6DoubleType lotteryMark6DoubleType : LotteryMark6DoubleType.values()) {
+            List<List<String>> list = lotteryPourHandler.getBetNumbersByType(10L, lotteryMark6DoubleType.value());
+            System.out.println(lotteryMark6DoubleType.desc() + "=" + list);
+        }
+
+    }
 }
