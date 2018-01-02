@@ -37,6 +37,9 @@ public class LotteryMark6Draw {
             int prizeNum = 0;
 
             LotteryMark6DoubleType lotteryMark6DoubleType = (LotteryMark6DoubleType) lotteryType;
+            if (lotteryMark6DoubleType == null) {
+                return lotteryOrderList;
+            }
             switch (lotteryMark6DoubleType) {
 
                 // 特码
@@ -1927,7 +1930,6 @@ public class LotteryMark6Draw {
         return resultList;
     }
 
-
     /**
      * 六合彩开奖号码整理
      *
@@ -1943,9 +1945,11 @@ public class LotteryMark6Draw {
         if (kjList.size() != 7) {
             return resultList;
         }
-
         if (lotteryType instanceof LotteryMark6DoubleType) {
             LotteryMark6DoubleType lotteryMark6DoubleType = (LotteryMark6DoubleType) lotteryType;
+            if (lotteryMark6DoubleType == null) {
+                return resultList;
+            }
             switch (lotteryMark6DoubleType) {
 
                 // 特码

@@ -1631,6 +1631,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         Collections.shuffle(shengxiaoList);
 
         LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
+        if (lotteryMark6DoubleType == null) {
+            return priBetNumbers;
+        }
         switch (lotteryMark6DoubleType) {
 
             case TE_MA_A_1:
