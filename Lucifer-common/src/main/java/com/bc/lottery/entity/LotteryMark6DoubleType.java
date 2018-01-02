@@ -727,7 +727,8 @@ public enum LotteryMark6DoubleType implements LotteryType {
     LIAN_MA_SAN_QUAN_ZHONG(1061101L, "连码三全中"),
     LIAN_MA_SAN_ZHONG_ER(1062101L, "连码三中二"),
     LIAN_MA_ER_QUAN_ZHONG(1063101L, "连码二全中"),
-    LIAN_MA_ER_ZHONG_TE(1064101L, "连码二中特"),
+    LIAN_MA_ER_ZHONG_ER(1064101L, "连码二中特中二"),
+    LIAN_MA_ER_ZHONG_TE(1064102L, "连码二中特中特"),
     LIAN_MA_TE_CHUAN(1065101L, "连码特串"),
     LIAN_MA_SI_QUAN_ZHONG(1066101L, "连码四全中"),
 

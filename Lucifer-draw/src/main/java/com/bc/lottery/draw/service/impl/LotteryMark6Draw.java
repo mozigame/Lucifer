@@ -1585,6 +1585,7 @@ public class LotteryMark6Draw {
 
                     // 连码
                 case LIAN_MA_ER_ZHONG_TE:
+                case LIAN_MA_ER_ZHONG_ER:
 
                     if (betNumbers.size() == 1) {
                         if (betNumbers.get(0).contains(kjList.get(6))) {
@@ -2822,6 +2823,7 @@ public class LotteryMark6Draw {
 
                 case LIAN_MA_TE_CHUAN:
                 case LIAN_MA_ER_ZHONG_TE:
+                case LIAN_MA_ER_ZHONG_ER:
 
                 case PING_TE_YI_XIAO_SHU:
                 case PING_TE_YI_XIAO_NIU:

@@ -3127,6 +3127,7 @@ public class LotteryOrderTest {
 
             case LIAN_MA_ER_QUAN_ZHONG:
             case LIAN_MA_ER_ZHONG_TE:
+            case LIAN_MA_ER_ZHONG_ER:
             case LIAN_MA_TE_CHUAN:
                 priBetNumbers.add(sixNumber);
                 break;
