@@ -2842,6 +2842,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
             case LIAN_MA_SAN_QUAN_ZHONG:
             case LIAN_MA_SAN_ZHONG_ER:
+            case LIAN_MA_SAN_ZHONG_SAN:
 
                 priBetNumbers.add(sevenNumber);
                 break;
@@ -4014,6 +4015,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 // 连码 三全中、三中二
                 case LIAN_MA_SAN_QUAN_ZHONG:
                 case LIAN_MA_SAN_ZHONG_ER:
+                case LIAN_MA_SAN_ZHONG_SAN:
 
                     if (size == 1) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);

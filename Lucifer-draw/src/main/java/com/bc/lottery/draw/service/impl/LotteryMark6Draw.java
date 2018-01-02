@@ -1545,6 +1545,7 @@ public class LotteryMark6Draw {
 
                     // 连码
                 case LIAN_MA_SAN_ZHONG_ER:
+                case LIAN_MA_SAN_ZHONG_SAN:
                     // TODO 需要根据业务重新梳理
 
                     prizeNum = 0;  //中奖个数
@@ -2244,6 +2245,7 @@ public class LotteryMark6Draw {
 
                     // 连码
                 case LIAN_MA_SAN_ZHONG_ER:
+                case LIAN_MA_SAN_ZHONG_SAN:
                 case LIAN_MA_ER_QUAN_ZHONG:
                 case LIAN_MA_SAN_QUAN_ZHONG:
                 case LIAN_MA_SI_QUAN_ZHONG:
