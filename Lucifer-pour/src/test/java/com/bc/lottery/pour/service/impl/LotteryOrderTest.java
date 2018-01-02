@@ -3104,21 +3104,25 @@ public class LotteryOrderTest {
                 priBetNumbers.add(fiveWeishu);
                 break;
 
+            case ER_LIAN_XIAO:
             case ER_LIAN_XIAO_BEN_MING:
             case ER_LIAN_XIAO_FEI_BEN_MING:
                 priBetNumbers.add(twoXiao);
                 break;
 
+            case SAN_LIAN_XIAO:
             case SAN_LIAN_XIAO_BEN_MING:
             case SAN_LIAN_XIAO_FEI_BEN_MING:
                 priBetNumbers.add(threeXiao);
                 break;
 
+            case SI_LIAN_XIAO:
             case SI_LIAN_XIAO_BEN_MING:
             case SI_LIAN_XIAO_FEI_BEN_MING:
                 priBetNumbers.add(fourXiao);
                 break;
 
+            case WU_LIAN_XIAO:
             case WU_LIAN_XIAO_BEN_MING:
             case WU_LIAN_XIAO_FEI_BEN_MING:
                 priBetNumbers.add(fiveXiao);

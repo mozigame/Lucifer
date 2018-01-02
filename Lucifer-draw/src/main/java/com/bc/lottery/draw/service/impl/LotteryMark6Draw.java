@@ -1624,6 +1624,7 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 二连尾
+                case ER_LIAN_WEI:
                 case ER_LIAN_WEI_0:
                 case ER_LIAN_WEI_FEI_0:
                     prizeNum = 0;
@@ -1634,12 +1635,19 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 2);
+                        // 如果包含0尾
+                        if (erWeiBetSet.contains("0")) {
+                            firstPrizeNum = prizeNum - 1;
+                        } else {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 2);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 三连尾
+                case SAN_LIAN_WEI:
                 case SAN_LIAN_WEI_0:
                 case SAN_LIAN_WEI_FEI_0:
                     prizeNum = 0;
@@ -1650,12 +1658,19 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
+                        // 如果包含0尾
+                        if (sanWeiBetSet.contains("0")) {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 2);
+                        } else {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 四连尾
+                case SI_LIAN_WEI:
                 case SI_LIAN_WEI_0:
                 case SI_LIAN_WEI_FEI_0:
                     prizeNum = 0;
@@ -1666,12 +1681,19 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
+                        // 如果包含0尾
+                        if (siWeiBetSet.contains("0")) {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 3);
+                        } else {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 五连尾
+                case WU_LIAN_WEI:
                 case WU_LIAN_WEI_0:
                 case WU_LIAN_WEI_FEI_0:
                     prizeNum = 0;
@@ -1682,15 +1704,24 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
+                        // 如果包含0尾
+                        if (wuWeiBetSet.contains("0")) {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 4);
+                        } else {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 二连肖
+                case ER_LIAN_XIAO:
                 case ER_LIAN_XIAO_BEN_MING:
                 case ER_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
+                    //获取本命生肖
+                    List<String> zodiacList = LotteryUtils.getShengxiaoTypeList("49");
                     Set<String> erXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
                         for (String kjStr : betNumbers.get(0)) {
@@ -1698,15 +1729,24 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 2);
+                        // 如果存在本命
+                        if (erXiaoBetSet.containsAll(zodiacList)) {
+                            secondPrizeNum = prizeNum - 1;
+                        } else {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 2);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 三连肖
+                case SAN_LIAN_XIAO:
                 case SAN_LIAN_XIAO_BEN_MING:
                 case SAN_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
+                    //获取本命生肖
+                    List<String> sanLianZodiacList = LotteryUtils.getShengxiaoTypeList("49");
                     Set<String> sanXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
                         for (String kjStr : betNumbers.get(0)) {
@@ -1714,15 +1754,24 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
+                        // 如果存在本命
+                        if (sanXiaoBetSet.containsAll(sanLianZodiacList)) {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 2);
+                        } else {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 四连肖
+                case SI_LIAN_XIAO:
                 case SI_LIAN_XIAO_BEN_MING:
                 case SI_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
+                    //获取本命生肖
+                    List<String> siLianZodiacList = LotteryUtils.getShengxiaoTypeList("49");
                     Set<String> siXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
                         for (String kjStr : betNumbers.get(0)) {
@@ -1730,15 +1779,24 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
+                        // 如果存在本命
+                        if (siXiaoBetSet.containsAll(siLianZodiacList)) {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 3);
+                        } else {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
                     // 五连肖
+                case WU_LIAN_XIAO:
                 case WU_LIAN_XIAO_BEN_MING:
                 case WU_LIAN_XIAO_FEI_BEN_MING:
                     prizeNum = 0;
+                    //获取本命生肖
+                    List<String> wuLianZodiacList = LotteryUtils.getShengxiaoTypeList("49");
                     Set<String> wuXiaoBetSet = LotteryUtils.getShengxiaoTypeSet(kjList);
                     if (betNumbers.size() == 1) {
                         for (String kjStr : betNumbers.get(0)) {
@@ -1746,9 +1804,15 @@ public class LotteryMark6Draw {
                                 prizeNum++;
                             }
                         }
-                        firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
+                        // 如果存在本命
+                        if (wuXiaoBetSet.containsAll(wuLianZodiacList)) {
+                            secondPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 4);
+                        } else {
+                            firstPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
+                        }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    lotteryOrder.setSecondPrizeNum(secondPrizeNum);
                     continue;
 
             }
@@ -2800,12 +2864,16 @@ public class LotteryMark6Draw {
                 case SAN_LIAN_XIAO_FEI_BEN_MING:
                 case ER_LIAN_XIAO_BEN_MING:
                 case ER_LIAN_XIAO_FEI_BEN_MING:
+                case WU_LIAN_WEI:
                 case WU_LIAN_WEI_0:
                 case WU_LIAN_WEI_FEI_0:
+                case SI_LIAN_WEI:
                 case SI_LIAN_WEI_0:
                 case SI_LIAN_WEI_FEI_0:
+                case SAN_LIAN_WEI:
                 case SAN_LIAN_WEI_0:
                 case SAN_LIAN_WEI_FEI_0:
+                case ER_LIAN_WEI:
                 case ER_LIAN_WEI_0:
                 case ER_LIAN_WEI_FEI_0:
 

@@ -825,6 +825,11 @@ public enum LotteryMark6DoubleType implements LotteryType {
     PING_TE_WEI_SHU_9(1101210L, "平特尾数-9尾"),
 
     // 连肖连尾
+    ER_LIAN_XIAO(1111190L, "二连肖"),
+    SAN_LIAN_XIAO(1111290L, "三连肖"),
+    SI_LIAN_XIAO(1111390L, "四连肖"),
+    WU_LIAN_XIAO(1111490L, "五连肖"),
+
     ER_LIAN_XIAO_BEN_MING(1111101L, "二连肖-本命"),
     SAN_LIAN_XIAO_BEN_MING(1111201L, "三连肖-本命"),
     SI_LIAN_XIAO_BEN_MING(1111301L, "四连肖-本命"),
@@ -862,6 +867,11 @@ public enum LotteryMark6DoubleType implements LotteryType {
     HE_XIAO_SHI_YI(1131110L, "十一合肖"),
 
     // 连尾
+    ER_LIAN_WEI(1141190L, "二连尾"),
+    SAN_LIAN_WEI(1141290L, "三连尾"),
+    SI_LIAN_WEI(1141390L, "四连尾"),
+    WU_LIAN_WEI(1141490L, "五连尾"),
+
     ER_LIAN_WEI_0(1141101L, "二连尾-0尾"),
     SAN_LIAN_WEI_0(1141201L, "三连尾-0尾"),
     SI_LIAN_WEI_0(1141301L, "四连尾-0尾"),
