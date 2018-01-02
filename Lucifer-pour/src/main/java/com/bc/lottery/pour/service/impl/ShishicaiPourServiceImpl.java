@@ -2932,6 +2932,11 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 numList.add("小单");
                 priBetNumbers.add(numList);
                 break;
+
+            case TE_MA_DA_SHUANG:
+                numList.add("大双");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_XIAO_SHUANG:
                 numList.add("小双");
                 priBetNumbers.add(numList);
