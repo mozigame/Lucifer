@@ -789,6 +789,28 @@ public class LotteryDrawServiceImplTest {
         System.out.println("*******************************PK10双面长龙测试结束*******************************");
     }
 
+    @Test
+    public void testGetLotteryMark6DoublePlayIds() throws Exception {
+
+        System.out.println("*******************************六合彩双面长龙测试开始*******************************");
+
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
+
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        for (int i = 0; i < 10; i++) {
+            String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
+            kjList.add(kjNo);
+        }
+        for (String kj : kjList) {
+
+            System.out.println("==========中奖号码========>>>" + kj);
+
+            List<Long> playIdList = lotteryDrawService.getLotteryBetPlayIds(10L, kj);
+            System.out.println(playIdList);
+
+        }
+
+    }
 
     /**
      * 六合彩
