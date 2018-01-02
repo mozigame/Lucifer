@@ -699,7 +699,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 49, 49);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9, 49);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -730,7 +730,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9, 49);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
@@ -1750,6 +1750,183 @@ public class LotteryMark6Draw {
         }
         return lotteryOrderList;
     }
+
+
+    /**
+     * 获取六合彩的中奖玩法idlist
+     *
+     * @param str
+     * @return
+     */
+    public static List<Long> getLotteryMark6DoubleBetPlayIds(String str) {
+
+        List<Long> resultList = new ArrayList<>();
+        int sumStr = 0;
+        for (LotteryMark6DoubleType lotteryMark6DoubleType : LotteryMark6DoubleType.values()) {
+
+            List<String> kjList = getRealLotteryMark6Kj(str, lotteryMark6DoubleType);
+
+            //获取单球的大小单双
+            List<String> singleBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 49, 49);
+
+            //获取中奖号的合大小单双信息
+            List<String> heSingleBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
+
+            //获取中奖号的总和大小单双
+            List<String> zongHeBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
+
+            //获取中奖号的尾码
+            List<String> weiBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList) % 10, 9, 49);
+
+
+            switch (lotteryMark6DoubleType) {
+                //冠亚和值大小单双
+                case TE_MA_DA:
+                    if (!kjList.get(0).contains("49") && singleBetList.contains("大")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_XIAO:
+                    if (!kjList.get(0).contains("49") && singleBetList.contains("小")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_DAN:
+                    if (!kjList.get(0).contains("49") && singleBetList.contains("单")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_SHUANG:
+                    if (!kjList.get(0).contains("49") && singleBetList.contains("双")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_HE_DA:
+                    if (!kjList.get(0).contains("49") && heSingleBetList.contains("大")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_HE_XIAO:
+                    if (!kjList.get(0).contains("49") && heSingleBetList.contains("小")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_HE_DAN:
+                    if (!kjList.get(0).contains("49") && heSingleBetList.contains("单")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_HE_SHUANG:
+                    if (!kjList.get(0).contains("49") && heSingleBetList.contains("双")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_DA:
+                    if (zongHeBetList.contains("大")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_XIAO:
+                    if (zongHeBetList.contains("小")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_DAN:
+                    if (zongHeBetList.contains("单")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case ZONG_HE_SHUANG:
+                    if (zongHeBetList.contains("双")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_TIAN_XIAO:
+                    //判断是否是特天肖
+                    if (!kjList.get(0).contains("49") && LotteryUtils.checkIsTianxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_DI_XIAO:
+                    //判断是否是特地肖
+                    if (!kjList.get(0).contains("49") && !LotteryUtils.checkIsTianxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_QIAN_XIAO:
+                    //判断是否是特前肖
+                    if (!kjList.get(0).contains("49") && LotteryUtils.checkIsQianxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_HOU_XIAO:
+                    //判断是否是特前肖
+                    if (!kjList.get(0).contains("49") && !LotteryUtils.checkIsQianxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_JIA_XIAO:
+                    //判断是否是特家肖
+                    if (!kjList.get(0).contains("49") && LotteryUtils.checkIsJiaxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_YE_XIAO:
+                    //判断是否是特家肖
+                    if (!kjList.get(0).contains("49") && !LotteryUtils.checkIsJiaxiao(kjList.get(0))) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_WEI_DA:
+                    //特码尾大
+                    if (weiBetList.contains("大")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+                case TE_MA_WEI_XIAO:
+                    //特码尾大
+                    if (weiBetList.contains("小")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_DA_DAN:
+                    if (singleBetList.contains("大") && singleBetList.contains("单")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_DA_SHUANG:
+                    if (singleBetList.contains("大") && singleBetList.contains("双")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_XIAO_DAN:
+                    if (singleBetList.contains("小") && singleBetList.contains("单")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+                case TE_MA_XIAO_SHUANG:
+                    if (singleBetList.contains("小") && singleBetList.contains("双")) {
+                        resultList.add(lotteryMark6DoubleType.value());
+                    }
+                    continue;
+
+            }
+        }
+        return resultList;
+    }
+
 
     /**
      * 六合彩开奖号码整理

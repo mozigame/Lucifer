@@ -113,6 +113,8 @@ public class LotteryDrawServiceImpl implements LotteryDrawHandle {
             case 8:
             case 108:
                 return LotteryPK10Draw.getLotteryPK10DoubleBetPlayIds(str);
+            case 10:
+                return LotteryMark6Draw.getLotteryMark6DoubleBetPlayIds(str);
             default:
                 return resultList;
         }
