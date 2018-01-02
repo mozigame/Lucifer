@@ -877,7 +877,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("大")) {
                                 firstPrizeNum++;
@@ -908,7 +908,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("小")) {
                                 firstPrizeNum++;
