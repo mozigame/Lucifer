@@ -2700,6 +2700,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
 
             case PING_TE_YI_XIAO_SHU:
             case ZHENG_XIAO_SHU:
+            case ZHENG_XIAO:
             case TE_XIAO_SHU:
                 numList.add("鼠");
                 priBetNumbers.add(numList);

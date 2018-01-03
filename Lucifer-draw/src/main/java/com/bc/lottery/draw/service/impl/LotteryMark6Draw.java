@@ -1276,6 +1276,7 @@ public class LotteryMark6Draw {
                     continue;
 
                     // 正肖
+                case ZHENG_XIAO:
                 case ZHENG_XIAO_SHU:
                 case ZHENG_XIAO_NIU:
                 case ZHENG_XIAO_HU:
@@ -2315,6 +2316,7 @@ public class LotteryMark6Draw {
                 case LIAN_MA_SI_QUAN_ZHONG:
 
                     // 正肖
+                case ZHENG_XIAO:
                 case ZHENG_XIAO_SHU:
                 case ZHENG_XIAO_NIU:
                 case ZHENG_XIAO_HU:

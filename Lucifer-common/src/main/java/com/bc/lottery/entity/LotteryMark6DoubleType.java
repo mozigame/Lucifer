@@ -883,6 +883,7 @@ public enum LotteryMark6DoubleType implements LotteryType {
     WU_LIAN_WEI_FEI_0(1141402L, "五连尾-非0尾"),
 
     // 正肖
+    ZHENG_XIAO(1151190L, "正肖"),
     ZHENG_XIAO_SHU(1151101L, "正肖-鼠"),
     ZHENG_XIAO_NIU(1151102L, "正肖-牛"),
     ZHENG_XIAO_HU(1151103L, "正肖-虎"),
