@@ -743,7 +743,7 @@ public class LotteryUtils {
 
         List<String> resultList = new ArrayList<>();
         // 判断生肖
-        int year = DateUtils.getCurrYear();
+        int year = DateUtils.getCurrLunarYear();
         int shengXiaoNo = year + Integer.parseInt(kjStr) - 2008;
         if (shengXiaoNo % 12 == 7) {
             resultList.add("鼠");
