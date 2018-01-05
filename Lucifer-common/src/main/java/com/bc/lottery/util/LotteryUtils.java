@@ -873,7 +873,7 @@ public class LotteryUtils {
             resultList.add("和");
         } else if (hongNo > lanNo && hongNo > lvNo) {
             resultList.add("红");
-        } else if (lanNo > hongNo && lvNo > hongNo) {
+        } else if (lanNo > hongNo && lanNo > lvNo) {
             resultList.add("蓝");
         } else {
             resultList.add("绿");
@@ -1190,6 +1190,38 @@ public class LotteryUtils {
         return LotteryUtils.getDupStr(kjStr).size() == 0 && LotteryUtils.getUnDupStr(kjStr).size() == 2;
     }
 
+    private static String checkNumberDecimal(Object obj) {
+        NumberFormat nf = new DecimalFormat("##0.00");
+        return String.format((obj == null) ? "0.00" : nf.format(Double.parseDouble(obj.toString())));
+    }
+
+    private static void getShaizi() {
+        int m = 0;
+        int n = 0;
+        int l = 0;
+        for (int i = 1; i < 7; i++) {
+            for (int j = 1; j < 7; j++) {
+
+                for (int k = 1; k < 7; k++) {
+                    m++;
+                    l++;
+                    String result = String.valueOf(i) + String.valueOf(j) + String.valueOf(k) + " ";
+                    System.out.print(result);
+                    if (m > 5) {
+                        System.out.println();
+                        m = 0;
+                    }
+                    if (result.contains("1") && result.contains("2")) {
+                        n++;
+                    }
+                }
+            }
+
+        }
+        System.out.println(l);
+        System.out.println(n);
+    }
+
 
     public static void main(String[] args) {
 
@@ -1231,7 +1263,7 @@ public class LotteryUtils {
 */
         //getShaizi();
 
-        List<String> list1 = new ArrayList<>();
+        /*List<String> list1 = new ArrayList<>();
         list1.add("1");
         list1.add("1");
 
@@ -1243,38 +1275,12 @@ public class LotteryUtils {
             System.out.println("true");
         } else {
             System.out.println("false");
+        }*/
+
+        for(int i=1;i<50;i++){
+            System.out.print(i);
+            System.out.println(getShengxiaoTypeList(String.valueOf(i)));
         }
     }
 
-    private static String checkNumberDecimal(Object obj) {
-        NumberFormat nf = new DecimalFormat("##0.00");
-        return String.format((obj == null) ? "0.00" : nf.format(Double.parseDouble(obj.toString())));
-    }
-
-    private static void getShaizi() {
-        int m = 0;
-        int n = 0;
-        int l = 0;
-        for (int i = 1; i < 7; i++) {
-            for (int j = 1; j < 7; j++) {
-
-                for (int k = 1; k < 7; k++) {
-                    m++;
-                    l++;
-                    String result = String.valueOf(i) + String.valueOf(j) + String.valueOf(k) + " ";
-                    System.out.print(result);
-                    if (m > 5) {
-                        System.out.println();
-                        m = 0;
-                    }
-                    if (result.contains("1") && result.contains("2")) {
-                        n++;
-                    }
-                }
-            }
-
-        }
-        System.out.println(l);
-        System.out.println(n);
-    }
 }

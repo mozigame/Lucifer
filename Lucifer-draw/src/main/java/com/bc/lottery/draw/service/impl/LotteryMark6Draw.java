@@ -940,7 +940,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
 
                             if (firstBetList.contains("单")) {
                                 firstPrizeNum++;
@@ -971,7 +971,7 @@ public class LotteryMark6Draw {
                             lotteryOrder.setIsTied(1);
                         } else {
                             //获取中奖号的大小单双
-                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 13);
+                            List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList.get(0)), 13);
                             if (firstBetList.contains("双")) {
                                 firstPrizeNum++;
                             }
@@ -1139,6 +1139,16 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_HONG:
                 case ZHENG_WU_HONG:
                 case ZHENG_LIU_HONG:
+                case TE_MA_A_HONG:
+                case TE_MA_B_HONG:
+
+                case ZHENG_YI_LIANG_MIAN_HONG:
+                case ZHENG_ER_LIANG_MIAN_HONG:
+                case ZHENG_SAN_LIANG_MIAN_HONG:
+                case ZHENG_SI_LIANG_MIAN_HONG:
+                case ZHENG_WU_LIANG_MIAN_HONG:
+                case ZHENG_LIU_LIANG_MIAN_HONG:
+
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
                         List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
@@ -1156,6 +1166,15 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_LAN:
                 case ZHENG_WU_LAN:
                 case ZHENG_LIU_LAN:
+                case TE_MA_A_LAN:
+                case TE_MA_B_LAN:
+
+                case ZHENG_YI_LIANG_MIAN_LAN:
+                case ZHENG_ER_LIANG_MIAN_LAN:
+                case ZHENG_SAN_LIANG_MIAN_LAN:
+                case ZHENG_SI_LIANG_MIAN_LAN:
+                case ZHENG_WU_LIANG_MIAN_LAN:
+                case ZHENG_LIU_LIANG_MIAN_LAN:
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
@@ -1174,6 +1193,15 @@ public class LotteryMark6Draw {
                 case ZHENG_SI_LV:
                 case ZHENG_WU_LV:
                 case ZHENG_LIU_LV:
+                case TE_MA_A_LV:
+                case TE_MA_B_LV:
+
+                case ZHENG_YI_LIANG_MIAN_LV:
+                case ZHENG_ER_LIANG_MIAN_LV:
+                case ZHENG_SAN_LIANG_MIAN_LV:
+                case ZHENG_SI_LIANG_MIAN_LV:
+                case ZHENG_WU_LIANG_MIAN_LV:
+                case ZHENG_LIU_LIANG_MIAN_LV:
 
                     if (betNumbers.size() == 1) {
                         //获取中奖号的色波
@@ -1212,38 +1240,15 @@ public class LotteryMark6Draw {
                 case TE_MA_LV_DA_SHUANG:
                 case TE_MA_LV_XIAO_SHUANG:
 
-                case TE_MA_A_LV:
-                case TE_MA_B_LV:
-                case ZHENG_YI_LIANG_MIAN_LV:
-                case ZHENG_ER_LIANG_MIAN_LV:
-                case ZHENG_SAN_LIANG_MIAN_LV:
-                case ZHENG_SI_LIANG_MIAN_LV:
-                case ZHENG_WU_LIANG_MIAN_LV:
-                case ZHENG_LIU_LIANG_MIAN_LV:
-
-                case TE_MA_A_LAN:
-                case TE_MA_B_LAN:
-                case ZHENG_YI_LIANG_MIAN_LAN:
-                case ZHENG_ER_LIANG_MIAN_LAN:
-                case ZHENG_SAN_LIANG_MIAN_LAN:
-                case ZHENG_SI_LIANG_MIAN_LAN:
-                case ZHENG_WU_LIANG_MIAN_LAN:
-                case ZHENG_LIU_LIANG_MIAN_LAN:
-
-                case TE_MA_A_HONG:
-                case TE_MA_B_HONG:
-                case ZHENG_YI_LIANG_MIAN_HONG:
-                case ZHENG_ER_LIANG_MIAN_HONG:
-                case ZHENG_SAN_LIANG_MIAN_HONG:
-                case ZHENG_SI_LIANG_MIAN_HONG:
-                case ZHENG_WU_LIANG_MIAN_HONG:
-                case ZHENG_LIU_LIANG_MIAN_HONG:
-
                     if (betNumbers.size() == 1) {
-                        //获取中奖号的大小单双色波
-                        List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
-                        if (firstBetList.containsAll(Arrays.asList(betNumbers.get(0).get(0).split("")))) {
-                            firstPrizeNum++;
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.containsAll(Arrays.asList(betNumbers.get(0).get(0).split("")))) {
+                                firstPrizeNum++;
+                            }
                         }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);
@@ -1301,7 +1306,7 @@ public class LotteryMark6Draw {
                         }
                         //获取本命生肖,判断是不是本命
                         List<String> zodiacList = LotteryUtils.getShengxiaoTypeList("49");
-                        if (betNumbers.get(0).contains(zodiacList)) {
+                        if (betNumbers.contains(zodiacList)) {
                             lotteryOrder.setIsZodiacYear(1);
                             if (firstPrizeNum == 5) {
                                 lotteryOrder.setFirstPrizeNum(1);
