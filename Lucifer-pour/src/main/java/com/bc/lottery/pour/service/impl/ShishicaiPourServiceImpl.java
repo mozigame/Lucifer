@@ -4015,6 +4015,10 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         if (size == 0) {
             return 0;
         }
+        int dupStrNum = LotteryUtils.getDupStr(betNumbers.get(0)).size();
+        if (dupStrNum > 0) {
+            return 0;
+        }
         LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
         if (lotteryMark6DoubleType != null) {
 
