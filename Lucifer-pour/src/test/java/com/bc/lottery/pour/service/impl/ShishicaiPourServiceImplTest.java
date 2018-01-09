@@ -225,6 +225,7 @@ public class ShishicaiPourServiceImplTest {
             String betContent = lotteryPourHandler.getStringByLotteryList(10L, lotteryMark6DoubleType.value(), list);
             Long betCount = lotteryPourHandler.getLotteryBetCount(10L, lotteryMark6DoubleType.value(), list);
             System.out.println(lotteryMark6DoubleType.desc() + "=" + list);
+            System.out.println(lotteryMark6DoubleType.value() + "=======>" + lotteryMark6DoubleType.desc());
             System.out.println(betCount + "|" + betContent);
         }
     }

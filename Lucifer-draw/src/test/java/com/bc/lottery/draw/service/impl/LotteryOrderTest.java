@@ -1680,21 +1680,25 @@ public class LotteryOrderTest {
         Collections.shuffle(weishuList);
         List<String> oneWeishu = new ArrayList<>();
         oneWeishu.add(weishuList.get(0));
+
         Collections.shuffle(weishuList);
         List<String> twoWeishu = new ArrayList<>();
         twoWeishu.add(weishuList.get(0));
         twoWeishu.add(weishuList.get(1));
+
         Collections.shuffle(weishuList);
         List<String> threeWeishu = new ArrayList<>();
         threeWeishu.add(weishuList.get(0));
         threeWeishu.add(weishuList.get(1));
         threeWeishu.add(weishuList.get(2));
+
         Collections.shuffle(weishuList);
         List<String> fourWeishu = new ArrayList<>();
         fourWeishu.add(weishuList.get(0));
         fourWeishu.add(weishuList.get(1));
         fourWeishu.add(weishuList.get(2));
         fourWeishu.add(weishuList.get(3));
+
         Collections.shuffle(weishuList);
         List<String> fiveWeishu = new ArrayList<>();
         fiveWeishu.add(weishuList.get(0));
@@ -1717,11 +1721,13 @@ public class LotteryOrderTest {
         List<String> twoNumber = new ArrayList<>();
         twoNumber.add(list.get(0));
         twoNumber.add(list.get(1));
+
         Collections.shuffle(list);
         List<String> threeNumber = new ArrayList<>();
         threeNumber.add(list.get(0));
         threeNumber.add(list.get(1));
         threeNumber.add(list.get(2));
+
         Collections.shuffle(list);
         List<String> fourNumber = new ArrayList<>();
         fourNumber.add(list.get(0));
@@ -1736,6 +1742,7 @@ public class LotteryOrderTest {
         fiveNumber.add(list.get(2));
         fiveNumber.add(list.get(3));
         fiveNumber.add(list.get(4));
+
         Collections.shuffle(list);
         List<String> sixNumber = new ArrayList<>();
         sixNumber.add(list.get(0));
@@ -1744,6 +1751,7 @@ public class LotteryOrderTest {
         sixNumber.add(list.get(3));
         sixNumber.add(list.get(4));
         sixNumber.add(list.get(5));
+
         Collections.shuffle(list);
         List<String> sevenNumber = new ArrayList<>();
         sevenNumber.add(list.get(0));
@@ -1753,6 +1761,7 @@ public class LotteryOrderTest {
         sevenNumber.add(list.get(4));
         sevenNumber.add(list.get(5));
         sevenNumber.add(list.get(6));
+
         Collections.shuffle(list);
         List<String> eightNumber = new ArrayList<>();
         eightNumber.add(list.get(0));
@@ -1763,8 +1772,8 @@ public class LotteryOrderTest {
         eightNumber.add(list.get(5));
         eightNumber.add(list.get(6));
         eightNumber.add(list.get(7));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> nineNumber = new ArrayList<>();
         nineNumber.add(list.get(0));
         nineNumber.add(list.get(1));
@@ -1775,8 +1784,8 @@ public class LotteryOrderTest {
         nineNumber.add(list.get(6));
         nineNumber.add(list.get(7));
         nineNumber.add(list.get(8));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> tenNumber = new ArrayList<>();
         tenNumber.add(list.get(0));
         tenNumber.add(list.get(1));
@@ -1788,8 +1797,8 @@ public class LotteryOrderTest {
         tenNumber.add(list.get(7));
         tenNumber.add(list.get(8));
         tenNumber.add(list.get(9));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> elevenNumber = new ArrayList<>();
         elevenNumber.add(list.get(0));
         elevenNumber.add(list.get(1));
@@ -1802,8 +1811,8 @@ public class LotteryOrderTest {
         elevenNumber.add(list.get(8));
         elevenNumber.add(list.get(9));
         elevenNumber.add(list.get(10));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> twelveNumber = new ArrayList<>();
         twelveNumber.add(list.get(0));
         twelveNumber.add(list.get(1));
@@ -1817,7 +1826,6 @@ public class LotteryOrderTest {
         twelveNumber.add(list.get(9));
         twelveNumber.add(list.get(10));
         twelveNumber.add(list.get(11));
-        Collections.shuffle(list);
 
         //生肖
         List<String> shengxiaoList = new ArrayList<>();
@@ -1833,22 +1841,25 @@ public class LotteryOrderTest {
         shengxiaoList.add("鸡");
         shengxiaoList.add("狗");
         shengxiaoList.add("猪");
-        Collections.shuffle(list);
 
+        Collections.shuffle(shengxiaoList);
         List<String> twoXiao = new ArrayList<>();
         twoXiao.add(shengxiaoList.get(0));
         twoXiao.add(shengxiaoList.get(1));
+
         Collections.shuffle(shengxiaoList);
         List<String> threeXiao = new ArrayList<>();
         threeXiao.add(shengxiaoList.get(0));
         threeXiao.add(shengxiaoList.get(1));
         threeXiao.add(shengxiaoList.get(2));
+
         Collections.shuffle(shengxiaoList);
         List<String> fourXiao = new ArrayList<>();
         fourXiao.add(shengxiaoList.get(0));
         fourXiao.add(shengxiaoList.get(1));
         fourXiao.add(shengxiaoList.get(2));
         fourXiao.add(shengxiaoList.get(3));
+
         Collections.shuffle(shengxiaoList);
         List<String> fiveXiao = new ArrayList<>();
         fiveXiao.add(shengxiaoList.get(0));
@@ -1856,8 +1867,8 @@ public class LotteryOrderTest {
         fiveXiao.add(shengxiaoList.get(2));
         fiveXiao.add(shengxiaoList.get(3));
         fiveXiao.add(shengxiaoList.get(4));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> sixXiao = new ArrayList<>();
         sixXiao.add(shengxiaoList.get(0));
         sixXiao.add(shengxiaoList.get(1));
@@ -1865,8 +1876,8 @@ public class LotteryOrderTest {
         sixXiao.add(shengxiaoList.get(3));
         sixXiao.add(shengxiaoList.get(4));
         sixXiao.add(shengxiaoList.get(5));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> sevenXiao = new ArrayList<>();
         sevenXiao.add(shengxiaoList.get(0));
         sevenXiao.add(shengxiaoList.get(1));
@@ -1875,8 +1886,8 @@ public class LotteryOrderTest {
         sevenXiao.add(shengxiaoList.get(4));
         sevenXiao.add(shengxiaoList.get(5));
         sevenXiao.add(shengxiaoList.get(6));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> eightXiao = new ArrayList<>();
         eightXiao.add(shengxiaoList.get(0));
         eightXiao.add(shengxiaoList.get(1));
@@ -1886,8 +1897,8 @@ public class LotteryOrderTest {
         eightXiao.add(shengxiaoList.get(5));
         eightXiao.add(shengxiaoList.get(6));
         eightXiao.add(shengxiaoList.get(7));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> nineXiao = new ArrayList<>();
         nineXiao.add(shengxiaoList.get(0));
         nineXiao.add(shengxiaoList.get(1));
@@ -1898,8 +1909,8 @@ public class LotteryOrderTest {
         nineXiao.add(shengxiaoList.get(6));
         nineXiao.add(shengxiaoList.get(7));
         nineXiao.add(shengxiaoList.get(8));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> tenXiao = new ArrayList<>();
         tenXiao.add(shengxiaoList.get(0));
         tenXiao.add(shengxiaoList.get(1));
@@ -1911,9 +1922,8 @@ public class LotteryOrderTest {
         tenXiao.add(shengxiaoList.get(7));
         tenXiao.add(shengxiaoList.get(8));
         tenXiao.add(shengxiaoList.get(9));
+
         Collections.shuffle(shengxiaoList);
-
-
         List<String> elevenXiao = new ArrayList<>();
         elevenXiao.add(shengxiaoList.get(0));
         elevenXiao.add(shengxiaoList.get(1));
@@ -1926,9 +1936,11 @@ public class LotteryOrderTest {
         elevenXiao.add(shengxiaoList.get(8));
         elevenXiao.add(shengxiaoList.get(9));
         elevenXiao.add(shengxiaoList.get(10));
-        Collections.shuffle(shengxiaoList);
 
         LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
+        if (lotteryMark6DoubleType == null) {
+            return priBetNumbers;
+        }
         switch (lotteryMark6DoubleType) {
 
             case TE_MA_A_1:
@@ -2531,8 +2543,8 @@ public class LotteryOrderTest {
 
                 numList.add("44");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_45:
             case TE_MA_B_45:
             case ZHENG_MA_45:
@@ -2545,8 +2557,8 @@ public class LotteryOrderTest {
 
                 numList.add("45");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_46:
             case TE_MA_B_46:
             case ZHENG_MA_46:
@@ -2559,8 +2571,8 @@ public class LotteryOrderTest {
 
                 numList.add("46");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_47:
             case TE_MA_B_47:
             case ZHENG_MA_47:
@@ -2573,8 +2585,8 @@ public class LotteryOrderTest {
 
                 numList.add("47");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_48:
             case TE_MA_B_48:
             case ZHENG_MA_48:
@@ -2587,8 +2599,8 @@ public class LotteryOrderTest {
 
                 numList.add("48");
                 priBetNumbers.add(numList);
-
                 break;
+
             case TE_MA_A_49:
             case TE_MA_B_49:
             case ZHENG_MA_49:
@@ -2601,7 +2613,6 @@ public class LotteryOrderTest {
 
                 numList.add("49");
                 priBetNumbers.add(numList);
-
                 break;
 
             case TE_MA_A_DA:
@@ -2754,6 +2765,8 @@ public class LotteryOrderTest {
             case ZHENG_LIU_LIANG_MIAN_HE_DAN:
             case ZHENG_LIU_MA_DAN:
 
+            case ZONG_DAN_XIAO:
+
                 numList.add(single);
                 priBetNumbers.add(numList);
                 break;
@@ -2796,6 +2809,8 @@ public class LotteryOrderTest {
             case ZHENG_LIU_LIANG_MIAN_SHUANG:
             case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
             case ZHENG_LIU_MA_SHUANG:
+
+            case ZONG_SHUANG_XIAO:
 
                 numList.add(shuang);
                 priBetNumbers.add(numList);
@@ -2992,6 +3007,7 @@ public class LotteryOrderTest {
 
             case PING_TE_YI_XIAO_SHU:
             case ZHENG_XIAO_SHU:
+            case ZHENG_XIAO:
             case TE_XIAO_SHU:
                 numList.add("鼠");
                 priBetNumbers.add(numList);
@@ -3226,30 +3242,72 @@ public class LotteryOrderTest {
                 priBetNumbers.add(numList);
                 break;
 
-            case ZONG_SHUANG_XIAO:
-            case ZONG_DAN_XIAO:
             case TE_MA_DA_DAN:
-            case TE_MA_DA_SHUANG:
+                numList.add("大单");
+                priBetNumbers.add(numList);
+                break;
             case TE_MA_XIAO_DAN:
-            case TE_MA_XIAO_SHUANG:
-            case TE_MA_LV_DA_SHUANG:
-            case TE_MA_LAN_DA_SHUANG:
-            case TE_MA_LV_DA_DAN:
-            case TE_MA_LAN_DA_DAN:
-            case TE_MA_HONG_DA_DAN:
-            case TE_MA_LV_XIAO_DAN:
-            case TE_MA_LAN_XIAO_DAN:
-            case TE_MA_HONG_XIAO_DAN:
-            case TE_MA_HONG_DA_SHUANG:
-            case TE_MA_LV_XIAO_SHUANG:
-            case TE_MA_LAN_XIAO_SHUANG:
-            case TE_MA_HONG_XIAO_SHUANG:
-                numList.add("大小单双");
+                numList.add("小单");
                 priBetNumbers.add(numList);
                 break;
 
+            case TE_MA_DA_SHUANG:
+                numList.add("大双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_XIAO_SHUANG:
+                numList.add("小双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LV_DA_SHUANG:
+                numList.add("绿大双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LAN_DA_SHUANG:
+                numList.add("蓝大双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LV_DA_DAN:
+                numList.add("绿大单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LAN_DA_DAN:
+                numList.add("蓝大单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_HONG_DA_DAN:
+                numList.add("红大单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LV_XIAO_DAN:
+                numList.add("绿大单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LAN_XIAO_DAN:
+                numList.add("蓝大单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_HONG_XIAO_DAN:
+                numList.add("红小单");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_HONG_DA_SHUANG:
+                numList.add("红大双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LV_XIAO_SHUANG:
+                numList.add("绿小双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_LAN_XIAO_SHUANG:
+                numList.add("蓝小双");
+                priBetNumbers.add(numList);
+                break;
+            case TE_MA_HONG_XIAO_SHUANG:
+                numList.add("红小双");
+                priBetNumbers.add(numList);
+                break;
         }
-
         return priBetNumbers;
     }
 

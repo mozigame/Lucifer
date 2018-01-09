@@ -28,6 +28,9 @@ public class LotteryMark6Draw {
     public static List<UserOrderPO> getBoundsInfoOfLotteryMark6Double(LotteryType lotteryType, String kjNo, List<UserOrderPO> lotteryOrderList) {
 
         List<String> kjList = getRealLotteryMark6Kj(kjNo, lotteryType);
+        if (kjList == null || kjList.size() == 0) {
+            return lotteryOrderList;
+        }
         for (UserOrderPO lotteryOrder : lotteryOrderList) {
 
             List<List<String>> betNumbers = lotteryOrder.getBetContentProc();

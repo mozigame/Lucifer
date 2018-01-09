@@ -826,7 +826,7 @@ public class LotteryDrawServiceImplTest {
             String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
             kjList.add(kjNo);
         }*/
-        String kjNo = "01,02,03,04,05,06,25";
+        String kjNo = "01,02,03,04,05,06,36";
         kjList.add(kjNo);
         LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
         for (String kj : kjList) {
