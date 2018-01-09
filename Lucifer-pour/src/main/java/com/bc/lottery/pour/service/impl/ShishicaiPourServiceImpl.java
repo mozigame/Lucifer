@@ -1382,21 +1382,25 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         Collections.shuffle(weishuList);
         List<String> oneWeishu = new ArrayList<>();
         oneWeishu.add(weishuList.get(0));
+
         Collections.shuffle(weishuList);
         List<String> twoWeishu = new ArrayList<>();
         twoWeishu.add(weishuList.get(0));
         twoWeishu.add(weishuList.get(1));
+
         Collections.shuffle(weishuList);
         List<String> threeWeishu = new ArrayList<>();
         threeWeishu.add(weishuList.get(0));
         threeWeishu.add(weishuList.get(1));
         threeWeishu.add(weishuList.get(2));
+
         Collections.shuffle(weishuList);
         List<String> fourWeishu = new ArrayList<>();
         fourWeishu.add(weishuList.get(0));
         fourWeishu.add(weishuList.get(1));
         fourWeishu.add(weishuList.get(2));
         fourWeishu.add(weishuList.get(3));
+
         Collections.shuffle(weishuList);
         List<String> fiveWeishu = new ArrayList<>();
         fiveWeishu.add(weishuList.get(0));
@@ -1419,11 +1423,13 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         List<String> twoNumber = new ArrayList<>();
         twoNumber.add(list.get(0));
         twoNumber.add(list.get(1));
+
         Collections.shuffle(list);
         List<String> threeNumber = new ArrayList<>();
         threeNumber.add(list.get(0));
         threeNumber.add(list.get(1));
         threeNumber.add(list.get(2));
+
         Collections.shuffle(list);
         List<String> fourNumber = new ArrayList<>();
         fourNumber.add(list.get(0));
@@ -1438,6 +1444,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         fiveNumber.add(list.get(2));
         fiveNumber.add(list.get(3));
         fiveNumber.add(list.get(4));
+
         Collections.shuffle(list);
         List<String> sixNumber = new ArrayList<>();
         sixNumber.add(list.get(0));
@@ -1446,6 +1453,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         sixNumber.add(list.get(3));
         sixNumber.add(list.get(4));
         sixNumber.add(list.get(5));
+
         Collections.shuffle(list);
         List<String> sevenNumber = new ArrayList<>();
         sevenNumber.add(list.get(0));
@@ -1455,6 +1463,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         sevenNumber.add(list.get(4));
         sevenNumber.add(list.get(5));
         sevenNumber.add(list.get(6));
+
         Collections.shuffle(list);
         List<String> eightNumber = new ArrayList<>();
         eightNumber.add(list.get(0));
@@ -1465,8 +1474,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         eightNumber.add(list.get(5));
         eightNumber.add(list.get(6));
         eightNumber.add(list.get(7));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> nineNumber = new ArrayList<>();
         nineNumber.add(list.get(0));
         nineNumber.add(list.get(1));
@@ -1477,8 +1486,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         nineNumber.add(list.get(6));
         nineNumber.add(list.get(7));
         nineNumber.add(list.get(8));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> tenNumber = new ArrayList<>();
         tenNumber.add(list.get(0));
         tenNumber.add(list.get(1));
@@ -1490,8 +1499,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         tenNumber.add(list.get(7));
         tenNumber.add(list.get(8));
         tenNumber.add(list.get(9));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> elevenNumber = new ArrayList<>();
         elevenNumber.add(list.get(0));
         elevenNumber.add(list.get(1));
@@ -1504,8 +1513,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         elevenNumber.add(list.get(8));
         elevenNumber.add(list.get(9));
         elevenNumber.add(list.get(10));
-        Collections.shuffle(list);
 
+        Collections.shuffle(list);
         List<String> twelveNumber = new ArrayList<>();
         twelveNumber.add(list.get(0));
         twelveNumber.add(list.get(1));
@@ -1519,7 +1528,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         twelveNumber.add(list.get(9));
         twelveNumber.add(list.get(10));
         twelveNumber.add(list.get(11));
-        Collections.shuffle(list);
 
         //生肖
         List<String> shengxiaoList = new ArrayList<>();
@@ -1535,22 +1543,25 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         shengxiaoList.add("鸡");
         shengxiaoList.add("狗");
         shengxiaoList.add("猪");
-        Collections.shuffle(list);
 
+        Collections.shuffle(shengxiaoList);
         List<String> twoXiao = new ArrayList<>();
         twoXiao.add(shengxiaoList.get(0));
         twoXiao.add(shengxiaoList.get(1));
+
         Collections.shuffle(shengxiaoList);
         List<String> threeXiao = new ArrayList<>();
         threeXiao.add(shengxiaoList.get(0));
         threeXiao.add(shengxiaoList.get(1));
         threeXiao.add(shengxiaoList.get(2));
+
         Collections.shuffle(shengxiaoList);
         List<String> fourXiao = new ArrayList<>();
         fourXiao.add(shengxiaoList.get(0));
         fourXiao.add(shengxiaoList.get(1));
         fourXiao.add(shengxiaoList.get(2));
         fourXiao.add(shengxiaoList.get(3));
+
         Collections.shuffle(shengxiaoList);
         List<String> fiveXiao = new ArrayList<>();
         fiveXiao.add(shengxiaoList.get(0));
@@ -1558,8 +1569,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         fiveXiao.add(shengxiaoList.get(2));
         fiveXiao.add(shengxiaoList.get(3));
         fiveXiao.add(shengxiaoList.get(4));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> sixXiao = new ArrayList<>();
         sixXiao.add(shengxiaoList.get(0));
         sixXiao.add(shengxiaoList.get(1));
@@ -1567,8 +1578,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         sixXiao.add(shengxiaoList.get(3));
         sixXiao.add(shengxiaoList.get(4));
         sixXiao.add(shengxiaoList.get(5));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> sevenXiao = new ArrayList<>();
         sevenXiao.add(shengxiaoList.get(0));
         sevenXiao.add(shengxiaoList.get(1));
@@ -1577,8 +1588,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         sevenXiao.add(shengxiaoList.get(4));
         sevenXiao.add(shengxiaoList.get(5));
         sevenXiao.add(shengxiaoList.get(6));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> eightXiao = new ArrayList<>();
         eightXiao.add(shengxiaoList.get(0));
         eightXiao.add(shengxiaoList.get(1));
@@ -1588,8 +1599,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         eightXiao.add(shengxiaoList.get(5));
         eightXiao.add(shengxiaoList.get(6));
         eightXiao.add(shengxiaoList.get(7));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> nineXiao = new ArrayList<>();
         nineXiao.add(shengxiaoList.get(0));
         nineXiao.add(shengxiaoList.get(1));
@@ -1600,8 +1611,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         nineXiao.add(shengxiaoList.get(6));
         nineXiao.add(shengxiaoList.get(7));
         nineXiao.add(shengxiaoList.get(8));
-        Collections.shuffle(shengxiaoList);
 
+        Collections.shuffle(shengxiaoList);
         List<String> tenXiao = new ArrayList<>();
         tenXiao.add(shengxiaoList.get(0));
         tenXiao.add(shengxiaoList.get(1));
@@ -1613,9 +1624,8 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         tenXiao.add(shengxiaoList.get(7));
         tenXiao.add(shengxiaoList.get(8));
         tenXiao.add(shengxiaoList.get(9));
+
         Collections.shuffle(shengxiaoList);
-
-
         List<String> elevenXiao = new ArrayList<>();
         elevenXiao.add(shengxiaoList.get(0));
         elevenXiao.add(shengxiaoList.get(1));
@@ -1628,7 +1638,6 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
         elevenXiao.add(shengxiaoList.get(8));
         elevenXiao.add(shengxiaoList.get(9));
         elevenXiao.add(shengxiaoList.get(10));
-        Collections.shuffle(shengxiaoList);
 
         LotteryMark6DoubleType lotteryMark6DoubleType = LotteryMark6DoubleType.parse(playId);
         if (lotteryMark6DoubleType == null) {
