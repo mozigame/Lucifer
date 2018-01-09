@@ -840,6 +840,7 @@ public class LotteryMark6Draw {
                 case HE_XIAO_JIU:
                 case HE_XIAO_SHI:
                 case HE_XIAO_SHI_YI:
+
                     if (betNumbers.size() == 1) {
 
                         // 49 视为和局
@@ -1500,7 +1501,6 @@ public class LotteryMark6Draw {
                 case ZI_XUAN_BU_ZHONG_8:
                 case ZI_XUAN_BU_ZHONG_9:
                 case ZI_XUAN_BU_ZHONG_10:
-
                 case ZI_XUAN_BU_ZHONG_11:
                 case ZI_XUAN_BU_ZHONG_12:
 
