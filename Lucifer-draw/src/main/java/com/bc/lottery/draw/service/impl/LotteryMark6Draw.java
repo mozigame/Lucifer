@@ -1218,30 +1218,330 @@ public class LotteryMark6Draw {
                     continue;
 
                 case TE_MA_HONG_DA:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("大")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
+
                 case TE_MA_HONG_XIAO:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("小")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_DA_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("大") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_DA_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("大") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_XIAO_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("小") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_HONG_XIAO_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("红") && firstBetList.contains("小") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
 
                 case TE_MA_LAN_DA:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("大")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_XIAO:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("小")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_DA_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("大") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_XIAO_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("小") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_DA_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("大") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LAN_XIAO_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("蓝") && firstBetList.contains("小") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
 
                 case TE_MA_LV_DA:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("大")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_XIAO:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("小")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_DA_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("大") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_XIAO_DAN:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("小") && firstBetList.contains("单")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_DA_SHUANG:
+                    if (betNumbers.size() == 1) {
+                        if (kjList.get(0).contains("49")) {
+                            lotteryOrder.setIsTied(1);
+                        } else {
+                            //获取中奖号的大小单双色波
+                            List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
+                            if (firstBetList.contains("绿") && firstBetList.contains("大") && firstBetList.contains("双")) {
+                                firstPrizeNum++;
+                            }
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
                 case TE_MA_LV_XIAO_SHUANG:
 
                     if (betNumbers.size() == 1) {
@@ -1250,7 +1550,7 @@ public class LotteryMark6Draw {
                         } else {
                             //获取中奖号的大小单双色波
                             List<String> firstBetList = LotteryUtils.getDaXiaoDanShuangSeBoList(kjList.get(0), 49);
-                            if (firstBetList.containsAll(Arrays.asList(betNumbers.get(0).get(0).split("")))) {
+                            if (firstBetList.contains("绿") && firstBetList.contains("小") && firstBetList.contains("双")) {
                                 firstPrizeNum++;
                             }
                         }
