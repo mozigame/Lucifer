@@ -826,7 +826,7 @@ public class LotteryDrawServiceImplTest {
             String kjNo = lotteryOrderTest.getMark6RandomKjNumbers();
             kjList.add(kjNo);
         }*/
-        String kjNo = "01,02,03,04,05,06,36";
+        String kjNo = "01,02,03,04,05,06,25";
         kjList.add(kjNo);
         LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
         for (String kj : kjList) {
@@ -917,4 +917,50 @@ public class LotteryDrawServiceImplTest {
         System.out.println("********************分割线***************************");
         System.out.println("*******************************六合彩双面盘开奖概率测试开始*******************************");
     }
+
+    /**
+     * 六合彩单独玩法开奖测试
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetSingleBoundsInfoOfMark6Double() throws Exception {
+
+        System.out.println("*******************************六合彩双面盘单独开奖测试开始*******************************");
+        LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
+        String kjNo = "01,02,03,04,05,06,25";
+        kjList.add(kjNo);
+        LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
+        System.out.println("==========中奖号码========>>>" + kjNo);
+        for (LotteryMark6DoubleType lotteryMark6DoubleType : LotteryMark6DoubleType.values()) {
+            for (int i = 0; i < 1; i++) {
+
+                switch (lotteryMark6DoubleType) {
+                    case ER_LIAN_XIAO:
+
+                        System.out.println("**********************" + lotteryMark6DoubleType + "*************************");
+                        System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
+                        List<List<String>> betNumberList = new ArrayList<>();
+                        List<String> singleList = new ArrayList<>();
+                        singleList.add("兔");
+                        singleList.add("虎");
+                        betNumberList.add(singleList);
+                        System.out.println(betNumberList);
+                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                        userOrder.setLotteryId(10L);
+                        userOrder.setPlayId(lotteryMark6DoubleType.value());
+                        UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjNo, userOrder);
+                        if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "          =======中奖了========");
+                        } else {
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied());
+                        }
+                        break;
+                }
+            }
+        }
+        System.out.println("*******************************六合彩双面盘开奖测试结束*******************************");
+    }
+
+
 }
