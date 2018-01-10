@@ -4152,12 +4152,16 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ER_LIAN_WEI:
                 case ER_LIAN_WEI_0:
                 case ER_LIAN_WEI_FEI_0:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 2);
+                    }
+                    return 0;
                     // 二连肖
                 case ER_LIAN_XIAO:
                 case ER_LIAN_XIAO_BEN_MING:
                 case ER_LIAN_XIAO_FEI_BEN_MING:
 
-                    if (size == 1) {
+                    if (size == 1&& LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
@@ -4166,12 +4170,16 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_LIAN_WEI:
                 case SAN_LIAN_WEI_0:
                 case SAN_LIAN_WEI_FEI_0:
+                    if (size == 1) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 3);
+                    }
+                    return 0;
 
                     // 三连肖
                 case SAN_LIAN_XIAO:
                 case SAN_LIAN_XIAO_BEN_MING:
                 case SAN_LIAN_XIAO_FEI_BEN_MING:
-                    if (size == 1) {
+                    if (size == 1&& LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;

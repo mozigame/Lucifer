@@ -1218,7 +1218,26 @@ public class LotteryUtils {
         if (betNumbers != null && betNumbers.size() > 0 && numList.containsAll(betNumbers.get(0))) {
             return true;
         }
+        return false;
+    }
 
+    /**
+     * 判断是否是六合彩头尾数数字
+     *
+     * @param betNumbers
+     * @return
+     */
+    public static boolean checkIsMark6WeiNumParams(List<List<String>> betNumbers) {
+
+        List<String> numList = new ArrayList<>();
+        for (int i = 1; i < 10; i++) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(String.valueOf(i));
+            numList.add(stringBuilder.toString());
+        }
+        if (betNumbers != null && betNumbers.size() > 0 && numList.containsAll(betNumbers.get(0))) {
+            return true;
+        }
         return false;
     }
 
