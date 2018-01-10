@@ -4029,7 +4029,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case LIAN_MA_ER_ZHONG_TE:
                 case LIAN_MA_ER_ZHONG_ER:
                 case LIAN_MA_TE_CHUAN:
-                    if (size == 1) {
+                    if (size == 1 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
@@ -4039,7 +4039,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case LIAN_MA_SAN_ZHONG_ER:
                 case LIAN_MA_SAN_ZHONG_SAN:
 
-                    if (size == 1) {
+                    if (size == 1 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
@@ -4047,103 +4047,103 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 // 连码 四全中
                 case LIAN_MA_SI_QUAN_ZHONG:
 
-                    if (size == 1) {
+                    if (size == 1 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 4);
                     }
                     return 0;
 
                 // 合肖
                 case HE_XIAO_ER:
-                    if (size == 1 && betNumbers.get(0).size() == 2) {
+                    if (size == 1 && betNumbers.get(0).size() == 2 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
 
                 case HE_XIAO_SAN:
-                    if (size == 1 && betNumbers.get(0).size() == 3) {
+                    if (size == 1 && betNumbers.get(0).size() == 3 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_SI:
-                    if (size == 1 && betNumbers.get(0).size() == 4) {
+                    if (size == 1 && betNumbers.get(0).size() == 4 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_WU:
-                    if (size == 1 && betNumbers.get(0).size() == 5) {
+                    if (size == 1 && betNumbers.get(0).size() == 5 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_LIU:
-                    if (size == 1 && betNumbers.get(0).size() == 6) {
+                    if (size == 1 && betNumbers.get(0).size() == 6 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_QI:
-                    if (size == 1 && betNumbers.get(0).size() == 7) {
+                    if (size == 1 && betNumbers.get(0).size() == 7 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_BA:
-                    if (size == 1 && betNumbers.get(0).size() == 8) {
+                    if (size == 1 && betNumbers.get(0).size() == 8 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_JIU:
-                    if (size == 1 && betNumbers.get(0).size() == 9) {
+                    if (size == 1 && betNumbers.get(0).size() == 9 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_SHI:
-                    if (size == 1 && betNumbers.get(0).size() == 10) {
+                    if (size == 1 && betNumbers.get(0).size() == 10 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case HE_XIAO_SHI_YI:
-                    if (size == 1 && betNumbers.get(0).size() == 11) {
+                    if (size == 1 && betNumbers.get(0).size() == 11 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
 
                 // 自选不中
                 case ZI_XUAN_BU_ZHONG_5:
-                    if (size == 1 && betNumbers.get(0).size() == 5) {
+                    if (size == 1 && betNumbers.get(0).size() == 5 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
 
                 case ZI_XUAN_BU_ZHONG_6:
-                    if (size == 1 && betNumbers.get(0).size() == 6) {
+                    if (size == 1 && betNumbers.get(0).size() == 6 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_7:
-                    if (size == 1 && betNumbers.get(0).size() == 7) {
+                    if (size == 1 && betNumbers.get(0).size() == 7 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_8:
-                    if (size == 1 && betNumbers.get(0).size() == 8) {
+                    if (size == 1 && betNumbers.get(0).size() == 8 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_9:
-                    if (size == 1 && betNumbers.get(0).size() == 9) {
+                    if (size == 1 && betNumbers.get(0).size() == 9 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_10:
-                    if (size == 1 && betNumbers.get(0).size() == 10) {
+                    if (size == 1 && betNumbers.get(0).size() == 10 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_11:
-                    if (size == 1 && betNumbers.get(0).size() == 11) {
+                    if (size == 1 && betNumbers.get(0).size() == 11 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;
                 case ZI_XUAN_BU_ZHONG_12:
-                    if (size == 1 && betNumbers.get(0).size() == 12) {
+                    if (size == 1 && betNumbers.get(0).size() == 12 && LotteryUtils.checkIsMark6NumParams(betNumbers)) {
                         return 1;
                     }
                     return 0;

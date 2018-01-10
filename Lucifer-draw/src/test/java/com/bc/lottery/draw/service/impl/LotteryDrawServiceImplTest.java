@@ -936,7 +936,7 @@ public class LotteryDrawServiceImplTest {
             for (int i = 0; i < 1; i++) {
 
                 switch (lotteryMark6DoubleType) {
-                    case ER_LIAN_XIAO:
+                   /* case ER_LIAN_XIAO:
 
                         System.out.println("**********************" + lotteryMark6DoubleType + "*************************");
                         System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
@@ -951,9 +951,32 @@ public class LotteryDrawServiceImplTest {
                         userOrder.setPlayId(lotteryMark6DoubleType.value());
                         UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjNo, userOrder);
                         if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
-                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "          =======中奖了========");
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "    是否本命: " + boundsInfo.getIsZodiacYear() + "          =======中奖了========");
                         } else {
-                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied());
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "    是否本命: " + boundsInfo.getIsZodiacYear());
+                        }
+                        break;*/
+
+                    case LIAN_MA_SI_QUAN_ZHONG:
+                        System.out.println("**********************" + lotteryMark6DoubleType + "*************************");
+                        System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
+                        List<List<String>> betNumberList = new ArrayList<>();
+                        List<String> singleList = new ArrayList<>();
+                        singleList.add("01");
+                        singleList.add("02");
+                        singleList.add("03");
+                        singleList.add("04");
+                        singleList.add("05");
+                        betNumberList.add(singleList);
+                        System.out.println(betNumberList);
+                        UserOrderPO userOrder = new UserOrderPO(betNumberList);
+                        userOrder.setLotteryId(10L);
+                        userOrder.setPlayId(lotteryMark6DoubleType.value());
+                        UserOrderPO boundsInfo = lotteryDrawService.getBoundsInfoOfLottery(kjNo, userOrder);
+                        if (boundsInfo.getFirstPrizeNum() != 0 || boundsInfo.getSecondPrizeNum() != 0 || boundsInfo.getThirdPrizeNum() != 0 || boundsInfo.getForthPrizeNum() != 0 || boundsInfo.getFifthPrizeNum() != 0) {
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "    是否本命: " + boundsInfo.getIsZodiacYear() + "          =======中奖了========");
+                        } else {
+                            System.out.println("开奖号码->" + kjNo + "    一等奖次数: " + boundsInfo.getFirstPrizeNum() + "    二等奖次数: " + boundsInfo.getSecondPrizeNum() + "    三等奖次数: " + boundsInfo.getThirdPrizeNum() + "    四等奖次数: " + boundsInfo.getForthPrizeNum() + "    五等奖次数: " + boundsInfo.getFifthPrizeNum() + "   是否为和：" + boundsInfo.getIsTied() + "    是否本命: " + boundsInfo.getIsZodiacYear());
                         }
                         break;
                 }

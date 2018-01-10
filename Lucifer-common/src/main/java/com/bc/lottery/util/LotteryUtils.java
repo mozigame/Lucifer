@@ -19,6 +19,9 @@ public class LotteryUtils {
     public static String[] qianXiaoArr = {"鼠", "牛", "虎", "兔", "龙", "蛇"};
     public static String[] jiaXiaoArr = {"牛", "马", "羊", "鸡", "狗", "猪"};
 
+    public static String[] shengXiaoArr = {"鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"};
+    public static String[] daxiaodanshaungArr = {"大", "小", "单", "双", "红", "蓝", "绿"};
+
     /**
      * 相乘
      *
@@ -1195,6 +1198,62 @@ public class LotteryUtils {
         return String.format((obj == null) ? "0.00" : nf.format(Double.parseDouble(obj.toString())));
     }
 
+    /**
+     * 判断是否是六合彩数字
+     *
+     * @param betNumbers
+     * @return
+     */
+    public static boolean checkIsMark6NumParams(List<List<String>> betNumbers) {
+
+        List<String> numList = new ArrayList<>();
+        for (int i = 1; i < 50; i++) {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (i < 10) {
+                stringBuilder.append("0");
+            }
+            stringBuilder.append(String.valueOf(i));
+            numList.add(stringBuilder.toString());
+        }
+        if (betNumbers != null && betNumbers.size() > 0 && numList.containsAll(betNumbers.get(0))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 判断是否是六合彩的大小单双红蓝绿
+     *
+     * @param betNumbers
+     * @return
+     */
+    public static boolean checkIsMark6BigOrColorParams(List<List<String>> betNumbers) {
+
+        List<String> daxiaoList = Arrays.asList(daxiaodanshaungArr);
+
+        if (betNumbers != null && betNumbers.size() > 0 && daxiaoList.containsAll(betNumbers.get(0))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 判断是否是六合彩的生肖
+     *
+     * @param betNumbers
+     * @return
+     */
+    public static boolean checkIsMark6ShengxiaoParams(List<List<String>> betNumbers) {
+
+        List<String> shengxiaoList = Arrays.asList(shengXiaoArr);
+        if (betNumbers != null && betNumbers.size() > 0 && shengxiaoList.containsAll(betNumbers.get(0))) {
+            return true;
+        }
+        return false;
+    }
+
     private static void getShaizi() {
         int m = 0;
         int n = 0;
@@ -1277,7 +1336,7 @@ public class LotteryUtils {
             System.out.println("false");
         }*/
 
-        for(int i=1;i<50;i++){
+        for (int i = 1; i < 50; i++) {
             System.out.print(i);
             System.out.println(getShengxiaoTypeList(String.valueOf(i)));
         }
