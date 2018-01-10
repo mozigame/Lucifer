@@ -928,7 +928,7 @@ public class LotteryDrawServiceImplTest {
 
         System.out.println("*******************************六合彩双面盘单独开奖测试开始*******************************");
         LotteryOrderTest lotteryOrderTest = new LotteryOrderTest();
-        String kjNo = "03,05,07,09,11,13,01";
+        String kjNo = "21,42,10,39,12,35,36";
         kjList.add(kjNo);
         LotteryDrawServiceImpl lotteryDrawService = new LotteryDrawServiceImpl();
         System.out.println("==========中奖号码========>>>" + kjNo);
@@ -957,20 +957,15 @@ public class LotteryDrawServiceImplTest {
                         }
                         break;*/
 
-                    case LIAN_MA_ER_ZHONG_ER:
-                    case LIAN_MA_ER_ZHONG_TE:
+                    case ER_LIAN_WEI:
+                    case ER_LIAN_WEI_0:
+                    case ER_LIAN_WEI_FEI_0:
                         System.out.println("**********************" + lotteryMark6DoubleType + "*************************");
                         System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
                         List<List<String>> betNumberList = new ArrayList<>();
                         List<String> singleList = new ArrayList<>();
-                        singleList.add("01");
-                        singleList.add("03");
-                        singleList.add("05");
-                        singleList.add("07");
-
-                        singleList.add("09");
-                        singleList.add("11");
-                        singleList.add("13");
+                        singleList.add("2");
+                        singleList.add("1");
                         betNumberList.add(singleList);
                         System.out.println(betNumberList);
                         UserOrderPO userOrder = new UserOrderPO(betNumberList);

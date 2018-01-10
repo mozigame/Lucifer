@@ -1950,7 +1950,7 @@ public class LotteryMark6Draw {
                             }
                         }
                         // 如果包含0尾
-                        if (erWeiBetSet.contains("0") && kjList.get(0).contains("0") && prizeNum > 0) {
+                        if (erWeiBetSet.contains("0") && betNumbers.get(0).contains("0") && prizeNum > 0) {
                             firstPrizeNum = prizeNum - 1;
                         } else {
                             secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 2);
@@ -1973,7 +1973,7 @@ public class LotteryMark6Draw {
                             }
                         }
                         // 如果包含0尾
-                        if (sanWeiBetSet.contains("0") && kjList.get(0).contains("0") && prizeNum > 0) {
+                        if (sanWeiBetSet.contains("0") && betNumbers.get(0).contains("0") && prizeNum > 0) {
                             firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 2);
                         } else {
                             secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 3);
@@ -1996,7 +1996,7 @@ public class LotteryMark6Draw {
                             }
                         }
                         // 如果包含0尾
-                        if (siWeiBetSet.contains("0") && kjList.get(0).contains("0") && prizeNum > 0) {
+                        if (siWeiBetSet.contains("0") && betNumbers.get(0).contains("0") && prizeNum > 0) {
                             firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 3);
                         } else {
                             secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 4);
@@ -2019,7 +2019,7 @@ public class LotteryMark6Draw {
                             }
                         }
                         // 如果包含0尾
-                        if (wuWeiBetSet.contains("0") && kjList.get(0).contains("0") && prizeNum > 0) {
+                        if (wuWeiBetSet.contains("0") && betNumbers.get(0).contains("0") && prizeNum > 0) {
                             firstPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 4);
                         } else {
                             secondPrizeNum = (int) LotteryUtils.combination(prizeNum, 5);
