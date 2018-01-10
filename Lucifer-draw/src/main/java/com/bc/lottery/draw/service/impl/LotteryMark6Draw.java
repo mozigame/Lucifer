@@ -1903,7 +1903,10 @@ public class LotteryMark6Draw {
                                 if (kjList.contains(kjStr)) {
                                     prizeNum++;
                                 }
-                                firstPrizeNum = prizeNum - 1;
+                                if (prizeNum > 1) {
+                                    firstPrizeNum = prizeNum - 1;
+                                    secondPrizeNum = (int) LotteryUtils.combination(prizeNum - 1, 2);
+                                }
                             }
                         } else {
                             for (String kjStr : betNumbers.get(0)) {
@@ -1925,7 +1928,9 @@ public class LotteryMark6Draw {
                                 if (kjList.contains(kjStr)) {
                                     prizeNum++;
                                 }
-                                firstPrizeNum = prizeNum - 1;
+                                if (prizeNum > 1) {
+                                    firstPrizeNum = prizeNum - 1;
+                                }
                             }
                         }
                     }
