@@ -1230,7 +1230,7 @@ public class LotteryUtils {
     public static boolean checkIsMark6WeiNumParams(List<List<String>> betNumbers) {
 
         List<String> numList = new ArrayList<>();
-        for (int i = 1; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(String.valueOf(i));
             numList.add(stringBuilder.toString());

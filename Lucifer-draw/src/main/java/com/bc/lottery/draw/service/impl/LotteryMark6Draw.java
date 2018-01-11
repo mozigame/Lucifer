@@ -1677,8 +1677,11 @@ public class LotteryMark6Draw {
                 case PING_TE_WEI_SHU_9:
 
                     if (betNumbers.size() == 1) {
-                        if (kjList.get(0).endsWith(betNumbers.get(0).get(0).substring(0, 1))) {
-                            firstPrizeNum++;
+                        for (String str : kjList) {
+                            if (str.endsWith(betNumbers.get(0).get(0))) {
+                                firstPrizeNum++;
+                                break;
+                            }
                         }
                     }
                     lotteryOrder.setFirstPrizeNum(firstPrizeNum);

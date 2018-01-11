@@ -2982,11 +2982,11 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 priBetNumbers.add(numList);
                 break;
             case TE_MA_LV_XIAO_DAN:
-                numList.add("绿大单");
+                numList.add("绿小单");
                 priBetNumbers.add(numList);
                 break;
             case TE_MA_LAN_XIAO_DAN:
-                numList.add("蓝大单");
+                numList.add("蓝小单");
                 priBetNumbers.add(numList);
                 break;
             case TE_MA_HONG_XIAO_DAN:
@@ -4152,16 +4152,16 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ER_LIAN_WEI:
                 case ER_LIAN_WEI_0:
                 case ER_LIAN_WEI_FEI_0:
-                    if (size == 1) {
+                    if (size == 1 && LotteryUtils.checkIsMark6WeiNumParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
-                    // 二连肖
+                // 二连肖
                 case ER_LIAN_XIAO:
                 case ER_LIAN_XIAO_BEN_MING:
                 case ER_LIAN_XIAO_FEI_BEN_MING:
 
-                    if (size == 1&& LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
+                    if (size == 1 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 2);
                     }
                     return 0;
@@ -4170,16 +4170,16 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SAN_LIAN_WEI:
                 case SAN_LIAN_WEI_0:
                 case SAN_LIAN_WEI_FEI_0:
-                    if (size == 1) {
+                    if (size == 1 && LotteryUtils.checkIsMark6WeiNumParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
 
-                    // 三连肖
+                // 三连肖
                 case SAN_LIAN_XIAO:
                 case SAN_LIAN_XIAO_BEN_MING:
                 case SAN_LIAN_XIAO_FEI_BEN_MING:
-                    if (size == 1&& LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
+                    if (size == 1 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 3);
                     }
                     return 0;
@@ -4189,11 +4189,17 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case SI_LIAN_WEI_0:
                 case SI_LIAN_WEI_FEI_0:
 
-                    // 四连肖
+                    if (size == 1 && LotteryUtils.checkIsMark6WeiNumParams(betNumbers)) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 4);
+                    }
+                    return 0;
+
+                // 四连肖
                 case SI_LIAN_XIAO:
                 case SI_LIAN_XIAO_BEN_MING:
                 case SI_LIAN_XIAO_FEI_BEN_MING:
-                    if (size == 1) {
+
+                    if (size == 1 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 4);
                     }
                     return 0;
@@ -4202,608 +4208,718 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case WU_LIAN_WEI:
                 case WU_LIAN_WEI_0:
                 case WU_LIAN_WEI_FEI_0:
-                    // 五连肖
+
+                    if (size == 1 && LotteryUtils.checkIsMark6WeiNumParams(betNumbers)) {
+                        return LotteryUtils.combination(betNumbers.get(0).size(), 5);
+                    }
+                    return 0;
+                // 五连肖
                 case WU_LIAN_XIAO:
                 case WU_LIAN_XIAO_BEN_MING:
                 case WU_LIAN_XIAO_FEI_BEN_MING:
-                    if (size == 1) {
+
+                    if (size == 1 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
                         return LotteryUtils.combination(betNumbers.get(0).size(), 5);
+                    }
+                    return 0;
+
+
+                case ZONG_DAN_XIAO:
+                case ZONG_SHUANG_XIAO:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1) {
+                        return 1;
                     }
                     return 0;
 
                 // 特码
                 case TE_MA_A_1:
-                case TE_MA_A_2:
-                case TE_MA_A_3:
-                case TE_MA_A_4:
-                case TE_MA_A_5:
-                case TE_MA_A_6:
-                case TE_MA_A_7:
-                case TE_MA_A_8:
-                case TE_MA_A_9:
-                case TE_MA_A_10:
-
-                case TE_MA_A_11:
-                case TE_MA_A_12:
-                case TE_MA_A_13:
-                case TE_MA_A_14:
-                case TE_MA_A_15:
-                case TE_MA_A_16:
-                case TE_MA_A_17:
-                case TE_MA_A_18:
-                case TE_MA_A_19:
-                case TE_MA_A_20:
-
-                case TE_MA_A_21:
-                case TE_MA_A_22:
-                case TE_MA_A_23:
-                case TE_MA_A_24:
-                case TE_MA_A_25:
-                case TE_MA_A_26:
-                case TE_MA_A_27:
-                case TE_MA_A_28:
-                case TE_MA_A_29:
-                case TE_MA_A_30:
-
-                case TE_MA_A_31:
-                case TE_MA_A_32:
-                case TE_MA_A_33:
-                case TE_MA_A_34:
-                case TE_MA_A_35:
-                case TE_MA_A_36:
-                case TE_MA_A_37:
-                case TE_MA_A_38:
-                case TE_MA_A_39:
-                case TE_MA_A_40:
-
-                case TE_MA_A_41:
-                case TE_MA_A_42:
-                case TE_MA_A_43:
-                case TE_MA_A_44:
-                case TE_MA_A_45:
-                case TE_MA_A_46:
-                case TE_MA_A_47:
-                case TE_MA_A_48:
-                case TE_MA_A_49:
-
                 case TE_MA_B_1:
-                case TE_MA_B_2:
-                case TE_MA_B_3:
-                case TE_MA_B_4:
-                case TE_MA_B_5:
-                case TE_MA_B_6:
-                case TE_MA_B_7:
-                case TE_MA_B_8:
-                case TE_MA_B_9:
-                case TE_MA_B_10:
-
-                case TE_MA_B_11:
-                case TE_MA_B_12:
-                case TE_MA_B_13:
-                case TE_MA_B_14:
-                case TE_MA_B_15:
-                case TE_MA_B_16:
-                case TE_MA_B_17:
-                case TE_MA_B_18:
-                case TE_MA_B_19:
-                case TE_MA_B_20:
-
-                case TE_MA_B_21:
-                case TE_MA_B_22:
-                case TE_MA_B_23:
-                case TE_MA_B_24:
-                case TE_MA_B_25:
-                case TE_MA_B_26:
-                case TE_MA_B_27:
-                case TE_MA_B_28:
-                case TE_MA_B_29:
-                case TE_MA_B_30:
-
-                case TE_MA_B_31:
-                case TE_MA_B_32:
-                case TE_MA_B_33:
-                case TE_MA_B_34:
-                case TE_MA_B_35:
-                case TE_MA_B_36:
-                case TE_MA_B_37:
-                case TE_MA_B_38:
-                case TE_MA_B_39:
-                case TE_MA_B_40:
-
-                case TE_MA_B_41:
-                case TE_MA_B_42:
-                case TE_MA_B_43:
-                case TE_MA_B_44:
-                case TE_MA_B_45:
-                case TE_MA_B_46:
-                case TE_MA_B_47:
-                case TE_MA_B_48:
-                case TE_MA_B_49:
-
                     // 正一特
                 case ZHENG_YI_TE_1:
-                case ZHENG_YI_TE_2:
-                case ZHENG_YI_TE_3:
-                case ZHENG_YI_TE_4:
-                case ZHENG_YI_TE_5:
-                case ZHENG_YI_TE_6:
-                case ZHENG_YI_TE_7:
-                case ZHENG_YI_TE_8:
-                case ZHENG_YI_TE_9:
-                case ZHENG_YI_TE_10:
-
-                case ZHENG_YI_TE_11:
-                case ZHENG_YI_TE_12:
-                case ZHENG_YI_TE_13:
-                case ZHENG_YI_TE_14:
-                case ZHENG_YI_TE_15:
-                case ZHENG_YI_TE_16:
-                case ZHENG_YI_TE_17:
-                case ZHENG_YI_TE_18:
-                case ZHENG_YI_TE_19:
-                case ZHENG_YI_TE_20:
-
-                case ZHENG_YI_TE_21:
-                case ZHENG_YI_TE_22:
-                case ZHENG_YI_TE_23:
-                case ZHENG_YI_TE_24:
-                case ZHENG_YI_TE_25:
-                case ZHENG_YI_TE_26:
-                case ZHENG_YI_TE_27:
-                case ZHENG_YI_TE_28:
-                case ZHENG_YI_TE_29:
-                case ZHENG_YI_TE_30:
-
-                case ZHENG_YI_TE_31:
-                case ZHENG_YI_TE_32:
-                case ZHENG_YI_TE_33:
-                case ZHENG_YI_TE_34:
-                case ZHENG_YI_TE_35:
-                case ZHENG_YI_TE_36:
-                case ZHENG_YI_TE_37:
-                case ZHENG_YI_TE_38:
-                case ZHENG_YI_TE_39:
-                case ZHENG_YI_TE_40:
-
-                case ZHENG_YI_TE_41:
-                case ZHENG_YI_TE_42:
-                case ZHENG_YI_TE_43:
-                case ZHENG_YI_TE_44:
-                case ZHENG_YI_TE_45:
-                case ZHENG_YI_TE_46:
-                case ZHENG_YI_TE_47:
-                case ZHENG_YI_TE_48:
-                case ZHENG_YI_TE_49:
-
                     // 正二特
                 case ZHENG_ER_TE_1:
-                case ZHENG_ER_TE_2:
-                case ZHENG_ER_TE_3:
-                case ZHENG_ER_TE_4:
-                case ZHENG_ER_TE_5:
-                case ZHENG_ER_TE_6:
-                case ZHENG_ER_TE_7:
-                case ZHENG_ER_TE_8:
-                case ZHENG_ER_TE_9:
-                case ZHENG_ER_TE_10:
-
-                case ZHENG_ER_TE_11:
-                case ZHENG_ER_TE_12:
-                case ZHENG_ER_TE_13:
-                case ZHENG_ER_TE_14:
-                case ZHENG_ER_TE_15:
-                case ZHENG_ER_TE_16:
-                case ZHENG_ER_TE_17:
-                case ZHENG_ER_TE_18:
-                case ZHENG_ER_TE_19:
-                case ZHENG_ER_TE_20:
-
-                case ZHENG_ER_TE_21:
-                case ZHENG_ER_TE_22:
-                case ZHENG_ER_TE_23:
-                case ZHENG_ER_TE_24:
-                case ZHENG_ER_TE_25:
-                case ZHENG_ER_TE_26:
-                case ZHENG_ER_TE_27:
-                case ZHENG_ER_TE_28:
-                case ZHENG_ER_TE_29:
-                case ZHENG_ER_TE_30:
-
-                case ZHENG_ER_TE_31:
-                case ZHENG_ER_TE_32:
-                case ZHENG_ER_TE_33:
-                case ZHENG_ER_TE_34:
-                case ZHENG_ER_TE_35:
-                case ZHENG_ER_TE_36:
-                case ZHENG_ER_TE_37:
-                case ZHENG_ER_TE_38:
-                case ZHENG_ER_TE_39:
-                case ZHENG_ER_TE_40:
-
-                case ZHENG_ER_TE_41:
-                case ZHENG_ER_TE_42:
-                case ZHENG_ER_TE_43:
-                case ZHENG_ER_TE_44:
-                case ZHENG_ER_TE_45:
-                case ZHENG_ER_TE_46:
-                case ZHENG_ER_TE_47:
-                case ZHENG_ER_TE_48:
-                case ZHENG_ER_TE_49:
-
                     // 正三特
                 case ZHENG_SAN_TE_1:
-                case ZHENG_SAN_TE_2:
-                case ZHENG_SAN_TE_3:
-                case ZHENG_SAN_TE_4:
-                case ZHENG_SAN_TE_5:
-                case ZHENG_SAN_TE_6:
-                case ZHENG_SAN_TE_7:
-                case ZHENG_SAN_TE_8:
-                case ZHENG_SAN_TE_9:
-                case ZHENG_SAN_TE_10:
-
-                case ZHENG_SAN_TE_11:
-                case ZHENG_SAN_TE_12:
-                case ZHENG_SAN_TE_13:
-                case ZHENG_SAN_TE_14:
-                case ZHENG_SAN_TE_15:
-                case ZHENG_SAN_TE_16:
-                case ZHENG_SAN_TE_17:
-                case ZHENG_SAN_TE_18:
-                case ZHENG_SAN_TE_19:
-                case ZHENG_SAN_TE_20:
-
-                case ZHENG_SAN_TE_21:
-                case ZHENG_SAN_TE_22:
-                case ZHENG_SAN_TE_23:
-                case ZHENG_SAN_TE_24:
-                case ZHENG_SAN_TE_25:
-                case ZHENG_SAN_TE_26:
-                case ZHENG_SAN_TE_27:
-                case ZHENG_SAN_TE_28:
-                case ZHENG_SAN_TE_29:
-                case ZHENG_SAN_TE_30:
-
-                case ZHENG_SAN_TE_31:
-                case ZHENG_SAN_TE_32:
-                case ZHENG_SAN_TE_33:
-                case ZHENG_SAN_TE_34:
-                case ZHENG_SAN_TE_35:
-                case ZHENG_SAN_TE_36:
-                case ZHENG_SAN_TE_37:
-                case ZHENG_SAN_TE_38:
-                case ZHENG_SAN_TE_39:
-                case ZHENG_SAN_TE_40:
-
-                case ZHENG_SAN_TE_41:
-                case ZHENG_SAN_TE_42:
-                case ZHENG_SAN_TE_43:
-                case ZHENG_SAN_TE_44:
-                case ZHENG_SAN_TE_45:
-                case ZHENG_SAN_TE_46:
-                case ZHENG_SAN_TE_47:
-                case ZHENG_SAN_TE_48:
-                case ZHENG_SAN_TE_49:
-
                     // 正四特
                 case ZHENG_SI_TE_1:
-                case ZHENG_SI_TE_2:
-                case ZHENG_SI_TE_3:
-                case ZHENG_SI_TE_4:
-                case ZHENG_SI_TE_5:
-                case ZHENG_SI_TE_6:
-                case ZHENG_SI_TE_7:
-                case ZHENG_SI_TE_8:
-                case ZHENG_SI_TE_9:
-                case ZHENG_SI_TE_10:
-
-                case ZHENG_SI_TE_11:
-                case ZHENG_SI_TE_12:
-                case ZHENG_SI_TE_13:
-                case ZHENG_SI_TE_14:
-                case ZHENG_SI_TE_15:
-                case ZHENG_SI_TE_16:
-                case ZHENG_SI_TE_17:
-                case ZHENG_SI_TE_18:
-                case ZHENG_SI_TE_19:
-                case ZHENG_SI_TE_20:
-
-                case ZHENG_SI_TE_21:
-                case ZHENG_SI_TE_22:
-                case ZHENG_SI_TE_23:
-                case ZHENG_SI_TE_24:
-                case ZHENG_SI_TE_25:
-                case ZHENG_SI_TE_26:
-                case ZHENG_SI_TE_27:
-                case ZHENG_SI_TE_28:
-                case ZHENG_SI_TE_29:
-                case ZHENG_SI_TE_30:
-
-                case ZHENG_SI_TE_31:
-                case ZHENG_SI_TE_32:
-                case ZHENG_SI_TE_33:
-                case ZHENG_SI_TE_34:
-                case ZHENG_SI_TE_35:
-                case ZHENG_SI_TE_36:
-                case ZHENG_SI_TE_37:
-                case ZHENG_SI_TE_38:
-                case ZHENG_SI_TE_39:
-                case ZHENG_SI_TE_40:
-
-                case ZHENG_SI_TE_41:
-                case ZHENG_SI_TE_42:
-                case ZHENG_SI_TE_43:
-                case ZHENG_SI_TE_44:
-                case ZHENG_SI_TE_45:
-                case ZHENG_SI_TE_46:
-                case ZHENG_SI_TE_47:
-                case ZHENG_SI_TE_48:
-                case ZHENG_SI_TE_49:
-
                     // 正五特
                 case ZHENG_WU_TE_1:
-                case ZHENG_WU_TE_2:
-                case ZHENG_WU_TE_3:
-                case ZHENG_WU_TE_4:
-                case ZHENG_WU_TE_5:
-                case ZHENG_WU_TE_6:
-                case ZHENG_WU_TE_7:
-                case ZHENG_WU_TE_8:
-                case ZHENG_WU_TE_9:
-                case ZHENG_WU_TE_10:
-
-                case ZHENG_WU_TE_11:
-                case ZHENG_WU_TE_12:
-                case ZHENG_WU_TE_13:
-                case ZHENG_WU_TE_14:
-                case ZHENG_WU_TE_15:
-                case ZHENG_WU_TE_16:
-                case ZHENG_WU_TE_17:
-                case ZHENG_WU_TE_18:
-                case ZHENG_WU_TE_19:
-                case ZHENG_WU_TE_20:
-
-                case ZHENG_WU_TE_21:
-                case ZHENG_WU_TE_22:
-                case ZHENG_WU_TE_23:
-                case ZHENG_WU_TE_24:
-                case ZHENG_WU_TE_25:
-                case ZHENG_WU_TE_26:
-                case ZHENG_WU_TE_27:
-                case ZHENG_WU_TE_28:
-                case ZHENG_WU_TE_29:
-                case ZHENG_WU_TE_30:
-
-                case ZHENG_WU_TE_31:
-                case ZHENG_WU_TE_32:
-                case ZHENG_WU_TE_33:
-                case ZHENG_WU_TE_34:
-                case ZHENG_WU_TE_35:
-                case ZHENG_WU_TE_36:
-                case ZHENG_WU_TE_37:
-                case ZHENG_WU_TE_38:
-                case ZHENG_WU_TE_39:
-                case ZHENG_WU_TE_40:
-
-                case ZHENG_WU_TE_41:
-                case ZHENG_WU_TE_42:
-                case ZHENG_WU_TE_43:
-                case ZHENG_WU_TE_44:
-                case ZHENG_WU_TE_45:
-                case ZHENG_WU_TE_46:
-                case ZHENG_WU_TE_47:
-                case ZHENG_WU_TE_48:
-                case ZHENG_WU_TE_49:
-
                     // 正六特
                 case ZHENG_LIU_TE_1:
-                case ZHENG_LIU_TE_2:
-                case ZHENG_LIU_TE_3:
-                case ZHENG_LIU_TE_4:
-                case ZHENG_LIU_TE_5:
-                case ZHENG_LIU_TE_6:
-                case ZHENG_LIU_TE_7:
-                case ZHENG_LIU_TE_8:
-                case ZHENG_LIU_TE_9:
-                case ZHENG_LIU_TE_10:
-
-                case ZHENG_LIU_TE_11:
-                case ZHENG_LIU_TE_12:
-                case ZHENG_LIU_TE_13:
-                case ZHENG_LIU_TE_14:
-                case ZHENG_LIU_TE_15:
-                case ZHENG_LIU_TE_16:
-                case ZHENG_LIU_TE_17:
-                case ZHENG_LIU_TE_18:
-                case ZHENG_LIU_TE_19:
-                case ZHENG_LIU_TE_20:
-
-                case ZHENG_LIU_TE_21:
-                case ZHENG_LIU_TE_22:
-                case ZHENG_LIU_TE_23:
-                case ZHENG_LIU_TE_24:
-                case ZHENG_LIU_TE_25:
-                case ZHENG_LIU_TE_26:
-                case ZHENG_LIU_TE_27:
-                case ZHENG_LIU_TE_28:
-                case ZHENG_LIU_TE_29:
-                case ZHENG_LIU_TE_30:
-
-                case ZHENG_LIU_TE_31:
-                case ZHENG_LIU_TE_32:
-                case ZHENG_LIU_TE_33:
-                case ZHENG_LIU_TE_34:
-                case ZHENG_LIU_TE_35:
-                case ZHENG_LIU_TE_36:
-                case ZHENG_LIU_TE_37:
-                case ZHENG_LIU_TE_38:
-                case ZHENG_LIU_TE_39:
-                case ZHENG_LIU_TE_40:
-
-                case ZHENG_LIU_TE_41:
-                case ZHENG_LIU_TE_42:
-                case ZHENG_LIU_TE_43:
-                case ZHENG_LIU_TE_44:
-                case ZHENG_LIU_TE_45:
-                case ZHENG_LIU_TE_46:
-                case ZHENG_LIU_TE_47:
-                case ZHENG_LIU_TE_48:
-                case ZHENG_LIU_TE_49:
-
                     // 正码
                 case ZHENG_MA_1:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("01")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_2:
+                case TE_MA_B_2:
+                case ZHENG_YI_TE_2:
+                case ZHENG_ER_TE_2:
+                case ZHENG_SAN_TE_2:
+                case ZHENG_SI_TE_2:
+                case ZHENG_WU_TE_2:
+                case ZHENG_LIU_TE_2:
                 case ZHENG_MA_2:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("02")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_3:
+                case TE_MA_B_3:
+                case ZHENG_YI_TE_3:
+                case ZHENG_ER_TE_3:
+                case ZHENG_SAN_TE_3:
+                case ZHENG_SI_TE_3:
+                case ZHENG_WU_TE_3:
+                case ZHENG_LIU_TE_3:
                 case ZHENG_MA_3:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("03")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_4:
+                case TE_MA_B_4:
+                case ZHENG_YI_TE_4:
+                case ZHENG_ER_TE_4:
+                case ZHENG_SAN_TE_4:
+                case ZHENG_SI_TE_4:
+                case ZHENG_WU_TE_4:
+                case ZHENG_LIU_TE_4:
                 case ZHENG_MA_4:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("04")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_5:
+                case TE_MA_B_5:
+                case ZHENG_YI_TE_5:
+                case ZHENG_ER_TE_5:
+                case ZHENG_SAN_TE_5:
+                case ZHENG_SI_TE_5:
+                case ZHENG_WU_TE_5:
+                case ZHENG_LIU_TE_5:
                 case ZHENG_MA_5:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("05")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_6:
+                case TE_MA_B_6:
+                case ZHENG_YI_TE_6:
+                case ZHENG_ER_TE_6:
+                case ZHENG_SAN_TE_6:
+                case ZHENG_SI_TE_6:
+                case ZHENG_WU_TE_6:
+                case ZHENG_LIU_TE_6:
                 case ZHENG_MA_6:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("06")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_7:
+                case TE_MA_B_7:
+                case ZHENG_YI_TE_7:
+                case ZHENG_ER_TE_7:
+                case ZHENG_SAN_TE_7:
+                case ZHENG_SI_TE_7:
+                case ZHENG_WU_TE_7:
+                case ZHENG_LIU_TE_7:
                 case ZHENG_MA_7:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("07")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_8:
+                case TE_MA_B_8:
+                case ZHENG_YI_TE_8:
+                case ZHENG_ER_TE_8:
+                case ZHENG_SAN_TE_8:
+                case ZHENG_SI_TE_8:
+                case ZHENG_WU_TE_8:
+                case ZHENG_LIU_TE_8:
                 case ZHENG_MA_8:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("08")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_9:
+                case TE_MA_B_9:
+                case ZHENG_YI_TE_9:
+                case ZHENG_ER_TE_9:
+                case ZHENG_SAN_TE_9:
+                case ZHENG_SI_TE_9:
+                case ZHENG_WU_TE_9:
+                case ZHENG_LIU_TE_9:
                 case ZHENG_MA_9:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("09")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_10:
+                case TE_MA_B_10:
+                case ZHENG_YI_TE_10:
+                case ZHENG_ER_TE_10:
+                case ZHENG_SAN_TE_10:
+                case ZHENG_SI_TE_10:
+                case ZHENG_WU_TE_10:
+                case ZHENG_LIU_TE_10:
                 case ZHENG_MA_10:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("10")) {
+                        return 1;
+                    }
+                    return 0;
 
+                case TE_MA_A_11:
+                case TE_MA_B_11:
+                case ZHENG_YI_TE_11:
+                case ZHENG_ER_TE_11:
+                case ZHENG_SAN_TE_11:
+                case ZHENG_SI_TE_11:
+                case ZHENG_WU_TE_11:
+                case ZHENG_LIU_TE_11:
                 case ZHENG_MA_11:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("11")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_12:
+                case TE_MA_B_12:
+                case ZHENG_YI_TE_12:
+                case ZHENG_ER_TE_12:
+                case ZHENG_SAN_TE_12:
+                case ZHENG_SI_TE_12:
+                case ZHENG_WU_TE_12:
+                case ZHENG_LIU_TE_12:
                 case ZHENG_MA_12:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("12")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_13:
+                case TE_MA_B_13:
+                case ZHENG_YI_TE_13:
+                case ZHENG_ER_TE_13:
+                case ZHENG_SAN_TE_13:
+                case ZHENG_SI_TE_13:
+                case ZHENG_WU_TE_13:
+                case ZHENG_LIU_TE_13:
                 case ZHENG_MA_13:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("13")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_14:
+                case TE_MA_B_14:
+                case ZHENG_YI_TE_14:
+                case ZHENG_ER_TE_14:
+                case ZHENG_SAN_TE_14:
+                case ZHENG_SI_TE_14:
+                case ZHENG_WU_TE_14:
+                case ZHENG_LIU_TE_14:
                 case ZHENG_MA_14:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("14")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_15:
+                case TE_MA_B_15:
+                case ZHENG_YI_TE_15:
+                case ZHENG_ER_TE_15:
+                case ZHENG_SAN_TE_15:
+                case ZHENG_SI_TE_15:
+                case ZHENG_WU_TE_15:
+                case ZHENG_LIU_TE_15:
                 case ZHENG_MA_15:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("15")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_16:
+                case TE_MA_B_16:
+                case ZHENG_YI_TE_16:
+                case ZHENG_ER_TE_16:
+                case ZHENG_SAN_TE_16:
+                case ZHENG_SI_TE_16:
+                case ZHENG_WU_TE_16:
+                case ZHENG_LIU_TE_16:
                 case ZHENG_MA_16:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("16")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_17:
+                case TE_MA_B_17:
+                case ZHENG_YI_TE_17:
+                case ZHENG_ER_TE_17:
+                case ZHENG_SAN_TE_17:
+                case ZHENG_SI_TE_17:
+                case ZHENG_WU_TE_17:
+                case ZHENG_LIU_TE_17:
                 case ZHENG_MA_17:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("17")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_18:
+                case TE_MA_B_18:
+                case ZHENG_YI_TE_18:
+                case ZHENG_ER_TE_18:
+                case ZHENG_SAN_TE_18:
+                case ZHENG_SI_TE_18:
+                case ZHENG_WU_TE_18:
+                case ZHENG_LIU_TE_18:
                 case ZHENG_MA_18:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("18")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_19:
+                case TE_MA_B_19:
+                case ZHENG_YI_TE_19:
+                case ZHENG_ER_TE_19:
+                case ZHENG_SAN_TE_19:
+                case ZHENG_SI_TE_19:
+                case ZHENG_WU_TE_19:
+                case ZHENG_LIU_TE_19:
                 case ZHENG_MA_19:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("19")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_20:
+                case TE_MA_B_20:
+                case ZHENG_YI_TE_20:
+                case ZHENG_ER_TE_20:
+                case ZHENG_SAN_TE_20:
+                case ZHENG_SI_TE_20:
+                case ZHENG_WU_TE_20:
+                case ZHENG_LIU_TE_20:
                 case ZHENG_MA_20:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("20")) {
+                        return 1;
+                    }
+                    return 0;
 
+                case TE_MA_A_21:
+                case TE_MA_B_21:
+                case ZHENG_YI_TE_21:
+                case ZHENG_ER_TE_21:
+                case ZHENG_SAN_TE_21:
+                case ZHENG_SI_TE_21:
+                case ZHENG_WU_TE_21:
+                case ZHENG_LIU_TE_21:
                 case ZHENG_MA_21:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("21")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_22:
+                case TE_MA_B_22:
+                case ZHENG_YI_TE_22:
+                case ZHENG_ER_TE_22:
+                case ZHENG_SAN_TE_22:
+                case ZHENG_SI_TE_22:
+                case ZHENG_WU_TE_22:
+                case ZHENG_LIU_TE_22:
                 case ZHENG_MA_22:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("22")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_23:
+                case TE_MA_B_23:
+                case ZHENG_YI_TE_23:
+                case ZHENG_ER_TE_23:
+                case ZHENG_SAN_TE_23:
+                case ZHENG_SI_TE_23:
+                case ZHENG_WU_TE_23:
+                case ZHENG_LIU_TE_23:
                 case ZHENG_MA_23:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("23")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_24:
+                case TE_MA_B_24:
+                case ZHENG_YI_TE_24:
+                case ZHENG_ER_TE_24:
+                case ZHENG_SAN_TE_24:
+                case ZHENG_SI_TE_24:
+                case ZHENG_WU_TE_24:
+                case ZHENG_LIU_TE_24:
                 case ZHENG_MA_24:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("24")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_25:
+                case TE_MA_B_25:
+                case ZHENG_YI_TE_25:
+                case ZHENG_ER_TE_25:
+                case ZHENG_SAN_TE_25:
+                case ZHENG_SI_TE_25:
+                case ZHENG_WU_TE_25:
+                case ZHENG_LIU_TE_25:
                 case ZHENG_MA_25:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("25")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_26:
+                case TE_MA_B_26:
+                case ZHENG_YI_TE_26:
+                case ZHENG_ER_TE_26:
+                case ZHENG_SAN_TE_26:
+                case ZHENG_SI_TE_26:
+                case ZHENG_WU_TE_26:
+                case ZHENG_LIU_TE_26:
                 case ZHENG_MA_26:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("26")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_27:
+                case TE_MA_B_27:
+                case ZHENG_YI_TE_27:
+                case ZHENG_ER_TE_27:
+                case ZHENG_SAN_TE_27:
+                case ZHENG_SI_TE_27:
+                case ZHENG_WU_TE_27:
+                case ZHENG_LIU_TE_27:
                 case ZHENG_MA_27:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("27")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_28:
+                case TE_MA_B_28:
+                case ZHENG_YI_TE_28:
+                case ZHENG_ER_TE_28:
+                case ZHENG_SAN_TE_28:
+                case ZHENG_SI_TE_28:
+                case ZHENG_WU_TE_28:
+                case ZHENG_LIU_TE_28:
                 case ZHENG_MA_28:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("28")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_29:
+                case TE_MA_B_29:
+                case ZHENG_YI_TE_29:
+                case ZHENG_ER_TE_29:
+                case ZHENG_SAN_TE_29:
+                case ZHENG_SI_TE_29:
+                case ZHENG_WU_TE_29:
+                case ZHENG_LIU_TE_29:
                 case ZHENG_MA_29:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("29")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_30:
+                case TE_MA_B_30:
+                case ZHENG_YI_TE_30:
+                case ZHENG_ER_TE_30:
+                case ZHENG_SAN_TE_30:
+                case ZHENG_SI_TE_30:
+                case ZHENG_WU_TE_30:
+                case ZHENG_LIU_TE_30:
                 case ZHENG_MA_30:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("30")) {
+                        return 1;
+                    }
+                    return 0;
 
+                case TE_MA_A_31:
+                case TE_MA_B_31:
+                case ZHENG_YI_TE_31:
+                case ZHENG_ER_TE_31:
+                case ZHENG_SAN_TE_31:
+                case ZHENG_SI_TE_31:
+                case ZHENG_WU_TE_31:
+                case ZHENG_LIU_TE_31:
                 case ZHENG_MA_31:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("31")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_32:
+                case TE_MA_B_32:
+                case ZHENG_YI_TE_32:
+                case ZHENG_ER_TE_32:
+                case ZHENG_SAN_TE_32:
+                case ZHENG_SI_TE_32:
+                case ZHENG_WU_TE_32:
+                case ZHENG_LIU_TE_32:
                 case ZHENG_MA_32:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("32")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_33:
+                case TE_MA_B_33:
+                case ZHENG_YI_TE_33:
+                case ZHENG_ER_TE_33:
+                case ZHENG_SAN_TE_33:
+                case ZHENG_SI_TE_33:
+                case ZHENG_WU_TE_33:
+                case ZHENG_LIU_TE_33:
                 case ZHENG_MA_33:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("33")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_34:
+                case TE_MA_B_34:
+                case ZHENG_YI_TE_34:
+                case ZHENG_ER_TE_34:
+                case ZHENG_SAN_TE_34:
+                case ZHENG_SI_TE_34:
+                case ZHENG_WU_TE_34:
+                case ZHENG_LIU_TE_34:
                 case ZHENG_MA_34:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("34")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_35:
+                case TE_MA_B_35:
+                case ZHENG_YI_TE_35:
+                case ZHENG_ER_TE_35:
+                case ZHENG_SAN_TE_35:
+                case ZHENG_SI_TE_35:
+                case ZHENG_WU_TE_35:
+                case ZHENG_LIU_TE_35:
                 case ZHENG_MA_35:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("35")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_36:
+                case TE_MA_B_36:
+                case ZHENG_YI_TE_36:
+                case ZHENG_ER_TE_36:
+                case ZHENG_SAN_TE_36:
+                case ZHENG_SI_TE_36:
+                case ZHENG_WU_TE_36:
+                case ZHENG_LIU_TE_36:
                 case ZHENG_MA_36:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("36")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_37:
+                case TE_MA_B_37:
+                case ZHENG_YI_TE_37:
+                case ZHENG_ER_TE_37:
+                case ZHENG_SAN_TE_37:
+                case ZHENG_SI_TE_37:
+                case ZHENG_WU_TE_37:
+                case ZHENG_LIU_TE_37:
                 case ZHENG_MA_37:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("37")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_38:
+                case TE_MA_B_38:
+                case ZHENG_YI_TE_38:
+                case ZHENG_ER_TE_38:
+                case ZHENG_SAN_TE_38:
+                case ZHENG_SI_TE_38:
+                case ZHENG_WU_TE_38:
+                case ZHENG_LIU_TE_38:
                 case ZHENG_MA_38:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("38")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_39:
+                case TE_MA_B_39:
+                case ZHENG_YI_TE_39:
+                case ZHENG_ER_TE_39:
+                case ZHENG_SAN_TE_39:
+                case ZHENG_SI_TE_39:
+                case ZHENG_WU_TE_39:
+                case ZHENG_LIU_TE_39:
                 case ZHENG_MA_39:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("39")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_A_40:
+                case TE_MA_B_40:
+                case ZHENG_YI_TE_40:
+                case ZHENG_ER_TE_40:
+                case ZHENG_SAN_TE_40:
+                case ZHENG_SI_TE_40:
+                case ZHENG_WU_TE_40:
+                case ZHENG_LIU_TE_40:
                 case ZHENG_MA_40:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("40")) {
+                        return 1;
+                    }
+                    return 0;
 
+                case TE_MA_A_41:
+                case TE_MA_B_41:
+                case ZHENG_YI_TE_41:
+                case ZHENG_ER_TE_41:
+                case ZHENG_SAN_TE_41:
+                case ZHENG_SI_TE_41:
+                case ZHENG_WU_TE_41:
+                case ZHENG_LIU_TE_41:
                 case ZHENG_MA_41:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("41")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_42:
+                case TE_MA_B_42:
+                case ZHENG_YI_TE_42:
+                case ZHENG_ER_TE_42:
+                case ZHENG_SAN_TE_42:
+                case ZHENG_SI_TE_42:
+                case ZHENG_WU_TE_42:
+                case ZHENG_LIU_TE_42:
                 case ZHENG_MA_42:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("42")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_43:
+                case TE_MA_B_43:
+                case ZHENG_YI_TE_43:
+                case ZHENG_ER_TE_43:
+                case ZHENG_SAN_TE_43:
+                case ZHENG_SI_TE_43:
+                case ZHENG_WU_TE_43:
+                case ZHENG_LIU_TE_43:
                 case ZHENG_MA_43:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("43")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_44:
+                case TE_MA_B_44:
+                case ZHENG_YI_TE_44:
+                case ZHENG_ER_TE_44:
+                case ZHENG_SAN_TE_44:
+                case ZHENG_SI_TE_44:
+                case ZHENG_WU_TE_44:
+                case ZHENG_LIU_TE_44:
                 case ZHENG_MA_44:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("44")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_45:
+                case TE_MA_B_45:
+                case ZHENG_YI_TE_45:
+                case ZHENG_ER_TE_45:
+                case ZHENG_SAN_TE_45:
+                case ZHENG_SI_TE_45:
+                case ZHENG_WU_TE_45:
+                case ZHENG_LIU_TE_45:
                 case ZHENG_MA_45:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("45")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_46:
+                case TE_MA_B_46:
+                case ZHENG_YI_TE_46:
+                case ZHENG_ER_TE_46:
+                case ZHENG_SAN_TE_46:
+                case ZHENG_SI_TE_46:
+                case ZHENG_WU_TE_46:
+                case ZHENG_LIU_TE_46:
                 case ZHENG_MA_46:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("46")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_47:
+                case TE_MA_B_47:
+                case ZHENG_YI_TE_47:
+                case ZHENG_ER_TE_47:
+                case ZHENG_SAN_TE_47:
+                case ZHENG_SI_TE_47:
+                case ZHENG_WU_TE_47:
+                case ZHENG_LIU_TE_47:
                 case ZHENG_MA_47:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("47")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_48:
+                case TE_MA_B_48:
+                case ZHENG_YI_TE_48:
+                case ZHENG_ER_TE_48:
+                case ZHENG_SAN_TE_48:
+                case ZHENG_SI_TE_48:
+                case ZHENG_WU_TE_48:
+                case ZHENG_LIU_TE_48:
                 case ZHENG_MA_48:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("48")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_A_49:
+                case TE_MA_B_49:
+                case ZHENG_YI_TE_49:
+                case ZHENG_ER_TE_49:
+                case ZHENG_SAN_TE_49:
+                case ZHENG_SI_TE_49:
+                case ZHENG_WU_TE_49:
+                case ZHENG_LIU_TE_49:
                 case ZHENG_MA_49:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("49")) {
+                        return 1;
+                    }
+                    return 0;
 
-                case TE_MA_DA:
-                case ZHENG_YI_MA_DA:
-                case ZHENG_ER_MA_DA:
-                case ZHENG_SAN_MA_DA:
-                case ZHENG_SI_MA_DA:
-                case ZHENG_WU_MA_DA:
-                case ZHENG_LIU_MA_DA:
 
-                case TE_MA_A_DA:
-                case TE_MA_B_DA:
-                case ZHENG_YI_LIANG_MIAN_DA:
-                case ZHENG_ER_LIANG_MIAN_DA:
-                case ZHENG_SAN_LIANG_MIAN_DA:
-                case ZHENG_SI_LIANG_MIAN_DA:
-                case ZHENG_WU_LIANG_MIAN_DA:
-                case ZHENG_LIU_LIANG_MIAN_DA:
-
-                case TE_MA_XIAO:
-                case ZHENG_YI_MA_XIAO:
-                case ZHENG_ER_MA_XIAO:
-                case ZHENG_SAN_MA_XIAO:
-                case ZHENG_SI_MA_XIAO:
-                case ZHENG_WU_MA_XIAO:
-                case ZHENG_LIU_MA_XIAO:
-
-                case TE_MA_A_XIAO:
-                case TE_MA_B_XIAO:
-                case ZHENG_YI_LIANG_MIAN_XIAO:
-                case ZHENG_ER_LIANG_MIAN_XIAO:
-                case ZHENG_SAN_LIANG_MIAN_XIAO:
-                case ZHENG_SI_LIANG_MIAN_XIAO:
-                case ZHENG_WU_LIANG_MIAN_XIAO:
-                case ZHENG_LIU_LIANG_MIAN_XIAO:
-
-                case TE_MA_DAN:
-                case ZHENG_YI_MA_DAN:
-                case ZHENG_ER_MA_DAN:
-                case ZHENG_SAN_MA_DAN:
-                case ZHENG_SI_MA_DAN:
-                case ZHENG_WU_MA_DAN:
-                case ZHENG_LIU_MA_DAN:
-
-                case TE_MA_A_DAN:
-                case TE_MA_B_DAN:
-                case ZHENG_YI_LIANG_MIAN_DAN:
-                case ZHENG_ER_LIANG_MIAN_DAN:
-                case ZHENG_SAN_LIANG_MIAN_DAN:
-                case ZHENG_SI_LIANG_MIAN_DAN:
-                case ZHENG_WU_LIANG_MIAN_DAN:
-                case ZHENG_LIU_LIANG_MIAN_DAN:
-
-                case TE_MA_SHUANG:
-                case ZHENG_YI_MA_SHUANG:
-                case ZHENG_ER_MA_SHUANG:
-                case ZHENG_SAN_MA_SHUANG:
-                case ZHENG_SI_MA_SHUANG:
-                case ZHENG_WU_MA_SHUANG:
-                case ZHENG_LIU_MA_SHUANG:
-
-                case TE_MA_A_SHUANG:
-                case TE_MA_B_SHUANG:
-                case ZHENG_YI_LIANG_MIAN_SHUANG:
-                case ZHENG_ER_LIANG_MIAN_SHUANG:
-                case ZHENG_SAN_LIANG_MIAN_SHUANG:
-                case ZHENG_SI_LIANG_MIAN_SHUANG:
-                case ZHENG_WU_LIANG_MIAN_SHUANG:
-                case ZHENG_LIU_LIANG_MIAN_SHUANG:
-
-                case TE_MA_WEI_DA:
-                case ZHENG_YI_WEI_DA:
-                case ZHENG_ER_WEI_DA:
-                case ZHENG_SAN_WEI_DA:
-                case ZHENG_SI_WEI_DA:
-                case ZHENG_WU_WEI_DA:
-                case ZHENG_LIU_WEI_DA:
-
-                    // 正码尾大 跟上面一样
-                case ZHENG_YI_LIANG_MIAN_WEI_DA:
-                case ZHENG_ER_LIANG_MIAN_WEI_DA:
-                case ZHENG_SAN_LIANG_MIAN_WEI_DA:
-                case ZHENG_SI_LIANG_MIAN_WEI_DA:
-                case ZHENG_WU_LIANG_MIAN_WEI_DA:
-                case ZHENG_LIU_LIANG_MIAN_WEI_DA:
-
-                case TE_MA_WEI_XIAO:
-                case ZHENG_YI_WEI_XIAO:
-                case ZHENG_ER_WEI_XIAO:
-                case ZHENG_SAN_WEI_XIAO:
-                case ZHENG_SI_WEI_XIAO:
-                case ZHENG_WU_WEI_XIAO:
-                case ZHENG_LIU_WEI_XIAO:
-
-                    // 正码尾小 跟上面一样
-                case ZHENG_YI_LIANG_MIAN_WEI_XIAO:
-                case ZHENG_ER_LIANG_MIAN_WEI_XIAO:
-                case ZHENG_SAN_LIANG_MIAN_WEI_XIAO:
-                case ZHENG_SI_LIANG_MIAN_WEI_XIAO:
-                case ZHENG_WU_LIANG_MIAN_WEI_XIAO:
-                case ZHENG_LIU_LIANG_MIAN_WEI_XIAO:
+                case ZONG_HE_DA:
+                case ZHENG_MA_ZONG_DA:
 
                     // 两面
                 case TE_MA_HE_DA:
@@ -4822,6 +4938,47 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_WU_LIANG_MIAN_HE_DA:
                 case ZHENG_LIU_LIANG_MIAN_HE_DA:
 
+                case TE_MA_WEI_DA:
+                case ZHENG_YI_WEI_DA:
+                case ZHENG_ER_WEI_DA:
+                case ZHENG_SAN_WEI_DA:
+                case ZHENG_SI_WEI_DA:
+                case ZHENG_WU_WEI_DA:
+                case ZHENG_LIU_WEI_DA:
+
+                    // 正码尾大 跟上面一样
+                case ZHENG_YI_LIANG_MIAN_WEI_DA:
+                case ZHENG_ER_LIANG_MIAN_WEI_DA:
+                case ZHENG_SAN_LIANG_MIAN_WEI_DA:
+                case ZHENG_SI_LIANG_MIAN_WEI_DA:
+                case ZHENG_WU_LIANG_MIAN_WEI_DA:
+                case ZHENG_LIU_LIANG_MIAN_WEI_DA:
+
+                case TE_MA_DA:
+                case ZHENG_YI_MA_DA:
+                case ZHENG_ER_MA_DA:
+                case ZHENG_SAN_MA_DA:
+                case ZHENG_SI_MA_DA:
+                case ZHENG_WU_MA_DA:
+                case ZHENG_LIU_MA_DA:
+
+                case TE_MA_A_DA:
+                case TE_MA_B_DA:
+                case ZHENG_YI_LIANG_MIAN_DA:
+                case ZHENG_ER_LIANG_MIAN_DA:
+                case ZHENG_SAN_LIANG_MIAN_DA:
+                case ZHENG_SI_LIANG_MIAN_DA:
+                case ZHENG_WU_LIANG_MIAN_DA:
+                case ZHENG_LIU_LIANG_MIAN_DA:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("大")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case ZONG_HE_XIAO:
+                case ZHENG_MA_ZONG_XIAO:
+
                 case TE_MA_HE_XIAO:
                 case ZHENG_YI_HE_XIAO:
                 case ZHENG_ER_HE_XIAO:
@@ -4837,6 +4994,47 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_SI_LIANG_MIAN_HE_XIAO:
                 case ZHENG_WU_LIANG_MIAN_HE_XIAO:
                 case ZHENG_LIU_LIANG_MIAN_HE_XIAO:
+
+                case TE_MA_WEI_XIAO:
+                case ZHENG_YI_WEI_XIAO:
+                case ZHENG_ER_WEI_XIAO:
+                case ZHENG_SAN_WEI_XIAO:
+                case ZHENG_SI_WEI_XIAO:
+                case ZHENG_WU_WEI_XIAO:
+                case ZHENG_LIU_WEI_XIAO:
+
+                    // 正码尾小 跟上面一样
+                case ZHENG_YI_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_ER_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_SI_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_WU_LIANG_MIAN_WEI_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_WEI_XIAO:
+
+                case TE_MA_XIAO:
+                case ZHENG_YI_MA_XIAO:
+                case ZHENG_ER_MA_XIAO:
+                case ZHENG_SAN_MA_XIAO:
+                case ZHENG_SI_MA_XIAO:
+                case ZHENG_WU_MA_XIAO:
+                case ZHENG_LIU_MA_XIAO:
+
+                case TE_MA_A_XIAO:
+                case TE_MA_B_XIAO:
+                case ZHENG_YI_LIANG_MIAN_XIAO:
+                case ZHENG_ER_LIANG_MIAN_XIAO:
+                case ZHENG_SAN_LIANG_MIAN_XIAO:
+                case ZHENG_SI_LIANG_MIAN_XIAO:
+                case ZHENG_WU_LIANG_MIAN_XIAO:
+                case ZHENG_LIU_LIANG_MIAN_XIAO:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("小")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case ZONG_HE_DAN:
+                case ZHENG_MA_ZONG_DAN:
 
                 case TE_MA_HE_DAN:
                 case ZHENG_YI_HE_DAN:
@@ -4854,6 +5052,31 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_WU_LIANG_MIAN_HE_DAN:
                 case ZHENG_LIU_LIANG_MIAN_HE_DAN:
 
+                case TE_MA_DAN:
+                case ZHENG_YI_MA_DAN:
+                case ZHENG_ER_MA_DAN:
+                case ZHENG_SAN_MA_DAN:
+                case ZHENG_SI_MA_DAN:
+                case ZHENG_WU_MA_DAN:
+                case ZHENG_LIU_MA_DAN:
+
+                case TE_MA_A_DAN:
+                case TE_MA_B_DAN:
+                case ZHENG_YI_LIANG_MIAN_DAN:
+                case ZHENG_ER_LIANG_MIAN_DAN:
+                case ZHENG_SAN_LIANG_MIAN_DAN:
+                case ZHENG_SI_LIANG_MIAN_DAN:
+                case ZHENG_WU_LIANG_MIAN_DAN:
+                case ZHENG_LIU_LIANG_MIAN_DAN:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("单")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case ZONG_HE_SHUANG:
+                case ZHENG_MA_ZONG_SHUANG:
+
                 case TE_MA_HE_SHUANG:
                 case ZHENG_YI_HE_SHUANG:
                 case ZHENG_ER_HE_SHUANG:
@@ -4870,19 +5093,30 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_WU_LIANG_MIAN_HE_SHUANG:
                 case ZHENG_LIU_LIANG_MIAN_HE_SHUANG:
 
-                case ZONG_HE_DA:
-                case ZHENG_MA_ZONG_DA:
+                case TE_MA_SHUANG:
+                case ZHENG_YI_MA_SHUANG:
+                case ZHENG_ER_MA_SHUANG:
+                case ZHENG_SAN_MA_SHUANG:
+                case ZHENG_SI_MA_SHUANG:
+                case ZHENG_WU_MA_SHUANG:
+                case ZHENG_LIU_MA_SHUANG:
 
-                case ZONG_HE_XIAO:
-                case ZHENG_MA_ZONG_XIAO:
+                case TE_MA_A_SHUANG:
+                case TE_MA_B_SHUANG:
+                case ZHENG_YI_LIANG_MIAN_SHUANG:
+                case ZHENG_ER_LIANG_MIAN_SHUANG:
+                case ZHENG_SAN_LIANG_MIAN_SHUANG:
+                case ZHENG_SI_LIANG_MIAN_SHUANG:
+                case ZHENG_WU_LIANG_MIAN_SHUANG:
+                case ZHENG_LIU_LIANG_MIAN_SHUANG:
 
-                case ZONG_HE_DAN:
-                case ZHENG_MA_ZONG_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("双")) {
+                        return 1;
+                    }
+                    return 0;
 
-                case ZONG_HE_SHUANG:
-                case ZHENG_MA_ZONG_SHUANG:
 
-                    // 色波
+                // 色波
                 case TE_MA_HONG_BO:
                 case ZHENG_YI_HONG:
                 case ZHENG_ER_HONG:
@@ -4899,6 +5133,10 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_SI_LIANG_MIAN_HONG:
                 case ZHENG_WU_LIANG_MIAN_HONG:
                 case ZHENG_LIU_LIANG_MIAN_HONG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红")) {
+                        return 1;
+                    }
+                    return 0;
 
                 case TE_MA_LAN_BO:
                 case ZHENG_YI_LAN:
@@ -4916,6 +5154,10 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_SI_LIANG_MIAN_LAN:
                 case ZHENG_WU_LIANG_MIAN_LAN:
                 case ZHENG_LIU_LIANG_MIAN_LAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝")) {
+                        return 1;
+                    }
+                    return 0;
 
                 case TE_MA_LV_BO:
                 case ZHENG_YI_LV:
@@ -4933,109 +5175,373 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 case ZHENG_SI_LIANG_MIAN_LV:
                 case ZHENG_WU_LIANG_MIAN_LV:
                 case ZHENG_LIU_LIANG_MIAN_LV:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿")) {
+                        return 1;
+                    }
+                    return 0;
 
-                    // 特肖
-                case TE_XIAO_SHU:
-                case TE_XIAO_NIU:
-                case TE_XIAO_HU:
-                case TE_XIAO_TU:
-                case TE_XIAO_LONG:
-                case TE_XIAO_SHE:
-                case TE_XIAO_MA:
-                case TE_XIAO_YANG:
-                case TE_XIAO_HOU:
-                case TE_XIAO_JI:
-                case TE_XIAO_GOU:
-                case TE_XIAO_ZHU:
-
-                    // 正肖
+                // 正肖
                 case ZHENG_XIAO:
-                case ZHENG_XIAO_SHU:
-                case ZHENG_XIAO_NIU:
-                case ZHENG_XIAO_HU:
-                case ZHENG_XIAO_TU:
-                case ZHENG_XIAO_LONG:
-                case ZHENG_XIAO_SHE:
-                case ZHENG_XIAO_MA:
-                case ZHENG_XIAO_YANG:
-                case ZHENG_XIAO_HOU:
-                case ZHENG_XIAO_JI:
-                case ZHENG_XIAO_GOU:
-                case ZHENG_XIAO_ZHU:
-
+                    if (size == 1 && betNumbers.get(0).size() == 1 && LotteryUtils.checkIsMark6ShengxiaoParams(betNumbers)) {
+                        return 1;
+                    }
+                    return 0;
+                // 特肖
+                case TE_XIAO_SHU:
                     // 平特一肖
                 case PING_TE_YI_XIAO_SHU:
+                case ZHENG_XIAO_SHU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("鼠")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_XIAO_NIU:
+                case ZHENG_XIAO_NIU:
                 case PING_TE_YI_XIAO_NIU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("牛")) {
+                        return 1;
+                    }
+                    return 0;
                 case PING_TE_YI_XIAO_HU:
-                case PING_TE_YI_XIAO_TU:
-                case PING_TE_YI_XIAO_LONG:
-                case PING_TE_YI_XIAO_SHE:
-                case PING_TE_YI_XIAO_MA:
-                case PING_TE_YI_XIAO_YANG:
-                case PING_TE_YI_XIAO_HOU:
-                case PING_TE_YI_XIAO_JI:
-                case PING_TE_YI_XIAO_GOU:
-                case PING_TE_YI_XIAO_ZHU:
+                case TE_XIAO_HU:
+                case ZHENG_XIAO_HU:
 
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("虎")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_TU:
+                case TE_XIAO_TU:
+                case ZHENG_XIAO_TU:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("兔")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_LONG:
+                case TE_XIAO_LONG:
+                case ZHENG_XIAO_LONG:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("龙")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_SHE:
+                case TE_XIAO_SHE:
+                case ZHENG_XIAO_SHE:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蛇")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_MA:
+                case TE_XIAO_MA:
+                case ZHENG_XIAO_MA:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("马")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_YANG:
+                case TE_XIAO_YANG:
+                case ZHENG_XIAO_YANG:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("羊")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_HOU:
+                case TE_XIAO_HOU:
+                case ZHENG_XIAO_HOU:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("猴")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_JI:
+                case TE_XIAO_JI:
+                case ZHENG_XIAO_JI:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("鸡")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_GOU:
+                case TE_XIAO_GOU:
+                case ZHENG_XIAO_GOU:
+
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("狗")) {
+                        return 1;
+                    }
+                    return 0;
+                case PING_TE_YI_XIAO_ZHU:
+                case TE_XIAO_ZHU:
+                case ZHENG_XIAO_ZHU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("猪")) {
+                        return 1;
+                    }
+                    return 0;
+
+
+                //五行
+                case WU_XING_JIN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("金")) {
+                        return 1;
+                    }
+                    return 0;
+                case WU_XING_MU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("木")) {
+                        return 1;
+                    }
+                    return 0;
+                case WU_XING_SHUI:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("水")) {
+                        return 1;
+                    }
+                    return 0;
+                case WU_XING_HUO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("火")) {
+                        return 1;
+                    }
+                    return 0;
+                case WU_XING_TU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("土")) {
+                        return 1;
+                    }
+                    return 0;
+
+                //　七色波红波
+                case QI_SE_HONG_BO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红")) {
+                        return 1;
+                    }
+                    return 0;
+                //七色波绿波
+                case QI_SE_LV_BO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿")) {
+                        return 1;
+                    }
+                    return 0;
+                //七色波蓝波
+                case QI_SE_LAN_BO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝")) {
+                        return 1;
+                    }
+                    return 0;
+                //七色波和局
+                case QI_SE_HE_JU:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("和")) {
+                        return 1;
+                    }
+                    return 0;
+
+                // 特码尾数
+                case TE_MA_WEI_0:
                     // 平特尾数
                 case PING_TE_WEI_SHU_0:
-                case PING_TE_WEI_SHU_1:
-                case PING_TE_WEI_SHU_2:
-                case PING_TE_WEI_SHU_3:
-                case PING_TE_WEI_SHU_4:
-                case PING_TE_WEI_SHU_5:
-                case PING_TE_WEI_SHU_6:
-                case PING_TE_WEI_SHU_7:
-                case PING_TE_WEI_SHU_8:
-                case PING_TE_WEI_SHU_9:
-
-                    //五行
-                case WU_XING_JIN:
-                case WU_XING_MU:
-                case WU_XING_SHUI:
-                case WU_XING_HUO:
-                case WU_XING_TU:
-
                     // 特码头数
                 case TE_MA_TOU_0:
-                case TE_MA_TOU_1:
-                case TE_MA_TOU_2:
-                case TE_MA_TOU_3:
-                case TE_MA_TOU_4:
-
-                    // 特码尾数
-                case TE_MA_WEI_0:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("0")) {
+                        return 1;
+                    }
+                    return 0;
                 case TE_MA_WEI_1:
+                case PING_TE_WEI_SHU_1:
+                case TE_MA_TOU_1:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("1")) {
+                        return 1;
+                    }
+                    return 0;
+
                 case TE_MA_WEI_2:
-                case TE_MA_WEI_3:
-                case TE_MA_WEI_4:
-                case TE_MA_WEI_5:
-                case TE_MA_WEI_6:
-                case TE_MA_WEI_7:
-                case TE_MA_WEI_8:
-                case TE_MA_WEI_9:
-
-                    //　七色波红波
-                case QI_SE_HONG_BO:
-                    //七色波绿波
-                case QI_SE_LV_BO:
-                    //七色波蓝波
-                case QI_SE_LAN_BO:
-                    //七色波和局
-                case QI_SE_HE_JU:
-
+                case PING_TE_WEI_SHU_2:
+                case TE_MA_TOU_2:
                     // 总肖
                 case ZONG_ER_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("2")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_3:
+                case PING_TE_WEI_SHU_3:
+                case TE_MA_TOU_3:
                 case ZONG_SAN_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("3")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_4:
+                case PING_TE_WEI_SHU_4:
+                case TE_MA_TOU_4:
                 case ZONG_SI_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("4")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_5:
+                case PING_TE_WEI_SHU_5:
                 case ZONG_WU_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("5")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_6:
+                case PING_TE_WEI_SHU_6:
                 case ZONG_LIU_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("6")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_7:
+                case PING_TE_WEI_SHU_7:
                 case ZONG_QI_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("7")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_8:
+                case PING_TE_WEI_SHU_8:
 
-                case ZONG_DAN_XIAO:
-                case ZONG_SHUANG_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("8")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_WEI_9:
+                case PING_TE_WEI_SHU_9:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("9")) {
+                        return 1;
+                    }
+                    return 0;
 
-                    if (size == 1 && betNumbers.get(0).size() == 1) {
+                // 天地前后家野肖
+                case TE_QIAN_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("前肖")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_HOU_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("后肖")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_TIAN_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("天肖")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_DI_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("地肖")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_JIA_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("家肖")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_YE_XIAO:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("野肖")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_DA_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("大双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_XIAO_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("小双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_DA_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("大单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_XIAO_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("小单")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_LV_DA:
+                case TE_MA_LV_XIAO:
+                case TE_MA_LV_DAN:
+                case TE_MA_LV_SHUANG:
+                case TE_MA_HONG_DA:
+                case TE_MA_HONG_XIAO:
+                case TE_MA_HONG_DAN:
+                case TE_MA_HONG_SHUANG:
+                case TE_MA_LAN_DA:
+                case TE_MA_LAN_XIAO:
+                case TE_MA_LAN_DAN:
+                case TE_MA_LAN_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && LotteryUtils.checkIsMark6BigOrColorParams(betNumbers)) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_HONG_DA_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红大单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_HONG_DA_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红大双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_HONG_XIAO_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红小单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_HONG_XIAO_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("红小双")) {
+                        return 1;
+                    }
+                    return 0;
+
+                case TE_MA_LAN_DA_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝大单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LAN_DA_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝大双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LAN_XIAO_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝小单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LAN_XIAO_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("蓝小双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LV_DA_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿大单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LV_DA_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿大双")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LV_XIAO_DAN:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿小单")) {
+                        return 1;
+                    }
+                    return 0;
+                case TE_MA_LV_XIAO_SHUANG:
+                    if (size == 1 && betNumbers.get(0).size() == 1 && betNumbers.get(0).contains("绿小双")) {
                         return 1;
                     }
                     return 0;

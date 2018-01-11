@@ -957,17 +957,23 @@ public class LotteryDrawServiceImplTest {
                         }
                         break;*/
 
-                    case ER_LIAN_WEI:
-                    case ER_LIAN_WEI_0:
-                    case ER_LIAN_WEI_FEI_0:
+                    case PING_TE_WEI_SHU_0:
+                    case PING_TE_WEI_SHU_1:
+                    case PING_TE_WEI_SHU_2:
+                    case PING_TE_WEI_SHU_3:
+                    case PING_TE_WEI_SHU_4:
+                    case PING_TE_WEI_SHU_5:
+                    case PING_TE_WEI_SHU_6:
+                    case PING_TE_WEI_SHU_7:
+                    case PING_TE_WEI_SHU_8:
+                    case PING_TE_WEI_SHU_9:
+
                         System.out.println("**********************" + lotteryMark6DoubleType + "*************************");
-                        System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value());
-                        List<List<String>> betNumberList = new ArrayList<>();
-                        List<String> singleList = new ArrayList<>();
-                        singleList.add("2");
-                        singleList.add("1");
+                        List<List<String>> betNumberList = lotteryOrderTest.getBetNumbersByType(10, lotteryMark6DoubleType.value());
+                        System.out.println(lotteryMark6DoubleType.desc() + " --> " + lotteryMark6DoubleType.value() + "下注号码-->" + betNumberList);
+                        /*List<String> singleList = new ArrayList<>();
                         betNumberList.add(singleList);
-                        System.out.println(betNumberList);
+                        System.out.println(betNumberList);*/
                         UserOrderPO userOrder = new UserOrderPO(betNumberList);
                         userOrder.setLotteryId(10L);
                         userOrder.setPlayId(lotteryMark6DoubleType.value());
