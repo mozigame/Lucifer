@@ -985,7 +985,6 @@ public class LotteryMark6Draw {
                     continue;
 
                 case ZONG_HE_DA:
-                case ZHENG_MA_ZONG_DA:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
                         List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
@@ -997,10 +996,31 @@ public class LotteryMark6Draw {
                     continue;
 
                 case ZONG_HE_XIAO:
-                case ZHENG_MA_ZONG_XIAO:
                     if (betNumbers.size() == 1) {
                         //获取中奖号的大小单双
                         List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 349);
+                        if (firstBetList.contains("小")) {
+                            firstPrizeNum++;
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
+
+                case ZHENG_MA_ZONG_DA:
+                    if (betNumbers.size() == 1) {
+                        //获取中奖号的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 299);
+                        if (firstBetList.contains("大")) {
+                            firstPrizeNum++;
+                        }
+                    }
+                    lotteryOrder.setFirstPrizeNum(firstPrizeNum);
+                    continue;
+
+                case ZHENG_MA_ZONG_XIAO:
+                    if (betNumbers.size() == 1) {
+                        //获取中奖号的大小单双
+                        List<String> firstBetList = LotteryUtils.getDaxiaodanshuangList(LotteryUtils.getStrSum(kjList), 299);
                         if (firstBetList.contains("小")) {
                             firstPrizeNum++;
                         }
@@ -2646,6 +2666,11 @@ public class LotteryMark6Draw {
                 case ZHENG_XIAO_GOU:
                 case ZHENG_XIAO_ZHU:
 
+                case ZHENG_MA_ZONG_DA:
+                case ZHENG_MA_ZONG_XIAO:
+                case ZHENG_MA_ZONG_DAN:
+                case ZHENG_MA_ZONG_SHUANG:
+
                     resultList.addAll(kjList);
                     resultList.remove(6);
                     break;
@@ -2732,6 +2757,7 @@ public class LotteryMark6Draw {
                 case ZHENG_YI_LIANG_MIAN_HE_SHUANG:
                 case ZHENG_YI_LIANG_MIAN_WEI_DA:
                 case ZHENG_YI_LIANG_MIAN_WEI_XIAO:
+
                     resultList.add(kjList.get(0));
                     break;
 
@@ -3199,10 +3225,6 @@ public class LotteryMark6Draw {
                 case ZONG_HE_XIAO:
                 case ZONG_HE_DAN:
                 case ZONG_HE_SHUANG:
-                case ZHENG_MA_ZONG_DA:
-                case ZHENG_MA_ZONG_XIAO:
-                case ZHENG_MA_ZONG_DAN:
-                case ZHENG_MA_ZONG_SHUANG:
 
                 case QI_SE_HE_JU:
                 case QI_SE_LAN_BO:
