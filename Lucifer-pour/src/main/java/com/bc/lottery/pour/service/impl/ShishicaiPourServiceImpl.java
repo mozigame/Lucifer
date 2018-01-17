@@ -47,9 +47,9 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLotteryKuai3BetCount(playId, betNumbers);
         } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22 || lotteryId == 106) {
             return getLotteryKuai3DoubleBetCount(playId, betNumbers);
-        } else if (lotteryId == 7) {
+        } else if (lotteryId == 7 || lotteryId == 23) {
             return getLotteryPK10BetCount(playId, betNumbers);
-        } else if (lotteryId == 8 || lotteryId == 108) {
+        } else if (lotteryId == 8 || lotteryId == 24 || lotteryId == 108) {
             if (betNumbers.get(0).size() != 1) {
                 return 0;
             }
@@ -77,7 +77,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return get11x5DoubleNumbers(playId);
         } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22) {
             return getKuai3DoubleNumbers(playId);
-        } else if (lotteryId == 8) {
+        } else if (lotteryId == 8 || lotteryId == 24 || lotteryId == 108) {
             return getPK10DoubleNumbers(playId);
         } else if (lotteryId == 10) {
             return getMark6DoubleNumbers(playId);
@@ -3056,7 +3056,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLottery11x5DoubleByType(playId, str);
         } else if (lotteryId == 6 || lotteryId == 20 || lotteryId == 22 || lotteryId == 106) {
             return getLotteryKuai3DoubleByType(playId, str);
-        } else if (lotteryId == 8 || lotteryId == 108) {
+        } else if (lotteryId == 8 || lotteryId == 24 || lotteryId == 108) {
             return getLotteryPK10DoubleByType(playId, str);
         } else if (lotteryId == 10) {
             return getLotteryMark6DoubleByType(playId, str);

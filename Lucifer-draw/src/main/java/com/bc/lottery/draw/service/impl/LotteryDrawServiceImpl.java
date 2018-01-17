@@ -111,6 +111,7 @@ public class LotteryDrawServiceImpl implements LotteryDrawHandle {
             case 106:
                 return LotteryKuai3Draw.getLotteryKuai3DoubleBetPlayIds(str);
             case 8:
+            case 24:
             case 108:
                 return LotteryPK10Draw.getLotteryPK10DoubleBetPlayIds(str);
             case 10:

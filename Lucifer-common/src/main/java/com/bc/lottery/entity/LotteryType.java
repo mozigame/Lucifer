@@ -28,8 +28,10 @@ public interface LotteryType<E extends Enum<E>> {
             case 106:
                 return LotteryKuai3DoubleType.parse(playId);
             case 7:
+            case 23:
                 return LotteryPK10Type.parse(playId);
             case 8:
+            case 24:
             case 108:
                 return LotteryPK10DoubleType.parse(playId);
             // 六合彩
