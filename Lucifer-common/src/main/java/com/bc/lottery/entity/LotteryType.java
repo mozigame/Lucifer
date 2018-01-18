@@ -36,6 +36,7 @@ public interface LotteryType<E extends Enum<E>> {
                 return LotteryPK10DoubleType.parse(playId);
             // 六合彩
             case 10:
+            case 110:
                 return LotteryMark6DoubleType.parse(playId);
             default:
                 return ShishicaiType.parse(playId);

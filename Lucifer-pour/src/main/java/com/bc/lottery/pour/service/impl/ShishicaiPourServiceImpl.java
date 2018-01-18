@@ -54,7 +54,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
                 return 0;
             }
             return 1;
-        } else if (lotteryId == 10) {
+        } else if (lotteryId == 10 || lotteryId == 110) {
             return getLotteryMark6DoubleBetCount(playId, betNumbers);
         }
         return 0;
@@ -79,7 +79,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getKuai3DoubleNumbers(playId);
         } else if (lotteryId == 8 || lotteryId == 24 || lotteryId == 108) {
             return getPK10DoubleNumbers(playId);
-        } else if (lotteryId == 10) {
+        } else if (lotteryId == 10 || lotteryId == 110) {
             return getMark6DoubleNumbers(playId);
         }
         return resultList;
@@ -3058,7 +3058,7 @@ public class ShishicaiPourServiceImpl implements LotteryPourHandle {
             return getLotteryKuai3DoubleByType(playId, str);
         } else if (lotteryId == 8 || lotteryId == 24 || lotteryId == 108) {
             return getLotteryPK10DoubleByType(playId, str);
-        } else if (lotteryId == 10) {
+        } else if (lotteryId == 10 || lotteryId == 110) {
             return getLotteryMark6DoubleByType(playId, str);
         }
         return strList;
