@@ -747,32 +747,35 @@ public class LotteryUtils {
         List<String> resultList = new ArrayList<>();
         // 判断生肖
         int year = DateUtils.getCurrLunarYear();
-        int shengXiaoNo = year + Integer.parseInt(kjStr) - 2008;
-        if (shengXiaoNo % 12 == 7) {
-            resultList.add("鼠");
-        } else if (shengXiaoNo % 12 == 6) {
-            resultList.add("牛");
-        } else if (shengXiaoNo % 12 == 5) {
-            resultList.add("虎");
-        } else if (shengXiaoNo % 12 == 4) {
-            resultList.add("兔");
-        } else if (shengXiaoNo % 12 == 3) {
-            resultList.add("龙");
-        } else if (shengXiaoNo % 12 == 2) {
-            resultList.add("蛇");
-        } else if (shengXiaoNo % 12 == 1) {
-            resultList.add("马");
-        } else if (shengXiaoNo % 12 == 0) {
-            resultList.add("羊");
-        } else if (shengXiaoNo % 12 == 11) {
-            resultList.add("猴");
-        } else if (shengXiaoNo % 12 == 10) {
-            resultList.add("鸡");
-        } else if (shengXiaoNo % 12 == 9) {
-            resultList.add("狗");
-        } else if (shengXiaoNo % 12 == 8) {
-            resultList.add("猪");
-        }
+//        int shengXiaoNo = year + Integer.parseInt(kjStr) - 2008;
+//        if (shengXiaoNo % 12 == 7) {
+//            resultList.add("鼠");
+//        } else if (shengXiaoNo % 12 == 6) {
+//            resultList.add("牛");
+//        } else if (shengXiaoNo % 12 == 5) {
+//            resultList.add("虎");
+//        } else if (shengXiaoNo % 12 == 4) {
+//            resultList.add("兔");
+//        } else if (shengXiaoNo % 12 == 3) {
+//            resultList.add("龙");
+//        } else if (shengXiaoNo % 12 == 2) {
+//            resultList.add("蛇");
+//        } else if (shengXiaoNo % 12 == 1) {
+//            resultList.add("马");
+//        } else if (shengXiaoNo % 12 == 0) {
+//            resultList.add("羊");
+//        } else if (shengXiaoNo % 12 == 11) {
+//            resultList.add("猴");
+//        } else if (shengXiaoNo % 12 == 10) {
+//            resultList.add("鸡");
+//        } else if (shengXiaoNo % 12 == 9) {
+//            resultList.add("狗");
+//        } else if (shengXiaoNo % 12 == 8) {
+//            resultList.add("猪");
+//        }
+        String[] years = new String[] { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊",
+                "猴", "鸡", "狗", "猪" };
+        resultList.add(years[(year +2110-Integer.parseInt(kjStr)-1 ) % years.length]);
         return resultList;
     }
 
@@ -1355,6 +1358,8 @@ public class LotteryUtils {
             System.out.println("false");
         }*/
 
+        int year = DateUtils.getCurrLunarYear();
+        System.out.println("year="+year);
         for (int i = 1; i < 50; i++) {
             System.out.print(i);
             System.out.println(getShengxiaoTypeList(String.valueOf(i)));
